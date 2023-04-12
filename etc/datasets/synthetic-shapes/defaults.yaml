@@ -1,0 +1,11 @@
+_target_: silk.datasets.synthetic.shapes.SyntheticShapes
+drawing_primitives:
+  - "draw_lines"
+  - "draw_polygon"
+  - "draw_multiple_polygons"
+  - "draw_ellipses"
+  - "draw_star"
+  - "draw_checkerboard"
+  - "draw_stripes"
+  - "draw_cube"
+  - "gaussian_noise"

@@ -1,0 +1,6 @@
+defaults:
+  - defaults
+  - /datasets/coco@coco: training
+  - /datasets/image-net@image-net: training
+  - /datasets/megadepth@megadepth: train-val
+  - _self_

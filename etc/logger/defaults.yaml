@@ -1,0 +1,4 @@
+defaults:
+  - handlers:
+    - stderr-dev
+    - record-all

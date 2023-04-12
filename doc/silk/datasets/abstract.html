@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.abstract API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.abstract</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from typing import Any, Iterable
+
+import torch
+from numpy.random import SeedSequence, default_rng
+from silk.logger import LOG
+from torch.utils.data import IterableDataset, Dataset, Subset, random_split
+
+
+def random_partition(
+    dataset: Dataset,
+    lengths: Iterable[int],
+    partition_idx: int,
+    seed: int = 0,
+) -&gt; Subset:
+    &#34;&#34;&#34;Randomly split the dataset and returns the specified partition.
+
+    Parameters
+    ----------
+    dataset : Dataset
+        Dataset to split.
+    lengths : Iterable[int]
+        Sizes of the partitions.
+    partition_idx : int
+        Index of the partition to return (0 &lt;= partition_idx &lt; len(lengths)).
+    seed : int, optional
+        Seed to use for random split, by default 0
+
+    Returns
+    -------
+    Subset
+        Randomly generated partition.
+    &#34;&#34;&#34;
+    generator = torch.Generator().manual_seed(seed)
+    return random_split(dataset, lengths, generator)[partition_idx]
+
+
+class RandomizedIterable(IterableDataset):
+    r&#34;&#34;&#34;Abstract class for randomized iterable datasets.
+
+    All datasets that represent a randomized iterable of data samples whose determinism can be controlled by a seed should subclass it.
+    Such datasets are particularly useful to model randomly generated datasets in order to make them both reproducible and easy to deploy on multiple processes.
+
+    When subclassed, the method `_generate_item` should be overwritten to return one data sample using `random_generator` as the random number generator.
+    The default random generator is a `numpy.default_rng` object.
+    If using another type of generator, the methods `_create_seed_sequence_generator` and `_get_next_random_generator` should be overwritten as well.
+
+    Also, when using a randomized iterable dataset in a distributed setting, we do provide a convenient function to give to the pytorch data loader (see `RandomizedIterable.worker_init_fn`).
+
+    Examples
+    --------
+
+    ```python
+    from itertools import islice
+    from silk.datasets.abstract import RandomizedIterable
+
+    class CustomRandomizedIterable(RandomizedIterable):
+        def __init__(self, seed):
+            super().__init__(seed=seed)
+
+        def _generate_item(self, random_generator):
+            return random_generator.integers(0, 1024)
+
+
+    dataset = CustomRandomizedIterable(seed=0)
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [821, 677, 672, 913, 179]
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [821, 677, 672, 913, 179]
+
+    dataset.seed = 1
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [15, 963, 436, 186, 768]
+    ```
+
+    &#34;&#34;&#34;
+
+    @staticmethod
+    def worker_init_fn(worker_id: int) -&gt; None:
+        &#34;&#34;&#34;Function to give to a data loader in order to handle the randomized iterable dataset in a distributed setting.
+
+        Parameters
+        ----------
+        worker_id : int
+            ID of the current worker iterating over this dataset.
+
+        Raises
+        ------
+        RuntimeError
+            Raised when the current worker dataset is not `RandomizedIterable`.
+
+        Examples
+        --------
+
+        That function can be provided to a data loader as such : `torch.utils.data.DataLoader(..., worker_init_fn = RandomizedIterable.worker_init_fn)`.
+
+        &#34;&#34;&#34;
+
+        worker_info = torch.utils.data.get_worker_info()
+
+        if worker_info is not None:
+            dataset = worker_info.dataset
+            if not isinstance(dataset, RandomizedIterable):
+                raise RuntimeError(
+                    &#34;Worker dataset is not compatible (should be `RandomizedIterable`).&#34;
+                )
+            dataset.slice(start=worker_id, step=worker_info.num_workers)
+
+    def __init__(self, seed: int = 0, start: int = 0, step: int = 1):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        seed : int, optional
+            random seed used for the dataset sequence generation, by default 0
+        start : int, optional
+            index of first element of the dataset, useful for a distributed setting, by default 0
+        step : int, optional
+            number of elements to jump when iterating, useful for a distributed setting, by default 1
+        &#34;&#34;&#34;
+        self.start = start
+        self.step = step
+        self.seed = seed
+
+    def slice(self, start=0, step=1, reset=False):
+        &#34;&#34;&#34;Slices the dataset similar to `dataset[start::step]`, but for a randomized iterable dataset.
+
+        Parameters
+        ----------
+        start : int, optional
+            index of first element of the dataset, useful for a distributed setting, by default 0
+        step : int, optional
+            number of elements to jump when iterating, useful for a distributed setting, by default 1
+        reset : bool, optional
+            determines if the slicing should be combined with current slicing of the dataset, or reset to the provided values, by default False
+        &#34;&#34;&#34;
+        if reset:
+            self.start = start
+            self.step = step
+        else:
+            self.start += self.step * start
+            self.step *= step
+
+    def __iter__(self):
+        # check if the dataset isn&#39;t used properly in dataloader workers
+        worker_info = torch.utils.data.get_worker_info()
+        if worker_info is not None:
+            if self.step &lt; worker_info.num_workers:
+                raise RuntimeError(
+                    f&#34;randomized iterable dataset has been instantiated on {worker_info.num_workers} workers with a step of {self.step}, this will make the dataloader build batches with redundant data, make sure you use the `RandomizedIterable.worker_init_fn` function in the dataloader&#34;
+                )
+
+        seed_sequence_generator = self._create_seed_sequence_generator(self.seed)
+        random_generator = self._get_next_random_generator(
+            seed_sequence_generator, n=self.start + 1
+        )
+        # makes a copy in case `self.step` is changed after the iterator is created and still in use.
+        step = self.step
+
+        LOG.info(
+            f&#34;start iteration with parameter (seed={self.seed}, start={self.start}, step={step})&#34;
+        )
+
+        while True:
+            yield self._generate_item(random_generator)
+            random_generator = self._get_next_random_generator(
+                seed_sequence_generator, n=step
+            )
+
+    def _create_seed_sequence_generator(self, seed: int) -&gt; Any:
+        &#34;&#34;&#34;Create initial generator of seeds passed to the `_get_next_random_generator` method.
+        Use the numpy `SeedSequence` seed generator by default. Can be overloaded to use another type of seed generator.&#34;&#34;&#34;
+        return SeedSequence(entropy=seed)
+
+    def _get_next_random_generator(
+        self, seed_sequence_generator: Any, n: int = 1
+    ) -&gt; Any:
+        &#34;&#34;&#34;Get the name random generator object produced by `seed_sequence_generator`.
+        Use numpy&#39;s `default_rng` by default. Can be overloaded to use another type of seed generator.&#34;&#34;&#34;
+        seeds = seed_sequence_generator.spawn(n)
+        return default_rng(seeds[-1])
+
+    def _generate_item(self, random_generator: Any):
+        &#34;&#34;&#34;Method to be overloaded by child class. Should return one randomly generated item using the provided random generator.
+        The provided `random_generator` is unique to that item and will not be used subsequently for other items.&#34;&#34;&#34;
+        raise NotImplementedError(
+            &#34;This `_generate_item` method should be implemented in the child class&#34;,
+        )
+
+
+class ConcatDataset(torch.utils.data.ConcatDataset):
+    def __init__(self, *argc, **kwargs) -&gt; None:
+        datasets = tuple(argc) + tuple(kwargs.values())
+        super().__init__(datasets)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.datasets.abstract.random_partition"><code class="name flex">
+<span>def <span class="ident">random_partition</span></span>(<span>dataset: torch.utils.data.dataset.Dataset, lengths: Iterable[int], partition_idx: int, seed: int = 0) ‑> torch.utils.data.dataset.Subset</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Randomly split the dataset and returns the specified partition.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>dataset</code></strong> :&ensp;<code>Dataset</code></dt>
+<dd>Dataset to split.</dd>
+<dt><strong><code>lengths</code></strong> :&ensp;<code>Iterable[int]</code></dt>
+<dd>Sizes of the partitions.</dd>
+<dt><strong><code>partition_idx</code></strong> :&ensp;<code>int</code></dt>
+<dd>Index of the partition to return (0 &lt;= partition_idx &lt; len(lengths)).</dd>
+<dt><strong><code>seed</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Seed to use for random split, by default 0</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Subset</code></dt>
+<dd>Randomly generated partition.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def random_partition(
+    dataset: Dataset,
+    lengths: Iterable[int],
+    partition_idx: int,
+    seed: int = 0,
+) -&gt; Subset:
+    &#34;&#34;&#34;Randomly split the dataset and returns the specified partition.
+
+    Parameters
+    ----------
+    dataset : Dataset
+        Dataset to split.
+    lengths : Iterable[int]
+        Sizes of the partitions.
+    partition_idx : int
+        Index of the partition to return (0 &lt;= partition_idx &lt; len(lengths)).
+    seed : int, optional
+        Seed to use for random split, by default 0
+
+    Returns
+    -------
+    Subset
+        Randomly generated partition.
+    &#34;&#34;&#34;
+    generator = torch.Generator().manual_seed(seed)
+    return random_split(dataset, lengths, generator)[partition_idx]</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.datasets.abstract.ConcatDataset"><code class="flex name class">
+<span>class <span class="ident">ConcatDataset</span></span>
+<span>(</span><span>*argc, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dataset as a concatenation of multiple datasets.</p>
+<p>This class is useful to assemble different existing datasets.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>datasets</code></strong> :&ensp;<code>sequence</code></dt>
+<dd>List of datasets to be concatenated</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConcatDataset(torch.utils.data.ConcatDataset):
+    def __init__(self, *argc, **kwargs) -&gt; None:
+        datasets = tuple(argc) + tuple(kwargs.values())
+        super().__init__(datasets)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.ConcatDataset</li>
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.abstract.ConcatDataset.cumulative_sizes"><code class="name">var <span class="ident">cumulative_sizes</span> : List[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.abstract.ConcatDataset.datasets"><code class="name">var <span class="ident">datasets</span> : List[torch.utils.data.dataset.Dataset[+T_co]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.abstract.RandomizedIterable"><code class="flex name class">
+<span>class <span class="ident">RandomizedIterable</span></span>
+<span>(</span><span>seed: int = 0, start: int = 0, step: int = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract class for randomized iterable datasets.</p>
+<p>All datasets that represent a randomized iterable of data samples whose determinism can be controlled by a seed should subclass it.
+Such datasets are particularly useful to model randomly generated datasets in order to make them both reproducible and easy to deploy on multiple processes.</p>
+<p>When subclassed, the method <code>_generate_item</code> should be overwritten to return one data sample using <code>random_generator</code> as the random number generator.
+The default random generator is a <code>numpy.default_rng</code> object.
+If using another type of generator, the methods <code>_create_seed_sequence_generator</code> and <code>_get_next_random_generator</code> should be overwritten as well.</p>
+<p>Also, when using a randomized iterable dataset in a distributed setting, we do provide a convenient function to give to the pytorch data loader (see <code><a title="silk.datasets.abstract.RandomizedIterable.worker_init_fn" href="#silk.datasets.abstract.RandomizedIterable.worker_init_fn">RandomizedIterable.worker_init_fn()</a></code>).</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">from itertools import islice
+from silk.datasets.abstract import RandomizedIterable
+
+class CustomRandomizedIterable(RandomizedIterable):
+    def __init__(self, seed):
+        super().__init__(seed=seed)
+
+    def _generate_item(self, random_generator):
+        return random_generator.integers(0, 1024)
+
+
+dataset = CustomRandomizedIterable(seed=0)
+print([i for i in islice(dataset, 5)])
+# &gt;&gt;&gt; [821, 677, 672, 913, 179]
+print([i for i in islice(dataset, 5)])
+# &gt;&gt;&gt; [821, 677, 672, 913, 179]
+
+dataset.seed = 1
+print([i for i in islice(dataset, 5)])
+# &gt;&gt;&gt; [15, 963, 436, 186, 768]
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>seed</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>random seed used for the dataset sequence generation, by default 0</dd>
+<dt><strong><code>start</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>index of first element of the dataset, useful for a distributed setting, by default 0</dd>
+<dt><strong><code>step</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>number of elements to jump when iterating, useful for a distributed setting, by default 1</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RandomizedIterable(IterableDataset):
+    r&#34;&#34;&#34;Abstract class for randomized iterable datasets.
+
+    All datasets that represent a randomized iterable of data samples whose determinism can be controlled by a seed should subclass it.
+    Such datasets are particularly useful to model randomly generated datasets in order to make them both reproducible and easy to deploy on multiple processes.
+
+    When subclassed, the method `_generate_item` should be overwritten to return one data sample using `random_generator` as the random number generator.
+    The default random generator is a `numpy.default_rng` object.
+    If using another type of generator, the methods `_create_seed_sequence_generator` and `_get_next_random_generator` should be overwritten as well.
+
+    Also, when using a randomized iterable dataset in a distributed setting, we do provide a convenient function to give to the pytorch data loader (see `RandomizedIterable.worker_init_fn`).
+
+    Examples
+    --------
+
+    ```python
+    from itertools import islice
+    from silk.datasets.abstract import RandomizedIterable
+
+    class CustomRandomizedIterable(RandomizedIterable):
+        def __init__(self, seed):
+            super().__init__(seed=seed)
+
+        def _generate_item(self, random_generator):
+            return random_generator.integers(0, 1024)
+
+
+    dataset = CustomRandomizedIterable(seed=0)
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [821, 677, 672, 913, 179]
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [821, 677, 672, 913, 179]
+
+    dataset.seed = 1
+    print([i for i in islice(dataset, 5)])
+    # &gt;&gt;&gt; [15, 963, 436, 186, 768]
+    ```
+
+    &#34;&#34;&#34;
+
+    @staticmethod
+    def worker_init_fn(worker_id: int) -&gt; None:
+        &#34;&#34;&#34;Function to give to a data loader in order to handle the randomized iterable dataset in a distributed setting.
+
+        Parameters
+        ----------
+        worker_id : int
+            ID of the current worker iterating over this dataset.
+
+        Raises
+        ------
+        RuntimeError
+            Raised when the current worker dataset is not `RandomizedIterable`.
+
+        Examples
+        --------
+
+        That function can be provided to a data loader as such : `torch.utils.data.DataLoader(..., worker_init_fn = RandomizedIterable.worker_init_fn)`.
+
+        &#34;&#34;&#34;
+
+        worker_info = torch.utils.data.get_worker_info()
+
+        if worker_info is not None:
+            dataset = worker_info.dataset
+            if not isinstance(dataset, RandomizedIterable):
+                raise RuntimeError(
+                    &#34;Worker dataset is not compatible (should be `RandomizedIterable`).&#34;
+                )
+            dataset.slice(start=worker_id, step=worker_info.num_workers)
+
+    def __init__(self, seed: int = 0, start: int = 0, step: int = 1):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        seed : int, optional
+            random seed used for the dataset sequence generation, by default 0
+        start : int, optional
+            index of first element of the dataset, useful for a distributed setting, by default 0
+        step : int, optional
+            number of elements to jump when iterating, useful for a distributed setting, by default 1
+        &#34;&#34;&#34;
+        self.start = start
+        self.step = step
+        self.seed = seed
+
+    def slice(self, start=0, step=1, reset=False):
+        &#34;&#34;&#34;Slices the dataset similar to `dataset[start::step]`, but for a randomized iterable dataset.
+
+        Parameters
+        ----------
+        start : int, optional
+            index of first element of the dataset, useful for a distributed setting, by default 0
+        step : int, optional
+            number of elements to jump when iterating, useful for a distributed setting, by default 1
+        reset : bool, optional
+            determines if the slicing should be combined with current slicing of the dataset, or reset to the provided values, by default False
+        &#34;&#34;&#34;
+        if reset:
+            self.start = start
+            self.step = step
+        else:
+            self.start += self.step * start
+            self.step *= step
+
+    def __iter__(self):
+        # check if the dataset isn&#39;t used properly in dataloader workers
+        worker_info = torch.utils.data.get_worker_info()
+        if worker_info is not None:
+            if self.step &lt; worker_info.num_workers:
+                raise RuntimeError(
+                    f&#34;randomized iterable dataset has been instantiated on {worker_info.num_workers} workers with a step of {self.step}, this will make the dataloader build batches with redundant data, make sure you use the `RandomizedIterable.worker_init_fn` function in the dataloader&#34;
+                )
+
+        seed_sequence_generator = self._create_seed_sequence_generator(self.seed)
+        random_generator = self._get_next_random_generator(
+            seed_sequence_generator, n=self.start + 1
+        )
+        # makes a copy in case `self.step` is changed after the iterator is created and still in use.
+        step = self.step
+
+        LOG.info(
+            f&#34;start iteration with parameter (seed={self.seed}, start={self.start}, step={step})&#34;
+        )
+
+        while True:
+            yield self._generate_item(random_generator)
+            random_generator = self._get_next_random_generator(
+                seed_sequence_generator, n=step
+            )
+
+    def _create_seed_sequence_generator(self, seed: int) -&gt; Any:
+        &#34;&#34;&#34;Create initial generator of seeds passed to the `_get_next_random_generator` method.
+        Use the numpy `SeedSequence` seed generator by default. Can be overloaded to use another type of seed generator.&#34;&#34;&#34;
+        return SeedSequence(entropy=seed)
+
+    def _get_next_random_generator(
+        self, seed_sequence_generator: Any, n: int = 1
+    ) -&gt; Any:
+        &#34;&#34;&#34;Get the name random generator object produced by `seed_sequence_generator`.
+        Use numpy&#39;s `default_rng` by default. Can be overloaded to use another type of seed generator.&#34;&#34;&#34;
+        seeds = seed_sequence_generator.spawn(n)
+        return default_rng(seeds[-1])
+
+    def _generate_item(self, random_generator: Any):
+        &#34;&#34;&#34;Method to be overloaded by child class. Should return one randomly generated item using the provided random generator.
+        The provided `random_generator` is unique to that item and will not be used subsequently for other items.&#34;&#34;&#34;
+        raise NotImplementedError(
+            &#34;This `_generate_item` method should be implemented in the child class&#34;,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.IterableDataset</li>
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>silk.datasets.abstract_test._MockRandomizedIterable</li>
+<li><a title="silk.datasets.synthetic.shapes.SyntheticShapes" href="synthetic/shapes.html#silk.datasets.synthetic.shapes.SyntheticShapes">SyntheticShapes</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.datasets.abstract.RandomizedIterable.worker_init_fn"><code class="name flex">
+<span>def <span class="ident">worker_init_fn</span></span>(<span>worker_id: int) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to give to a data loader in order to handle the randomized iterable dataset in a distributed setting.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>worker_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the current worker iterating over this dataset.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>Raised when the current worker dataset is not <code><a title="silk.datasets.abstract.RandomizedIterable" href="#silk.datasets.abstract.RandomizedIterable">RandomizedIterable</a></code>.</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>That function can be provided to a data loader as such : <code>torch.utils.data.DataLoader(..., worker_init_fn = RandomizedIterable.worker_init_fn)</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def worker_init_fn(worker_id: int) -&gt; None:
+    &#34;&#34;&#34;Function to give to a data loader in order to handle the randomized iterable dataset in a distributed setting.
+
+    Parameters
+    ----------
+    worker_id : int
+        ID of the current worker iterating over this dataset.
+
+    Raises
+    ------
+    RuntimeError
+        Raised when the current worker dataset is not `RandomizedIterable`.
+
+    Examples
+    --------
+
+    That function can be provided to a data loader as such : `torch.utils.data.DataLoader(..., worker_init_fn = RandomizedIterable.worker_init_fn)`.
+
+    &#34;&#34;&#34;
+
+    worker_info = torch.utils.data.get_worker_info()
+
+    if worker_info is not None:
+        dataset = worker_info.dataset
+        if not isinstance(dataset, RandomizedIterable):
+            raise RuntimeError(
+                &#34;Worker dataset is not compatible (should be `RandomizedIterable`).&#34;
+            )
+        dataset.slice(start=worker_id, step=worker_info.num_workers)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.datasets.abstract.RandomizedIterable.slice"><code class="name flex">
+<span>def <span class="ident">slice</span></span>(<span>self, start=0, step=1, reset=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Slices the dataset similar to <code>dataset[start::step]</code>, but for a randomized iterable dataset.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>start</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>index of first element of the dataset, useful for a distributed setting, by default 0</dd>
+<dt><strong><code>step</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>number of elements to jump when iterating, useful for a distributed setting, by default 1</dd>
+<dt><strong><code>reset</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>determines if the slicing should be combined with current slicing of the dataset, or reset to the provided values, by default False</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def slice(self, start=0, step=1, reset=False):
+    &#34;&#34;&#34;Slices the dataset similar to `dataset[start::step]`, but for a randomized iterable dataset.
+
+    Parameters
+    ----------
+    start : int, optional
+        index of first element of the dataset, useful for a distributed setting, by default 0
+    step : int, optional
+        number of elements to jump when iterating, useful for a distributed setting, by default 1
+    reset : bool, optional
+        determines if the slicing should be combined with current slicing of the dataset, or reset to the provided values, by default False
+    &#34;&#34;&#34;
+    if reset:
+        self.start = start
+        self.step = step
+    else:
+        self.start += self.step * start
+        self.step *= step</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets" href="index.html">silk.datasets</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.datasets.abstract.random_partition" href="#silk.datasets.abstract.random_partition">random_partition</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.datasets.abstract.ConcatDataset" href="#silk.datasets.abstract.ConcatDataset">ConcatDataset</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.abstract.ConcatDataset.cumulative_sizes" href="#silk.datasets.abstract.ConcatDataset.cumulative_sizes">cumulative_sizes</a></code></li>
+<li><code><a title="silk.datasets.abstract.ConcatDataset.datasets" href="#silk.datasets.abstract.ConcatDataset.datasets">datasets</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.abstract.RandomizedIterable" href="#silk.datasets.abstract.RandomizedIterable">RandomizedIterable</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.abstract.RandomizedIterable.slice" href="#silk.datasets.abstract.RandomizedIterable.slice">slice</a></code></li>
+<li><code><a title="silk.datasets.abstract.RandomizedIterable.worker_init_fn" href="#silk.datasets.abstract.RandomizedIterable.worker_init_fn">worker_init_fn</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

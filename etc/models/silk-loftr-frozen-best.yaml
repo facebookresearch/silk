@@ -1,0 +1,7 @@
+defaults:
+  - frozen
+  - /models@model: silk-loftr
+
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [MODELS, "silk", "analysis", "backbone", "resfpn.ckpt"]

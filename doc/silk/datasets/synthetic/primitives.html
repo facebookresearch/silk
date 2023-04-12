@@ -1,0 +1,2103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.synthetic.primitives API documentation</title>
+<meta name="description" content="Module used to generate geometrical synthetic shapes" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.synthetic.primitives</code></h1>
+</header>
+<section id="section-intro">
+<p>Module used to generate geometrical synthetic shapes</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34; Module used to generate geometrical synthetic shapes &#34;&#34;&#34;
+
+# Modified code taken from here : https://github.com/eric-yyjau/pytorch-superpoint/blob/master/datasets/synthetic_shapes.py
+# Modifications were done to control the determinism of the primitives.
+# TODO(Pierre) : Might be re-implemented using PyTorch/OpenGL in the future.
+
+import math
+
+import cv2 as cv
+import numpy as np
+
+
+def get_random_color(random_state, background_color):
+    &#34;&#34;&#34;Output a random scalar in grayscale with a least a small
+    contrast with the background color&#34;&#34;&#34;
+    color = random_state.randint(256)
+    if abs(color - background_color) &lt; 30:  # not enough contrast
+        color = (color + 128) % 256
+    return color
+
+
+def get_different_color(random_state, previous_colors, min_dist=50, max_count=20):
+    &#34;&#34;&#34;Output a color that contrasts with the previous colors
+    Parameters:
+      previous_colors: np.array of the previous colors
+      min_dist: the difference between the new color and
+                the previous colors must be at least min_dist
+      max_count: maximal number of iterations
+    &#34;&#34;&#34;
+    color = random_state.randint(256)
+    count = 0
+    while np.any(np.abs(previous_colors - color) &lt; min_dist) and count &lt; max_count:
+        count += 1
+        color = random_state.randint(256)
+    return color
+
+
+def generate_background(
+    random_state,
+    size=(960, 1280),
+    num_blobs=100,
+    min_rad_ratio=0.01,
+    max_rad_ratio=0.05,
+    min_kernel_size=50,
+    max_kernel_size=300,
+):
+    &#34;&#34;&#34;Generate a customized background image
+    Parameters:
+      size: size of the image
+      num_blobs: number of circles to draw
+      min_rad_ratio: the radius of blobs is at least min_rad_size * max(size)
+      max_rad_ratio: the radius of blobs is at most max_rad_size * max(size)
+      min_kernel_size: minimal size of the kernel
+      max_kernel_size: maximal size of the kernel
+    &#34;&#34;&#34;
+    dim = max(size)
+    img = random_state.randint(0, 255, size=size, dtype=np.uint8)
+    cv.threshold(img, random_state.randint(256), 255, cv.THRESH_BINARY, img)
+    background_color = int(np.mean(img))
+    blobs = np.concatenate(
+        [
+            random_state.randint(0, size[1], size=(num_blobs, 1)),
+            random_state.randint(0, size[0], size=(num_blobs, 1)),
+        ],
+        axis=1,
+    )
+    for i in range(num_blobs):
+        col = get_random_color(random_state, background_color)
+        cv.circle(
+            img,
+            (blobs[i][0], blobs[i][1]),
+            random_state.randint(int(dim * min_rad_ratio), int(dim * max_rad_ratio)),
+            col,
+            -1,
+        )
+    kernel_size = random_state.randint(min_kernel_size, max_kernel_size)
+    cv.blur(img, (kernel_size, kernel_size), img)
+    return img
+
+
+def generate_custom_background(
+    random_state,
+    size,
+    background_color,
+    num_blobs=3000,
+    kernel_boundaries=(50, 100),
+):
+    &#34;&#34;&#34;Generate a customized background to fill the shapes
+    Parameters:
+      background_color: average color of the background image
+      num_blobs: number of circles to draw
+      kernel_boundaries: interval of the possible sizes of the kernel
+    &#34;&#34;&#34;
+    img = np.zeros(size, dtype=np.uint8)
+    img = img + get_random_color(random_state, background_color)
+    blobs = np.concatenate(
+        [
+            random_state.randint(0, size[1], size=(num_blobs, 1)),
+            random_state.randint(0, size[0], size=(num_blobs, 1)),
+        ],
+        axis=1,
+    )
+    for i in range(num_blobs):
+        col = get_random_color(random_state, background_color)
+        cv.circle(img, (blobs[i][0], blobs[i][1]), random_state.randint(20), col, -1)
+    kernel_size = random_state.randint(kernel_boundaries[0], kernel_boundaries[1])
+    cv.blur(img, (kernel_size, kernel_size), img)
+    return img
+
+
+def final_blur(img, kernel_size=(5, 5)):
+    &#34;&#34;&#34;Apply a final Gaussian blur to the image
+    Parameters:
+      kernel_size: size of the kernel
+    &#34;&#34;&#34;
+    cv.GaussianBlur(img, kernel_size, 0, img)
+
+
+def ccw(A, B, C, dim):
+    &#34;&#34;&#34;Check if the points are listed in counter-clockwise order&#34;&#34;&#34;
+    if dim == 2:  # only 2 dimensions
+        return (C[:, 1] - A[:, 1]) * (B[:, 0] - A[:, 0]) &gt; (B[:, 1] - A[:, 1]) * (
+            C[:, 0] - A[:, 0]
+        )
+    else:  # dim should be equal to 3
+        assert dim == 3
+        return (C[:, 1, :] - A[:, 1, :]) * (B[:, 0, :] - A[:, 0, :]) &gt; (
+            B[:, 1, :] - A[:, 1, :]
+        ) * (C[:, 0, :] - A[:, 0, :])
+
+
+def intersect(A, B, C, D, dim):
+    &#34;&#34;&#34;Return true if line segments AB and CD intersect
+
+    Implements this : https://blog.devgenius.io/clockwise-and-counterclockwise-line-segment-intersection-b3317839534e
+    &#34;&#34;&#34;
+    return np.any(
+        (ccw(A, C, D, dim) != ccw(B, C, D, dim))
+        &amp; (ccw(A, B, C, dim) != ccw(A, B, D, dim))
+    )
+
+
+def keep_points_inside(points, size):
+    &#34;&#34;&#34;Keep only the points whose coordinates are inside the dimensions of
+    the image of size &#39;size&#39;&#34;&#34;&#34;
+    mask = (
+        (points[:, 0] &gt;= 0)
+        &amp; (points[:, 0] &lt; size[1])
+        &amp; (points[:, 1] &gt;= 0)
+        &amp; (points[:, 1] &lt; size[0])
+    )
+    return points[mask, :]
+
+
+def draw_lines(random_state, img, num_lines=10):
+    &#34;&#34;&#34;Draw random lines and output the positions of the endpoints
+    Parameters:
+      num_lines: maximal number of lines
+    &#34;&#34;&#34;
+    num_lines = random_state.randint(1, num_lines)
+    segments = np.empty((0, 4), dtype=int)
+    points = np.empty((0, 2), dtype=int)
+    background_color = int(np.mean(img))
+    min_dim = min(img.shape)
+    for _ in range(num_lines):
+        x1 = random_state.randint(img.shape[1])
+        y1 = random_state.randint(img.shape[0])
+        p1 = np.array([[x1, y1]])
+        x2 = random_state.randint(img.shape[1])
+        y2 = random_state.randint(img.shape[0])
+        p2 = np.array([[x2, y2]])
+        # Check that there is no overlap
+        if intersect(segments[:, 0:2], segments[:, 2:4], p1, p2, 2):
+            continue
+        segments = np.concatenate([segments, np.array([[x1, y1, x2, y2]])], axis=0)
+        col = get_random_color(random_state, background_color)
+        thickness = random_state.randint(min_dim * 0.01, min_dim * 0.02)
+        cv.line(img, (x1, y1), (x2, y2), col, thickness)
+        points = np.concatenate([points, np.array([[x1, y1], [x2, y2]])], axis=0)
+    return points
+
+
+def draw_polygon(random_state, img, max_sides=8):
+    &#34;&#34;&#34;Draw a polygon with a random number of corners
+    and return the corner points
+    Parameters:
+      max_sides: maximal number of sides + 1
+    &#34;&#34;&#34;
+    num_corners = random_state.randint(3, max_sides)
+    min_dim = min(img.shape[0], img.shape[1])
+    rad = max(random_state.rand() * min_dim / 2, min_dim / 10)
+    x = random_state.randint(rad, img.shape[1] - rad)  # Center of a circle
+    y = random_state.randint(rad, img.shape[0] - rad)
+
+    # Sample num_corners points inside the circle
+    slices = np.linspace(0, 2 * math.pi, num_corners + 1)
+    angles = [
+        slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+        for i in range(num_corners)
+    ]
+    points = np.array(
+        [
+            [
+                int(x + max(random_state.rand(), 0.4) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.4) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+    )
+
+    # Filter the points that are too close or that have an angle too flat
+    norms = [
+        np.linalg.norm(points[(i - 1) % num_corners, :] - points[i, :])
+        for i in range(num_corners)
+    ]
+    mask = np.array(norms) &gt; 0.01
+    points = points[mask, :]
+    num_corners = points.shape[0]
+    corner_angles = [
+        angle_between_vectors(
+            points[(i - 1) % num_corners, :] - points[i, :],
+            points[(i + 1) % num_corners, :] - points[i, :],
+        )
+        for i in range(num_corners)
+    ]
+    mask = np.array(corner_angles) &lt; (2 * math.pi / 3)
+    points = points[mask, :]
+    num_corners = points.shape[0]
+    if num_corners &lt; 3:  # not enough corners
+        return draw_polygon(random_state, img, max_sides)
+
+    corners = points.reshape((-1, 1, 2))
+    col = get_random_color(random_state, int(np.mean(img)))
+    cv.fillPoly(img, [corners], col)
+    return points
+
+
+def overlap(center, rad, centers, rads):
+    &#34;&#34;&#34;Check that the circle with (center, rad)
+    doesn&#39;t overlap with the other circles&#34;&#34;&#34;
+    flag = False
+    for i in range(len(rads)):
+        if np.linalg.norm(center - centers[i]) + min(rad, rads[i]) &lt; max(rad, rads[i]):
+            flag = True
+            break
+    return flag
+
+
+def angle_between_vectors(v1, v2):
+    &#34;&#34;&#34;Compute the angle (in rad) between the two vectors v1 and v2.&#34;&#34;&#34;
+    v1_u = v1 / np.linalg.norm(v1)
+    v2_u = v2 / np.linalg.norm(v2)
+    return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
+
+
+def draw_multiple_polygons(random_state, img, max_sides=8, num_polygons=30, **extra):
+    &#34;&#34;&#34;Draw multiple polygons with a random number of corners
+    and return the corner points
+    Parameters:
+      max_sides: maximal number of sides + 1
+      num_polygons: maximal number of polygons
+    &#34;&#34;&#34;
+    segments = np.empty((0, 4), dtype=int)
+    centers = []
+    rads = []
+    points = np.empty((0, 2), dtype=int)
+    background_color = int(np.mean(img))
+    for i in range(num_polygons):
+        num_corners = random_state.randint(3, max_sides)
+        min_dim = min(img.shape[0], img.shape[1])
+        rad = max(random_state.rand() * min_dim / 2, min_dim / 10)
+        x = random_state.randint(rad, img.shape[1] - rad)  # Center of a circle
+        y = random_state.randint(rad, img.shape[0] - rad)
+
+        # Sample num_corners points inside the circle
+        slices = np.linspace(0, 2 * math.pi, num_corners + 1)
+        angles = [
+            slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+            for i in range(num_corners)
+        ]
+        new_points = [
+            [
+                int(x + max(random_state.rand(), 0.4) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.4) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+        new_points = np.array(new_points)
+
+        # Filter the points that are too close or that have an angle too flat
+        norms = [
+            np.linalg.norm(new_points[(i - 1) % num_corners, :] - new_points[i, :])
+            for i in range(num_corners)
+        ]
+        mask = np.array(norms) &gt; 0.01
+        new_points = new_points[mask, :]
+        num_corners = new_points.shape[0]
+        corner_angles = [
+            angle_between_vectors(
+                new_points[(i - 1) % num_corners, :] - new_points[i, :],
+                new_points[(i + 1) % num_corners, :] - new_points[i, :],
+            )
+            for i in range(num_corners)
+        ]
+        mask = np.array(corner_angles) &lt; (2 * math.pi / 3)
+        new_points = new_points[mask, :]
+        num_corners = new_points.shape[0]
+        if num_corners &lt; 3:  # not enough corners
+            continue
+
+        new_segments = np.zeros((1, 4, num_corners))
+        new_segments[:, 0, :] = [new_points[i][0] for i in range(num_corners)]
+        new_segments[:, 1, :] = [new_points[i][1] for i in range(num_corners)]
+        new_segments[:, 2, :] = [
+            new_points[(i + 1) % num_corners][0] for i in range(num_corners)
+        ]
+        new_segments[:, 3, :] = [
+            new_points[(i + 1) % num_corners][1] for i in range(num_corners)
+        ]
+
+        # Check that the polygon will not overlap with pre-existing shapes
+        if (
+            intersect(
+                segments[:, 0:2, None],
+                segments[:, 2:4, None],
+                new_segments[:, 0:2, :],
+                new_segments[:, 2:4, :],
+                3,
+            )
+            or overlap(np.array([x, y]), rad, centers, rads)
+        ):
+            continue
+        centers.append(np.array([x, y]))
+        rads.append(rad)
+        new_segments = np.reshape(np.swapaxes(new_segments, 0, 2), (-1, 4))
+        segments = np.concatenate([segments, new_segments], axis=0)
+
+        # Color the polygon with a custom background
+        corners = new_points.reshape((-1, 1, 2))
+        mask = np.zeros(img.shape, np.uint8)
+        custom_background = generate_custom_background(
+            random_state, img.shape, background_color, **extra
+        )
+        cv.fillPoly(mask, [corners], 255)
+        locs = np.where(mask != 0)
+        img[locs[0], locs[1]] = custom_background[locs[0], locs[1]]
+        points = np.concatenate([points, new_points], axis=0)
+    return points
+
+
+def draw_ellipses(random_state, img, num_ellipses=20):
+    &#34;&#34;&#34;Draw several ellipses
+    Parameters:
+      num_ellipses: maximal number of ellipses
+    &#34;&#34;&#34;
+    centers = np.empty((0, 2), dtype=int)
+    rads = np.empty((0, 1), dtype=int)
+    min_dim = min(img.shape[0], img.shape[1]) / 4
+    background_color = int(np.mean(img))
+    for _ in range(num_ellipses):
+        ax = int(max(random_state.rand() * min_dim, min_dim / 5))
+        ay = int(max(random_state.rand() * min_dim, min_dim / 5))
+        max_rad = max(ax, ay)
+        x = random_state.randint(max_rad, img.shape[1] - max_rad)  # center
+        y = random_state.randint(max_rad, img.shape[0] - max_rad)
+        new_center = np.array([[x, y]])
+
+        # Check that the ellipsis will not overlap with pre-existing shapes
+        diff = centers - new_center
+        if np.any(max_rad &gt; (np.sqrt(np.sum(diff * diff, axis=1)) - rads)):
+            continue
+        centers = np.concatenate([centers, new_center], axis=0)
+        rads = np.concatenate([rads, np.array([[max_rad]])], axis=0)
+
+        col = get_random_color(random_state, background_color)
+        angle = random_state.rand() * 90
+        cv.ellipse(img, (x, y), (ax, ay), angle, 0, 360, col, -1)
+    return np.empty((0, 2), dtype=int)
+
+
+def draw_star(random_state, img, num_branches=6):
+    &#34;&#34;&#34;Draw a star and output the interest points
+    Parameters:
+      num_branches: number of branches of the star
+    &#34;&#34;&#34;
+    num_branches = random_state.randint(3, num_branches)
+    min_dim = min(img.shape[0], img.shape[1])
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.02)
+    rad = max(random_state.rand() * min_dim / 2, min_dim / 5)
+    # select the center of a circle
+    x = random_state.randint(rad, img.shape[1] - rad)
+    y = random_state.randint(rad, img.shape[0] - rad)
+    # Sample num_branches points inside the circle
+    slices = np.linspace(0, 2 * math.pi, num_branches + 1)
+    angles = [
+        slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+        for i in range(num_branches)
+    ]
+    points = np.array(
+        [
+            [
+                int(x + max(random_state.rand(), 0.3) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.3) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+    )
+    points = np.concatenate(([[x, y]], points), axis=0)
+    background_color = int(np.mean(img))
+    for i in range(1, num_branches + 1):
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (points[0][0], points[0][1]),
+            (points[i][0], points[i][1]),
+            col,
+            thickness,
+        )
+    return points
+
+
+def draw_checkerboard(
+    random_state, img, max_rows=7, max_cols=7, transform_params=(0.05, 0.15)
+):
+    &#34;&#34;&#34;Draw a checkerboard and output the interest points
+    Parameters:
+      max_rows: maximal number of rows + 1
+      max_cols: maximal number of cols + 1
+      transform_params: set the range of the parameters of the transformations&#34;&#34;&#34;
+    background_color = int(np.mean(img))
+    # Create the grid
+    rows = random_state.randint(3, max_rows)  # number of rows
+    cols = random_state.randint(3, max_cols)  # number of cols
+    s = min((img.shape[1] - 1) // cols, (img.shape[0] - 1) // rows)  # size of a cell
+    x_coord = np.tile(range(cols + 1), rows + 1).reshape(((rows + 1) * (cols + 1), 1))
+    y_coord = np.repeat(range(rows + 1), cols + 1).reshape(((rows + 1) * (cols + 1), 1))
+    points = s * np.concatenate([x_coord, y_coord], axis=1)
+
+    # Warp the grid using an affine transformation and an homography
+    # The parameters of the transformations are constrained
+    # to get transformations not too far-fetched
+    alpha_affine = np.max(img.shape) * (
+        transform_params[0] + random_state.rand() * transform_params[1]
+    )
+    center_square = np.float32(img.shape) // 2
+    min_dim = min(img.shape)
+    square_size = min_dim // 3
+    pts1 = np.float32(
+        [
+            center_square + square_size,
+            [center_square[0] + square_size, center_square[1] - square_size],
+            center_square - square_size,
+            [center_square[0] - square_size, center_square[1] + square_size],
+        ]
+    )
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine, alpha_affine, size=pts1.shape
+    ).astype(np.float32)
+    affine_transform = cv.getAffineTransform(pts1[:3], pts2[:3])
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine / 2, alpha_affine / 2, size=pts1.shape
+    ).astype(np.float32)
+    perspective_transform = cv.getPerspectiveTransform(pts1, pts2)
+
+    # Apply the affine transformation
+    points = np.transpose(
+        np.concatenate((points, np.ones(((rows + 1) * (cols + 1), 1))), axis=1)
+    )
+    warped_points = np.transpose(np.dot(affine_transform, points))
+
+    # Apply the homography
+    warped_col0 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[0, :2]), axis=1),
+        perspective_transform[0, 2],
+    )
+    warped_col1 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[1, :2]), axis=1),
+        perspective_transform[1, 2],
+    )
+    warped_col2 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[2, :2]), axis=1),
+        perspective_transform[2, 2],
+    )
+    warped_col0 = np.divide(warped_col0, warped_col2)
+    warped_col1 = np.divide(warped_col1, warped_col2)
+    warped_points = np.concatenate([warped_col0[:, None], warped_col1[:, None]], axis=1)
+    warped_points = warped_points.astype(int)
+
+    # Fill the rectangles
+    colors = np.zeros((rows * cols,), np.int32)
+    for i in range(rows):
+        for j in range(cols):
+            # Get a color that contrast with the neighboring cells
+            if i == 0 and j == 0:
+                col = get_random_color(random_state, background_color)
+            else:
+                neighboring_colors = []
+                if i != 0:
+                    neighboring_colors.append(colors[(i - 1) * cols + j])
+                if j != 0:
+                    neighboring_colors.append(colors[i * cols + j - 1])
+                col = get_different_color(random_state, np.array(neighboring_colors))
+            colors[i * cols + j] = col
+            # Fill the cell
+            cv.fillConvexPoly(
+                img,
+                np.array(
+                    [
+                        (
+                            warped_points[i * (cols + 1) + j, 0],
+                            warped_points[i * (cols + 1) + j, 1],
+                        ),
+                        (
+                            warped_points[i * (cols + 1) + j + 1, 0],
+                            warped_points[i * (cols + 1) + j + 1, 1],
+                        ),
+                        (
+                            warped_points[(i + 1) * (cols + 1) + j + 1, 0],
+                            warped_points[(i + 1) * (cols + 1) + j + 1, 1],
+                        ),
+                        (
+                            warped_points[(i + 1) * (cols + 1) + j, 0],
+                            warped_points[(i + 1) * (cols + 1) + j, 1],
+                        ),
+                    ]
+                ),
+                col,
+            )
+
+    # Draw lines on the boundaries of the board at random
+    num_rows = random_state.randint(2, rows + 2)
+    num_cols = random_state.randint(2, cols + 2)
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.015)
+    for _ in range(num_rows):
+        row_idx = random_state.randint(rows + 1)
+        col_idx1 = random_state.randint(cols + 1)
+        col_idx2 = random_state.randint(cols + 1)
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx * (cols + 1) + col_idx1, 0],
+                warped_points[row_idx * (cols + 1) + col_idx1, 1],
+            ),
+            (
+                warped_points[row_idx * (cols + 1) + col_idx2, 0],
+                warped_points[row_idx * (cols + 1) + col_idx2, 1],
+            ),
+            col,
+            thickness,
+        )
+    for _ in range(num_cols):
+        col_idx = random_state.randint(cols + 1)
+        row_idx1 = random_state.randint(rows + 1)
+        row_idx2 = random_state.randint(rows + 1)
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx1 * (cols + 1) + col_idx, 0],
+                warped_points[row_idx1 * (cols + 1) + col_idx, 1],
+            ),
+            (
+                warped_points[row_idx2 * (cols + 1) + col_idx, 0],
+                warped_points[row_idx2 * (cols + 1) + col_idx, 1],
+            ),
+            col,
+            thickness,
+        )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(warped_points, img.shape[:2])
+    return points
+
+
+def draw_stripes(
+    random_state,
+    img,
+    max_num_cols=13,
+    min_width_ratio=0.04,
+    transform_params=(0.05, 0.15),
+):
+    &#34;&#34;&#34;Draw stripes in a distorted rectangle and output the interest points
+    Parameters:
+      max_num_cols: maximal number of stripes to be drawn
+      min_width_ratio: the minimal width of a stripe is
+                       min_width_ratio * smallest dimension of the image
+      transform_params: set the range of the parameters of the transformations
+    &#34;&#34;&#34;
+    background_color = int(np.mean(img))
+    # Create the grid
+    board_size = (
+        int(img.shape[0] * (1 + random_state.rand())),
+        int(img.shape[1] * (1 + random_state.rand())),
+    )
+    col = random_state.randint(5, max_num_cols)  # number of cols
+    cols = np.concatenate(
+        [
+            board_size[1] * random_state.rand(col - 1),
+            np.array([0, board_size[1] - 1]),
+        ],
+        axis=0,
+    )
+    cols = np.unique(cols.astype(int))
+    # Remove the indices that are too close
+    min_dim = min(img.shape)
+    min_width = min_dim * min_width_ratio
+    cols = cols[
+        (
+            np.concatenate([cols[1:], np.array([board_size[1] + min_width])], axis=0)
+            - cols
+        )
+        &gt;= min_width
+    ]
+    col = cols.shape[0] - 1  # update the number of cols
+    cols = np.reshape(cols, (col + 1, 1))
+    cols1 = np.concatenate([cols, np.zeros((col + 1, 1), np.int32)], axis=1)
+    cols2 = np.concatenate(
+        [cols, (board_size[0] - 1) * np.ones((col + 1, 1), np.int32)], axis=1
+    )
+    points = np.concatenate([cols1, cols2], axis=0)
+
+    # Warp the grid using an affine transformation and an homography
+    # The parameters of the transformations are constrained
+    # to get transformations not too far-fetched
+    # Prepare the matrices
+    alpha_affine = np.max(img.shape) * (
+        transform_params[0] + random_state.rand() * transform_params[1]
+    )
+    center_square = np.float32(img.shape) // 2
+    square_size = min(img.shape) // 3
+    pts1 = np.float32(
+        [
+            center_square + square_size,
+            [center_square[0] + square_size, center_square[1] - square_size],
+            center_square - square_size,
+            [center_square[0] - square_size, center_square[1] + square_size],
+        ]
+    )
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine, alpha_affine, size=pts1.shape
+    ).astype(np.float32)
+    affine_transform = cv.getAffineTransform(pts1[:3], pts2[:3])
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine / 2, alpha_affine / 2, size=pts1.shape
+    ).astype(np.float32)
+    perspective_transform = cv.getPerspectiveTransform(pts1, pts2)
+
+    # Apply the affine transformation
+    points = np.transpose(np.concatenate((points, np.ones((2 * (col + 1), 1))), axis=1))
+    warped_points = np.transpose(np.dot(affine_transform, points))
+
+    # Apply the homography
+    warped_col0 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[0, :2]), axis=1),
+        perspective_transform[0, 2],
+    )
+    warped_col1 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[1, :2]), axis=1),
+        perspective_transform[1, 2],
+    )
+    warped_col2 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[2, :2]), axis=1),
+        perspective_transform[2, 2],
+    )
+    warped_col0 = np.divide(warped_col0, warped_col2)
+    warped_col1 = np.divide(warped_col1, warped_col2)
+    warped_points = np.concatenate([warped_col0[:, None], warped_col1[:, None]], axis=1)
+    warped_points = warped_points.astype(int)
+
+    # Fill the rectangles
+    color = get_random_color(random_state, background_color)
+    for i in range(col):
+        color = (color + 128 + random_state.randint(-30, 30)) % 256
+        cv.fillConvexPoly(
+            img,
+            np.array(
+                [
+                    (warped_points[i, 0], warped_points[i, 1]),
+                    (warped_points[i + 1, 0], warped_points[i + 1, 1]),
+                    (warped_points[i + col + 2, 0], warped_points[i + col + 2, 1]),
+                    (warped_points[i + col + 1, 0], warped_points[i + col + 1, 1]),
+                ]
+            ),
+            color,
+        )
+
+    # Draw lines on the boundaries of the stripes at random
+    num_rows = random_state.randint(2, 5)
+    num_cols = random_state.randint(2, col + 2)
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.015)
+    for _ in range(num_rows):
+        row_idx = random_state.choice([0, col + 1])
+        col_idx1 = random_state.randint(col + 1)
+        col_idx2 = random_state.randint(col + 1)
+        color = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx + col_idx1, 0],
+                warped_points[row_idx + col_idx1, 1],
+            ),
+            (
+                warped_points[row_idx + col_idx2, 0],
+                warped_points[row_idx + col_idx2, 1],
+            ),
+            color,
+            thickness,
+        )
+    for _ in range(num_cols):
+        col_idx = random_state.randint(col + 1)
+        color = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (warped_points[col_idx, 0], warped_points[col_idx, 1]),
+            (warped_points[col_idx + col + 1, 0], warped_points[col_idx + col + 1, 1]),
+            color,
+            thickness,
+        )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(warped_points, img.shape[:2])
+    return points
+
+
+def draw_cube(
+    random_state,
+    img,
+    min_size_ratio=0.2,
+    min_angle_rot=math.pi / 10,
+    scale_interval=(0.4, 0.6),
+    trans_interval=(0.5, 0.2),
+):
+    &#34;&#34;&#34;Draw a 2D projection of a cube and output the corners that are visible
+    Parameters:
+      min_size_ratio: min(img.shape) * min_size_ratio is the smallest achievable
+                      cube side size
+      min_angle_rot: minimal angle of rotation
+      scale_interval: the scale is between scale_interval[0] and
+                      scale_interval[0]+scale_interval[1]
+      trans_interval: the translation is between img.shape*trans_interval[0] and
+                      img.shape*(trans_interval[0] + trans_interval[1])
+    &#34;&#34;&#34;
+    # Generate a cube and apply to it an affine transformation
+    # The order matters!
+    # The indices of two adjacent vertices differ only of one bit (as in Gray codes)
+    background_color = int(np.mean(img))
+    min_dim = min(img.shape[:2])
+    min_side = min_dim * min_size_ratio
+    lx = min_side + random_state.rand() * 2 * min_dim / 3  # dimensions of the cube
+    ly = min_side + random_state.rand() * 2 * min_dim / 3
+    lz = min_side + random_state.rand() * 2 * min_dim / 3
+    cube = np.array(
+        [
+            [0, 0, 0],
+            [lx, 0, 0],
+            [0, ly, 0],
+            [lx, ly, 0],
+            [0, 0, lz],
+            [lx, 0, lz],
+            [0, ly, lz],
+            [lx, ly, lz],
+        ]
+    )
+    rot_angles = random_state.rand(3) * 3 * math.pi / 10.0 + math.pi / 10.0
+    rotation_1 = np.array(
+        [
+            [math.cos(rot_angles[0]), -math.sin(rot_angles[0]), 0],
+            [math.sin(rot_angles[0]), math.cos(rot_angles[0]), 0],
+            [0, 0, 1],
+        ]
+    )
+    rotation_2 = np.array(
+        [
+            [1, 0, 0],
+            [0, math.cos(rot_angles[1]), -math.sin(rot_angles[1])],
+            [0, math.sin(rot_angles[1]), math.cos(rot_angles[1])],
+        ]
+    )
+    rotation_3 = np.array(
+        [
+            [math.cos(rot_angles[2]), 0, -math.sin(rot_angles[2])],
+            [0, 1, 0],
+            [math.sin(rot_angles[2]), 0, math.cos(rot_angles[2])],
+        ]
+    )
+    scaling = np.array(
+        [
+            [scale_interval[0] + random_state.rand() * scale_interval[1], 0, 0],
+            [0, scale_interval[0] + random_state.rand() * scale_interval[1], 0],
+            [0, 0, scale_interval[0] + random_state.rand() * scale_interval[1]],
+        ]
+    )
+    trans = np.array(
+        [
+            img.shape[1] * trans_interval[0]
+            + random_state.randint(
+                -img.shape[1] * trans_interval[1], img.shape[1] * trans_interval[1]
+            ),
+            img.shape[0] * trans_interval[0]
+            + random_state.randint(
+                -img.shape[0] * trans_interval[1], img.shape[0] * trans_interval[1]
+            ),
+            0,
+        ]
+    )
+    cube = trans + np.transpose(
+        np.dot(
+            scaling,
+            np.dot(
+                rotation_1, np.dot(rotation_2, np.dot(rotation_3, np.transpose(cube)))
+            ),
+        )
+    )
+
+    # The hidden corner is 0 by construction
+    # The front one is 7
+    cube = cube[:, :2]  # project on the plane z=0
+    cube = cube.astype(int)
+    points = cube[1:, :]  # get rid of the hidden corner
+
+    # Get the three visible faces
+    faces = np.array([[7, 3, 1, 5], [7, 5, 4, 6], [7, 6, 2, 3]])
+
+    # Fill the faces and draw the contours
+    col_face = get_random_color(random_state, background_color)
+    for i in [0, 1, 2]:
+        cv.fillPoly(img, [cube[faces[i]].reshape((-1, 1, 2))], col_face)
+    thickness = random_state.randint(min_dim * 0.003, min_dim * 0.015)
+    for i in [0, 1, 2]:
+        for j in [0, 1, 2, 3]:
+            col_edge = (
+                col_face + 128 + random_state.randint(-64, 64)
+            ) % 256  # color that constrats with the face color
+            cv.line(
+                img,
+                (cube[faces[i][j], 0], cube[faces[i][j], 1]),
+                (cube[faces[i][(j + 1) % 4], 0], cube[faces[i][(j + 1) % 4], 1]),
+                col_edge,
+                thickness,
+            )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(points, img.shape[:2])
+    return points
+
+
+def gaussian_noise(random_state, img):
+    &#34;&#34;&#34;Apply random noise to the image&#34;&#34;&#34;
+    img[:] = random_state.randint(0, 255, size=img.shape, dtype=np.uint8)
+    return np.empty((0, 2), dtype=int)
+
+
+def draw_interest_points(img, points, color=(255, 0, 0)):
+    &#34;&#34;&#34;Convert img in RGB and draw in red the interest points&#34;&#34;&#34;
+
+    # handles different shapes of image input (rgb, grayscale with or without channel dim)
+    if len(img.shape) == 2:
+        img_rgb = np.stack([img, img, img], axis=2)
+    elif len(img.shape) == 3:
+        if img.shape[2] == 1:
+            img_rgb = np.concatenate([img, img, img], axis=2)
+        elif img.shape[0] == 1:
+            img_rgb = np.concatenate([img, img, img], axis=0)
+            img_rgb = img_rgb.transpose([1, 2, 0])
+        else:
+            img_rgb = img
+    else:
+        raise RuntimeError(f&#34;invalid image shape {img.shape}&#34;)
+
+    radius = int(max(img_rgb.shape[0], img_rgb.shape[1]) * 0.01)
+
+    for i in range(points.shape[0]):
+        if radius &gt; 1:
+            cv.circle(img_rgb, (int(points[i][1]), int(points[i][0])), radius, color, 1)
+        else:
+            img_rgb[int(points[i][0]), int(points[i][1]), 0] = color[0]
+            img_rgb[int(points[i][0]), int(points[i][1]), 1] = color[1]
+            img_rgb[int(points[i][0]), int(points[i][1]), 2] = color[2]
+    return img_rgb
+
+
+def _gaussian_blur(img, kernel_size):
+    &#34;&#34;&#34;Apply in-place gaussian blur to image.&#34;&#34;&#34;
+    return cv.GaussianBlur(img, (kernel_size, kernel_size), 0)
+
+
+def _resize_image_and_points(img, points, new_height, new_width):
+    &#34;&#34;&#34;Resize image and keypoint coordinates.&#34;&#34;&#34;
+    current_height = img.shape[0]
+    current_width = img.shape[1]
+
+    # rescale point coordinates
+    points = (
+        points
+        * np.array((new_height, new_width), float)
+        / np.array((current_height, current_width), float)
+    )
+
+    # resize image
+    img = cv.resize(
+        img,
+        (new_width, new_height),  # notice how dimensions are reversed here
+        interpolation=cv.INTER_LINEAR,
+    )
+    img = np.expand_dims(img, axis=-1)
+    img = img.astype(np.float32)
+
+    return img, points</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.datasets.synthetic.primitives.angle_between_vectors"><code class="name flex">
+<span>def <span class="ident">angle_between_vectors</span></span>(<span>v1, v2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the angle (in rad) between the two vectors v1 and v2.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def angle_between_vectors(v1, v2):
+    &#34;&#34;&#34;Compute the angle (in rad) between the two vectors v1 and v2.&#34;&#34;&#34;
+    v1_u = v1 / np.linalg.norm(v1)
+    v2_u = v2 / np.linalg.norm(v2)
+    return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.ccw"><code class="name flex">
+<span>def <span class="ident">ccw</span></span>(<span>A, B, C, dim)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the points are listed in counter-clockwise order</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ccw(A, B, C, dim):
+    &#34;&#34;&#34;Check if the points are listed in counter-clockwise order&#34;&#34;&#34;
+    if dim == 2:  # only 2 dimensions
+        return (C[:, 1] - A[:, 1]) * (B[:, 0] - A[:, 0]) &gt; (B[:, 1] - A[:, 1]) * (
+            C[:, 0] - A[:, 0]
+        )
+    else:  # dim should be equal to 3
+        assert dim == 3
+        return (C[:, 1, :] - A[:, 1, :]) * (B[:, 0, :] - A[:, 0, :]) &gt; (
+            B[:, 1, :] - A[:, 1, :]
+        ) * (C[:, 0, :] - A[:, 0, :])</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_checkerboard"><code class="name flex">
+<span>def <span class="ident">draw_checkerboard</span></span>(<span>random_state, img, max_rows=7, max_cols=7, transform_params=(0.05, 0.15))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw a checkerboard and output the interest points</p>
+<h2 id="parameters">Parameters</h2>
+<p>max_rows: maximal number of rows + 1
+max_cols: maximal number of cols + 1
+transform_params: set the range of the parameters of the transformations</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_checkerboard(
+    random_state, img, max_rows=7, max_cols=7, transform_params=(0.05, 0.15)
+):
+    &#34;&#34;&#34;Draw a checkerboard and output the interest points
+    Parameters:
+      max_rows: maximal number of rows + 1
+      max_cols: maximal number of cols + 1
+      transform_params: set the range of the parameters of the transformations&#34;&#34;&#34;
+    background_color = int(np.mean(img))
+    # Create the grid
+    rows = random_state.randint(3, max_rows)  # number of rows
+    cols = random_state.randint(3, max_cols)  # number of cols
+    s = min((img.shape[1] - 1) // cols, (img.shape[0] - 1) // rows)  # size of a cell
+    x_coord = np.tile(range(cols + 1), rows + 1).reshape(((rows + 1) * (cols + 1), 1))
+    y_coord = np.repeat(range(rows + 1), cols + 1).reshape(((rows + 1) * (cols + 1), 1))
+    points = s * np.concatenate([x_coord, y_coord], axis=1)
+
+    # Warp the grid using an affine transformation and an homography
+    # The parameters of the transformations are constrained
+    # to get transformations not too far-fetched
+    alpha_affine = np.max(img.shape) * (
+        transform_params[0] + random_state.rand() * transform_params[1]
+    )
+    center_square = np.float32(img.shape) // 2
+    min_dim = min(img.shape)
+    square_size = min_dim // 3
+    pts1 = np.float32(
+        [
+            center_square + square_size,
+            [center_square[0] + square_size, center_square[1] - square_size],
+            center_square - square_size,
+            [center_square[0] - square_size, center_square[1] + square_size],
+        ]
+    )
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine, alpha_affine, size=pts1.shape
+    ).astype(np.float32)
+    affine_transform = cv.getAffineTransform(pts1[:3], pts2[:3])
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine / 2, alpha_affine / 2, size=pts1.shape
+    ).astype(np.float32)
+    perspective_transform = cv.getPerspectiveTransform(pts1, pts2)
+
+    # Apply the affine transformation
+    points = np.transpose(
+        np.concatenate((points, np.ones(((rows + 1) * (cols + 1), 1))), axis=1)
+    )
+    warped_points = np.transpose(np.dot(affine_transform, points))
+
+    # Apply the homography
+    warped_col0 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[0, :2]), axis=1),
+        perspective_transform[0, 2],
+    )
+    warped_col1 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[1, :2]), axis=1),
+        perspective_transform[1, 2],
+    )
+    warped_col2 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[2, :2]), axis=1),
+        perspective_transform[2, 2],
+    )
+    warped_col0 = np.divide(warped_col0, warped_col2)
+    warped_col1 = np.divide(warped_col1, warped_col2)
+    warped_points = np.concatenate([warped_col0[:, None], warped_col1[:, None]], axis=1)
+    warped_points = warped_points.astype(int)
+
+    # Fill the rectangles
+    colors = np.zeros((rows * cols,), np.int32)
+    for i in range(rows):
+        for j in range(cols):
+            # Get a color that contrast with the neighboring cells
+            if i == 0 and j == 0:
+                col = get_random_color(random_state, background_color)
+            else:
+                neighboring_colors = []
+                if i != 0:
+                    neighboring_colors.append(colors[(i - 1) * cols + j])
+                if j != 0:
+                    neighboring_colors.append(colors[i * cols + j - 1])
+                col = get_different_color(random_state, np.array(neighboring_colors))
+            colors[i * cols + j] = col
+            # Fill the cell
+            cv.fillConvexPoly(
+                img,
+                np.array(
+                    [
+                        (
+                            warped_points[i * (cols + 1) + j, 0],
+                            warped_points[i * (cols + 1) + j, 1],
+                        ),
+                        (
+                            warped_points[i * (cols + 1) + j + 1, 0],
+                            warped_points[i * (cols + 1) + j + 1, 1],
+                        ),
+                        (
+                            warped_points[(i + 1) * (cols + 1) + j + 1, 0],
+                            warped_points[(i + 1) * (cols + 1) + j + 1, 1],
+                        ),
+                        (
+                            warped_points[(i + 1) * (cols + 1) + j, 0],
+                            warped_points[(i + 1) * (cols + 1) + j, 1],
+                        ),
+                    ]
+                ),
+                col,
+            )
+
+    # Draw lines on the boundaries of the board at random
+    num_rows = random_state.randint(2, rows + 2)
+    num_cols = random_state.randint(2, cols + 2)
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.015)
+    for _ in range(num_rows):
+        row_idx = random_state.randint(rows + 1)
+        col_idx1 = random_state.randint(cols + 1)
+        col_idx2 = random_state.randint(cols + 1)
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx * (cols + 1) + col_idx1, 0],
+                warped_points[row_idx * (cols + 1) + col_idx1, 1],
+            ),
+            (
+                warped_points[row_idx * (cols + 1) + col_idx2, 0],
+                warped_points[row_idx * (cols + 1) + col_idx2, 1],
+            ),
+            col,
+            thickness,
+        )
+    for _ in range(num_cols):
+        col_idx = random_state.randint(cols + 1)
+        row_idx1 = random_state.randint(rows + 1)
+        row_idx2 = random_state.randint(rows + 1)
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx1 * (cols + 1) + col_idx, 0],
+                warped_points[row_idx1 * (cols + 1) + col_idx, 1],
+            ),
+            (
+                warped_points[row_idx2 * (cols + 1) + col_idx, 0],
+                warped_points[row_idx2 * (cols + 1) + col_idx, 1],
+            ),
+            col,
+            thickness,
+        )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(warped_points, img.shape[:2])
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_cube"><code class="name flex">
+<span>def <span class="ident">draw_cube</span></span>(<span>random_state, img, min_size_ratio=0.2, min_angle_rot=0.3141592653589793, scale_interval=(0.4, 0.6), trans_interval=(0.5, 0.2))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw a 2D projection of a cube and output the corners that are visible</p>
+<h2 id="parameters">Parameters</h2>
+<p>min_size_ratio: min(img.shape) * min_size_ratio is the smallest achievable
+cube side size
+min_angle_rot: minimal angle of rotation
+scale_interval: the scale is between scale_interval[0] and
+scale_interval[0]+scale_interval[1]
+trans_interval: the translation is between img.shape<em>trans_interval[0] and
+img.shape</em>(trans_interval[0] + trans_interval[1])</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_cube(
+    random_state,
+    img,
+    min_size_ratio=0.2,
+    min_angle_rot=math.pi / 10,
+    scale_interval=(0.4, 0.6),
+    trans_interval=(0.5, 0.2),
+):
+    &#34;&#34;&#34;Draw a 2D projection of a cube and output the corners that are visible
+    Parameters:
+      min_size_ratio: min(img.shape) * min_size_ratio is the smallest achievable
+                      cube side size
+      min_angle_rot: minimal angle of rotation
+      scale_interval: the scale is between scale_interval[0] and
+                      scale_interval[0]+scale_interval[1]
+      trans_interval: the translation is between img.shape*trans_interval[0] and
+                      img.shape*(trans_interval[0] + trans_interval[1])
+    &#34;&#34;&#34;
+    # Generate a cube and apply to it an affine transformation
+    # The order matters!
+    # The indices of two adjacent vertices differ only of one bit (as in Gray codes)
+    background_color = int(np.mean(img))
+    min_dim = min(img.shape[:2])
+    min_side = min_dim * min_size_ratio
+    lx = min_side + random_state.rand() * 2 * min_dim / 3  # dimensions of the cube
+    ly = min_side + random_state.rand() * 2 * min_dim / 3
+    lz = min_side + random_state.rand() * 2 * min_dim / 3
+    cube = np.array(
+        [
+            [0, 0, 0],
+            [lx, 0, 0],
+            [0, ly, 0],
+            [lx, ly, 0],
+            [0, 0, lz],
+            [lx, 0, lz],
+            [0, ly, lz],
+            [lx, ly, lz],
+        ]
+    )
+    rot_angles = random_state.rand(3) * 3 * math.pi / 10.0 + math.pi / 10.0
+    rotation_1 = np.array(
+        [
+            [math.cos(rot_angles[0]), -math.sin(rot_angles[0]), 0],
+            [math.sin(rot_angles[0]), math.cos(rot_angles[0]), 0],
+            [0, 0, 1],
+        ]
+    )
+    rotation_2 = np.array(
+        [
+            [1, 0, 0],
+            [0, math.cos(rot_angles[1]), -math.sin(rot_angles[1])],
+            [0, math.sin(rot_angles[1]), math.cos(rot_angles[1])],
+        ]
+    )
+    rotation_3 = np.array(
+        [
+            [math.cos(rot_angles[2]), 0, -math.sin(rot_angles[2])],
+            [0, 1, 0],
+            [math.sin(rot_angles[2]), 0, math.cos(rot_angles[2])],
+        ]
+    )
+    scaling = np.array(
+        [
+            [scale_interval[0] + random_state.rand() * scale_interval[1], 0, 0],
+            [0, scale_interval[0] + random_state.rand() * scale_interval[1], 0],
+            [0, 0, scale_interval[0] + random_state.rand() * scale_interval[1]],
+        ]
+    )
+    trans = np.array(
+        [
+            img.shape[1] * trans_interval[0]
+            + random_state.randint(
+                -img.shape[1] * trans_interval[1], img.shape[1] * trans_interval[1]
+            ),
+            img.shape[0] * trans_interval[0]
+            + random_state.randint(
+                -img.shape[0] * trans_interval[1], img.shape[0] * trans_interval[1]
+            ),
+            0,
+        ]
+    )
+    cube = trans + np.transpose(
+        np.dot(
+            scaling,
+            np.dot(
+                rotation_1, np.dot(rotation_2, np.dot(rotation_3, np.transpose(cube)))
+            ),
+        )
+    )
+
+    # The hidden corner is 0 by construction
+    # The front one is 7
+    cube = cube[:, :2]  # project on the plane z=0
+    cube = cube.astype(int)
+    points = cube[1:, :]  # get rid of the hidden corner
+
+    # Get the three visible faces
+    faces = np.array([[7, 3, 1, 5], [7, 5, 4, 6], [7, 6, 2, 3]])
+
+    # Fill the faces and draw the contours
+    col_face = get_random_color(random_state, background_color)
+    for i in [0, 1, 2]:
+        cv.fillPoly(img, [cube[faces[i]].reshape((-1, 1, 2))], col_face)
+    thickness = random_state.randint(min_dim * 0.003, min_dim * 0.015)
+    for i in [0, 1, 2]:
+        for j in [0, 1, 2, 3]:
+            col_edge = (
+                col_face + 128 + random_state.randint(-64, 64)
+            ) % 256  # color that constrats with the face color
+            cv.line(
+                img,
+                (cube[faces[i][j], 0], cube[faces[i][j], 1]),
+                (cube[faces[i][(j + 1) % 4], 0], cube[faces[i][(j + 1) % 4], 1]),
+                col_edge,
+                thickness,
+            )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(points, img.shape[:2])
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_ellipses"><code class="name flex">
+<span>def <span class="ident">draw_ellipses</span></span>(<span>random_state, img, num_ellipses=20)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw several ellipses</p>
+<h2 id="parameters">Parameters</h2>
+<p>num_ellipses: maximal number of ellipses</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_ellipses(random_state, img, num_ellipses=20):
+    &#34;&#34;&#34;Draw several ellipses
+    Parameters:
+      num_ellipses: maximal number of ellipses
+    &#34;&#34;&#34;
+    centers = np.empty((0, 2), dtype=int)
+    rads = np.empty((0, 1), dtype=int)
+    min_dim = min(img.shape[0], img.shape[1]) / 4
+    background_color = int(np.mean(img))
+    for _ in range(num_ellipses):
+        ax = int(max(random_state.rand() * min_dim, min_dim / 5))
+        ay = int(max(random_state.rand() * min_dim, min_dim / 5))
+        max_rad = max(ax, ay)
+        x = random_state.randint(max_rad, img.shape[1] - max_rad)  # center
+        y = random_state.randint(max_rad, img.shape[0] - max_rad)
+        new_center = np.array([[x, y]])
+
+        # Check that the ellipsis will not overlap with pre-existing shapes
+        diff = centers - new_center
+        if np.any(max_rad &gt; (np.sqrt(np.sum(diff * diff, axis=1)) - rads)):
+            continue
+        centers = np.concatenate([centers, new_center], axis=0)
+        rads = np.concatenate([rads, np.array([[max_rad]])], axis=0)
+
+        col = get_random_color(random_state, background_color)
+        angle = random_state.rand() * 90
+        cv.ellipse(img, (x, y), (ax, ay), angle, 0, 360, col, -1)
+    return np.empty((0, 2), dtype=int)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_interest_points"><code class="name flex">
+<span>def <span class="ident">draw_interest_points</span></span>(<span>img, points, color=(255, 0, 0))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert img in RGB and draw in red the interest points</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_interest_points(img, points, color=(255, 0, 0)):
+    &#34;&#34;&#34;Convert img in RGB and draw in red the interest points&#34;&#34;&#34;
+
+    # handles different shapes of image input (rgb, grayscale with or without channel dim)
+    if len(img.shape) == 2:
+        img_rgb = np.stack([img, img, img], axis=2)
+    elif len(img.shape) == 3:
+        if img.shape[2] == 1:
+            img_rgb = np.concatenate([img, img, img], axis=2)
+        elif img.shape[0] == 1:
+            img_rgb = np.concatenate([img, img, img], axis=0)
+            img_rgb = img_rgb.transpose([1, 2, 0])
+        else:
+            img_rgb = img
+    else:
+        raise RuntimeError(f&#34;invalid image shape {img.shape}&#34;)
+
+    radius = int(max(img_rgb.shape[0], img_rgb.shape[1]) * 0.01)
+
+    for i in range(points.shape[0]):
+        if radius &gt; 1:
+            cv.circle(img_rgb, (int(points[i][1]), int(points[i][0])), radius, color, 1)
+        else:
+            img_rgb[int(points[i][0]), int(points[i][1]), 0] = color[0]
+            img_rgb[int(points[i][0]), int(points[i][1]), 1] = color[1]
+            img_rgb[int(points[i][0]), int(points[i][1]), 2] = color[2]
+    return img_rgb</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_lines"><code class="name flex">
+<span>def <span class="ident">draw_lines</span></span>(<span>random_state, img, num_lines=10)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw random lines and output the positions of the endpoints</p>
+<h2 id="parameters">Parameters</h2>
+<p>num_lines: maximal number of lines</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_lines(random_state, img, num_lines=10):
+    &#34;&#34;&#34;Draw random lines and output the positions of the endpoints
+    Parameters:
+      num_lines: maximal number of lines
+    &#34;&#34;&#34;
+    num_lines = random_state.randint(1, num_lines)
+    segments = np.empty((0, 4), dtype=int)
+    points = np.empty((0, 2), dtype=int)
+    background_color = int(np.mean(img))
+    min_dim = min(img.shape)
+    for _ in range(num_lines):
+        x1 = random_state.randint(img.shape[1])
+        y1 = random_state.randint(img.shape[0])
+        p1 = np.array([[x1, y1]])
+        x2 = random_state.randint(img.shape[1])
+        y2 = random_state.randint(img.shape[0])
+        p2 = np.array([[x2, y2]])
+        # Check that there is no overlap
+        if intersect(segments[:, 0:2], segments[:, 2:4], p1, p2, 2):
+            continue
+        segments = np.concatenate([segments, np.array([[x1, y1, x2, y2]])], axis=0)
+        col = get_random_color(random_state, background_color)
+        thickness = random_state.randint(min_dim * 0.01, min_dim * 0.02)
+        cv.line(img, (x1, y1), (x2, y2), col, thickness)
+        points = np.concatenate([points, np.array([[x1, y1], [x2, y2]])], axis=0)
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_multiple_polygons"><code class="name flex">
+<span>def <span class="ident">draw_multiple_polygons</span></span>(<span>random_state, img, max_sides=8, num_polygons=30, **extra)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw multiple polygons with a random number of corners
+and return the corner points</p>
+<h2 id="parameters">Parameters</h2>
+<p>max_sides: maximal number of sides + 1
+num_polygons: maximal number of polygons</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_multiple_polygons(random_state, img, max_sides=8, num_polygons=30, **extra):
+    &#34;&#34;&#34;Draw multiple polygons with a random number of corners
+    and return the corner points
+    Parameters:
+      max_sides: maximal number of sides + 1
+      num_polygons: maximal number of polygons
+    &#34;&#34;&#34;
+    segments = np.empty((0, 4), dtype=int)
+    centers = []
+    rads = []
+    points = np.empty((0, 2), dtype=int)
+    background_color = int(np.mean(img))
+    for i in range(num_polygons):
+        num_corners = random_state.randint(3, max_sides)
+        min_dim = min(img.shape[0], img.shape[1])
+        rad = max(random_state.rand() * min_dim / 2, min_dim / 10)
+        x = random_state.randint(rad, img.shape[1] - rad)  # Center of a circle
+        y = random_state.randint(rad, img.shape[0] - rad)
+
+        # Sample num_corners points inside the circle
+        slices = np.linspace(0, 2 * math.pi, num_corners + 1)
+        angles = [
+            slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+            for i in range(num_corners)
+        ]
+        new_points = [
+            [
+                int(x + max(random_state.rand(), 0.4) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.4) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+        new_points = np.array(new_points)
+
+        # Filter the points that are too close or that have an angle too flat
+        norms = [
+            np.linalg.norm(new_points[(i - 1) % num_corners, :] - new_points[i, :])
+            for i in range(num_corners)
+        ]
+        mask = np.array(norms) &gt; 0.01
+        new_points = new_points[mask, :]
+        num_corners = new_points.shape[0]
+        corner_angles = [
+            angle_between_vectors(
+                new_points[(i - 1) % num_corners, :] - new_points[i, :],
+                new_points[(i + 1) % num_corners, :] - new_points[i, :],
+            )
+            for i in range(num_corners)
+        ]
+        mask = np.array(corner_angles) &lt; (2 * math.pi / 3)
+        new_points = new_points[mask, :]
+        num_corners = new_points.shape[0]
+        if num_corners &lt; 3:  # not enough corners
+            continue
+
+        new_segments = np.zeros((1, 4, num_corners))
+        new_segments[:, 0, :] = [new_points[i][0] for i in range(num_corners)]
+        new_segments[:, 1, :] = [new_points[i][1] for i in range(num_corners)]
+        new_segments[:, 2, :] = [
+            new_points[(i + 1) % num_corners][0] for i in range(num_corners)
+        ]
+        new_segments[:, 3, :] = [
+            new_points[(i + 1) % num_corners][1] for i in range(num_corners)
+        ]
+
+        # Check that the polygon will not overlap with pre-existing shapes
+        if (
+            intersect(
+                segments[:, 0:2, None],
+                segments[:, 2:4, None],
+                new_segments[:, 0:2, :],
+                new_segments[:, 2:4, :],
+                3,
+            )
+            or overlap(np.array([x, y]), rad, centers, rads)
+        ):
+            continue
+        centers.append(np.array([x, y]))
+        rads.append(rad)
+        new_segments = np.reshape(np.swapaxes(new_segments, 0, 2), (-1, 4))
+        segments = np.concatenate([segments, new_segments], axis=0)
+
+        # Color the polygon with a custom background
+        corners = new_points.reshape((-1, 1, 2))
+        mask = np.zeros(img.shape, np.uint8)
+        custom_background = generate_custom_background(
+            random_state, img.shape, background_color, **extra
+        )
+        cv.fillPoly(mask, [corners], 255)
+        locs = np.where(mask != 0)
+        img[locs[0], locs[1]] = custom_background[locs[0], locs[1]]
+        points = np.concatenate([points, new_points], axis=0)
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_polygon"><code class="name flex">
+<span>def <span class="ident">draw_polygon</span></span>(<span>random_state, img, max_sides=8)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw a polygon with a random number of corners
+and return the corner points</p>
+<h2 id="parameters">Parameters</h2>
+<p>max_sides: maximal number of sides + 1</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_polygon(random_state, img, max_sides=8):
+    &#34;&#34;&#34;Draw a polygon with a random number of corners
+    and return the corner points
+    Parameters:
+      max_sides: maximal number of sides + 1
+    &#34;&#34;&#34;
+    num_corners = random_state.randint(3, max_sides)
+    min_dim = min(img.shape[0], img.shape[1])
+    rad = max(random_state.rand() * min_dim / 2, min_dim / 10)
+    x = random_state.randint(rad, img.shape[1] - rad)  # Center of a circle
+    y = random_state.randint(rad, img.shape[0] - rad)
+
+    # Sample num_corners points inside the circle
+    slices = np.linspace(0, 2 * math.pi, num_corners + 1)
+    angles = [
+        slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+        for i in range(num_corners)
+    ]
+    points = np.array(
+        [
+            [
+                int(x + max(random_state.rand(), 0.4) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.4) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+    )
+
+    # Filter the points that are too close or that have an angle too flat
+    norms = [
+        np.linalg.norm(points[(i - 1) % num_corners, :] - points[i, :])
+        for i in range(num_corners)
+    ]
+    mask = np.array(norms) &gt; 0.01
+    points = points[mask, :]
+    num_corners = points.shape[0]
+    corner_angles = [
+        angle_between_vectors(
+            points[(i - 1) % num_corners, :] - points[i, :],
+            points[(i + 1) % num_corners, :] - points[i, :],
+        )
+        for i in range(num_corners)
+    ]
+    mask = np.array(corner_angles) &lt; (2 * math.pi / 3)
+    points = points[mask, :]
+    num_corners = points.shape[0]
+    if num_corners &lt; 3:  # not enough corners
+        return draw_polygon(random_state, img, max_sides)
+
+    corners = points.reshape((-1, 1, 2))
+    col = get_random_color(random_state, int(np.mean(img)))
+    cv.fillPoly(img, [corners], col)
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_star"><code class="name flex">
+<span>def <span class="ident">draw_star</span></span>(<span>random_state, img, num_branches=6)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw a star and output the interest points</p>
+<h2 id="parameters">Parameters</h2>
+<p>num_branches: number of branches of the star</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_star(random_state, img, num_branches=6):
+    &#34;&#34;&#34;Draw a star and output the interest points
+    Parameters:
+      num_branches: number of branches of the star
+    &#34;&#34;&#34;
+    num_branches = random_state.randint(3, num_branches)
+    min_dim = min(img.shape[0], img.shape[1])
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.02)
+    rad = max(random_state.rand() * min_dim / 2, min_dim / 5)
+    # select the center of a circle
+    x = random_state.randint(rad, img.shape[1] - rad)
+    y = random_state.randint(rad, img.shape[0] - rad)
+    # Sample num_branches points inside the circle
+    slices = np.linspace(0, 2 * math.pi, num_branches + 1)
+    angles = [
+        slices[i] + random_state.rand() * (slices[i + 1] - slices[i])
+        for i in range(num_branches)
+    ]
+    points = np.array(
+        [
+            [
+                int(x + max(random_state.rand(), 0.3) * rad * math.cos(a)),
+                int(y + max(random_state.rand(), 0.3) * rad * math.sin(a)),
+            ]
+            for a in angles
+        ]
+    )
+    points = np.concatenate(([[x, y]], points), axis=0)
+    background_color = int(np.mean(img))
+    for i in range(1, num_branches + 1):
+        col = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (points[0][0], points[0][1]),
+            (points[i][0], points[i][1]),
+            col,
+            thickness,
+        )
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.draw_stripes"><code class="name flex">
+<span>def <span class="ident">draw_stripes</span></span>(<span>random_state, img, max_num_cols=13, min_width_ratio=0.04, transform_params=(0.05, 0.15))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw stripes in a distorted rectangle and output the interest points</p>
+<h2 id="parameters">Parameters</h2>
+<p>max_num_cols: maximal number of stripes to be drawn
+min_width_ratio: the minimal width of a stripe is
+min_width_ratio * smallest dimension of the image
+transform_params: set the range of the parameters of the transformations</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_stripes(
+    random_state,
+    img,
+    max_num_cols=13,
+    min_width_ratio=0.04,
+    transform_params=(0.05, 0.15),
+):
+    &#34;&#34;&#34;Draw stripes in a distorted rectangle and output the interest points
+    Parameters:
+      max_num_cols: maximal number of stripes to be drawn
+      min_width_ratio: the minimal width of a stripe is
+                       min_width_ratio * smallest dimension of the image
+      transform_params: set the range of the parameters of the transformations
+    &#34;&#34;&#34;
+    background_color = int(np.mean(img))
+    # Create the grid
+    board_size = (
+        int(img.shape[0] * (1 + random_state.rand())),
+        int(img.shape[1] * (1 + random_state.rand())),
+    )
+    col = random_state.randint(5, max_num_cols)  # number of cols
+    cols = np.concatenate(
+        [
+            board_size[1] * random_state.rand(col - 1),
+            np.array([0, board_size[1] - 1]),
+        ],
+        axis=0,
+    )
+    cols = np.unique(cols.astype(int))
+    # Remove the indices that are too close
+    min_dim = min(img.shape)
+    min_width = min_dim * min_width_ratio
+    cols = cols[
+        (
+            np.concatenate([cols[1:], np.array([board_size[1] + min_width])], axis=0)
+            - cols
+        )
+        &gt;= min_width
+    ]
+    col = cols.shape[0] - 1  # update the number of cols
+    cols = np.reshape(cols, (col + 1, 1))
+    cols1 = np.concatenate([cols, np.zeros((col + 1, 1), np.int32)], axis=1)
+    cols2 = np.concatenate(
+        [cols, (board_size[0] - 1) * np.ones((col + 1, 1), np.int32)], axis=1
+    )
+    points = np.concatenate([cols1, cols2], axis=0)
+
+    # Warp the grid using an affine transformation and an homography
+    # The parameters of the transformations are constrained
+    # to get transformations not too far-fetched
+    # Prepare the matrices
+    alpha_affine = np.max(img.shape) * (
+        transform_params[0] + random_state.rand() * transform_params[1]
+    )
+    center_square = np.float32(img.shape) // 2
+    square_size = min(img.shape) // 3
+    pts1 = np.float32(
+        [
+            center_square + square_size,
+            [center_square[0] + square_size, center_square[1] - square_size],
+            center_square - square_size,
+            [center_square[0] - square_size, center_square[1] + square_size],
+        ]
+    )
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine, alpha_affine, size=pts1.shape
+    ).astype(np.float32)
+    affine_transform = cv.getAffineTransform(pts1[:3], pts2[:3])
+    pts2 = pts1 + random_state.uniform(
+        -alpha_affine / 2, alpha_affine / 2, size=pts1.shape
+    ).astype(np.float32)
+    perspective_transform = cv.getPerspectiveTransform(pts1, pts2)
+
+    # Apply the affine transformation
+    points = np.transpose(np.concatenate((points, np.ones((2 * (col + 1), 1))), axis=1))
+    warped_points = np.transpose(np.dot(affine_transform, points))
+
+    # Apply the homography
+    warped_col0 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[0, :2]), axis=1),
+        perspective_transform[0, 2],
+    )
+    warped_col1 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[1, :2]), axis=1),
+        perspective_transform[1, 2],
+    )
+    warped_col2 = np.add(
+        np.sum(np.multiply(warped_points, perspective_transform[2, :2]), axis=1),
+        perspective_transform[2, 2],
+    )
+    warped_col0 = np.divide(warped_col0, warped_col2)
+    warped_col1 = np.divide(warped_col1, warped_col2)
+    warped_points = np.concatenate([warped_col0[:, None], warped_col1[:, None]], axis=1)
+    warped_points = warped_points.astype(int)
+
+    # Fill the rectangles
+    color = get_random_color(random_state, background_color)
+    for i in range(col):
+        color = (color + 128 + random_state.randint(-30, 30)) % 256
+        cv.fillConvexPoly(
+            img,
+            np.array(
+                [
+                    (warped_points[i, 0], warped_points[i, 1]),
+                    (warped_points[i + 1, 0], warped_points[i + 1, 1]),
+                    (warped_points[i + col + 2, 0], warped_points[i + col + 2, 1]),
+                    (warped_points[i + col + 1, 0], warped_points[i + col + 1, 1]),
+                ]
+            ),
+            color,
+        )
+
+    # Draw lines on the boundaries of the stripes at random
+    num_rows = random_state.randint(2, 5)
+    num_cols = random_state.randint(2, col + 2)
+    thickness = random_state.randint(min_dim * 0.01, min_dim * 0.015)
+    for _ in range(num_rows):
+        row_idx = random_state.choice([0, col + 1])
+        col_idx1 = random_state.randint(col + 1)
+        col_idx2 = random_state.randint(col + 1)
+        color = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (
+                warped_points[row_idx + col_idx1, 0],
+                warped_points[row_idx + col_idx1, 1],
+            ),
+            (
+                warped_points[row_idx + col_idx2, 0],
+                warped_points[row_idx + col_idx2, 1],
+            ),
+            color,
+            thickness,
+        )
+    for _ in range(num_cols):
+        col_idx = random_state.randint(col + 1)
+        color = get_random_color(random_state, background_color)
+        cv.line(
+            img,
+            (warped_points[col_idx, 0], warped_points[col_idx, 1]),
+            (warped_points[col_idx + col + 1, 0], warped_points[col_idx + col + 1, 1]),
+            color,
+            thickness,
+        )
+
+    # Keep only the points inside the image
+    points = keep_points_inside(warped_points, img.shape[:2])
+    return points</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.final_blur"><code class="name flex">
+<span>def <span class="ident">final_blur</span></span>(<span>img, kernel_size=(5, 5))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply a final Gaussian blur to the image</p>
+<h2 id="parameters">Parameters</h2>
+<p>kernel_size: size of the kernel</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def final_blur(img, kernel_size=(5, 5)):
+    &#34;&#34;&#34;Apply a final Gaussian blur to the image
+    Parameters:
+      kernel_size: size of the kernel
+    &#34;&#34;&#34;
+    cv.GaussianBlur(img, kernel_size, 0, img)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.gaussian_noise"><code class="name flex">
+<span>def <span class="ident">gaussian_noise</span></span>(<span>random_state, img)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply random noise to the image</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gaussian_noise(random_state, img):
+    &#34;&#34;&#34;Apply random noise to the image&#34;&#34;&#34;
+    img[:] = random_state.randint(0, 255, size=img.shape, dtype=np.uint8)
+    return np.empty((0, 2), dtype=int)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.generate_background"><code class="name flex">
+<span>def <span class="ident">generate_background</span></span>(<span>random_state, size=(960, 1280), num_blobs=100, min_rad_ratio=0.01, max_rad_ratio=0.05, min_kernel_size=50, max_kernel_size=300)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a customized background image</p>
+<h2 id="parameters">Parameters</h2>
+<p>size: size of the image
+num_blobs: number of circles to draw
+min_rad_ratio: the radius of blobs is at least min_rad_size * max(size)
+max_rad_ratio: the radius of blobs is at most max_rad_size * max(size)
+min_kernel_size: minimal size of the kernel
+max_kernel_size: maximal size of the kernel</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_background(
+    random_state,
+    size=(960, 1280),
+    num_blobs=100,
+    min_rad_ratio=0.01,
+    max_rad_ratio=0.05,
+    min_kernel_size=50,
+    max_kernel_size=300,
+):
+    &#34;&#34;&#34;Generate a customized background image
+    Parameters:
+      size: size of the image
+      num_blobs: number of circles to draw
+      min_rad_ratio: the radius of blobs is at least min_rad_size * max(size)
+      max_rad_ratio: the radius of blobs is at most max_rad_size * max(size)
+      min_kernel_size: minimal size of the kernel
+      max_kernel_size: maximal size of the kernel
+    &#34;&#34;&#34;
+    dim = max(size)
+    img = random_state.randint(0, 255, size=size, dtype=np.uint8)
+    cv.threshold(img, random_state.randint(256), 255, cv.THRESH_BINARY, img)
+    background_color = int(np.mean(img))
+    blobs = np.concatenate(
+        [
+            random_state.randint(0, size[1], size=(num_blobs, 1)),
+            random_state.randint(0, size[0], size=(num_blobs, 1)),
+        ],
+        axis=1,
+    )
+    for i in range(num_blobs):
+        col = get_random_color(random_state, background_color)
+        cv.circle(
+            img,
+            (blobs[i][0], blobs[i][1]),
+            random_state.randint(int(dim * min_rad_ratio), int(dim * max_rad_ratio)),
+            col,
+            -1,
+        )
+    kernel_size = random_state.randint(min_kernel_size, max_kernel_size)
+    cv.blur(img, (kernel_size, kernel_size), img)
+    return img</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.generate_custom_background"><code class="name flex">
+<span>def <span class="ident">generate_custom_background</span></span>(<span>random_state, size, background_color, num_blobs=3000, kernel_boundaries=(50, 100))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a customized background to fill the shapes</p>
+<h2 id="parameters">Parameters</h2>
+<p>background_color: average color of the background image
+num_blobs: number of circles to draw
+kernel_boundaries: interval of the possible sizes of the kernel</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_custom_background(
+    random_state,
+    size,
+    background_color,
+    num_blobs=3000,
+    kernel_boundaries=(50, 100),
+):
+    &#34;&#34;&#34;Generate a customized background to fill the shapes
+    Parameters:
+      background_color: average color of the background image
+      num_blobs: number of circles to draw
+      kernel_boundaries: interval of the possible sizes of the kernel
+    &#34;&#34;&#34;
+    img = np.zeros(size, dtype=np.uint8)
+    img = img + get_random_color(random_state, background_color)
+    blobs = np.concatenate(
+        [
+            random_state.randint(0, size[1], size=(num_blobs, 1)),
+            random_state.randint(0, size[0], size=(num_blobs, 1)),
+        ],
+        axis=1,
+    )
+    for i in range(num_blobs):
+        col = get_random_color(random_state, background_color)
+        cv.circle(img, (blobs[i][0], blobs[i][1]), random_state.randint(20), col, -1)
+    kernel_size = random_state.randint(kernel_boundaries[0], kernel_boundaries[1])
+    cv.blur(img, (kernel_size, kernel_size), img)
+    return img</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.get_different_color"><code class="name flex">
+<span>def <span class="ident">get_different_color</span></span>(<span>random_state, previous_colors, min_dist=50, max_count=20)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Output a color that contrasts with the previous colors</p>
+<h2 id="parameters">Parameters</h2>
+<p>previous_colors: np.array of the previous colors
+min_dist: the difference between the new color and
+the previous colors must be at least min_dist
+max_count: maximal number of iterations</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_different_color(random_state, previous_colors, min_dist=50, max_count=20):
+    &#34;&#34;&#34;Output a color that contrasts with the previous colors
+    Parameters:
+      previous_colors: np.array of the previous colors
+      min_dist: the difference between the new color and
+                the previous colors must be at least min_dist
+      max_count: maximal number of iterations
+    &#34;&#34;&#34;
+    color = random_state.randint(256)
+    count = 0
+    while np.any(np.abs(previous_colors - color) &lt; min_dist) and count &lt; max_count:
+        count += 1
+        color = random_state.randint(256)
+    return color</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.get_random_color"><code class="name flex">
+<span>def <span class="ident">get_random_color</span></span>(<span>random_state, background_color)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Output a random scalar in grayscale with a least a small
+contrast with the background color</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_random_color(random_state, background_color):
+    &#34;&#34;&#34;Output a random scalar in grayscale with a least a small
+    contrast with the background color&#34;&#34;&#34;
+    color = random_state.randint(256)
+    if abs(color - background_color) &lt; 30:  # not enough contrast
+        color = (color + 128) % 256
+    return color</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.intersect"><code class="name flex">
+<span>def <span class="ident">intersect</span></span>(<span>A, B, C, D, dim)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return true if line segments AB and CD intersect</p>
+<p>Implements this : <a href="https://blog.devgenius.io/clockwise-and-counterclockwise-line-segment-intersection-b3317839534e">https://blog.devgenius.io/clockwise-and-counterclockwise-line-segment-intersection-b3317839534e</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def intersect(A, B, C, D, dim):
+    &#34;&#34;&#34;Return true if line segments AB and CD intersect
+
+    Implements this : https://blog.devgenius.io/clockwise-and-counterclockwise-line-segment-intersection-b3317839534e
+    &#34;&#34;&#34;
+    return np.any(
+        (ccw(A, C, D, dim) != ccw(B, C, D, dim))
+        &amp; (ccw(A, B, C, dim) != ccw(A, B, D, dim))
+    )</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.keep_points_inside"><code class="name flex">
+<span>def <span class="ident">keep_points_inside</span></span>(<span>points, size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Keep only the points whose coordinates are inside the dimensions of
+the image of size 'size'</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def keep_points_inside(points, size):
+    &#34;&#34;&#34;Keep only the points whose coordinates are inside the dimensions of
+    the image of size &#39;size&#39;&#34;&#34;&#34;
+    mask = (
+        (points[:, 0] &gt;= 0)
+        &amp; (points[:, 0] &lt; size[1])
+        &amp; (points[:, 1] &gt;= 0)
+        &amp; (points[:, 1] &lt; size[0])
+    )
+    return points[mask, :]</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.primitives.overlap"><code class="name flex">
+<span>def <span class="ident">overlap</span></span>(<span>center, rad, centers, rads)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check that the circle with (center, rad)
+doesn't overlap with the other circles</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def overlap(center, rad, centers, rads):
+    &#34;&#34;&#34;Check that the circle with (center, rad)
+    doesn&#39;t overlap with the other circles&#34;&#34;&#34;
+    flag = False
+    for i in range(len(rads)):
+        if np.linalg.norm(center - centers[i]) + min(rad, rads[i]) &lt; max(rad, rads[i]):
+            flag = True
+            break
+    return flag</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets.synthetic" href="index.html">silk.datasets.synthetic</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.datasets.synthetic.primitives.angle_between_vectors" href="#silk.datasets.synthetic.primitives.angle_between_vectors">angle_between_vectors</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.ccw" href="#silk.datasets.synthetic.primitives.ccw">ccw</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_checkerboard" href="#silk.datasets.synthetic.primitives.draw_checkerboard">draw_checkerboard</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_cube" href="#silk.datasets.synthetic.primitives.draw_cube">draw_cube</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_ellipses" href="#silk.datasets.synthetic.primitives.draw_ellipses">draw_ellipses</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_interest_points" href="#silk.datasets.synthetic.primitives.draw_interest_points">draw_interest_points</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_lines" href="#silk.datasets.synthetic.primitives.draw_lines">draw_lines</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_multiple_polygons" href="#silk.datasets.synthetic.primitives.draw_multiple_polygons">draw_multiple_polygons</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_polygon" href="#silk.datasets.synthetic.primitives.draw_polygon">draw_polygon</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_star" href="#silk.datasets.synthetic.primitives.draw_star">draw_star</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.draw_stripes" href="#silk.datasets.synthetic.primitives.draw_stripes">draw_stripes</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.final_blur" href="#silk.datasets.synthetic.primitives.final_blur">final_blur</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.gaussian_noise" href="#silk.datasets.synthetic.primitives.gaussian_noise">gaussian_noise</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.generate_background" href="#silk.datasets.synthetic.primitives.generate_background">generate_background</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.generate_custom_background" href="#silk.datasets.synthetic.primitives.generate_custom_background">generate_custom_background</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.get_different_color" href="#silk.datasets.synthetic.primitives.get_different_color">get_different_color</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.get_random_color" href="#silk.datasets.synthetic.primitives.get_random_color">get_random_color</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.intersect" href="#silk.datasets.synthetic.primitives.intersect">intersect</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.keep_points_inside" href="#silk.datasets.synthetic.primitives.keep_points_inside">keep_points_inside</a></code></li>
+<li><code><a title="silk.datasets.synthetic.primitives.overlap" href="#silk.datasets.synthetic.primitives.overlap">overlap</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

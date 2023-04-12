@@ -1,0 +1,23 @@
+defaults:
+  - silk-default
+  - _self_
+
+_target_: silk.models.silk.SiLKRandomHomographies
+
+training_random_homography_kwargs:
+  scaling_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: 0.6
+    max_value: 0.9
+  x_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -0.78
+    max_value: +0.78
+  y_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -0.78
+    max_value: +0.78
+  z_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -0.39
+    max_value: +0.39

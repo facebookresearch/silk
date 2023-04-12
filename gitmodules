@@ -1,0 +1,3 @@
+[submodule "external/URR"]
+	path = external/URR
+	url = git@github.com:gleize/unsupervisedRR.git

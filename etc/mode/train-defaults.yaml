@@ -1,0 +1,22 @@
+defaults:
+  - defaults
+
+command: "training"
+continue_from_checkpoint: null
+model: ???
+trainer:
+  strategy: ddp
+  _target_: pytorch_lightning.Trainer
+  gpus: ${ref:default.ngpus}
+  # change benchmark to False if your model input size changes between iterations
+  benchmark: true
+loaders:
+  training:
+    _target_: torch.utils.data.DataLoader
+    dataset: ???
+    num_workers: ${ref:default.loader.training.workers}
+  validation:
+    _target_: torch.utils.data.DataLoader
+    dataset: ???
+    num_workers: ${ref:default.loader.validation.workers}
+    shuffle: false

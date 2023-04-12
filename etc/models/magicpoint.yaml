@@ -1,0 +1,65 @@
+defaults:
+  - /backbones@images_to_logits_fn: magicpoint
+
+_target_: silk.models.magicpoint.MagicPoint
+
+images_to_logits_fn:
+  default_outputs: "logits"
+
+optimizer_spec:
+  _target_: silk.config.optimizer.Spec
+  optimizer_class: torch.optim.Adam
+  lr: 0.001
+  betas:
+    - 0.9
+    - 0.999
+
+image_aug_transform:
+  _target_: silk.transforms.abstract.Compose
+  _args_:
+    - _target_: silk.transforms.cv.image.RandomBrightness
+      max_delta: 0.3
+    - _target_: silk.transforms.cv.image.RandomContrast
+      max_factor_delta: 0.75
+    - _target_: silk.transforms.cv.image.GaussianNoise
+      std: [0., 0.06]
+    - _target_: silk.transforms.cv.image.SpeckleNoise
+      prob: [0., 0.0035]
+      min_val: 0.
+      max_val: 1.
+    - _target_: silk.transforms.abstract.Stochastic
+      probability: 0.5
+      transform:
+        _target_: silk.transforms.cv.image.RandomMotionBlur
+        kernel_size: 7
+        angle: [0, 6.28]
+        direction: 0.
+    - _target_: silk.transforms.tensor.Clamp
+      min_val: 0.
+      max_val: 1.
+
+random_homographic_adaptation_kwargs:
+  scaling_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: 0.4
+    max_value: 1.2
+  x_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -0.78
+    max_value: +0.78
+  y_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -0.78
+    max_value: +0.78
+  z_rotation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -1.57
+    max_value: +1.57
+  x_translation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -1.0
+    max_value: +1.0
+  y_translation_sampler:
+    _target_: silk.config.sampler.Uniform
+    min_value: -1.0
+    max_value: +1.0

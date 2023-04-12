@@ -1,0 +1,11 @@
+defaults:
+  - frozen
+  - /models@model: superpoint
+  - _self_
+model:
+  model:
+    detection_threshold: 0.2
+
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [MODELS, "superpoint", "superpoint-final.ckpt"]

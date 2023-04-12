@@ -1,0 +1,21 @@
+defaults:
+  - defaults
+  - _self_
+
+# [removed] homographic buggy version
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-01-26/11-00-23/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco,models@mode.model=superpoint-frozen-phase-1-best/dataset.h5"
+# [removed] small crops homographic adaptation
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-02-09/11-47-14/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco,models@mode.model=superpoint-frozen-phase-1-best/dataset.h5"
+# [removed] regular crops homographic adaptation
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-02-09/20-30-36/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco,models@mode.model=superpoint-frozen-phase-1-best/dataset.h5"
+# [removed] regular crops, uniform inplane rotation, homographic adaptation better parameters
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-02-11/23-43-15/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco,models@mode.model=superpoint-frozen-phase-1-best/dataset.h5"
+# [removed] denser points from MagicPoint, new homographic sampling (negative scaling bug)
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-02-27/11-05-35/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco-phase-2/dataset.h5"
+
+# fix negative scaling bug
+# filepath: "/checkpoint/gleize/silk-cli/sweep/cache_dataset/2022-03-04/21-56-57/datasets/coco@mode.loader.dataset=validation,hydra=slurm,mode=cache-dataset-homographically-adapted-coco-phase-2/dataset.h5"
+
+filepath:
+  _target_: silk.config.paths.join
+  _args_: [ASSETS, "datasets", "homographically-adapted-coco", "validation-phase-2.h5"]

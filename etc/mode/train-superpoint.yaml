@@ -1,0 +1,38 @@
+defaults:
+  - train-defaults
+  - /models@model: superpoint
+  - _self_
+
+trainer:
+  max_epochs: 100
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: "val.total.loss"
+      save_top_k: 10
+      mode: "min"
+    - _target_: pytorch_lightning.callbacks.EarlyStopping
+      monitor: "val.total.loss"
+      min_delta: 0.0
+      patience: 5
+      mode: "min"
+      strict: true
+      check_finite: true
+
+loaders:
+  training:
+    batch_size: 32
+    collate_fn: ${mode.collate_fn}
+  validation:
+    batch_size: 64
+    collate_fn: ${mode.collate_fn}
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # rename variable
+      - _target_: silk.transforms.abstract.Rename
+        _args_:
+          - "points"
+          - "positions"

@@ -1,0 +1,6 @@
+_target_: silk.config.model.load_model_from_checkpoint
+model: ???
+checkpoint_path: ???
+freeze: true
+eval: true
+device: "cpu"

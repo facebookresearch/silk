@@ -1,0 +1,6 @@
+defaults:
+  - defaults
+  - /datasets/coco@coco: validation
+  - /datasets/image-net@image-net: validation
+  - /datasets/megadepth@megadepth: test
+  - _self_

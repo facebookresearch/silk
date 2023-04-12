@@ -1,0 +1,3031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.transforms.abstract API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.transforms.abstract</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from __future__ import annotations
+
+import inspect
+from collections import OrderedDict
+from random import random
+from typing import (
+    Any,
+    Callable,
+    Iterable,
+    List,
+    Dict,
+    Optional,
+    Union,
+    Tuple as TupleType,
+)
+
+import torch
+from silk.config.core import ensure_is_instance
+
+
+class Transform(torch.nn.Module):
+    &#34;&#34;&#34;Abstract representation of a transform, which is essentially a parametrized function taking one input.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: Any) -&gt; Any:
+        raise NotImplementedError
+
+
+# TODO(Pierre): Overload list specific methods as we need them.
+class MixedModuleList(torch.nn.Module):
+    &#34;&#34;&#34;Works the same as `torch.nn.ModuleList`, but allows to have non-module items.&#34;&#34;&#34;
+
+    def __init__(self, items: Iterable[Any]) -&gt; None:
+        super().__init__()
+
+        self._mods = torch.nn.ModuleList(
+            [mod for mod in items if isinstance(mod, torch.nn.Module)]
+        )
+        self._items = items
+
+    def __len__(self):
+        return len(self._items)
+
+    def __getitem__(self, idx: int):
+        return self._items[idx]
+
+
+# TODO(Pierre): Overload dict specific methods as we need them.
+class MixedModuleDict(torch.nn.Module):
+    &#34;&#34;&#34;Works the same as `torch.nn.ModuleDict`, but allows to have non-module items.&#34;&#34;&#34;
+
+    def __init__(self, items: Dict[Any, Any] = None) -&gt; None:
+        super().__init__()
+
+        items = OrderedDict() if items is None else items
+        self._mods = torch.nn.ModuleDict(
+            {key: mod for key, mod in items.items() if isinstance(mod, torch.nn.Module)}
+        )
+        self._items = items
+
+    def __len__(self):
+        return len(self._items)
+
+    def __getitem__(self, key: Any):
+        return self._items[key]
+
+    def __setitem__(self, key: str, item: Any) -&gt; None:
+        if key in self._mods:
+            del self._mods[key]
+        if isinstance(item, torch.nn.Module):
+            self._mods[key] = item
+        self._items[key] = item
+
+    def __contains__(self, key: str) -&gt; bool:
+        return key in self._items
+
+    def items(self):
+        return self._items.items()
+
+    def keys(self):
+        return self._items.keys()
+
+
+class NamedContext:
+    &#34;&#34;&#34;Container of named data. This helps applying and tracking data transformation in complex data pipelines.
+    Used mostly to structure and transform data loader outputs.
+    &#34;&#34;&#34;
+
+    @staticmethod
+    def batching(contexts: List[NamedContext]) -&gt; NamedContext:
+        &#34;&#34;&#34;Batch context variables.
+
+        Parameters
+        ----------
+        contexts : List[NamedContext]
+            List of contexts to batch the variables for. Each context should possess the exact same variable names.
+
+        Returns
+        -------
+        NamedContext
+            Named context having each variable being batched (as a list).
+
+        Raises
+        ------
+        RuntimeError
+            When provided context names do not exactly match.
+        &#34;&#34;&#34;
+        data = {}
+
+        if not len(contexts) &gt; 0:
+            return NamedContext(data)
+
+        names = contexts[0].names()
+
+        all_same_name_error_msg = (
+            &#34;each named context in list of batch should all have same names&#34;
+        )
+        if not all(len(ctx.names()) == len(names) for ctx in contexts):
+            raise RuntimeError(all_same_name_error_msg)
+
+        try:
+            data = {name: [ctx[name] for ctx in contexts] for name in names}
+        except KeyError:
+            raise RuntimeError(all_same_name_error_msg)
+
+        return NamedContext(data)
+
+    def __init__(
+        self, data: Optional[Dict[str, Any]] = None, **kwargs: Dict[str, Any]
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        data : Optional[Dict[str, Any]], optional
+            named variabled to put in context, by default None
+        &#34;&#34;&#34;
+        self._data = {}
+        if data is not None:
+            self._data.update(data)
+        self._data.update(kwargs)
+
+    def exists(self, name: str) -&gt; bool:
+        &#34;&#34;&#34;Return wether a variable name is in context or not.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable to check for.
+
+        Returns
+        -------
+        bool
+            True if `name` is in context, False otherwise.
+        &#34;&#34;&#34;
+        return name in self._data
+
+    __contains__ = exists
+
+    def ensure_exists(self, *names: List[str]) -&gt; None:
+        &#34;&#34;&#34;Make sure variable names exist in context. Raise exception otherwise.
+
+        Parameters
+        ----------
+        names : str
+            Names of variables to check for.
+
+        Raises
+        ------
+        RuntimeError
+            When at least one of the names is not in context.
+        &#34;&#34;&#34;
+        for name in names:
+            if not self.exists(name):
+                raise RuntimeError(f&#39;&#34;{name}&#34; should be present in named context&#39;)
+
+    def ensure_not_exists(self, *names: List[str]) -&gt; None:
+        &#34;&#34;&#34;Make sure variable names doesn&#39;t exist in context. Raise exception otherwise.
+
+        Parameters
+        ----------
+        names : str
+            Names of variables to check for.
+
+        Raises
+        ------
+        RuntimeError
+            When at least one of the names is not in context.
+        &#34;&#34;&#34;
+        for name in names:
+            if self.exists(name):
+                raise RuntimeError(f&#39;&#34;{name}&#34; should not be present in named context&#39;)
+
+    def rename(self, old_name: str, new_name: str) -&gt; NamedContext:
+        &#34;&#34;&#34;Rename variable in context.
+
+        Parameters
+        ----------
+        old_name : str
+            Name of variable to rename.
+        new_name : str
+            New name.
+
+        Returns
+        -------
+        NamedContext
+            New context with rename variable.
+        &#34;&#34;&#34;
+        self.ensure_exists(old_name)
+        if old_name == new_name:
+            return self
+        data = dict(self._data)
+        data[new_name] = data[old_name]
+        del data[old_name]
+        return NamedContext(data)
+
+    def add(self, name: str, value: Any, allow_exist=False) -&gt; NamedContext:
+        &#34;&#34;&#34;Add new variable with associated value to context.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable to add.
+        value : Any
+            Value of variable to add.
+        allow_exist : bool, optional
+            Determine if overwriting existing variable is ok, will raise exception otherwise, by default False.
+
+        Returns
+        -------
+        NamedContext
+            New context with added variable.
+        &#34;&#34;&#34;
+        if not allow_exist:
+            self.ensure_not_exists(name)
+        data = dict(self._data)
+        data[name] = value
+        return NamedContext(data)
+
+    def remove(self, *names: List[str], allow_not_exist=False) -&gt; NamedContext:
+        &#34;&#34;&#34;Remove existing variables in context.
+
+        Parameters
+        ----------
+        names : List[str]
+            Names of variables to remove.
+        allow_not_exist : bool, optional
+            Allow removal of non-existing variables, by default False
+
+        Returns
+        -------
+        NamedContext
+            New context minus the removed variables.
+        &#34;&#34;&#34;
+        if len(names) == 0:
+            return self
+
+        data = dict(self._data)
+
+        for name in names:
+            if not allow_not_exist:
+                self.ensure_exists(name)
+                del data[name]
+            else:
+                if name in data:
+                    del data[name]
+        return NamedContext(data)
+
+    def map(
+        self, fn: Callable[..., Any], *args: List[Any], **kwargs: Dict[str, Any]
+    ) -&gt; NamedContext:
+        &#34;&#34;&#34;Map-execute function for every variable in context.
+
+        Parameters
+        ----------
+        fn : Callable[..., Any]
+            Function to execute per variable `fn(var, *args, **kwargs)`.
+
+        Returns
+        -------
+        NamedContext
+            New context with variable transformed by provided function.
+        &#34;&#34;&#34;
+        data = {name: fn(el, *args, **kwargs) for name, el in self._data.items()}
+        return NamedContext(data)
+
+    def map_only(
+        self,
+        names: List[str],
+        fn: Callable[..., Any],
+        *args: List[Any],
+        **kwargs: Dict[str, Any],
+    ):
+        &#34;&#34;&#34;Map-execute function only for every provided variable present in context.
+
+        Parameters
+        ----------
+        names: List[str]
+            List of context names to apply the map to.
+        fn : Callable[..., Any]
+            Function to execute per variable `fn(var, *args, **kwargs)`.
+
+        Returns
+        -------
+        NamedContext
+            New context with variable transformed by provided function.
+        &#34;&#34;&#34;
+        data = dict(self._data)
+        data.update({name: fn(data[name], *args, **kwargs) for name in names})
+        return NamedContext(data)
+
+    def __getitem__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Get value of variable.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable.
+
+        Returns
+        -------
+        Any
+            Value of variable.
+        &#34;&#34;&#34;
+        self.ensure_exists(name)
+        return self._data[name]
+
+    def __len__(self) -&gt; int:
+        return len(self._data)
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}({repr(self._data)})&#34;
+
+    def __eq__(self, other: NamedContext) -&gt; bool:
+        if not isinstance(other, NamedContext):
+            return False
+        return self._data == other._data
+
+    def names(self) -&gt; TupleType[str]:
+        &#34;&#34;&#34;Return names of all variables in context.
+
+        Returns
+        -------
+        Tuple[str]
+            Names of variables.
+        &#34;&#34;&#34;
+        return tuple(self._data.keys())
+
+
+class ToNamedContext(Transform):
+    &#34;&#34;&#34;Transform tuples into named contexts. This operator is very useful as a first step in transforming data coming from a data loader since data loaders output tuples of data.
+
+    Examples
+    --------
+
+    ```python
+    from silk.transforms.abstract import ToNamedContext
+
+    transf = ToNamedContext(&#34;a&#34;, &#34;b&#34;, None, &#34;c&#34;)
+    ctx = transf((0, 1, 2, 3))
+
+    print(ctx)
+    # &gt;&gt;&gt; NamedContext({&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 3})
+    ```
+
+    &#34;&#34;&#34;
+
+    def __init__(self, *names: List[Optional[str]], single_item: bool = False) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        names : List[Optional[str]]
+            Names to associate to each tuple position. `None` can be used to exclude tuple values.
+            The ordering of names has to match the ordering of tuples.
+
+        single_item : bool
+            Specify if we should handle input as a single item (=True), or as a tuple (=False), default is False.
+
+        &#34;&#34;&#34;
+        super().__init__()
+        self._names = names
+        self._single_item = single_item
+
+        if not (len(self._names) &gt; 0):
+            raise RuntimeError(
+                &#34;empty name list provided, should at least contain one element&#34;
+            )
+
+        if self._single_item and len(self._names) != 1:
+            raise RuntimeError(
+                &#34;only one name should be provided when `single_item` option is enabled&#34;
+            )
+
+    def __call__(self, item: Union[TupleType[Any], Any]) -&gt; NamedContext:
+        &#34;&#34;&#34;Convert a single item or tuple to named context.
+
+        Parameters
+        ----------
+        item : Union[TupleType[Any], Any]
+            Tuple or item to convert.
+
+        Returns
+        -------
+        NamedContext
+            Named context created from tuple or item.
+
+        Raises
+        ------
+        RuntimeError
+            When tuple&#39;s size doesn&#39;t match the size of the provided names.
+        &#34;&#34;&#34;
+        if not self._single_item:
+            ensure_is_instance(item, tuple)
+        else:
+            item = (item,)
+
+        if len(self._names) != len(item):
+            raise RuntimeError(
+                f&#34;tuple item size (={len(item)}) doesn&#39;t match the number of provided names (={len(self._names)})&#34;
+            )
+        return NamedContext(
+            {name: item[i] for i, name in enumerate(self._names) if name is not None}
+        )
+
+
+Name = ToNamedContext  # shorter alias
+
+
+class Compose(Transform):
+    &#34;&#34;&#34;Transform that is composed of multiple transform that will run sequentially.&#34;&#34;&#34;
+
+    def __init__(self, *transforms: List[Transform]) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        transforms : List[Transform]
+            List of transforms to apply.
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._transforms = MixedModuleList(transforms)
+
+    def __call__(self, item: Any) -&gt; Any:
+        &#34;&#34;&#34;Apply sequence of transform to item.
+
+        Parameters
+        ----------
+        item : Any
+            Input item of the sequence of transform.
+
+        Returns
+        -------
+        Any
+            Output of sequence of transform.
+        &#34;&#34;&#34;
+        for transform in self._transforms:
+            item = transform(item)
+        return item
+
+
+class Rename(Transform):
+    &#34;&#34;&#34;Transform that renames a variable from a named context.&#34;&#34;&#34;
+
+    def __init__(self, old_name: str, new_name: str) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        old_name : str
+            Name of variable to rename.
+        new_name : str
+            New name of variable.
+        &#34;&#34;&#34;
+        super().__init__()
+        self._old_name = old_name
+        self._new_name = new_name
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        &#34;&#34;&#34;Apply the renaming transform to named context.
+
+        Parameters
+        ----------
+        item : NamedContext
+            Input named context to apply the renaming to.
+
+        Returns
+        -------
+        NamedContext
+            New named context with renamed variable.
+        &#34;&#34;&#34;
+        ensure_is_instance(item, NamedContext)
+        return item.rename(self._old_name, self._new_name)
+
+
+class Lambda(Transform):
+    &#34;&#34;&#34;Transform that runs a python function to a named context and put the result in that same context.
+
+    Examples
+    --------
+
+    ```python
+    from silk.transforms.abstract import Lambda, NamedContext
+
+    def sum4(a, b, c, d=0):
+        return a + b + c + d
+
+    transf = Lambda(
+        &#34;c&#34;,     # name of variable that will store the output
+        sum4,    # function to run
+        &#34;@a&#34;,    # value of first argument will be variable &#34;a&#34; extracted from named context
+        10,      # value of second argument will be value 10
+        d=&#34;@b&#34;,  # value of argument d will be variable &#34;b&#34; extracted from named context
+        c=0,     # value of argument c will be value 0
+    )
+
+    ctx = NamedContext({&#34;a&#34;: 1, &#34;b&#34;: 2})
+    ctx = transf(ctx)
+
+    print(ctx)
+    # &gt;&gt;&gt; NamedContext({&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 13})
+    ```
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, Iterable[str], None],
+        function: Callable[..., Any],
+        *args_keys: List[Any],
+        **kwargs_keys: Dict[str, Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, Iterable[str], None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+            If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.
+        function : Callable[..., Any]
+            Function to apply.
+        args_keys: List[Any]
+            Arguments to pass to the function. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        kwargs_keys: Dict[str, Any]
+            Named arguments to pass to the function. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+        super().__init__()
+        self._name = name
+        self._function = function
+        self._args_keys = MixedModuleList(args_keys)
+        self._kwargs_keys = MixedModuleDict(kwargs_keys)
+
+    @property
+    def name(self):
+        return self._name
+
+    @staticmethod
+    def _is_context(name) -&gt; bool:
+        return isinstance(name, str) and name == &#34;@&#34;
+
+    @staticmethod
+    def _is_context_name(name: Any) -&gt; bool:
+        return isinstance(name, str) and len(name) &gt; 1 and name[0] == &#34;@&#34;
+
+    @staticmethod
+    def _get_context_name(name: str) -&gt; str:
+        return name[1:]
+
+    @staticmethod
+    def _get_value(name: Any, item: NamedContext):
+        if Lambda._is_context_name(name):
+            name = Lambda._get_context_name(name)
+            return item[name]
+        elif Lambda._is_context(name):
+            return item
+        return name
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        &#34;&#34;&#34;Execute function on item and store result in context.
+
+        Parameters
+        ----------
+        item : NamedContext
+            Input named context.
+
+        Returns
+        -------
+        NamedContext
+            New named context containing the function&#39;s result.
+        &#34;&#34;&#34;
+        ensure_is_instance(item, NamedContext)
+
+        args = [Lambda._get_value(name, item) for name in self._args_keys]
+        kwargs = {
+            fname: Lambda._get_value(cname, item)
+            for fname, cname in self._kwargs_keys.items()
+        }
+        output = self._function(*args, **kwargs)
+        if self._name is None:
+            return output
+        elif isinstance(self._name, str):
+            return item.add(self._name, output, allow_exist=True)
+
+        for i, name in enumerate(self._name):
+            if name is None:
+                continue
+            item = item.add(name, output[i], allow_exist=True)
+
+        return item
+
+
+class MethodCall(Lambda):
+    &#34;&#34;&#34;Similar to `Lambda`, but using a method instead of a function.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, Iterable[str], None],
+        self_: Any,
+        method: Union[Callable[..., Any], str],
+        *args_keys: List[Any],
+        **kwargs_keys: Dict[str, Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, Iterable[str], None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+            If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.
+        self_ : Any
+            Instance that the method will be applied on. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        method : Union[Callable[..., Any], str]
+            Method to apply.
+        args_keys: List[Any]
+            Arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        kwargs_keys: Dict[str, Any]
+            Named arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+        if isinstance(method, str):
+            super().__init__(
+                name,
+                MethodCall._find_and_call_method_by_name,
+                method,
+                self_,
+                *args_keys,
+                **kwargs_keys,
+            )
+        else:
+            super().__init__(name, method, self_, *args_keys, **kwargs_keys)
+
+    @staticmethod
+    def _find_and_call_method_by_name(method, self_, *args_keys, **kwargs_keys):
+        if not hasattr(self_, method):
+            raise RuntimeError(f&#34;no method named &#39;{method}&#39; has been found in self&#34;)
+        method = getattr(self_, method)
+        if (not inspect.ismethod(method)) and (not inspect.isbuiltin(method)):
+            raise RuntimeError(
+                f&#34;method named &#39;{method}&#39; was found, but is not a method&#34;
+            )
+        return method(*args_keys, **kwargs_keys)
+
+
+class Tuple(Lambda):
+    &#34;&#34;&#34;Apply tuple operator to named context.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, None],
+        *args_keys: List[Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+        args_keys: List[Any]
+            Arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+
+        def make_tuple(*args):
+            return tuple(args)
+
+        super().__init__(name, make_tuple, *args_keys)
+
+
+class Map(Transform):
+    &#34;&#34;&#34;Apply map operator to named context. See `NamedContext.map` for more details.&#34;&#34;&#34;
+
+    def __init__(self, function, *args, **kwargs) -&gt; None:
+        super().__init__()
+        self._function = function
+        self._args = args
+        self._kwargs = kwargs
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.map(self._function, *self._args, **self._kwargs)
+
+
+class MapOnly(Transform):
+    &#34;&#34;&#34;Apply map only operator to named context. See `NamedContext.map_only` for more details.&#34;&#34;&#34;
+
+    def __init__(self, names, function, *args, **kwargs) -&gt; None:
+        super().__init__()
+        self._names = names
+        self._function = function
+        self._args = args
+        self._kwargs = kwargs
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.map_only(self._names, self._function, *self._args, **self._kwargs)
+
+
+class Remove(Transform):
+    &#34;&#34;&#34;Apply remove operator to named context. See `NamedContext.remove` for more details.&#34;&#34;&#34;
+
+    def __init__(self, *names: List[str], allow_not_exist=False) -&gt; None:
+        super().__init__()
+        self._names = names
+        self._allow_not_exist = allow_not_exist
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.remove(*self._names, allow_not_exist=self._allow_not_exist)
+
+
+class Add(Transform):
+    &#34;&#34;&#34;Apply add operator to named context. See `NamedContext.add` for more details.&#34;&#34;&#34;
+
+    def __init__(self, name: str, value: Any, allow_exist=False) -&gt; None:
+        super().__init__()
+        self._name = name
+        self._value = value
+        self._allow_exist = allow_exist
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.add(self._name, self._value, allow_exist=self._allow_exist)
+
+
+class Stochastic(Transform):
+    &#34;&#34;&#34;Apply provided transform with given probability.&#34;&#34;&#34;
+
+    def __init__(self, transform: Transform, probability: float = 0.5) -&gt; None:
+        super().__init__()
+
+        self._transform = transform
+        self._probability = probability
+
+    def __call__(self, item: Any) -&gt; Any:
+        if random() &lt; self._probability:
+            return self._transform(item)
+        return item</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.transforms.abstract.random"><code class="name flex">
+<span>def <span class="ident">random</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>random() -&gt; x in the interval [0, 1).</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.transforms.abstract.Add"><code class="flex name class">
+<span>class <span class="ident">Add</span></span>
+<span>(</span><span>name: str, value: Any, allow_exist=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply add operator to named context. See <code><a title="silk.transforms.abstract.NamedContext.add" href="#silk.transforms.abstract.NamedContext.add">NamedContext.add()</a></code> for more details.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Add(Transform):
+    &#34;&#34;&#34;Apply add operator to named context. See `NamedContext.add` for more details.&#34;&#34;&#34;
+
+    def __init__(self, name: str, value: Any, allow_exist=False) -&gt; None:
+        super().__init__()
+        self._name = name
+        self._value = value
+        self._allow_exist = allow_exist
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.add(self._name, self._value, allow_exist=self._allow_exist)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Add.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Add.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Compose"><code class="flex name class">
+<span>class <span class="ident">Compose</span></span>
+<span>(</span><span>*transforms: List[<a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform that is composed of multiple transform that will run sequentially.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>transforms</code></strong> :&ensp;<code>List[<a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a>]</code></dt>
+<dd>List of transforms to apply.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Compose(Transform):
+    &#34;&#34;&#34;Transform that is composed of multiple transform that will run sequentially.&#34;&#34;&#34;
+
+    def __init__(self, *transforms: List[Transform]) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        transforms : List[Transform]
+            List of transforms to apply.
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._transforms = MixedModuleList(transforms)
+
+    def __call__(self, item: Any) -&gt; Any:
+        &#34;&#34;&#34;Apply sequence of transform to item.
+
+        Parameters
+        ----------
+        item : Any
+            Input item of the sequence of transform.
+
+        Returns
+        -------
+        Any
+            Output of sequence of transform.
+        &#34;&#34;&#34;
+        for transform in self._transforms:
+            item = transform(item)
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Compose.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Compose.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Lambda"><code class="flex name class">
+<span>class <span class="ident">Lambda</span></span>
+<span>(</span><span>name: Union[str, Iterable[str], None], function: Callable[..., Any], *args_keys: List[Any], **kwargs_keys: Dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform that runs a python function to a named context and put the result in that same context.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">from silk.transforms.abstract import Lambda, NamedContext
+
+def sum4(a, b, c, d=0):
+    return a + b + c + d
+
+transf = Lambda(
+    &quot;c&quot;,     # name of variable that will store the output
+    sum4,    # function to run
+    &quot;@a&quot;,    # value of first argument will be variable &quot;a&quot; extracted from named context
+    10,      # value of second argument will be value 10
+    d=&quot;@b&quot;,  # value of argument d will be variable &quot;b&quot; extracted from named context
+    c=0,     # value of argument c will be value 0
+)
+
+ctx = NamedContext({&quot;a&quot;: 1, &quot;b&quot;: 2})
+ctx = transf(ctx)
+
+print(ctx)
+# &gt;&gt;&gt; NamedContext({'a': 1, 'b': 2, 'c': 13})
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>Union[str, Iterable[str], None]</code></dt>
+<dd>Name of the variable where the output will be stored.
+If None, the result is directly returned, discarding the NamedContext.
+If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.</dd>
+<dt><strong><code>function</code></strong> :&ensp;<code>Callable[&hellip;, Any]</code></dt>
+<dd>Function to apply.</dd>
+<dt><strong><code>args_keys</code></strong> :&ensp;<code>List[Any]</code></dt>
+<dd>Arguments to pass to the function. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+<dt><strong><code>kwargs_keys</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
+<dd>Named arguments to pass to the function. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Lambda(Transform):
+    &#34;&#34;&#34;Transform that runs a python function to a named context and put the result in that same context.
+
+    Examples
+    --------
+
+    ```python
+    from silk.transforms.abstract import Lambda, NamedContext
+
+    def sum4(a, b, c, d=0):
+        return a + b + c + d
+
+    transf = Lambda(
+        &#34;c&#34;,     # name of variable that will store the output
+        sum4,    # function to run
+        &#34;@a&#34;,    # value of first argument will be variable &#34;a&#34; extracted from named context
+        10,      # value of second argument will be value 10
+        d=&#34;@b&#34;,  # value of argument d will be variable &#34;b&#34; extracted from named context
+        c=0,     # value of argument c will be value 0
+    )
+
+    ctx = NamedContext({&#34;a&#34;: 1, &#34;b&#34;: 2})
+    ctx = transf(ctx)
+
+    print(ctx)
+    # &gt;&gt;&gt; NamedContext({&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 13})
+    ```
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, Iterable[str], None],
+        function: Callable[..., Any],
+        *args_keys: List[Any],
+        **kwargs_keys: Dict[str, Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, Iterable[str], None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+            If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.
+        function : Callable[..., Any]
+            Function to apply.
+        args_keys: List[Any]
+            Arguments to pass to the function. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        kwargs_keys: Dict[str, Any]
+            Named arguments to pass to the function. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+        super().__init__()
+        self._name = name
+        self._function = function
+        self._args_keys = MixedModuleList(args_keys)
+        self._kwargs_keys = MixedModuleDict(kwargs_keys)
+
+    @property
+    def name(self):
+        return self._name
+
+    @staticmethod
+    def _is_context(name) -&gt; bool:
+        return isinstance(name, str) and name == &#34;@&#34;
+
+    @staticmethod
+    def _is_context_name(name: Any) -&gt; bool:
+        return isinstance(name, str) and len(name) &gt; 1 and name[0] == &#34;@&#34;
+
+    @staticmethod
+    def _get_context_name(name: str) -&gt; str:
+        return name[1:]
+
+    @staticmethod
+    def _get_value(name: Any, item: NamedContext):
+        if Lambda._is_context_name(name):
+            name = Lambda._get_context_name(name)
+            return item[name]
+        elif Lambda._is_context(name):
+            return item
+        return name
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        &#34;&#34;&#34;Execute function on item and store result in context.
+
+        Parameters
+        ----------
+        item : NamedContext
+            Input named context.
+
+        Returns
+        -------
+        NamedContext
+            New named context containing the function&#39;s result.
+        &#34;&#34;&#34;
+        ensure_is_instance(item, NamedContext)
+
+        args = [Lambda._get_value(name, item) for name in self._args_keys]
+        kwargs = {
+            fname: Lambda._get_value(cname, item)
+            for fname, cname in self._kwargs_keys.items()
+        }
+        output = self._function(*args, **kwargs)
+        if self._name is None:
+            return output
+        elif isinstance(self._name, str):
+            return item.add(self._name, output, allow_exist=True)
+
+        for i, name in enumerate(self._name):
+            if name is None:
+                continue
+            item = item.add(name, output[i], allow_exist=True)
+
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.MethodCall" href="#silk.transforms.abstract.MethodCall">MethodCall</a></li>
+<li><a title="silk.transforms.abstract.Tuple" href="#silk.transforms.abstract.Tuple">Tuple</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Lambda.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Lambda.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Lambda.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def name(self):
+    return self._name</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Map"><code class="flex name class">
+<span>class <span class="ident">Map</span></span>
+<span>(</span><span>function, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply map operator to named context. See <code><a title="silk.transforms.abstract.NamedContext.map" href="#silk.transforms.abstract.NamedContext.map">NamedContext.map()</a></code> for more details.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Map(Transform):
+    &#34;&#34;&#34;Apply map operator to named context. See `NamedContext.map` for more details.&#34;&#34;&#34;
+
+    def __init__(self, function, *args, **kwargs) -&gt; None:
+        super().__init__()
+        self._function = function
+        self._args = args
+        self._kwargs = kwargs
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.map(self._function, *self._args, **self._kwargs)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Map.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Map.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.MapOnly"><code class="flex name class">
+<span>class <span class="ident">MapOnly</span></span>
+<span>(</span><span>names, function, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply map only operator to named context. See <code><a title="silk.transforms.abstract.NamedContext.map_only" href="#silk.transforms.abstract.NamedContext.map_only">NamedContext.map_only()</a></code> for more details.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MapOnly(Transform):
+    &#34;&#34;&#34;Apply map only operator to named context. See `NamedContext.map_only` for more details.&#34;&#34;&#34;
+
+    def __init__(self, names, function, *args, **kwargs) -&gt; None:
+        super().__init__()
+        self._names = names
+        self._function = function
+        self._args = args
+        self._kwargs = kwargs
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.map_only(self._names, self._function, *self._args, **self._kwargs)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.MapOnly.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.MapOnly.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.MethodCall"><code class="flex name class">
+<span>class <span class="ident">MethodCall</span></span>
+<span>(</span><span>name: Union[str, Iterable[str], None], self_: Any, method: Union[Callable[..., Any], str], *args_keys: List[Any], **kwargs_keys: Dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Similar to <code><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></code>, but using a method instead of a function.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>Union[str, Iterable[str], None]</code></dt>
+<dd>Name of the variable where the output will be stored.
+If None, the result is directly returned, discarding the NamedContext.
+If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.</dd>
+<dt><strong><code>self_</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Instance that the method will be applied on. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+<dt><strong><code>method</code></strong> :&ensp;<code>Union[Callable[&hellip;, Any], str]</code></dt>
+<dd>Method to apply.</dd>
+<dt><strong><code>args_keys</code></strong> :&ensp;<code>List[Any]</code></dt>
+<dd>Arguments to pass to the method. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+<dt><strong><code>kwargs_keys</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
+<dd>Named arguments to pass to the method. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MethodCall(Lambda):
+    &#34;&#34;&#34;Similar to `Lambda`, but using a method instead of a function.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, Iterable[str], None],
+        self_: Any,
+        method: Union[Callable[..., Any], str],
+        *args_keys: List[Any],
+        **kwargs_keys: Dict[str, Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, Iterable[str], None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+            If iterable of strings, the items in the returned tuple will be placed in NamedContext at provided names.
+        self_ : Any
+            Instance that the method will be applied on. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        method : Union[Callable[..., Any], str]
+            Method to apply.
+        args_keys: List[Any]
+            Arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        kwargs_keys: Dict[str, Any]
+            Named arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+        if isinstance(method, str):
+            super().__init__(
+                name,
+                MethodCall._find_and_call_method_by_name,
+                method,
+                self_,
+                *args_keys,
+                **kwargs_keys,
+            )
+        else:
+            super().__init__(name, method, self_, *args_keys, **kwargs_keys)
+
+    @staticmethod
+    def _find_and_call_method_by_name(method, self_, *args_keys, **kwargs_keys):
+        if not hasattr(self_, method):
+            raise RuntimeError(f&#34;no method named &#39;{method}&#39; has been found in self&#34;)
+        method = getattr(self_, method)
+        if (not inspect.ismethod(method)) and (not inspect.isbuiltin(method)):
+            raise RuntimeError(
+                f&#34;method named &#39;{method}&#39; was found, but is not a method&#34;
+            )
+        return method(*args_keys, **kwargs_keys)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></li>
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.metric.MetricUpdateBase" href="metric.html#silk.transforms.metric.MetricUpdateBase">MetricUpdateBase</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.MethodCall.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.MethodCall.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Lambda.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleDict"><code class="flex name class">
+<span>class <span class="ident">MixedModuleDict</span></span>
+<span>(</span><span>items: Dict[Any, Any] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Works the same as <code>torch.nn.ModuleDict</code>, but allows to have non-module items.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MixedModuleDict(torch.nn.Module):
+    &#34;&#34;&#34;Works the same as `torch.nn.ModuleDict`, but allows to have non-module items.&#34;&#34;&#34;
+
+    def __init__(self, items: Dict[Any, Any] = None) -&gt; None:
+        super().__init__()
+
+        items = OrderedDict() if items is None else items
+        self._mods = torch.nn.ModuleDict(
+            {key: mod for key, mod in items.items() if isinstance(mod, torch.nn.Module)}
+        )
+        self._items = items
+
+    def __len__(self):
+        return len(self._items)
+
+    def __getitem__(self, key: Any):
+        return self._items[key]
+
+    def __setitem__(self, key: str, item: Any) -&gt; None:
+        if key in self._mods:
+            del self._mods[key]
+        if isinstance(item, torch.nn.Module):
+            self._mods[key] = item
+        self._items[key] = item
+
+    def __contains__(self, key: str) -&gt; bool:
+        return key in self._items
+
+    def items(self):
+        return self._items.items()
+
+    def keys(self):
+        return self._items.keys()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.MixedModuleDict.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleDict.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.MixedModuleDict.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *input: Any) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def _forward_unimplemented(self, *input: Any) -&gt; None:
+    r&#34;&#34;&#34;Defines the computation performed at every call.
+
+    Should be overridden by all subclasses.
+
+    .. note::
+        Although the recipe for forward pass needs to be defined within
+        this function, one should call the :class:`Module` instance afterwards
+        instead of this since the former takes care of running the
+        registered hooks while the latter silently ignores them.
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleDict.items"><code class="name flex">
+<span>def <span class="ident">items</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def items(self):
+    return self._items.items()</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleDict.keys"><code class="name flex">
+<span>def <span class="ident">keys</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def keys(self):
+    return self._items.keys()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleList"><code class="flex name class">
+<span>class <span class="ident">MixedModuleList</span></span>
+<span>(</span><span>items: Iterable[Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Works the same as <code>torch.nn.ModuleList</code>, but allows to have non-module items.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MixedModuleList(torch.nn.Module):
+    &#34;&#34;&#34;Works the same as `torch.nn.ModuleList`, but allows to have non-module items.&#34;&#34;&#34;
+
+    def __init__(self, items: Iterable[Any]) -&gt; None:
+        super().__init__()
+
+        self._mods = torch.nn.ModuleList(
+            [mod for mod in items if isinstance(mod, torch.nn.Module)]
+        )
+        self._items = items
+
+    def __len__(self):
+        return len(self._items)
+
+    def __getitem__(self, idx: int):
+        return self._items[idx]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.MixedModuleList.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.MixedModuleList.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.MixedModuleList.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *input: Any) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def _forward_unimplemented(self, *input: Any) -&gt; None:
+    r&#34;&#34;&#34;Defines the computation performed at every call.
+
+    Should be overridden by all subclasses.
+
+    .. note::
+        Although the recipe for forward pass needs to be defined within
+        this function, one should call the :class:`Module` instance afterwards
+        instead of this since the former takes care of running the
+        registered hooks while the latter silently ignores them.
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext"><code class="flex name class">
+<span>class <span class="ident">NamedContext</span></span>
+<span>(</span><span>data: Optional[Dict[str, Any]] = None, **kwargs: Dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Container of named data. This helps applying and tracking data transformation in complex data pipelines.
+Used mostly to structure and transform data loader outputs.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>Optional[Dict[str, Any]]</code>, optional</dt>
+<dd>named variabled to put in context, by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NamedContext:
+    &#34;&#34;&#34;Container of named data. This helps applying and tracking data transformation in complex data pipelines.
+    Used mostly to structure and transform data loader outputs.
+    &#34;&#34;&#34;
+
+    @staticmethod
+    def batching(contexts: List[NamedContext]) -&gt; NamedContext:
+        &#34;&#34;&#34;Batch context variables.
+
+        Parameters
+        ----------
+        contexts : List[NamedContext]
+            List of contexts to batch the variables for. Each context should possess the exact same variable names.
+
+        Returns
+        -------
+        NamedContext
+            Named context having each variable being batched (as a list).
+
+        Raises
+        ------
+        RuntimeError
+            When provided context names do not exactly match.
+        &#34;&#34;&#34;
+        data = {}
+
+        if not len(contexts) &gt; 0:
+            return NamedContext(data)
+
+        names = contexts[0].names()
+
+        all_same_name_error_msg = (
+            &#34;each named context in list of batch should all have same names&#34;
+        )
+        if not all(len(ctx.names()) == len(names) for ctx in contexts):
+            raise RuntimeError(all_same_name_error_msg)
+
+        try:
+            data = {name: [ctx[name] for ctx in contexts] for name in names}
+        except KeyError:
+            raise RuntimeError(all_same_name_error_msg)
+
+        return NamedContext(data)
+
+    def __init__(
+        self, data: Optional[Dict[str, Any]] = None, **kwargs: Dict[str, Any]
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        data : Optional[Dict[str, Any]], optional
+            named variabled to put in context, by default None
+        &#34;&#34;&#34;
+        self._data = {}
+        if data is not None:
+            self._data.update(data)
+        self._data.update(kwargs)
+
+    def exists(self, name: str) -&gt; bool:
+        &#34;&#34;&#34;Return wether a variable name is in context or not.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable to check for.
+
+        Returns
+        -------
+        bool
+            True if `name` is in context, False otherwise.
+        &#34;&#34;&#34;
+        return name in self._data
+
+    __contains__ = exists
+
+    def ensure_exists(self, *names: List[str]) -&gt; None:
+        &#34;&#34;&#34;Make sure variable names exist in context. Raise exception otherwise.
+
+        Parameters
+        ----------
+        names : str
+            Names of variables to check for.
+
+        Raises
+        ------
+        RuntimeError
+            When at least one of the names is not in context.
+        &#34;&#34;&#34;
+        for name in names:
+            if not self.exists(name):
+                raise RuntimeError(f&#39;&#34;{name}&#34; should be present in named context&#39;)
+
+    def ensure_not_exists(self, *names: List[str]) -&gt; None:
+        &#34;&#34;&#34;Make sure variable names doesn&#39;t exist in context. Raise exception otherwise.
+
+        Parameters
+        ----------
+        names : str
+            Names of variables to check for.
+
+        Raises
+        ------
+        RuntimeError
+            When at least one of the names is not in context.
+        &#34;&#34;&#34;
+        for name in names:
+            if self.exists(name):
+                raise RuntimeError(f&#39;&#34;{name}&#34; should not be present in named context&#39;)
+
+    def rename(self, old_name: str, new_name: str) -&gt; NamedContext:
+        &#34;&#34;&#34;Rename variable in context.
+
+        Parameters
+        ----------
+        old_name : str
+            Name of variable to rename.
+        new_name : str
+            New name.
+
+        Returns
+        -------
+        NamedContext
+            New context with rename variable.
+        &#34;&#34;&#34;
+        self.ensure_exists(old_name)
+        if old_name == new_name:
+            return self
+        data = dict(self._data)
+        data[new_name] = data[old_name]
+        del data[old_name]
+        return NamedContext(data)
+
+    def add(self, name: str, value: Any, allow_exist=False) -&gt; NamedContext:
+        &#34;&#34;&#34;Add new variable with associated value to context.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable to add.
+        value : Any
+            Value of variable to add.
+        allow_exist : bool, optional
+            Determine if overwriting existing variable is ok, will raise exception otherwise, by default False.
+
+        Returns
+        -------
+        NamedContext
+            New context with added variable.
+        &#34;&#34;&#34;
+        if not allow_exist:
+            self.ensure_not_exists(name)
+        data = dict(self._data)
+        data[name] = value
+        return NamedContext(data)
+
+    def remove(self, *names: List[str], allow_not_exist=False) -&gt; NamedContext:
+        &#34;&#34;&#34;Remove existing variables in context.
+
+        Parameters
+        ----------
+        names : List[str]
+            Names of variables to remove.
+        allow_not_exist : bool, optional
+            Allow removal of non-existing variables, by default False
+
+        Returns
+        -------
+        NamedContext
+            New context minus the removed variables.
+        &#34;&#34;&#34;
+        if len(names) == 0:
+            return self
+
+        data = dict(self._data)
+
+        for name in names:
+            if not allow_not_exist:
+                self.ensure_exists(name)
+                del data[name]
+            else:
+                if name in data:
+                    del data[name]
+        return NamedContext(data)
+
+    def map(
+        self, fn: Callable[..., Any], *args: List[Any], **kwargs: Dict[str, Any]
+    ) -&gt; NamedContext:
+        &#34;&#34;&#34;Map-execute function for every variable in context.
+
+        Parameters
+        ----------
+        fn : Callable[..., Any]
+            Function to execute per variable `fn(var, *args, **kwargs)`.
+
+        Returns
+        -------
+        NamedContext
+            New context with variable transformed by provided function.
+        &#34;&#34;&#34;
+        data = {name: fn(el, *args, **kwargs) for name, el in self._data.items()}
+        return NamedContext(data)
+
+    def map_only(
+        self,
+        names: List[str],
+        fn: Callable[..., Any],
+        *args: List[Any],
+        **kwargs: Dict[str, Any],
+    ):
+        &#34;&#34;&#34;Map-execute function only for every provided variable present in context.
+
+        Parameters
+        ----------
+        names: List[str]
+            List of context names to apply the map to.
+        fn : Callable[..., Any]
+            Function to execute per variable `fn(var, *args, **kwargs)`.
+
+        Returns
+        -------
+        NamedContext
+            New context with variable transformed by provided function.
+        &#34;&#34;&#34;
+        data = dict(self._data)
+        data.update({name: fn(data[name], *args, **kwargs) for name in names})
+        return NamedContext(data)
+
+    def __getitem__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Get value of variable.
+
+        Parameters
+        ----------
+        name : str
+            Name of variable.
+
+        Returns
+        -------
+        Any
+            Value of variable.
+        &#34;&#34;&#34;
+        self.ensure_exists(name)
+        return self._data[name]
+
+    def __len__(self) -&gt; int:
+        return len(self._data)
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}({repr(self._data)})&#34;
+
+    def __eq__(self, other: NamedContext) -&gt; bool:
+        if not isinstance(other, NamedContext):
+            return False
+        return self._data == other._data
+
+    def names(self) -&gt; TupleType[str]:
+        &#34;&#34;&#34;Return names of all variables in context.
+
+        Returns
+        -------
+        Tuple[str]
+            Names of variables.
+        &#34;&#34;&#34;
+        return tuple(self._data.keys())</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.NamedContext.batching"><code class="name flex">
+<span>def <span class="ident">batching</span></span>(<span>contexts: List[<a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a>]) ‑> <a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Batch context variables.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>contexts</code></strong> :&ensp;<code>List[<a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a>]</code></dt>
+<dd>List of contexts to batch the variables for. Each context should possess the exact same variable names.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>Named context having each variable being batched (as a list).</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>When provided context names do not exactly match.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def batching(contexts: List[NamedContext]) -&gt; NamedContext:
+    &#34;&#34;&#34;Batch context variables.
+
+    Parameters
+    ----------
+    contexts : List[NamedContext]
+        List of contexts to batch the variables for. Each context should possess the exact same variable names.
+
+    Returns
+    -------
+    NamedContext
+        Named context having each variable being batched (as a list).
+
+    Raises
+    ------
+    RuntimeError
+        When provided context names do not exactly match.
+    &#34;&#34;&#34;
+    data = {}
+
+    if not len(contexts) &gt; 0:
+        return NamedContext(data)
+
+    names = contexts[0].names()
+
+    all_same_name_error_msg = (
+        &#34;each named context in list of batch should all have same names&#34;
+    )
+    if not all(len(ctx.names()) == len(names) for ctx in contexts):
+        raise RuntimeError(all_same_name_error_msg)
+
+    try:
+        data = {name: [ctx[name] for ctx in contexts] for name in names}
+    except KeyError:
+        raise RuntimeError(all_same_name_error_msg)
+
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.NamedContext.add"><code class="name flex">
+<span>def <span class="ident">add</span></span>(<span>self, name: str, value: Any, allow_exist=False) ‑> <a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add new variable with associated value to context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of variable to add.</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Value of variable to add.</dd>
+<dt><strong><code>allow_exist</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Determine if overwriting existing variable is ok, will raise exception otherwise, by default False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>New context with added variable.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add(self, name: str, value: Any, allow_exist=False) -&gt; NamedContext:
+    &#34;&#34;&#34;Add new variable with associated value to context.
+
+    Parameters
+    ----------
+    name : str
+        Name of variable to add.
+    value : Any
+        Value of variable to add.
+    allow_exist : bool, optional
+        Determine if overwriting existing variable is ok, will raise exception otherwise, by default False.
+
+    Returns
+    -------
+    NamedContext
+        New context with added variable.
+    &#34;&#34;&#34;
+    if not allow_exist:
+        self.ensure_not_exists(name)
+    data = dict(self._data)
+    data[name] = value
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.ensure_exists"><code class="name flex">
+<span>def <span class="ident">ensure_exists</span></span>(<span>self, *names: List[str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Make sure variable names exist in context. Raise exception otherwise.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>str</code></dt>
+<dd>Names of variables to check for.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>When at least one of the names is not in context.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ensure_exists(self, *names: List[str]) -&gt; None:
+    &#34;&#34;&#34;Make sure variable names exist in context. Raise exception otherwise.
+
+    Parameters
+    ----------
+    names : str
+        Names of variables to check for.
+
+    Raises
+    ------
+    RuntimeError
+        When at least one of the names is not in context.
+    &#34;&#34;&#34;
+    for name in names:
+        if not self.exists(name):
+            raise RuntimeError(f&#39;&#34;{name}&#34; should be present in named context&#39;)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.ensure_not_exists"><code class="name flex">
+<span>def <span class="ident">ensure_not_exists</span></span>(<span>self, *names: List[str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Make sure variable names doesn't exist in context. Raise exception otherwise.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>str</code></dt>
+<dd>Names of variables to check for.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>When at least one of the names is not in context.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ensure_not_exists(self, *names: List[str]) -&gt; None:
+    &#34;&#34;&#34;Make sure variable names doesn&#39;t exist in context. Raise exception otherwise.
+
+    Parameters
+    ----------
+    names : str
+        Names of variables to check for.
+
+    Raises
+    ------
+    RuntimeError
+        When at least one of the names is not in context.
+    &#34;&#34;&#34;
+    for name in names:
+        if self.exists(name):
+            raise RuntimeError(f&#39;&#34;{name}&#34; should not be present in named context&#39;)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.exists"><code class="name flex">
+<span>def <span class="ident">exists</span></span>(<span>self, name: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return wether a variable name is in context or not.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of variable to check for.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if <code>name</code> is in context, False otherwise.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def exists(self, name: str) -&gt; bool:
+    &#34;&#34;&#34;Return wether a variable name is in context or not.
+
+    Parameters
+    ----------
+    name : str
+        Name of variable to check for.
+
+    Returns
+    -------
+    bool
+        True if `name` is in context, False otherwise.
+    &#34;&#34;&#34;
+    return name in self._data</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.map"><code class="name flex">
+<span>def <span class="ident">map</span></span>(<span>self, fn: Callable[..., Any], *args: List[Any], **kwargs: Dict[str, Any]) ‑> <a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Map-execute function for every variable in context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>fn</code></strong> :&ensp;<code>Callable[&hellip;, Any]</code></dt>
+<dd>Function to execute per variable <code>fn(var, *args, **kwargs)</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>New context with variable transformed by provided function.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def map(
+    self, fn: Callable[..., Any], *args: List[Any], **kwargs: Dict[str, Any]
+) -&gt; NamedContext:
+    &#34;&#34;&#34;Map-execute function for every variable in context.
+
+    Parameters
+    ----------
+    fn : Callable[..., Any]
+        Function to execute per variable `fn(var, *args, **kwargs)`.
+
+    Returns
+    -------
+    NamedContext
+        New context with variable transformed by provided function.
+    &#34;&#34;&#34;
+    data = {name: fn(el, *args, **kwargs) for name, el in self._data.items()}
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.map_only"><code class="name flex">
+<span>def <span class="ident">map_only</span></span>(<span>self, names: List[str], fn: Callable[..., Any], *args: List[Any], **kwargs: Dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Map-execute function only for every provided variable present in context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>List of context names to apply the map to.</dd>
+<dt><strong><code>fn</code></strong> :&ensp;<code>Callable[&hellip;, Any]</code></dt>
+<dd>Function to execute per variable <code>fn(var, *args, **kwargs)</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>New context with variable transformed by provided function.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def map_only(
+    self,
+    names: List[str],
+    fn: Callable[..., Any],
+    *args: List[Any],
+    **kwargs: Dict[str, Any],
+):
+    &#34;&#34;&#34;Map-execute function only for every provided variable present in context.
+
+    Parameters
+    ----------
+    names: List[str]
+        List of context names to apply the map to.
+    fn : Callable[..., Any]
+        Function to execute per variable `fn(var, *args, **kwargs)`.
+
+    Returns
+    -------
+    NamedContext
+        New context with variable transformed by provided function.
+    &#34;&#34;&#34;
+    data = dict(self._data)
+    data.update({name: fn(data[name], *args, **kwargs) for name in names})
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.names"><code class="name flex">
+<span>def <span class="ident">names</span></span>(<span>self) ‑> <a title="silk.transforms.abstract.Tuple" href="#silk.transforms.abstract.Tuple">Tuple</a>[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return names of all variables in context.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.Tuple" href="#silk.transforms.abstract.Tuple">Tuple</a>[str]</code></dt>
+<dd>Names of variables.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def names(self) -&gt; TupleType[str]:
+    &#34;&#34;&#34;Return names of all variables in context.
+
+    Returns
+    -------
+    Tuple[str]
+        Names of variables.
+    &#34;&#34;&#34;
+    return tuple(self._data.keys())</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.remove"><code class="name flex">
+<span>def <span class="ident">remove</span></span>(<span>self, *names: List[str], allow_not_exist=False) ‑> <a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove existing variables in context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>Names of variables to remove.</dd>
+<dt><strong><code>allow_not_exist</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Allow removal of non-existing variables, by default False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>New context minus the removed variables.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove(self, *names: List[str], allow_not_exist=False) -&gt; NamedContext:
+    &#34;&#34;&#34;Remove existing variables in context.
+
+    Parameters
+    ----------
+    names : List[str]
+        Names of variables to remove.
+    allow_not_exist : bool, optional
+        Allow removal of non-existing variables, by default False
+
+    Returns
+    -------
+    NamedContext
+        New context minus the removed variables.
+    &#34;&#34;&#34;
+    if len(names) == 0:
+        return self
+
+    data = dict(self._data)
+
+    for name in names:
+        if not allow_not_exist:
+            self.ensure_exists(name)
+            del data[name]
+        else:
+            if name in data:
+                del data[name]
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+<dt id="silk.transforms.abstract.NamedContext.rename"><code class="name flex">
+<span>def <span class="ident">rename</span></span>(<span>self, old_name: str, new_name: str) ‑> <a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Rename variable in context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>old_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of variable to rename.</dd>
+<dt><strong><code>new_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>New name.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></dt>
+<dd>New context with rename variable.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rename(self, old_name: str, new_name: str) -&gt; NamedContext:
+    &#34;&#34;&#34;Rename variable in context.
+
+    Parameters
+    ----------
+    old_name : str
+        Name of variable to rename.
+    new_name : str
+        New name.
+
+    Returns
+    -------
+    NamedContext
+        New context with rename variable.
+    &#34;&#34;&#34;
+    self.ensure_exists(old_name)
+    if old_name == new_name:
+        return self
+    data = dict(self._data)
+    data[new_name] = data[old_name]
+    del data[old_name]
+    return NamedContext(data)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.transforms.abstract.Remove"><code class="flex name class">
+<span>class <span class="ident">Remove</span></span>
+<span>(</span><span>*names: List[str], allow_not_exist=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply remove operator to named context. See <code><a title="silk.transforms.abstract.NamedContext.remove" href="#silk.transforms.abstract.NamedContext.remove">NamedContext.remove()</a></code> for more details.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Remove(Transform):
+    &#34;&#34;&#34;Apply remove operator to named context. See `NamedContext.remove` for more details.&#34;&#34;&#34;
+
+    def __init__(self, *names: List[str], allow_not_exist=False) -&gt; None:
+        super().__init__()
+        self._names = names
+        self._allow_not_exist = allow_not_exist
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        return item.remove(*self._names, allow_not_exist=self._allow_not_exist)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Remove.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Remove.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Rename"><code class="flex name class">
+<span>class <span class="ident">Rename</span></span>
+<span>(</span><span>old_name: str, new_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform that renames a variable from a named context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>old_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of variable to rename.</dd>
+<dt><strong><code>new_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>New name of variable.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Rename(Transform):
+    &#34;&#34;&#34;Transform that renames a variable from a named context.&#34;&#34;&#34;
+
+    def __init__(self, old_name: str, new_name: str) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        old_name : str
+            Name of variable to rename.
+        new_name : str
+            New name of variable.
+        &#34;&#34;&#34;
+        super().__init__()
+        self._old_name = old_name
+        self._new_name = new_name
+
+    def __call__(self, item: NamedContext) -&gt; NamedContext:
+        &#34;&#34;&#34;Apply the renaming transform to named context.
+
+        Parameters
+        ----------
+        item : NamedContext
+            Input named context to apply the renaming to.
+
+        Returns
+        -------
+        NamedContext
+            New named context with renamed variable.
+        &#34;&#34;&#34;
+        ensure_is_instance(item, NamedContext)
+        return item.rename(self._old_name, self._new_name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Rename.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Rename.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Stochastic"><code class="flex name class">
+<span>class <span class="ident">Stochastic</span></span>
+<span>(</span><span>transform: <a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a>, probability: float = 0.5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply provided transform with given probability.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Stochastic(Transform):
+    &#34;&#34;&#34;Apply provided transform with given probability.&#34;&#34;&#34;
+
+    def __init__(self, transform: Transform, probability: float = 0.5) -&gt; None:
+        super().__init__()
+
+        self._transform = transform
+        self._probability = probability
+
+    def __call__(self, item: Any) -&gt; Any:
+        if random() &lt; self._probability:
+            return self._transform(item)
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Stochastic.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Stochastic.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.ToNamedContext"><code class="flex name class">
+<span>class <span class="ident">ToNamedContext</span></span>
+<span>(</span><span>*names: List[Optional[str]], single_item: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform tuples into named contexts. This operator is very useful as a first step in transforming data coming from a data loader since data loaders output tuples of data.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">from silk.transforms.abstract import ToNamedContext
+
+transf = ToNamedContext(&quot;a&quot;, &quot;b&quot;, None, &quot;c&quot;)
+ctx = transf((0, 1, 2, 3))
+
+print(ctx)
+# &gt;&gt;&gt; NamedContext({'a': 0, 'b': 1, 'c': 3})
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>List[Optional[str]]</code></dt>
+<dd>Names to associate to each tuple position. <code>None</code> can be used to exclude tuple values.
+The ordering of names has to match the ordering of tuples.</dd>
+<dt><strong><code>single_item</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Specify if we should handle input as a single item (=True), or as a tuple (=False), default is False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ToNamedContext(Transform):
+    &#34;&#34;&#34;Transform tuples into named contexts. This operator is very useful as a first step in transforming data coming from a data loader since data loaders output tuples of data.
+
+    Examples
+    --------
+
+    ```python
+    from silk.transforms.abstract import ToNamedContext
+
+    transf = ToNamedContext(&#34;a&#34;, &#34;b&#34;, None, &#34;c&#34;)
+    ctx = transf((0, 1, 2, 3))
+
+    print(ctx)
+    # &gt;&gt;&gt; NamedContext({&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 3})
+    ```
+
+    &#34;&#34;&#34;
+
+    def __init__(self, *names: List[Optional[str]], single_item: bool = False) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        names : List[Optional[str]]
+            Names to associate to each tuple position. `None` can be used to exclude tuple values.
+            The ordering of names has to match the ordering of tuples.
+
+        single_item : bool
+            Specify if we should handle input as a single item (=True), or as a tuple (=False), default is False.
+
+        &#34;&#34;&#34;
+        super().__init__()
+        self._names = names
+        self._single_item = single_item
+
+        if not (len(self._names) &gt; 0):
+            raise RuntimeError(
+                &#34;empty name list provided, should at least contain one element&#34;
+            )
+
+        if self._single_item and len(self._names) != 1:
+            raise RuntimeError(
+                &#34;only one name should be provided when `single_item` option is enabled&#34;
+            )
+
+    def __call__(self, item: Union[TupleType[Any], Any]) -&gt; NamedContext:
+        &#34;&#34;&#34;Convert a single item or tuple to named context.
+
+        Parameters
+        ----------
+        item : Union[TupleType[Any], Any]
+            Tuple or item to convert.
+
+        Returns
+        -------
+        NamedContext
+            Named context created from tuple or item.
+
+        Raises
+        ------
+        RuntimeError
+            When tuple&#39;s size doesn&#39;t match the size of the provided names.
+        &#34;&#34;&#34;
+        if not self._single_item:
+            ensure_is_instance(item, tuple)
+        else:
+            item = (item,)
+
+        if len(self._names) != len(item):
+            raise RuntimeError(
+                f&#34;tuple item size (={len(item)}) doesn&#39;t match the number of provided names (={len(self._names)})&#34;
+            )
+        return NamedContext(
+            {name: item[i] for i, name in enumerate(self._names) if name is not None}
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.ToNamedContext.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.ToNamedContext.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.ToNamedContext.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *input: Any) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def _forward_unimplemented(self, *input: Any) -&gt; None:
+    r&#34;&#34;&#34;Defines the computation performed at every call.
+
+    Should be overridden by all subclasses.
+
+    .. note::
+        Although the recipe for forward pass needs to be defined within
+        this function, one should call the :class:`Module` instance afterwards
+        instead of this since the former takes care of running the
+        registered hooks while the latter silently ignores them.
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.transforms.abstract.ToNamedContext"><code class="flex name class">
+<span>class <span class="ident">Name</span></span>
+<span>(</span><span>*names: List[Optional[str]], single_item: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform tuples into named contexts. This operator is very useful as a first step in transforming data coming from a data loader since data loaders output tuples of data.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">from silk.transforms.abstract import ToNamedContext
+
+transf = ToNamedContext(&quot;a&quot;, &quot;b&quot;, None, &quot;c&quot;)
+ctx = transf((0, 1, 2, 3))
+
+print(ctx)
+# &gt;&gt;&gt; NamedContext({'a': 0, 'b': 1, 'c': 3})
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>names</code></strong> :&ensp;<code>List[Optional[str]]</code></dt>
+<dd>Names to associate to each tuple position. <code>None</code> can be used to exclude tuple values.
+The ordering of names has to match the ordering of tuples.</dd>
+<dt><strong><code>single_item</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Specify if we should handle input as a single item (=True), or as a tuple (=False), default is False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ToNamedContext(Transform):
+    &#34;&#34;&#34;Transform tuples into named contexts. This operator is very useful as a first step in transforming data coming from a data loader since data loaders output tuples of data.
+
+    Examples
+    --------
+
+    ```python
+    from silk.transforms.abstract import ToNamedContext
+
+    transf = ToNamedContext(&#34;a&#34;, &#34;b&#34;, None, &#34;c&#34;)
+    ctx = transf((0, 1, 2, 3))
+
+    print(ctx)
+    # &gt;&gt;&gt; NamedContext({&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 3})
+    ```
+
+    &#34;&#34;&#34;
+
+    def __init__(self, *names: List[Optional[str]], single_item: bool = False) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        names : List[Optional[str]]
+            Names to associate to each tuple position. `None` can be used to exclude tuple values.
+            The ordering of names has to match the ordering of tuples.
+
+        single_item : bool
+            Specify if we should handle input as a single item (=True), or as a tuple (=False), default is False.
+
+        &#34;&#34;&#34;
+        super().__init__()
+        self._names = names
+        self._single_item = single_item
+
+        if not (len(self._names) &gt; 0):
+            raise RuntimeError(
+                &#34;empty name list provided, should at least contain one element&#34;
+            )
+
+        if self._single_item and len(self._names) != 1:
+            raise RuntimeError(
+                &#34;only one name should be provided when `single_item` option is enabled&#34;
+            )
+
+    def __call__(self, item: Union[TupleType[Any], Any]) -&gt; NamedContext:
+        &#34;&#34;&#34;Convert a single item or tuple to named context.
+
+        Parameters
+        ----------
+        item : Union[TupleType[Any], Any]
+            Tuple or item to convert.
+
+        Returns
+        -------
+        NamedContext
+            Named context created from tuple or item.
+
+        Raises
+        ------
+        RuntimeError
+            When tuple&#39;s size doesn&#39;t match the size of the provided names.
+        &#34;&#34;&#34;
+        if not self._single_item:
+            ensure_is_instance(item, tuple)
+        else:
+            item = (item,)
+
+        if len(self._names) != len(item):
+            raise RuntimeError(
+                f&#34;tuple item size (={len(item)}) doesn&#39;t match the number of provided names (={len(self._names)})&#34;
+            )
+        return NamedContext(
+            {name: item[i] for i, name in enumerate(self._names) if name is not None}
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.ToNamedContext.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.ToNamedContext.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.abstract.Transform"><code class="flex name class">
+<span>class <span class="ident">Transform</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract representation of a transform, which is essentially a parametrized function taking one input.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Transform(torch.nn.Module):
+    &#34;&#34;&#34;Abstract representation of a transform, which is essentially a parametrized function taking one input.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: Any) -&gt; Any:
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Add" href="#silk.transforms.abstract.Add">Add</a></li>
+<li><a title="silk.transforms.abstract.Compose" href="#silk.transforms.abstract.Compose">Compose</a></li>
+<li><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></li>
+<li><a title="silk.transforms.abstract.Map" href="#silk.transforms.abstract.Map">Map</a></li>
+<li><a title="silk.transforms.abstract.MapOnly" href="#silk.transforms.abstract.MapOnly">MapOnly</a></li>
+<li><a title="silk.transforms.abstract.Remove" href="#silk.transforms.abstract.Remove">Remove</a></li>
+<li><a title="silk.transforms.abstract.Rename" href="#silk.transforms.abstract.Rename">Rename</a></li>
+<li><a title="silk.transforms.abstract.Stochastic" href="#silk.transforms.abstract.Stochastic">Stochastic</a></li>
+<li><a title="silk.transforms.abstract.ToNamedContext" href="#silk.transforms.abstract.ToNamedContext">ToNamedContext</a></li>
+<li><a title="silk.transforms.cv.homography.RandomHomographicSampler" href="cv/homography.html#silk.transforms.cv.homography.RandomHomographicSampler">RandomHomographicSampler</a></li>
+<li><a title="silk.transforms.cv.image.CHWToHWC" href="cv/image.html#silk.transforms.cv.image.CHWToHWC">CHWToHWC</a></li>
+<li><a title="silk.transforms.cv.image.GaussianNoise" href="cv/image.html#silk.transforms.cv.image.GaussianNoise">GaussianNoise</a></li>
+<li><a title="silk.transforms.cv.image.HWCToCHW" href="cv/image.html#silk.transforms.cv.image.HWCToCHW">HWCToCHW</a></li>
+<li><a title="silk.transforms.cv.image.MotionBlur" href="cv/image.html#silk.transforms.cv.image.MotionBlur">MotionBlur</a></li>
+<li><a title="silk.transforms.cv.image.RandomBrightness" href="cv/image.html#silk.transforms.cv.image.RandomBrightness">RandomBrightness</a></li>
+<li><a title="silk.transforms.cv.image.RandomContrast" href="cv/image.html#silk.transforms.cv.image.RandomContrast">RandomContrast</a></li>
+<li><a title="silk.transforms.cv.image.RandomMotionBlur" href="cv/image.html#silk.transforms.cv.image.RandomMotionBlur">RandomMotionBlur</a></li>
+<li><a title="silk.transforms.cv.image.Resize" href="cv/image.html#silk.transforms.cv.image.Resize">Resize</a></li>
+<li><a title="silk.transforms.cv.image.SpeckleNoise" href="cv/image.html#silk.transforms.cv.image.SpeckleNoise">SpeckleNoise</a></li>
+<li><a title="silk.transforms.cv.video.GetAllClip" href="cv/video.html#silk.transforms.cv.video.GetAllClip">GetAllClip</a></li>
+<li><a title="silk.transforms.cv.video.GetClipVideoWrapper" href="cv/video.html#silk.transforms.cv.video.GetClipVideoWrapper">GetClipVideoWrapper</a></li>
+<li><a title="silk.transforms.cv.video.Streamed" href="cv/video.html#silk.transforms.cv.video.Streamed">Streamed</a></li>
+<li><a title="silk.transforms.cv.video.VideoToImageBatch" href="cv/video.html#silk.transforms.cv.video.VideoToImageBatch">VideoToImageBatch</a></li>
+<li><a title="silk.transforms.dataset.LabelStringToClassId" href="dataset.html#silk.transforms.dataset.LabelStringToClassId">LabelStringToClassId</a></li>
+<li><a title="silk.transforms.tensor.AutoBatch" href="tensor.html#silk.transforms.tensor.AutoBatch">AutoBatch</a></li>
+<li><a title="silk.transforms.tensor.Clamp" href="tensor.html#silk.transforms.tensor.Clamp">Clamp</a></li>
+<li><a title="silk.transforms.tensor.NormalizeRange" href="tensor.html#silk.transforms.tensor.NormalizeRange">NormalizeRange</a></li>
+<li><a title="silk.transforms.tensor.Shape" href="tensor.html#silk.transforms.tensor.Shape">Shape</a></li>
+<li><a title="silk.transforms.tensor.ToDevice" href="tensor.html#silk.transforms.tensor.ToDevice">ToDevice</a></li>
+<li><a title="silk.transforms.tensor.ToTensor" href="tensor.html#silk.transforms.tensor.ToTensor">ToTensor</a></li>
+<li><a title="silk.transforms.tensor.Unbatch" href="tensor.html#silk.transforms.tensor.Unbatch">Unbatch</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Transform.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Transform.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.transforms.abstract.Transform.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *input: Any) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def _forward_unimplemented(self, *input: Any) -&gt; None:
+    r&#34;&#34;&#34;Defines the computation performed at every call.
+
+    Should be overridden by all subclasses.
+
+    .. note::
+        Although the recipe for forward pass needs to be defined within
+        this function, one should call the :class:`Module` instance afterwards
+        instead of this since the former takes care of running the
+        registered hooks while the latter silently ignores them.
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.transforms.abstract.Tuple"><code class="flex name class">
+<span>class <span class="ident">Tuple</span></span>
+<span>(</span><span>name: Union[str, None], *args_keys: List[Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply tuple operator to named context.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>Union[str, None]</code></dt>
+<dd>Name of the variable where the output will be stored.
+If None, the result is directly returned, discarding the NamedContext.</dd>
+<dt><strong><code>args_keys</code></strong> :&ensp;<code>List[Any]</code></dt>
+<dd>Arguments to pass to the method. String values starting with a "@" will be replaced by corresponding named context variable value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tuple(Lambda):
+    &#34;&#34;&#34;Apply tuple operator to named context.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        name: Union[str, None],
+        *args_keys: List[Any],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        name : Union[str, None]
+            Name of the variable where the output will be stored.
+            If None, the result is directly returned, discarding the NamedContext.
+        args_keys: List[Any]
+            Arguments to pass to the method. String values starting with a &#34;@&#34; will be replaced by corresponding named context variable value.
+        &#34;&#34;&#34;
+
+        def make_tuple(*args):
+            return tuple(args)
+
+        super().__init__(name, make_tuple, *args_keys)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></li>
+<li><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.abstract.Tuple.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.abstract.Tuple.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Lambda.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.transforms" href="index.html">silk.transforms</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.random" href="#silk.transforms.abstract.random">random</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.transforms.abstract.Add" href="#silk.transforms.abstract.Add">Add</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Add.dump_patches" href="#silk.transforms.abstract.Add.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Add.training" href="#silk.transforms.abstract.Add.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Compose" href="#silk.transforms.abstract.Compose">Compose</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Compose.dump_patches" href="#silk.transforms.abstract.Compose.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Compose.training" href="#silk.transforms.abstract.Compose.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Lambda" href="#silk.transforms.abstract.Lambda">Lambda</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Lambda.dump_patches" href="#silk.transforms.abstract.Lambda.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Lambda.name" href="#silk.transforms.abstract.Lambda.name">name</a></code></li>
+<li><code><a title="silk.transforms.abstract.Lambda.training" href="#silk.transforms.abstract.Lambda.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Map" href="#silk.transforms.abstract.Map">Map</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Map.dump_patches" href="#silk.transforms.abstract.Map.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Map.training" href="#silk.transforms.abstract.Map.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.MapOnly" href="#silk.transforms.abstract.MapOnly">MapOnly</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.MapOnly.dump_patches" href="#silk.transforms.abstract.MapOnly.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.MapOnly.training" href="#silk.transforms.abstract.MapOnly.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.MethodCall" href="#silk.transforms.abstract.MethodCall">MethodCall</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.MethodCall.dump_patches" href="#silk.transforms.abstract.MethodCall.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.MethodCall.training" href="#silk.transforms.abstract.MethodCall.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.MixedModuleDict" href="#silk.transforms.abstract.MixedModuleDict">MixedModuleDict</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.MixedModuleDict.dump_patches" href="#silk.transforms.abstract.MixedModuleDict.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleDict.forward" href="#silk.transforms.abstract.MixedModuleDict.forward">forward</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleDict.items" href="#silk.transforms.abstract.MixedModuleDict.items">items</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleDict.keys" href="#silk.transforms.abstract.MixedModuleDict.keys">keys</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleDict.training" href="#silk.transforms.abstract.MixedModuleDict.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.MixedModuleList" href="#silk.transforms.abstract.MixedModuleList">MixedModuleList</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.MixedModuleList.dump_patches" href="#silk.transforms.abstract.MixedModuleList.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleList.forward" href="#silk.transforms.abstract.MixedModuleList.forward">forward</a></code></li>
+<li><code><a title="silk.transforms.abstract.MixedModuleList.training" href="#silk.transforms.abstract.MixedModuleList.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.NamedContext" href="#silk.transforms.abstract.NamedContext">NamedContext</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.transforms.abstract.NamedContext.add" href="#silk.transforms.abstract.NamedContext.add">add</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.batching" href="#silk.transforms.abstract.NamedContext.batching">batching</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.ensure_exists" href="#silk.transforms.abstract.NamedContext.ensure_exists">ensure_exists</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.ensure_not_exists" href="#silk.transforms.abstract.NamedContext.ensure_not_exists">ensure_not_exists</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.exists" href="#silk.transforms.abstract.NamedContext.exists">exists</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.map" href="#silk.transforms.abstract.NamedContext.map">map</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.map_only" href="#silk.transforms.abstract.NamedContext.map_only">map_only</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.names" href="#silk.transforms.abstract.NamedContext.names">names</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.remove" href="#silk.transforms.abstract.NamedContext.remove">remove</a></code></li>
+<li><code><a title="silk.transforms.abstract.NamedContext.rename" href="#silk.transforms.abstract.NamedContext.rename">rename</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Remove" href="#silk.transforms.abstract.Remove">Remove</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Remove.dump_patches" href="#silk.transforms.abstract.Remove.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Remove.training" href="#silk.transforms.abstract.Remove.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Rename" href="#silk.transforms.abstract.Rename">Rename</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Rename.dump_patches" href="#silk.transforms.abstract.Rename.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Rename.training" href="#silk.transforms.abstract.Rename.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Stochastic" href="#silk.transforms.abstract.Stochastic">Stochastic</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Stochastic.dump_patches" href="#silk.transforms.abstract.Stochastic.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Stochastic.training" href="#silk.transforms.abstract.Stochastic.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.ToNamedContext" href="#silk.transforms.abstract.ToNamedContext">ToNamedContext</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.ToNamedContext.dump_patches" href="#silk.transforms.abstract.ToNamedContext.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.ToNamedContext.forward" href="#silk.transforms.abstract.ToNamedContext.forward">forward</a></code></li>
+<li><code><a title="silk.transforms.abstract.ToNamedContext.training" href="#silk.transforms.abstract.ToNamedContext.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.ToNamedContext" href="#silk.transforms.abstract.ToNamedContext">ToNamedContext</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.ToNamedContext.dump_patches" href="#silk.transforms.abstract.ToNamedContext.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.ToNamedContext.training" href="#silk.transforms.abstract.ToNamedContext.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Transform" href="#silk.transforms.abstract.Transform">Transform</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Transform.dump_patches" href="#silk.transforms.abstract.Transform.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+<li><code><a title="silk.transforms.abstract.Transform.training" href="#silk.transforms.abstract.Transform.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.abstract.Tuple" href="#silk.transforms.abstract.Tuple">Tuple</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.abstract.Tuple.dump_patches" href="#silk.transforms.abstract.Tuple.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.abstract.Tuple.training" href="#silk.transforms.abstract.Tuple.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+defaults:
+  - 98-2-scan-split
+  - _self_
+
+scan_filter:
+  scan_uids:
+    _args_: [ASSETS, "datasets", "scannet", "scan_ids_training.json"]

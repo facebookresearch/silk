@@ -1,0 +1,5 @@
+defaults:
+  - defaults
+
+optimizer_class: torch.optim.SGD
+lr: 0.001

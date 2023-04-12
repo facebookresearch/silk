@@ -1,0 +1,18 @@
+defaults:
+  - defaults
+
+command: "benchmark"
+
+model: ???
+
+loader:
+  _target_: torch.utils.data.DataLoader
+  dataset: ???
+  shuffle: false
+
+benchmarker:
+  _target_: silk.engine.loop.Benchmarker
+  metric_updates: ???
+  gpus: ${ref:default.ngpus}
+
+metrics: ???

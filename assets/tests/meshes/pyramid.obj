@@ -1,0 +1,24 @@
+# Object Export From Tinkercad Server 2015
+
+mtllib pyramid.mtl
+
+o obj_0
+v -0.0183 		-0.10758 		0.2
+v -0.0183 		-0.249 		0
+v 0.10417 		-0.03687 		0
+v -0.14078 		-0.03687 		0
+# 4 vertices
+
+g group_0_16768282
+
+usemtl color_16768282
+s 0
+
+f 1 	2 	3
+f 3 	4 	1
+f 3 	2 	4
+f 4 	2 	1
+# 4 faces
+
+ #end of obj_0
+

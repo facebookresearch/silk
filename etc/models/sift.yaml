@@ -1,0 +1,2 @@
+_target_: silk.models.sift.SIFT
+device: "cuda:0"

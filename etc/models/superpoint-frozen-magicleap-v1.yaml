@@ -1,0 +1,38 @@
+defaults:
+  - frozen
+  - /models@model: superpoint
+  - _self_
+
+model:
+  model:
+    use_batchnorm: false
+
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [ASSETS, "tests", "magicpoint", "superpoint_v1.pth"]
+state_dict_key: null
+map_name:
+  "conv1a.weight": "magicpoint.backbone._backbone.l1.0.0.weight"
+  "conv1a.bias": "magicpoint.backbone._backbone.l1.0.0.bias"
+  "conv1b.weight": "magicpoint.backbone._backbone.l1.1.0.weight"
+  "conv1b.bias": "magicpoint.backbone._backbone.l1.1.0.bias"
+  "conv2a.weight": "magicpoint.backbone._backbone.l2.0.0.weight"
+  "conv2a.bias": "magicpoint.backbone._backbone.l2.0.0.bias"
+  "conv2b.weight": "magicpoint.backbone._backbone.l2.1.0.weight"
+  "conv2b.bias": "magicpoint.backbone._backbone.l2.1.0.bias"
+  "conv3a.weight": "magicpoint.backbone._backbone.l3.0.0.weight"
+  "conv3a.bias": "magicpoint.backbone._backbone.l3.0.0.bias"
+  "conv3b.weight": "magicpoint.backbone._backbone.l3.1.0.weight"
+  "conv3b.bias": "magicpoint.backbone._backbone.l3.1.0.bias"
+  "conv4a.weight": "magicpoint.backbone._backbone.l4.0.0.weight"
+  "conv4a.bias": "magicpoint.backbone._backbone.l4.0.0.bias"
+  "conv4b.weight": "magicpoint.backbone._backbone.l4.1.0.weight"
+  "conv4b.bias": "magicpoint.backbone._backbone.l4.1.0.bias"
+  "convPa.weight": "magicpoint.backbone._heads._mods.logits._detH1.0.weight"
+  "convPa.bias": "magicpoint.backbone._heads._mods.logits._detH1.0.bias"
+  "convPb.weight": "magicpoint.backbone._heads._mods.logits._detH2.0.weight"
+  "convPb.bias": "magicpoint.backbone._heads._mods.logits._detH2.0.bias"
+  "convDa.weight": "magicpoint.backbone._heads._mods.raw_descriptors._desH1.0.weight"
+  "convDa.bias": "magicpoint.backbone._heads._mods.raw_descriptors._desH1.0.bias"
+  "convDb.weight": "magicpoint.backbone._heads._mods.raw_descriptors._desH2.0.weight"
+  "convDb.bias": "magicpoint.backbone._heads._mods.raw_descriptors._desH2.0.bias"

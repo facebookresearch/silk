@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.cli.visualization API documentation</title>
+<meta name="description" content="CLI function for PointTracking video visualization tool." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.cli.visualization</code></h1>
+</header>
+<section id="section-intro">
+<p>CLI function for PointTracking video visualization tool.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+CLI function for PointTracking video visualization tool.
+&#34;&#34;&#34;
+import os
+
+import cv2
+import numpy as np
+import pytorch_lightning as pl
+import torch
+from omegaconf import DictConfig, OmegaConf
+from silk.config.core import instantiate_and_ensure_is_instance
+from silk.models.pointtracker import PointTracker
+from silk.models.superpoint_utils import _process_output_new
+from tqdm import tqdm
+
+
+def load_video_frames_opencv(video_file_path, H, W):
+    &#34;&#34;&#34;
+    Load a list of frames from a video and prepare each frame in the list
+    for input to the SuperPoint model.
+
+    Args:
+        video_file_path (str): the path to the video file
+        H (int): the height of the reshaped video
+        W (int): the width of the reshaped video
+
+    Returns:
+        model_input_frames (list): a list of tensors for each frame
+            where each tensor has shape (1, 1, H, W) for input to the model
+    &#34;&#34;&#34;
+    video = cv2.VideoCapture(video_file_path)
+
+    frame_list = []
+    success, frame = video.read()
+
+    while success:
+        frame_list.append(frame)
+        success, frame = video.read()
+
+    model_input_frames = []
+    for frame in frame_list:
+        input_image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        input_image = cv2.resize(input_image, (W, H), interpolation=cv2.INTER_AREA)
+
+        input_image = input_image.astype(&#34;float32&#34;) / 255.0
+        input_image = torch.from_numpy(input_image)
+        input_image = input_image.view(1, 1, H, W)
+
+        model_input_frames.append(input_image)
+
+    return model_input_frames
+
+
+def draw_tracks(image, tracks, all_points, offsets):
+    &#34;&#34;&#34;
+    Draw the tracks from the point tracker on an image.
+
+    Args:
+        image (numpy): an image array with size H x W x 3 on which
+            the tracks are drawn
+        tracks (numpy): tracks matrix of size num_tracks x (2+max_length)
+            containing track data
+        all_points (list): list of most recently tracked points
+        offsets (tensor): num_tracks length array with integer offset locations
+
+    Returns:
+        image (numpy): an image with the drawn tracks
+    &#34;&#34;&#34;
+    # store the number of points
+    all_points = [elem.detach().numpy() for elem in all_points]
+    num_points = len(all_points)
+
+    # width of track and point circles to be drawn
+    stroke = 1
+
+    # colormap for visualization
+    colormap = np.array(
+        [
+            [0.0, 0.0, 0.5],
+            [0.0, 0.0, 0.99910873],
+            [0.0, 0.37843137, 1.0],
+            [0.0, 0.83333333, 1.0],
+            [0.30044276, 1.0, 0.66729918],
+            [0.66729918, 1.0, 0.30044276],
+            [1.0, 0.90123457, 0.0],
+            [1.0, 0.48002905, 0.0],
+            [0.99910873, 0.07334786, 0.0],
+            [0.5, 0.0, 0.0],
+        ]
+    )
+
+    # iterate through each track and draw the point and track line
+    for track in tracks:
+        # choose one of 10 possible colors corresponding to the value of the
+        # avg_desc_score for each track (with greater scores closer to red and lower
+        # scores closer to blue)
+        color = colormap[int(np.clip(np.floor(track[1] * 10), 0, 9)), :] * 255
+
+        # iterate through each of the points predicted on the image
+        for i in range(num_points - 1):
+            # skip tracks if there was no tracked point
+            if track[i + 2] == -1 or track[i + 3] == -1:
+                continue
+
+            offset1 = offsets[i]
+            offset2 = offsets[i + 1]
+
+            idx1 = int(track[i + 2] - offset1)
+            idx2 = int(track[i + 3] - offset2)
+
+            pt1 = all_points[i][:2, idx1]
+            pt2 = all_points[i + 1][:2, idx2]
+
+            p1 = (int(round(pt1[0])), int(round(pt1[1])))
+            p2 = (int(round(pt2[0])), int(round(pt2[1])))
+
+            cv2.line(image, p1, p2, color, thickness=stroke, lineType=16)
+
+            # draw end points of each track
+            if i == num_points - 2:
+                clr2 = (255, 0, 0)
+                cv2.circle(image, p2, stroke, clr2, -1, lineType=16)
+
+    return image
+
+
+def display_point_tracks(
+    image, tracks, dist_thresh, all_points, offsets, display_scale=2
+):
+    &#34;&#34;&#34;
+    Displays the predicted points and tracks on one image.
+
+    Args:
+        image (tensor): the image from the frame list as output by the
+            model on which to draw tracks
+        tracks (tensor): the tracks from the pointtracker
+        dist_thresh (int): the distance threshold from the point tracker
+        all_points (list): most recently tracked points list from the point tracker
+        offsets (tensor): tensor of offset locations from the point tracker
+        display_scale (int): the factor to scale output visualization (paper&#39;s
+            default is 2)
+
+    Returns:
+        output_image (cv2 image): the image with the points and tracks
+    &#34;&#34;&#34;
+    # convert image and tracks to numpy for drawing
+    image = image.squeeze(dim=0).squeeze(dim=0).detach().numpy()
+    tracks = tracks.detach().numpy()
+
+    H = image.shape[0]
+    W = image.shape[1]
+
+    output_img_tracks = (np.dstack((image, image, image)) * 255.0).astype(&#34;uint8&#34;)
+
+    # normalize track scores to be in the range [0, 1]
+    tracks[:, 1] /= float(dist_thresh)
+
+    # update the output_img_tracks image with the tracks
+    tracks_image = draw_tracks(output_img_tracks, tracks, all_points, offsets)
+
+    # resize final output image
+    output_image = cv2.resize(tracks_image, (display_scale * W, display_scale * H))
+
+    return output_image
+
+
+def create_visualizations(
+    video, model, pointtracker, min_length=2, height=112, width=152
+):
+    &#34;&#34;&#34;
+    Create the video with visualized point tracks.
+
+    This function does the following:
+        1. Load in the video file
+        2. Run the SuperPoint model on each frame
+        3. Get the tracks from the point tracker for each frame
+        4. Draw the point tracks on frame
+        5. Get an output list containing the visualized point tracks
+        for all frames in the input video
+
+    Args:
+        video (cv2 video): the input video
+        model (SuperPoint): the superpoint model
+        pointtracker (PointTracker): a pointtracker object
+        min_length (int): minimum track length
+        height (int): resized height dimension
+        width (int): resized width dimension
+    &#34;&#34;&#34;
+    # get the video frames
+    frame_list = load_video_frames_opencv(video, height, width)
+
+    demo_output = []
+
+    for img in tqdm(frame_list):
+        # run the model on the image
+        output_points, output_desc = _process_output_new(model, img)
+
+        # add points and descriptors to the pointtracker
+        pointtracker.update(output_points[:, [1, 0]].T, output_desc.T)
+
+        # get tracks for points which were matched successfully across all frames
+        tracks = pointtracker.get_tracks(min_length=min_length)
+
+        # display point tracks overlayed on top of input image
+        output_image = display_point_tracks(
+            img,
+            tracks,
+            pointtracker.dist_thresh,
+            pointtracker.all_points,
+            pointtracker.get_offsets(),
+        )
+
+        demo_output.append(output_image)
+
+    return demo_output
+
+
+def save_video(frame_list, output_location, output_vid_name=&#34;output_vid.mp4&#34;):
+    &#34;&#34;&#34;
+    Takes a list of images and converts them to an mp4 file saved
+    at location output_dir.
+
+    Args:
+        frame_list (list): a list of cv2 images to be converted to a video
+        output_location (str): the file path for the output video
+        output_vid_name (optional str): the name for the output video
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    img = frame_list[0]
+    height, width, layers = img.shape
+    frames_per_second = 15  # slower output videos
+
+    # create the directory if it does not exist
+    os.makedirs(output_location, exist_ok=True)
+
+    output_file = cv2.VideoWriter(
+        os.path.join(output_location, output_vid_name),
+        fourcc=cv2.VideoWriter_fourcc(*&#34;mp4v&#34;),
+        fps=float(frames_per_second),
+        frameSize=(width, height),
+    )
+
+    # write the frames to the video writer
+    for frame in frame_list:
+        output_file.write(frame)
+
+    output_file.release()
+
+
+def main(config: DictConfig):
+    # load model
+    model = instantiate_and_ensure_is_instance(config.mode.model, pl.LightningModule)
+
+    # create the point tracker
+    tracker = PointTracker(
+        max_length=config.mode.max_length, dist_thresh=config.mode.dist_thresh
+    )
+
+    # create the visualization video
+    demo_output = create_visualizations(config.mode.video_file_path, model, tracker)
+
+    # optionally save the output video
+    if config.mode.save_output:
+        save_video(
+            demo_output,
+            config.mode.save_location,
+            output_vid_name=config.mode.save_file_name,
+        )
+
+    return {&#34;config&#34;: OmegaConf.to_object(config.mode.model)}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.cli.visualization.create_visualizations"><code class="name flex">
+<span>def <span class="ident">create_visualizations</span></span>(<span>video, model, pointtracker, min_length=2, height=112, width=152)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the video with visualized point tracks.</p>
+<p>This function does the following:
+1. Load in the video file
+2. Run the SuperPoint model on each frame
+3. Get the tracks from the point tracker for each frame
+4. Draw the point tracks on frame
+5. Get an output list containing the visualized point tracks
+for all frames in the input video</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>video</code></strong> :&ensp;<code>cv2 video</code></dt>
+<dd>the input video</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>SuperPoint</code></dt>
+<dd>the superpoint model</dd>
+<dt><strong><code>pointtracker</code></strong> :&ensp;<code>PointTracker</code></dt>
+<dd>a pointtracker object</dd>
+<dt><strong><code>min_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum track length</dd>
+<dt><strong><code>height</code></strong> :&ensp;<code>int</code></dt>
+<dd>resized height dimension</dd>
+<dt><strong><code>width</code></strong> :&ensp;<code>int</code></dt>
+<dd>resized width dimension</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_visualizations(
+    video, model, pointtracker, min_length=2, height=112, width=152
+):
+    &#34;&#34;&#34;
+    Create the video with visualized point tracks.
+
+    This function does the following:
+        1. Load in the video file
+        2. Run the SuperPoint model on each frame
+        3. Get the tracks from the point tracker for each frame
+        4. Draw the point tracks on frame
+        5. Get an output list containing the visualized point tracks
+        for all frames in the input video
+
+    Args:
+        video (cv2 video): the input video
+        model (SuperPoint): the superpoint model
+        pointtracker (PointTracker): a pointtracker object
+        min_length (int): minimum track length
+        height (int): resized height dimension
+        width (int): resized width dimension
+    &#34;&#34;&#34;
+    # get the video frames
+    frame_list = load_video_frames_opencv(video, height, width)
+
+    demo_output = []
+
+    for img in tqdm(frame_list):
+        # run the model on the image
+        output_points, output_desc = _process_output_new(model, img)
+
+        # add points and descriptors to the pointtracker
+        pointtracker.update(output_points[:, [1, 0]].T, output_desc.T)
+
+        # get tracks for points which were matched successfully across all frames
+        tracks = pointtracker.get_tracks(min_length=min_length)
+
+        # display point tracks overlayed on top of input image
+        output_image = display_point_tracks(
+            img,
+            tracks,
+            pointtracker.dist_thresh,
+            pointtracker.all_points,
+            pointtracker.get_offsets(),
+        )
+
+        demo_output.append(output_image)
+
+    return demo_output</code></pre>
+</details>
+</dd>
+<dt id="silk.cli.visualization.display_point_tracks"><code class="name flex">
+<span>def <span class="ident">display_point_tracks</span></span>(<span>image, tracks, dist_thresh, all_points, offsets, display_scale=2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Displays the predicted points and tracks on one image.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>image</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the image from the frame list as output by the
+model on which to draw tracks</dd>
+<dt><strong><code>tracks</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the tracks from the pointtracker</dd>
+<dt><strong><code>dist_thresh</code></strong> :&ensp;<code>int</code></dt>
+<dd>the distance threshold from the point tracker</dd>
+<dt><strong><code>all_points</code></strong> :&ensp;<code>list</code></dt>
+<dd>most recently tracked points list from the point tracker</dd>
+<dt><strong><code>offsets</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>tensor of offset locations from the point tracker</dd>
+<dt><strong><code>display_scale</code></strong> :&ensp;<code>int</code></dt>
+<dd>the factor to scale output visualization (paper's
+default is 2)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>output_image (cv2 image): the image with the points and tracks</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def display_point_tracks(
+    image, tracks, dist_thresh, all_points, offsets, display_scale=2
+):
+    &#34;&#34;&#34;
+    Displays the predicted points and tracks on one image.
+
+    Args:
+        image (tensor): the image from the frame list as output by the
+            model on which to draw tracks
+        tracks (tensor): the tracks from the pointtracker
+        dist_thresh (int): the distance threshold from the point tracker
+        all_points (list): most recently tracked points list from the point tracker
+        offsets (tensor): tensor of offset locations from the point tracker
+        display_scale (int): the factor to scale output visualization (paper&#39;s
+            default is 2)
+
+    Returns:
+        output_image (cv2 image): the image with the points and tracks
+    &#34;&#34;&#34;
+    # convert image and tracks to numpy for drawing
+    image = image.squeeze(dim=0).squeeze(dim=0).detach().numpy()
+    tracks = tracks.detach().numpy()
+
+    H = image.shape[0]
+    W = image.shape[1]
+
+    output_img_tracks = (np.dstack((image, image, image)) * 255.0).astype(&#34;uint8&#34;)
+
+    # normalize track scores to be in the range [0, 1]
+    tracks[:, 1] /= float(dist_thresh)
+
+    # update the output_img_tracks image with the tracks
+    tracks_image = draw_tracks(output_img_tracks, tracks, all_points, offsets)
+
+    # resize final output image
+    output_image = cv2.resize(tracks_image, (display_scale * W, display_scale * H))
+
+    return output_image</code></pre>
+</details>
+</dd>
+<dt id="silk.cli.visualization.draw_tracks"><code class="name flex">
+<span>def <span class="ident">draw_tracks</span></span>(<span>image, tracks, all_points, offsets)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw the tracks from the point tracker on an image.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>image</code></strong> :&ensp;<code>numpy</code></dt>
+<dd>an image array with size H x W x 3 on which
+the tracks are drawn</dd>
+<dt><strong><code>tracks</code></strong> :&ensp;<code>numpy</code></dt>
+<dd>tracks matrix of size num_tracks x (2+max_length)
+containing track data</dd>
+<dt><strong><code>all_points</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of most recently tracked points</dd>
+<dt><strong><code>offsets</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>num_tracks length array with integer offset locations</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>image (numpy): an image with the drawn tracks</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_tracks(image, tracks, all_points, offsets):
+    &#34;&#34;&#34;
+    Draw the tracks from the point tracker on an image.
+
+    Args:
+        image (numpy): an image array with size H x W x 3 on which
+            the tracks are drawn
+        tracks (numpy): tracks matrix of size num_tracks x (2+max_length)
+            containing track data
+        all_points (list): list of most recently tracked points
+        offsets (tensor): num_tracks length array with integer offset locations
+
+    Returns:
+        image (numpy): an image with the drawn tracks
+    &#34;&#34;&#34;
+    # store the number of points
+    all_points = [elem.detach().numpy() for elem in all_points]
+    num_points = len(all_points)
+
+    # width of track and point circles to be drawn
+    stroke = 1
+
+    # colormap for visualization
+    colormap = np.array(
+        [
+            [0.0, 0.0, 0.5],
+            [0.0, 0.0, 0.99910873],
+            [0.0, 0.37843137, 1.0],
+            [0.0, 0.83333333, 1.0],
+            [0.30044276, 1.0, 0.66729918],
+            [0.66729918, 1.0, 0.30044276],
+            [1.0, 0.90123457, 0.0],
+            [1.0, 0.48002905, 0.0],
+            [0.99910873, 0.07334786, 0.0],
+            [0.5, 0.0, 0.0],
+        ]
+    )
+
+    # iterate through each track and draw the point and track line
+    for track in tracks:
+        # choose one of 10 possible colors corresponding to the value of the
+        # avg_desc_score for each track (with greater scores closer to red and lower
+        # scores closer to blue)
+        color = colormap[int(np.clip(np.floor(track[1] * 10), 0, 9)), :] * 255
+
+        # iterate through each of the points predicted on the image
+        for i in range(num_points - 1):
+            # skip tracks if there was no tracked point
+            if track[i + 2] == -1 or track[i + 3] == -1:
+                continue
+
+            offset1 = offsets[i]
+            offset2 = offsets[i + 1]
+
+            idx1 = int(track[i + 2] - offset1)
+            idx2 = int(track[i + 3] - offset2)
+
+            pt1 = all_points[i][:2, idx1]
+            pt2 = all_points[i + 1][:2, idx2]
+
+            p1 = (int(round(pt1[0])), int(round(pt1[1])))
+            p2 = (int(round(pt2[0])), int(round(pt2[1])))
+
+            cv2.line(image, p1, p2, color, thickness=stroke, lineType=16)
+
+            # draw end points of each track
+            if i == num_points - 2:
+                clr2 = (255, 0, 0)
+                cv2.circle(image, p2, stroke, clr2, -1, lineType=16)
+
+    return image</code></pre>
+</details>
+</dd>
+<dt id="silk.cli.visualization.load_video_frames_opencv"><code class="name flex">
+<span>def <span class="ident">load_video_frames_opencv</span></span>(<span>video_file_path, H, W)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load a list of frames from a video and prepare each frame in the list
+for input to the SuperPoint model.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>video_file_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>the path to the video file</dd>
+<dt><strong><code>H</code></strong> :&ensp;<code>int</code></dt>
+<dd>the height of the reshaped video</dd>
+<dt><strong><code>W</code></strong> :&ensp;<code>int</code></dt>
+<dd>the width of the reshaped video</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>model_input_frames (list): a list of tensors for each frame
+where each tensor has shape (1, 1, H, W) for input to the model</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_video_frames_opencv(video_file_path, H, W):
+    &#34;&#34;&#34;
+    Load a list of frames from a video and prepare each frame in the list
+    for input to the SuperPoint model.
+
+    Args:
+        video_file_path (str): the path to the video file
+        H (int): the height of the reshaped video
+        W (int): the width of the reshaped video
+
+    Returns:
+        model_input_frames (list): a list of tensors for each frame
+            where each tensor has shape (1, 1, H, W) for input to the model
+    &#34;&#34;&#34;
+    video = cv2.VideoCapture(video_file_path)
+
+    frame_list = []
+    success, frame = video.read()
+
+    while success:
+        frame_list.append(frame)
+        success, frame = video.read()
+
+    model_input_frames = []
+    for frame in frame_list:
+        input_image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        input_image = cv2.resize(input_image, (W, H), interpolation=cv2.INTER_AREA)
+
+        input_image = input_image.astype(&#34;float32&#34;) / 255.0
+        input_image = torch.from_numpy(input_image)
+        input_image = input_image.view(1, 1, H, W)
+
+        model_input_frames.append(input_image)
+
+    return model_input_frames</code></pre>
+</details>
+</dd>
+<dt id="silk.cli.visualization.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>config: omegaconf.dictconfig.DictConfig)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main(config: DictConfig):
+    # load model
+    model = instantiate_and_ensure_is_instance(config.mode.model, pl.LightningModule)
+
+    # create the point tracker
+    tracker = PointTracker(
+        max_length=config.mode.max_length, dist_thresh=config.mode.dist_thresh
+    )
+
+    # create the visualization video
+    demo_output = create_visualizations(config.mode.video_file_path, model, tracker)
+
+    # optionally save the output video
+    if config.mode.save_output:
+        save_video(
+            demo_output,
+            config.mode.save_location,
+            output_vid_name=config.mode.save_file_name,
+        )
+
+    return {&#34;config&#34;: OmegaConf.to_object(config.mode.model)}</code></pre>
+</details>
+</dd>
+<dt id="silk.cli.visualization.save_video"><code class="name flex">
+<span>def <span class="ident">save_video</span></span>(<span>frame_list, output_location, output_vid_name='output_vid.mp4')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Takes a list of images and converts them to an mp4 file saved
+at location output_dir.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>frame_list</code></strong> :&ensp;<code>list</code></dt>
+<dd>a list of cv2 images to be converted to a video</dd>
+<dt><strong><code>output_location</code></strong> :&ensp;<code>str</code></dt>
+<dd>the file path for the output video</dd>
+<dt><strong><code>output_vid_name</code></strong> :&ensp;<code>optional str</code></dt>
+<dd>the name for the output video</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_video(frame_list, output_location, output_vid_name=&#34;output_vid.mp4&#34;):
+    &#34;&#34;&#34;
+    Takes a list of images and converts them to an mp4 file saved
+    at location output_dir.
+
+    Args:
+        frame_list (list): a list of cv2 images to be converted to a video
+        output_location (str): the file path for the output video
+        output_vid_name (optional str): the name for the output video
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    img = frame_list[0]
+    height, width, layers = img.shape
+    frames_per_second = 15  # slower output videos
+
+    # create the directory if it does not exist
+    os.makedirs(output_location, exist_ok=True)
+
+    output_file = cv2.VideoWriter(
+        os.path.join(output_location, output_vid_name),
+        fourcc=cv2.VideoWriter_fourcc(*&#34;mp4v&#34;),
+        fps=float(frames_per_second),
+        frameSize=(width, height),
+    )
+
+    # write the frames to the video writer
+    for frame in frame_list:
+        output_file.write(frame)
+
+    output_file.release()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.cli" href="index.html">silk.cli</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.cli.visualization.create_visualizations" href="#silk.cli.visualization.create_visualizations">create_visualizations</a></code></li>
+<li><code><a title="silk.cli.visualization.display_point_tracks" href="#silk.cli.visualization.display_point_tracks">display_point_tracks</a></code></li>
+<li><code><a title="silk.cli.visualization.draw_tracks" href="#silk.cli.visualization.draw_tracks">draw_tracks</a></code></li>
+<li><code><a title="silk.cli.visualization.load_video_frames_opencv" href="#silk.cli.visualization.load_video_frames_opencv">load_video_frames_opencv</a></code></li>
+<li><code><a title="silk.cli.visualization.main" href="#silk.cli.visualization.main">main</a></code></li>
+<li><code><a title="silk.cli.visualization.save_video" href="#silk.cli.visualization.save_video">save_video</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

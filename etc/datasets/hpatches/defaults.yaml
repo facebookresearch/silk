@@ -1,0 +1,2 @@
+_target_: silk.datasets.hpatches.hpatches_dataset.HPatchesDataset
+hpatches_path: "/datasets01/hpatches/01042022"

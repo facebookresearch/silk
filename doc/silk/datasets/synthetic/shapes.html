@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.synthetic.shapes API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.synthetic.shapes</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from typing import Dict, List, Tuple, Union
+
+import numpy as np
+from numpy.random.mtrand import RandomState
+from silk.datasets.abstract import RandomizedIterable
+from silk.logger import LOG
+
+from . import primitives
+
+DEFAULT_BACKGROUND_PARAMS = {
+    &#34;min_kernel_size&#34;: 150,
+    &#34;max_kernel_size&#34;: 500,
+    &#34;min_rad_ratio&#34;: 0.02,
+    &#34;max_rad_ratio&#34;: 0.031,
+}
+
+DEFAULT_PRIMITIVE_PARAMS = {
+    &#34;draw_stripes&#34;: {&#34;transform_params&#34;: (0.1, 0.1)},
+    &#34;draw_multiple_polygons&#34;: {&#34;kernel_boundaries&#34;: (50, 100)},
+}
+
+DEFAULT_PROCESSING_PARAMS = {
+    &#34;resize&#34;: [240, 320],
+    &#34;blur_size&#34;: 11,
+}
+
+DEFAULT_DRAWING_HEIGHT = 960
+DEFAULT_DRAWING_WIDTH = 1280
+DEFAULT_HEIGHT = 240
+DEFAULT_WIDTH = 320
+DEFAULT_BLUR_KERNEL_SIZE = 11
+
+
+class SyntheticShapes(RandomizedIterable):
+    r&#34;&#34;&#34;Generated dataset that produces synthetic shapes with associated keypoint positions as indicated in the SuperPoint [1] paper.
+
+    References
+    ----------
+
+    .. [1] DeTone, Daniel, Tomasz Malisiewicz, and Andrew Rabinovich. &#34;Superpoint: Self-supervised interest point detection and description.&#34; Proceedings of the IEEE conference on computer vision and pattern recognition workshops. 2018.
+
+    Examples
+    --------
+
+    ```python
+    import numpy as np
+    from skimage import io
+    from silk.datasets.synthetic import SyntheticShapes
+    from silk.datasets.synthetic.primitives import draw_interest_points
+
+    size = 10
+    seed = 0
+    dataset = SyntheticShapes(
+        seed=seed,
+        drawing_primitives=&#34;all&#34;,
+    )
+
+    iterator = iter(dataset)
+    for i in range(size):
+        img, points = next(iterator)
+
+        img = img.squeeze()
+        points = points.astype(int)
+
+        img_keypoints = draw_interest_points(img, points)
+        img_keypoints = img_keypoints.astype(np.uint8)
+
+        io.imsave(f&#34;doc/images/synthetic_shape_{i}.png&#34;, img_keypoints)
+    ```
+
+    .. image:: ../../../images/synthetic_shape_1.png
+    .. image:: ../../../images/synthetic_shape_2.png
+    .. image:: ../../../images/synthetic_shape_3.png
+    .. image:: ../../../images/synthetic_shape_4.png
+
+    &#34;&#34;&#34;
+
+    DRAWING_PRIMITIVES = (
+        &#34;draw_lines&#34;,
+        &#34;draw_polygon&#34;,
+        &#34;draw_multiple_polygons&#34;,
+        &#34;draw_ellipses&#34;,
+        &#34;draw_star&#34;,
+        &#34;draw_checkerboard&#34;,
+        &#34;draw_stripes&#34;,
+        &#34;draw_cube&#34;,
+        &#34;gaussian_noise&#34;,
+    )
+
+    @property
+    def height(self):
+        return self._height
+
+    @property
+    def width(self):
+        return self._width
+
+    def __init__(
+        self,
+        height: int = DEFAULT_HEIGHT,
+        width: int = DEFAULT_WIDTH,
+        drawing_primitives: Union[str, List[str]] = &#34;all&#34;,
+        seed: int = 0,
+        drawing_height: int = DEFAULT_DRAWING_HEIGHT,
+        drawing_width: int = DEFAULT_DRAWING_WIDTH,
+        blur_kernel_size: int = DEFAULT_BLUR_KERNEL_SIZE,
+        background_params: Dict[str, object] = DEFAULT_BACKGROUND_PARAMS,
+        primitives_params: Dict[str, object] = DEFAULT_PRIMITIVE_PARAMS,
+    ):
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        height : int, optional
+            height of the generated images, by default DEFAULT_HEIGHT
+        width : int, optional
+            width of the generated images, by default DEFAULT_WIDTH
+        drawing_primitives : Union[str, List[str]], optional
+            drawing primitives to use, can be &#34;all&#34;, &#34;&lt;primitive name&gt;&#34; or list of primitive names (see `SyntheticShapes.DRAWING_PRIMITIVES`), by default &#34;all&#34;
+        seed : int, optional
+            random seed used, by default 0
+        drawing_height : int, optional
+            height of the image fed to the drawing primitives, by default DEFAULT_DRAWING_HEIGHT
+        drawing_width : int, optional
+            width of the image fed to the drawing primitives, by default DEFAULT_DRAWING_WIDTH
+        blur_kernel_size : int, optional
+            size of the gaussian blur kernel applied the generated images, by default DEFAULT_BLUR_KERNEL_SIZE
+        background_params : Dict[str, object], optional
+            parameters of the background generation (see `primitives.generate_background`), by default DEFAULT_BACKGROUND_PARAMS
+        primitives_params : Dict[str, object], optional
+            parameters of all the drawing primitives (see `primitives.draw_*`), by default DEFAULT_PRIMITIVE_PARAMS
+        &#34;&#34;&#34;
+        super().__init__(seed)
+
+        # raise warning in case non-defaults values are provided
+        default_sizes = (
+            DEFAULT_DRAWING_HEIGHT,
+            DEFAULT_DRAWING_WIDTH,
+            DEFAULT_HEIGHT,
+            DEFAULT_WIDTH,
+        )
+        current_sizes = (drawing_height, drawing_width, height, width)
+        if current_sizes != default_sizes:
+            LOG.warning(
+                f&#34;the provided sizes {current_sizes} to {self.__class__.__name__} differ from the default ones {default_sizes}, &#34;
+                &#34;please make sure the generated image are correct since this dataset hasn&#39;t been heavily tested with non-default sizes&#34;
+            )
+
+        # get set of valid primitives
+        self.drawing_primitives = SyntheticShapes._parse_drawing_primitives(
+            drawing_primitives,
+        )
+
+        self._height = height
+        self._width = width
+        self._drawing_height = drawing_height
+        self._drawing_width = drawing_width
+        self._blur_kernel_size = blur_kernel_size
+        self._background_params = background_params
+        self._primitives_params = primitives_params
+
+    @staticmethod
+    def _parse_drawing_primitives(
+        drawing_primitives: Union[str, List[str]]
+    ) -&gt; Tuple[str]:
+        if drawing_primitives == &#34;all&#34;:
+            return SyntheticShapes.DRAWING_PRIMITIVES
+
+        if isinstance(drawing_primitives, str):
+            drawing_primitives = [drawing_primitives]
+        drawing_primitives = set(drawing_primitives)
+
+        unknown_drawing_primitives = drawing_primitives - set(
+            SyntheticShapes.DRAWING_PRIMITIVES
+        )
+
+        if len(unknown_drawing_primitives) &gt; 0:
+            raise RuntimeError(
+                f&#34;unknown drawing primitives provided : {unknown_drawing_primitives}&#34;
+            )
+
+        return tuple(drawing_primitives)
+
+    def _generate_item(self, random_generator):
+        &#34;&#34;&#34;Generate sequence of synthetic images with associated keypoint positions.
+
+        Returns
+        -------
+        ndarray, ndarray
+            the image (HxWx1, Grayscale, float32) and the positions (Nx2, float) of the keypoints
+        &#34;&#34;&#34;
+
+        # convert to random state since &#34;primitives.py&#34; doesn&#39;t support the new numpy random generator interface
+        random_state = RandomState(random_generator.bit_generator)
+
+        # 1. select random primitive
+        image = primitives.generate_background(
+            random_state,
+            size=(self._drawing_height, self._drawing_width),
+            **self._background_params,
+        )
+
+        # 2. select &amp; run random drawing primitive
+        drawing_primitive = random_state.choice(self.drawing_primitives)
+        points = np.array(
+            getattr(primitives, drawing_primitive)(
+                random_state,
+                image,
+                **self._primitives_params.get(drawing_primitive, {}),
+            )
+        )
+        points = np.flip(points.astype(np.float32), 1)
+
+        # 3. apply gaussian blur
+        image = primitives._gaussian_blur(image, self._blur_kernel_size)
+
+        # 4. resize image
+        image, points = primitives._resize_image_and_points(
+            image, points, self._height, self._width
+        )
+        return image, points</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.datasets.synthetic.shapes.SyntheticShapes"><code class="flex name class">
+<span>class <span class="ident">SyntheticShapes</span></span>
+<span>(</span><span>height: int = 240, width: int = 320, drawing_primitives: Union[str, List[str]] = 'all', seed: int = 0, drawing_height: int = 960, drawing_width: int = 1280, blur_kernel_size: int = 11, background_params: Dict[str, object] = {'min_kernel_size': 150, 'max_kernel_size': 500, 'min_rad_ratio': 0.02, 'max_rad_ratio': 0.031}, primitives_params: Dict[str, object] = {'draw_stripes': {'transform_params': (0.1, 0.1)}, 'draw_multiple_polygons': {'kernel_boundaries': (50, 100)}})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generated dataset that produces synthetic shapes with associated keypoint positions as indicated in the SuperPoint [1] paper.</p>
+<h2 id="references">References</h2>
+<p>.. [1] DeTone, Daniel, Tomasz Malisiewicz, and Andrew Rabinovich. "Superpoint: Self-supervised interest point detection and description." Proceedings of the IEEE conference on computer vision and pattern recognition workshops. 2018.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">import numpy as np
+from skimage import io
+from silk.datasets.synthetic import SyntheticShapes
+from silk.datasets.synthetic.primitives import draw_interest_points
+
+size = 10
+seed = 0
+dataset = SyntheticShapes(
+    seed=seed,
+    drawing_primitives=&quot;all&quot;,
+)
+
+iterator = iter(dataset)
+for i in range(size):
+    img, points = next(iterator)
+
+    img = img.squeeze()
+    points = points.astype(int)
+
+    img_keypoints = draw_interest_points(img, points)
+    img_keypoints = img_keypoints.astype(np.uint8)
+
+    io.imsave(f&quot;doc/images/synthetic_shape_{i}.png&quot;, img_keypoints)
+</code></pre>
+<p><img alt="" src="../../../images/synthetic_shape_1.png"></p>
+<p><img alt="" src="../../../images/synthetic_shape_2.png"></p>
+<p><img alt="" src="../../../images/synthetic_shape_3.png"></p>
+<p><img alt="" src="../../../images/synthetic_shape_4.png"></p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>height</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>height of the generated images, by default DEFAULT_HEIGHT</dd>
+<dt><strong><code>width</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>width of the generated images, by default DEFAULT_WIDTH</dd>
+<dt><strong><code>drawing_primitives</code></strong> :&ensp;<code>Union[str, List[str]]</code>, optional</dt>
+<dd>drawing primitives to use, can be "all", "<primitive name>" or list of primitive names (see <code><a title="silk.datasets.synthetic.shapes.SyntheticShapes.DRAWING_PRIMITIVES" href="#silk.datasets.synthetic.shapes.SyntheticShapes.DRAWING_PRIMITIVES">SyntheticShapes.DRAWING_PRIMITIVES</a></code>), by default "all"</dd>
+<dt><strong><code>seed</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>random seed used, by default 0</dd>
+<dt><strong><code>drawing_height</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>height of the image fed to the drawing primitives, by default DEFAULT_DRAWING_HEIGHT</dd>
+<dt><strong><code>drawing_width</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>width of the image fed to the drawing primitives, by default DEFAULT_DRAWING_WIDTH</dd>
+<dt><strong><code>blur_kernel_size</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>size of the gaussian blur kernel applied the generated images, by default DEFAULT_BLUR_KERNEL_SIZE</dd>
+<dt><strong><code>background_params</code></strong> :&ensp;<code>Dict[str, object]</code>, optional</dt>
+<dd>parameters of the background generation (see <code>primitives.generate_background</code>), by default DEFAULT_BACKGROUND_PARAMS</dd>
+<dt><strong><code>primitives_params</code></strong> :&ensp;<code>Dict[str, object]</code>, optional</dt>
+<dd>parameters of all the drawing primitives (see <code>primitives.draw_*</code>), by default DEFAULT_PRIMITIVE_PARAMS</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SyntheticShapes(RandomizedIterable):
+    r&#34;&#34;&#34;Generated dataset that produces synthetic shapes with associated keypoint positions as indicated in the SuperPoint [1] paper.
+
+    References
+    ----------
+
+    .. [1] DeTone, Daniel, Tomasz Malisiewicz, and Andrew Rabinovich. &#34;Superpoint: Self-supervised interest point detection and description.&#34; Proceedings of the IEEE conference on computer vision and pattern recognition workshops. 2018.
+
+    Examples
+    --------
+
+    ```python
+    import numpy as np
+    from skimage import io
+    from silk.datasets.synthetic import SyntheticShapes
+    from silk.datasets.synthetic.primitives import draw_interest_points
+
+    size = 10
+    seed = 0
+    dataset = SyntheticShapes(
+        seed=seed,
+        drawing_primitives=&#34;all&#34;,
+    )
+
+    iterator = iter(dataset)
+    for i in range(size):
+        img, points = next(iterator)
+
+        img = img.squeeze()
+        points = points.astype(int)
+
+        img_keypoints = draw_interest_points(img, points)
+        img_keypoints = img_keypoints.astype(np.uint8)
+
+        io.imsave(f&#34;doc/images/synthetic_shape_{i}.png&#34;, img_keypoints)
+    ```
+
+    .. image:: ../../../images/synthetic_shape_1.png
+    .. image:: ../../../images/synthetic_shape_2.png
+    .. image:: ../../../images/synthetic_shape_3.png
+    .. image:: ../../../images/synthetic_shape_4.png
+
+    &#34;&#34;&#34;
+
+    DRAWING_PRIMITIVES = (
+        &#34;draw_lines&#34;,
+        &#34;draw_polygon&#34;,
+        &#34;draw_multiple_polygons&#34;,
+        &#34;draw_ellipses&#34;,
+        &#34;draw_star&#34;,
+        &#34;draw_checkerboard&#34;,
+        &#34;draw_stripes&#34;,
+        &#34;draw_cube&#34;,
+        &#34;gaussian_noise&#34;,
+    )
+
+    @property
+    def height(self):
+        return self._height
+
+    @property
+    def width(self):
+        return self._width
+
+    def __init__(
+        self,
+        height: int = DEFAULT_HEIGHT,
+        width: int = DEFAULT_WIDTH,
+        drawing_primitives: Union[str, List[str]] = &#34;all&#34;,
+        seed: int = 0,
+        drawing_height: int = DEFAULT_DRAWING_HEIGHT,
+        drawing_width: int = DEFAULT_DRAWING_WIDTH,
+        blur_kernel_size: int = DEFAULT_BLUR_KERNEL_SIZE,
+        background_params: Dict[str, object] = DEFAULT_BACKGROUND_PARAMS,
+        primitives_params: Dict[str, object] = DEFAULT_PRIMITIVE_PARAMS,
+    ):
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        height : int, optional
+            height of the generated images, by default DEFAULT_HEIGHT
+        width : int, optional
+            width of the generated images, by default DEFAULT_WIDTH
+        drawing_primitives : Union[str, List[str]], optional
+            drawing primitives to use, can be &#34;all&#34;, &#34;&lt;primitive name&gt;&#34; or list of primitive names (see `SyntheticShapes.DRAWING_PRIMITIVES`), by default &#34;all&#34;
+        seed : int, optional
+            random seed used, by default 0
+        drawing_height : int, optional
+            height of the image fed to the drawing primitives, by default DEFAULT_DRAWING_HEIGHT
+        drawing_width : int, optional
+            width of the image fed to the drawing primitives, by default DEFAULT_DRAWING_WIDTH
+        blur_kernel_size : int, optional
+            size of the gaussian blur kernel applied the generated images, by default DEFAULT_BLUR_KERNEL_SIZE
+        background_params : Dict[str, object], optional
+            parameters of the background generation (see `primitives.generate_background`), by default DEFAULT_BACKGROUND_PARAMS
+        primitives_params : Dict[str, object], optional
+            parameters of all the drawing primitives (see `primitives.draw_*`), by default DEFAULT_PRIMITIVE_PARAMS
+        &#34;&#34;&#34;
+        super().__init__(seed)
+
+        # raise warning in case non-defaults values are provided
+        default_sizes = (
+            DEFAULT_DRAWING_HEIGHT,
+            DEFAULT_DRAWING_WIDTH,
+            DEFAULT_HEIGHT,
+            DEFAULT_WIDTH,
+        )
+        current_sizes = (drawing_height, drawing_width, height, width)
+        if current_sizes != default_sizes:
+            LOG.warning(
+                f&#34;the provided sizes {current_sizes} to {self.__class__.__name__} differ from the default ones {default_sizes}, &#34;
+                &#34;please make sure the generated image are correct since this dataset hasn&#39;t been heavily tested with non-default sizes&#34;
+            )
+
+        # get set of valid primitives
+        self.drawing_primitives = SyntheticShapes._parse_drawing_primitives(
+            drawing_primitives,
+        )
+
+        self._height = height
+        self._width = width
+        self._drawing_height = drawing_height
+        self._drawing_width = drawing_width
+        self._blur_kernel_size = blur_kernel_size
+        self._background_params = background_params
+        self._primitives_params = primitives_params
+
+    @staticmethod
+    def _parse_drawing_primitives(
+        drawing_primitives: Union[str, List[str]]
+    ) -&gt; Tuple[str]:
+        if drawing_primitives == &#34;all&#34;:
+            return SyntheticShapes.DRAWING_PRIMITIVES
+
+        if isinstance(drawing_primitives, str):
+            drawing_primitives = [drawing_primitives]
+        drawing_primitives = set(drawing_primitives)
+
+        unknown_drawing_primitives = drawing_primitives - set(
+            SyntheticShapes.DRAWING_PRIMITIVES
+        )
+
+        if len(unknown_drawing_primitives) &gt; 0:
+            raise RuntimeError(
+                f&#34;unknown drawing primitives provided : {unknown_drawing_primitives}&#34;
+            )
+
+        return tuple(drawing_primitives)
+
+    def _generate_item(self, random_generator):
+        &#34;&#34;&#34;Generate sequence of synthetic images with associated keypoint positions.
+
+        Returns
+        -------
+        ndarray, ndarray
+            the image (HxWx1, Grayscale, float32) and the positions (Nx2, float) of the keypoints
+        &#34;&#34;&#34;
+
+        # convert to random state since &#34;primitives.py&#34; doesn&#39;t support the new numpy random generator interface
+        random_state = RandomState(random_generator.bit_generator)
+
+        # 1. select random primitive
+        image = primitives.generate_background(
+            random_state,
+            size=(self._drawing_height, self._drawing_width),
+            **self._background_params,
+        )
+
+        # 2. select &amp; run random drawing primitive
+        drawing_primitive = random_state.choice(self.drawing_primitives)
+        points = np.array(
+            getattr(primitives, drawing_primitive)(
+                random_state,
+                image,
+                **self._primitives_params.get(drawing_primitive, {}),
+            )
+        )
+        points = np.flip(points.astype(np.float32), 1)
+
+        # 3. apply gaussian blur
+        image = primitives._gaussian_blur(image, self._blur_kernel_size)
+
+        # 4. resize image
+        image, points = primitives._resize_image_and_points(
+            image, points, self._height, self._width
+        )
+        return image, points</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.datasets.abstract.RandomizedIterable" href="../abstract.html#silk.datasets.abstract.RandomizedIterable">RandomizedIterable</a></li>
+<li>torch.utils.data.dataset.IterableDataset</li>
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.synthetic.shapes.SyntheticShapes.DRAWING_PRIMITIVES"><code class="name">var <span class="ident">DRAWING_PRIMITIVES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.synthetic.shapes.SyntheticShapes.height"><code class="name">var <span class="ident">height</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def height(self):
+    return self._height</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.synthetic.shapes.SyntheticShapes.width"><code class="name">var <span class="ident">width</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def width(self):
+    return self._width</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.datasets.abstract.RandomizedIterable" href="../abstract.html#silk.datasets.abstract.RandomizedIterable">RandomizedIterable</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.datasets.abstract.RandomizedIterable.slice" href="../abstract.html#silk.datasets.abstract.RandomizedIterable.slice">slice</a></code></li>
+<li><code><a title="silk.datasets.abstract.RandomizedIterable.worker_init_fn" href="../abstract.html#silk.datasets.abstract.RandomizedIterable.worker_init_fn">worker_init_fn</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets.synthetic" href="index.html">silk.datasets.synthetic</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.datasets.synthetic.shapes.SyntheticShapes" href="#silk.datasets.synthetic.shapes.SyntheticShapes">SyntheticShapes</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.synthetic.shapes.SyntheticShapes.DRAWING_PRIMITIVES" href="#silk.datasets.synthetic.shapes.SyntheticShapes.DRAWING_PRIMITIVES">DRAWING_PRIMITIVES</a></code></li>
+<li><code><a title="silk.datasets.synthetic.shapes.SyntheticShapes.height" href="#silk.datasets.synthetic.shapes.SyntheticShapes.height">height</a></code></li>
+<li><code><a title="silk.datasets.synthetic.shapes.SyntheticShapes.width" href="#silk.datasets.synthetic.shapes.SyntheticShapes.width">width</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

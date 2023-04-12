@@ -1,0 +1,25 @@
+defaults:
+  - run-hpatches-tests-cached-default
+  - override /datasets/hpatches@loader.dataset: test-cached-disk
+  - _self_
+
+command: "hpatches_tests"
+
+transform:
+  _target_: silk.transforms.abstract.Compose
+  _args_:
+    - _target_: silk.transforms.abstract.Map
+      function:
+        _target_: silk.transforms.tensor.ToTensor
+        device: cuda:0
+
+    # run matching
+    - _target_: silk.transforms.abstract.Lambda
+      name: "estimated_homography"
+      function:
+        _target_: silk.config.core.locate
+        path: silk.matching.mnn.batched_ransac
+
+      matched_points_0: "@matched_original_points"
+      matched_points_1: "@matched_warped_points"
+      ordering: "yx"

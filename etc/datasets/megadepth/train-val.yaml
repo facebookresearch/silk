@@ -1,0 +1,9 @@
+defaults:
+  - defaults
+  - _self_
+
+pickle_dir_list:
+  - _target_: silk.config.paths.join
+    _args_: [ASSETS, "datasets", "megadepth", "train_val", "train_val_list", "landscape"]
+  - _target_: silk.config.paths.join
+    _args_: [ASSETS, "datasets", "megadepth", "train_val", "train_val_list", "portrait"]

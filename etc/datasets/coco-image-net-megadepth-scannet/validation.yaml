@@ -1,0 +1,12 @@
+defaults:
+  - defaults
+  - /datasets/coco@coco: validation
+  - /datasets/image-net@image-net: validation
+  - /datasets/megadepth@megadepth: test
+  - /datasets/scannet-frames@scannet: validation-98-2-scan-split
+  - _self_
+
+scannet:
+  extractor:
+    - "color"
+    - "room"

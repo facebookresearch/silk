@@ -1,0 +1,7 @@
+defaults:
+  - cache-dataset-hpatches-grey
+  - _self_
+
+loader:
+  dataset:
+    grayscale: false

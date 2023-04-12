@@ -1,0 +1,14 @@
+defaults:
+  - silk-vgg
+  - silk-pvgg-defaults
+  - _self_
+
+backbone:
+  channels: [128, 128]
+  normalization_fn:
+    - _target_: torch.nn.BatchNorm2d
+      affine: true
+      num_features: 128
+    - _target_: torch.nn.BatchNorm2d
+      affine: true
+      num_features: 128

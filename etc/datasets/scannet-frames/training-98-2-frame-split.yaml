@@ -1,0 +1,5 @@
+defaults:
+  - 98-2-frame-split
+  - _self_
+
+partition_idx: 0

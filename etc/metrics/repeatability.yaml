@@ -1,0 +1,11 @@
+_target_: silk.transforms.metric.MetricUpdate
+name: null
+metric:
+  _target_: silk.metrics.hpatches_metrics.Repeatability
+  distance_thresh: ???
+  ordering: "yx"
+output_points: "@original_points"
+output_warped_points: "@warped_points"
+img_shape: "@original_img_shape"
+warped_img_shape: "@warped_img_shape"
+true_homography: "@homography"

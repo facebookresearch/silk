@@ -1,0 +1,1572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.flow API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.flow</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import inspect
+import itertools
+from heapq import heapify, heappop, heappush
+from typing import Iterable, List, Set, Tuple, Union
+
+
+class _Transition:
+    def __init__(self, dependencies) -&gt; None:
+        # TODO check should be tuple
+        self._dependencies = dependencies
+
+    @property
+    def dependencies(self):
+        return self._dependencies
+
+    def get_dependencies_from_session(self, session):
+        return tuple(session[idx] for idx in self._dependencies)
+
+    def __call__(self, session, inputs):
+        raise NotImplementedError
+
+
+class _InputExtraction(_Transition):
+    def __init__(self, name) -&gt; None:
+        super().__init__(())
+        self._name = name
+
+    def __call__(self, _, inputs):
+        return inputs[self._name]
+
+
+class _ConstantExtraction(_Transition):
+    def __init__(self, value) -&gt; None:
+        super().__init__(())
+        self._value = value
+
+    def __call__(self, _s, _i):
+        return self._value
+
+
+class _TupleOutputExtraction(_Transition):
+    def __init__(self, output_index, tuple_index) -&gt; None:
+        super().__init__((output_index,))
+        self._tuple_index = tuple_index
+
+    def __call__(self, session, _):
+        # TODO check index bounds
+        return self.get_dependencies_from_session(session)[0][self._tuple_index]
+
+
+class _FunctionCall(_Transition):
+    def __init__(
+        self,
+        function,
+        *args,
+        **kwargs,
+    ) -&gt; None:
+
+        # TODO check arguments
+        self._function = function
+        ordered_keys = tuple(kwargs.keys())
+        dependencies = tuple(args) + tuple(kwargs[key] for key in ordered_keys)
+
+        self._n_args = len(args)
+        self._key_to_index = {
+            name: self._n_args + i for i, name in enumerate(ordered_keys)
+        }
+        self._signature = inspect.signature(function)
+
+        # test bind
+        self._signature.bind(*args, **kwargs)
+
+        super().__init__(dependencies)
+
+    def args(self, dependencies):
+        return dependencies[: self._n_args]
+
+    def kwargs(self, dependencies):
+        return {name: dependencies[idx] for name, idx in self._key_to_index.items()}
+
+    def __call__(self, session, _):
+        dependency_values = self.get_dependencies_from_session(session)
+
+        args = self.args(dependency_values)
+        kwargs = self.kwargs(dependency_values)
+
+        arguments = self._signature.bind(*args, **kwargs)
+        arguments.apply_defaults()
+
+        return self._function(*arguments.args, **arguments.kwargs)
+
+
+class Flow:
+    class Constant:
+        def __init__(self, value) -&gt; None:
+            self.value = value
+
+    def __init__(self, *inputs: Tuple[str]) -&gt; None:
+        # TODO check redundant names
+        # TODO check no &#34;outputs&#34; names
+        # TODO should not be empty
+        self._inputs = inputs
+        self._name_to_index = {}
+        self._index_to_name = {}
+        self._transitions = []
+        self._flow_signature = inspect.Signature(
+            inspect.Parameter(
+                name,
+                inspect.Parameter.POSITIONAL_OR_KEYWORD,
+                default=None,
+            )
+            for name in self._inputs
+        )
+
+        for name in self._inputs:
+            self._add_transition(_InputExtraction(name), name)
+
+    @property
+    def inputs(self):
+        return self._inputs
+
+    @property
+    def names(self):
+        return tuple(self._index_to_name.values())
+
+    def index_of(self, name):
+        # TODO check if name exist
+        if isinstance(name, str):
+            return self._name_to_index[name]
+        elif isinstance(name, Flow.Constant):
+            return self._add_transition(_ConstantExtraction(name.value))
+        raise RuntimeError(f&#34;cannot handle name of type {type(name)}&#34;)
+
+    def _add_transition(self, transition, name=None):
+        # TODO check if name doesn&#39;t already exist
+        index = len(self._transitions)
+        self._transitions.append(transition)
+        if name:
+            self._name_to_index[name] = index
+            self._index_to_name[index] = name
+        return index
+
+    def define_transition(
+        self,
+        names: Union[str, Tuple[str]],
+        function,
+        *args,
+        **kwargs,
+    ):
+        # TODO check names
+        args = tuple(self.index_of(name) for name in args)
+        kwargs = {param: self.index_of(name) for param, name in kwargs.items()}
+
+        transition = _FunctionCall(function, *args, **kwargs)
+
+        if isinstance(names, str):
+            index = self._add_transition(transition, name=names)
+        else:
+            index = self._add_transition(transition, name=None)
+            for i, name in enumerate(names):
+                self._add_transition(_TupleOutputExtraction(index, i), name=name)
+
+    def get_tape(self, outputs):
+        if isinstance(outputs, str):
+            outputs = (outputs,)
+
+        tape = []
+        max_dependants = {}
+        output_indexes = set(self._name_to_index[name] for name in outputs)
+
+        head_indexes = [
+            (-self._name_to_index[name], -self._name_to_index[name]) for name in outputs
+        ]
+        heapify(head_indexes)
+
+        last_index = None
+        while len(head_indexes) &gt; 0:
+            index, max_dependant = heappop(head_indexes)
+            if index == last_index:
+                continue
+            last_index = index
+
+            index = -index
+            if max_dependant is not None:
+                max_dependant = -max_dependant
+                if index not in output_indexes:
+                    max_dependants.setdefault(max_dependant, []).append(index)
+
+            transition = self._transitions[index]
+            for idx in transition.dependencies:
+                heappush(head_indexes, (-idx, -index))
+
+            tape.append(index)
+
+        for i, index in enumerate(tape):
+            tape[i] = (index, max_dependants.get(index, ()))
+
+        return tuple(tape[::-1])
+
+    def flow_from_tape(self, tape, output_indexes, inputs):
+        session = [None] * len(self._transitions)
+        for index, to_clean in tape:
+            session[index] = self._transitions[index](session, inputs)
+            for i in to_clean:
+                session[i] = None
+
+        if isinstance(output_indexes, int):
+            return session[output_indexes]
+        return tuple(session[index] for index in output_indexes)
+
+    def names_to_indexes(self, names):
+        if isinstance(names, str):
+            return self._name_to_index[names]
+        return tuple(self._name_to_index[name] for name in names)
+
+    def inputs_as_dict(self, *args, **kwargs):
+        return self._flow_signature.bind(*args, **kwargs).arguments
+
+    def flow(self, outputs, *inputs_args, **inputs_kwargs):
+        inputs = self.inputs_as_dict(*inputs_args, **inputs_kwargs)
+        tape = self.get_tape(outputs)
+        output_indexes = self.names_to_indexes(outputs)
+        return self.flow_from_tape(tape, output_indexes, inputs)
+
+    __call__ = flow
+
+    def with_outputs(self, outputs):
+        return FixedOutputFlow(self, outputs)
+
+    def tape_as_pseudocode(self, tape):
+        instructions = []
+        for index, to_clean in tape:
+            name = self._index_to_name.get(index, &#34;@&#34;)
+            transition = self._transitions[index]
+            if isinstance(transition, _FunctionCall):
+                dep = tuple(
+                    self._index_to_name.get(index, &#34;@&#34;)
+                    for index in transition.dependencies
+                )
+                args = transition.args(dep)
+                kwargs = {k: v for k, v in transition.kwargs(dep).items()}
+                all_args = itertools.chain(args, kwargs)
+                all_args = &#34;,&#34;.join(all_args)
+                func_name = getattr(
+                    transition._function, &#34;__name__&#34;, repr(transition._function)
+                )
+                instructions.append(f&#34;{name} = {func_name}({all_args})&#34;)
+            elif isinstance(transition, _InputExtraction):
+                instructions.append(f&#34;${transition._name}&#34;)
+            elif isinstance(transition, _TupleOutputExtraction):
+                instructions.append(f&#34;{name} = @[{transition._tuple_index}]&#34;)
+
+            for i in to_clean:
+                name = self._index_to_name.get(i, &#34;@&#34;)
+                instructions.append(f&#34;delete {name}&#34;)
+
+        return &#34;\n&#34;.join(instructions)
+
+
+class FixedOutputFlow:
+    def __init__(self, flow, outputs: Union[str, Tuple[str]]) -&gt; None:
+        self._flow = flow
+        self._outputs = outputs
+
+        self._tape = self._flow.get_tape(outputs)
+        self._output_indexes = self._flow.names_to_indexes(self._outputs)
+
+    @property
+    def outputs(self):
+        return self._outputs
+
+    @property
+    def tape(self):
+        return self._tape
+
+    @property
+    def flow(self):
+        return self._flow
+
+    def __call__(self, *args, **kwargs):
+        inputs = self._flow.inputs_as_dict(*args, **kwargs)
+        return self._flow.flow_from_tape(self._tape, self._output_indexes, inputs)
+
+    def with_outputs(self, outputs):
+        return self.flow.with_outputs(outputs)
+
+
+class AutoForward:
+    def __init__(self, flow: Flow, default_outputs: Union[str, Tuple[str]]) -&gt; None:
+        self._default_outputs = default_outputs
+        self._flow = flow
+        self._forward_flow = None
+
+    @property
+    def default_outputs(self):
+        return self._default_outputs
+
+    @property
+    def flow(self):
+        return self._flow
+
+    def forward_flow(self, outputs: Union[str, Tuple[str]], *args, **kwargs):
+        return self._flow(outputs, *args, **kwargs)
+
+    def forward(self, *args, **kwargs):
+        if self._forward_flow is None:
+            self._forward_flow = self._flow.with_outputs(self._default_outputs)
+        return self._forward_flow(*args, **kwargs)
+
+
+class ConditionalReturn:
+    &#34;&#34;&#34;Structure that helps a function to determine what output(s) to return and when.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        required_variables: Union[Iterable[str], str],
+        valid_variables: Union[Set[str], None],
+        from_locals: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        required_variables : Union[Iterable[str], str]
+            List of outputs required for return.
+        valid_variables : Union[Set[str], None]
+            Total list of valid outputs to require.
+        from_locals : bool, optional
+            Automatically gather variables from stack frames, by default False
+        &#34;&#34;&#34;
+        self._single_return = isinstance(required_variables, str)
+        required_variables = ConditionalReturn._as_iterable(required_variables)
+
+        # TODO(Pierre) change to exceptions
+        assert len(valid_variables) &gt; 0
+        assert len(required_variables) &gt; 0
+        assert len(valid_variables) == len(set(valid_variables))
+
+        self._valid_variables = valid_variables
+        self._required_variables = required_variables
+        self._required_variables_left = set(required_variables)
+
+        self._values = {var: None for var in required_variables}
+        self._from_locals = from_locals
+
+    @staticmethod
+    def split(
+        required_variables: Union[Iterable[str], str],
+        valid_variables: Set[str],
+    ) -&gt; Tuple[List[str], List[str]]:
+        &#34;&#34;&#34;Split into required variables found in valid variable, and those which are not.
+
+        Parameters
+        ----------
+        required_variables : Union[Iterable[str], str]
+            Set of variable names to split.
+        valid_variables : Set[str]
+            Set of variable name that are considered valid in the current flow.
+
+        Returns
+        -------
+        Tuple[List[str], List[str]]
+            Both set of valid variable names and invalid ones.
+        &#34;&#34;&#34;
+        required_variables = ConditionalReturn._as_iterable(required_variables)
+        mine = [var for var in required_variables if var in valid_variables]
+        other = [var for var in required_variables if var not in valid_variables]
+        return mine, other
+
+    @staticmethod
+    def _as_iterable(el: Union[Iterable[str], str]):
+        if isinstance(el, str):
+            return (el,)
+        return el
+
+    def should_return(self) -&gt; bool:
+        &#34;&#34;&#34;Determine if all required outputs are ready to be returned.
+
+        Returns
+        -------
+        bool
+            Ready or not to return.
+        &#34;&#34;&#34;
+        return len(self._required_variables_left) == 0
+
+    def _get_stack_frame_locals(self, depth=1):
+        if not self._from_locals:
+            return {}
+
+        calling_fn_frame = inspect.currentframe()
+
+        try:
+            for _ in range(depth):
+                if calling_fn_frame.f_back is not None:
+                    calling_fn_frame = calling_fn_frame.f_back
+                else:
+                    raise RuntimeError(f&#34;couldn&#39;t find frame at depth {depth}&#34;)
+            frame_locals = calling_fn_frame.f_locals
+        finally:
+            del calling_fn_frame  # to avoid reference loop
+
+        return frame_locals
+
+    def _gather(self, calling_fn_locals, **local_mapping):
+        for var in tuple(self._required_variables_left):
+            if var in local_mapping:
+                self._values[var] = local_mapping[var]
+                self._required_variables_left.remove(var)
+            elif var in calling_fn_locals:
+                self._values[var] = calling_fn_locals[var]
+                self._required_variables_left.remove(var)
+
+    def gather(self, **local_mapping):
+        &#34;&#34;&#34;Gather provided outputs or find them in the caller&#39;s stack frame&#39;s locals.&#34;&#34;&#34;
+        self._gather(
+            self._get_stack_frame_locals(depth=2),
+            **local_mapping,
+        )
+
+    def gathered(self, **local_mapping) -&gt; bool:
+        &#34;&#34;&#34;Call `gather` and returns `should_return`.&#34;&#34;&#34;
+        self._gather(
+            self._get_stack_frame_locals(depth=2),
+            **local_mapping,
+        )
+        return self.should_return()
+
+    def return_value(self, **local_mapping):
+        &#34;&#34;&#34;Returns gathered outputs.&#34;&#34;&#34;
+        if not self.should_return():
+            self._gather(
+                self._get_stack_frame_locals(depth=2),
+                **local_mapping,
+            )
+
+        assert self.should_return()
+
+        values = tuple(self._values[var] for var in self._required_variables)
+
+        if self._single_return:
+            return values[0]
+        return values
+
+    def requires_either_one_of(self, *names):
+        &#34;&#34;&#34;Return if any variable name is required by the conditional return.&#34;&#34;&#34;
+        assert len(names) &gt; 0
+        for name in names:
+            if name in self._required_variables:
+                return True
+        return False
+
+    def subcall(self, fn, **names):
+        n = len(names)
+        names_to_index = {name: i for i, name in enumerate(names.keys())}
+        outputs = tuple(
+            name
+            for name, dependants in names.items()
+            if self.requires_either_one_of(*dependants)
+        )
+
+        def wrapped_fn(*args, **kwargs):
+            results = fn(*args, outputs=outputs, **kwargs)
+
+            normalized_result = [None] * n
+            for i, name in enumerate(outputs):
+                normalized_result[names_to_index[name]] = results[i]
+
+            return tuple(normalized_result)
+
+        return wrapped_fn</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.flow.AutoForward"><code class="flex name class">
+<span>class <span class="ident">AutoForward</span></span>
+<span>(</span><span>flow: <a title="silk.flow.Flow" href="#silk.flow.Flow">Flow</a>, default_outputs: Union[str, Tuple[str]])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AutoForward:
+    def __init__(self, flow: Flow, default_outputs: Union[str, Tuple[str]]) -&gt; None:
+        self._default_outputs = default_outputs
+        self._flow = flow
+        self._forward_flow = None
+
+    @property
+    def default_outputs(self):
+        return self._default_outputs
+
+    @property
+    def flow(self):
+        return self._flow
+
+    def forward_flow(self, outputs: Union[str, Tuple[str]], *args, **kwargs):
+        return self._flow(outputs, *args, **kwargs)
+
+    def forward(self, *args, **kwargs):
+        if self._forward_flow is None:
+            self._forward_flow = self._flow.with_outputs(self._default_outputs)
+        return self._forward_flow(*args, **kwargs)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.abstract.shared_backbone_multiple_heads.SharedBackboneMultipleHeads" href="backbones/abstract/shared_backbone_multiple_heads.html#silk.backbones.abstract.shared_backbone_multiple_heads.SharedBackboneMultipleHeads">SharedBackboneMultipleHeads</a></li>
+<li><a title="silk.backbones.silk.silk.SiLKBase" href="backbones/silk/silk.html#silk.backbones.silk.silk.SiLKBase">SiLKBase</a></li>
+<li><a title="silk.backbones.superpoint.magicpoint.MagicPoint" href="backbones/superpoint/magicpoint.html#silk.backbones.superpoint.magicpoint.MagicPoint">MagicPoint</a></li>
+<li><a title="silk.backbones.superpoint.superpoint.SuperPoint" href="backbones/superpoint/superpoint.html#silk.backbones.superpoint.superpoint.SuperPoint">SuperPoint</a></li>
+<li><a title="silk.models.silk.SiLKBase" href="models/silk.html#silk.models.silk.SiLKBase">SiLKBase</a></li>
+<li><a title="silk.models.superpoint.SuperPoint" href="models/superpoint.html#silk.models.superpoint.SuperPoint">SuperPoint</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.flow.AutoForward.default_outputs"><code class="name">var <span class="ident">default_outputs</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def default_outputs(self):
+    return self._default_outputs</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.AutoForward.flow"><code class="name">var <span class="ident">flow</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flow(self):
+    return self._flow</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.flow.AutoForward.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, *args, **kwargs):
+    if self._forward_flow is None:
+        self._forward_flow = self._flow.with_outputs(self._default_outputs)
+    return self._forward_flow(*args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.AutoForward.forward_flow"><code class="name flex">
+<span>def <span class="ident">forward_flow</span></span>(<span>self, outputs: Union[str, Tuple[str]], *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward_flow(self, outputs: Union[str, Tuple[str]], *args, **kwargs):
+    return self._flow(outputs, *args, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.flow.ConditionalReturn"><code class="flex name class">
+<span>class <span class="ident">ConditionalReturn</span></span>
+<span>(</span><span>required_variables: Union[str, Iterable[str]], valid_variables: Optional[Set[str]], from_locals: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Structure that helps a function to determine what output(s) to return and when.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>required_variables</code></strong> :&ensp;<code>Union[Iterable[str], str]</code></dt>
+<dd>List of outputs required for return.</dd>
+<dt><strong><code>valid_variables</code></strong> :&ensp;<code>Union[Set[str], None]</code></dt>
+<dd>Total list of valid outputs to require.</dd>
+<dt><strong><code>from_locals</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Automatically gather variables from stack frames, by default False</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditionalReturn:
+    &#34;&#34;&#34;Structure that helps a function to determine what output(s) to return and when.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        required_variables: Union[Iterable[str], str],
+        valid_variables: Union[Set[str], None],
+        from_locals: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        required_variables : Union[Iterable[str], str]
+            List of outputs required for return.
+        valid_variables : Union[Set[str], None]
+            Total list of valid outputs to require.
+        from_locals : bool, optional
+            Automatically gather variables from stack frames, by default False
+        &#34;&#34;&#34;
+        self._single_return = isinstance(required_variables, str)
+        required_variables = ConditionalReturn._as_iterable(required_variables)
+
+        # TODO(Pierre) change to exceptions
+        assert len(valid_variables) &gt; 0
+        assert len(required_variables) &gt; 0
+        assert len(valid_variables) == len(set(valid_variables))
+
+        self._valid_variables = valid_variables
+        self._required_variables = required_variables
+        self._required_variables_left = set(required_variables)
+
+        self._values = {var: None for var in required_variables}
+        self._from_locals = from_locals
+
+    @staticmethod
+    def split(
+        required_variables: Union[Iterable[str], str],
+        valid_variables: Set[str],
+    ) -&gt; Tuple[List[str], List[str]]:
+        &#34;&#34;&#34;Split into required variables found in valid variable, and those which are not.
+
+        Parameters
+        ----------
+        required_variables : Union[Iterable[str], str]
+            Set of variable names to split.
+        valid_variables : Set[str]
+            Set of variable name that are considered valid in the current flow.
+
+        Returns
+        -------
+        Tuple[List[str], List[str]]
+            Both set of valid variable names and invalid ones.
+        &#34;&#34;&#34;
+        required_variables = ConditionalReturn._as_iterable(required_variables)
+        mine = [var for var in required_variables if var in valid_variables]
+        other = [var for var in required_variables if var not in valid_variables]
+        return mine, other
+
+    @staticmethod
+    def _as_iterable(el: Union[Iterable[str], str]):
+        if isinstance(el, str):
+            return (el,)
+        return el
+
+    def should_return(self) -&gt; bool:
+        &#34;&#34;&#34;Determine if all required outputs are ready to be returned.
+
+        Returns
+        -------
+        bool
+            Ready or not to return.
+        &#34;&#34;&#34;
+        return len(self._required_variables_left) == 0
+
+    def _get_stack_frame_locals(self, depth=1):
+        if not self._from_locals:
+            return {}
+
+        calling_fn_frame = inspect.currentframe()
+
+        try:
+            for _ in range(depth):
+                if calling_fn_frame.f_back is not None:
+                    calling_fn_frame = calling_fn_frame.f_back
+                else:
+                    raise RuntimeError(f&#34;couldn&#39;t find frame at depth {depth}&#34;)
+            frame_locals = calling_fn_frame.f_locals
+        finally:
+            del calling_fn_frame  # to avoid reference loop
+
+        return frame_locals
+
+    def _gather(self, calling_fn_locals, **local_mapping):
+        for var in tuple(self._required_variables_left):
+            if var in local_mapping:
+                self._values[var] = local_mapping[var]
+                self._required_variables_left.remove(var)
+            elif var in calling_fn_locals:
+                self._values[var] = calling_fn_locals[var]
+                self._required_variables_left.remove(var)
+
+    def gather(self, **local_mapping):
+        &#34;&#34;&#34;Gather provided outputs or find them in the caller&#39;s stack frame&#39;s locals.&#34;&#34;&#34;
+        self._gather(
+            self._get_stack_frame_locals(depth=2),
+            **local_mapping,
+        )
+
+    def gathered(self, **local_mapping) -&gt; bool:
+        &#34;&#34;&#34;Call `gather` and returns `should_return`.&#34;&#34;&#34;
+        self._gather(
+            self._get_stack_frame_locals(depth=2),
+            **local_mapping,
+        )
+        return self.should_return()
+
+    def return_value(self, **local_mapping):
+        &#34;&#34;&#34;Returns gathered outputs.&#34;&#34;&#34;
+        if not self.should_return():
+            self._gather(
+                self._get_stack_frame_locals(depth=2),
+                **local_mapping,
+            )
+
+        assert self.should_return()
+
+        values = tuple(self._values[var] for var in self._required_variables)
+
+        if self._single_return:
+            return values[0]
+        return values
+
+    def requires_either_one_of(self, *names):
+        &#34;&#34;&#34;Return if any variable name is required by the conditional return.&#34;&#34;&#34;
+        assert len(names) &gt; 0
+        for name in names:
+            if name in self._required_variables:
+                return True
+        return False
+
+    def subcall(self, fn, **names):
+        n = len(names)
+        names_to_index = {name: i for i, name in enumerate(names.keys())}
+        outputs = tuple(
+            name
+            for name, dependants in names.items()
+            if self.requires_either_one_of(*dependants)
+        )
+
+        def wrapped_fn(*args, **kwargs):
+            results = fn(*args, outputs=outputs, **kwargs)
+
+            normalized_result = [None] * n
+            for i, name in enumerate(outputs):
+                normalized_result[names_to_index[name]] = results[i]
+
+            return tuple(normalized_result)
+
+        return wrapped_fn</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.flow.ConditionalReturn.split"><code class="name flex">
+<span>def <span class="ident">split</span></span>(<span>required_variables: Union[str, Iterable[str]], valid_variables: Set[str]) ‑> Tuple[List[str], List[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split into required variables found in valid variable, and those which are not.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>required_variables</code></strong> :&ensp;<code>Union[Iterable[str], str]</code></dt>
+<dd>Set of variable names to split.</dd>
+<dt><strong><code>valid_variables</code></strong> :&ensp;<code>Set[str]</code></dt>
+<dd>Set of variable name that are considered valid in the current flow.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[List[str], List[str]]</code></dt>
+<dd>Both set of valid variable names and invalid ones.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def split(
+    required_variables: Union[Iterable[str], str],
+    valid_variables: Set[str],
+) -&gt; Tuple[List[str], List[str]]:
+    &#34;&#34;&#34;Split into required variables found in valid variable, and those which are not.
+
+    Parameters
+    ----------
+    required_variables : Union[Iterable[str], str]
+        Set of variable names to split.
+    valid_variables : Set[str]
+        Set of variable name that are considered valid in the current flow.
+
+    Returns
+    -------
+    Tuple[List[str], List[str]]
+        Both set of valid variable names and invalid ones.
+    &#34;&#34;&#34;
+    required_variables = ConditionalReturn._as_iterable(required_variables)
+    mine = [var for var in required_variables if var in valid_variables]
+    other = [var for var in required_variables if var not in valid_variables]
+    return mine, other</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.flow.ConditionalReturn.gather"><code class="name flex">
+<span>def <span class="ident">gather</span></span>(<span>self, **local_mapping)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gather provided outputs or find them in the caller's stack frame's locals.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gather(self, **local_mapping):
+    &#34;&#34;&#34;Gather provided outputs or find them in the caller&#39;s stack frame&#39;s locals.&#34;&#34;&#34;
+    self._gather(
+        self._get_stack_frame_locals(depth=2),
+        **local_mapping,
+    )</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.ConditionalReturn.gathered"><code class="name flex">
+<span>def <span class="ident">gathered</span></span>(<span>self, **local_mapping) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call <code>gather</code> and returns <code>should_return</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def gathered(self, **local_mapping) -&gt; bool:
+    &#34;&#34;&#34;Call `gather` and returns `should_return`.&#34;&#34;&#34;
+    self._gather(
+        self._get_stack_frame_locals(depth=2),
+        **local_mapping,
+    )
+    return self.should_return()</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.ConditionalReturn.requires_either_one_of"><code class="name flex">
+<span>def <span class="ident">requires_either_one_of</span></span>(<span>self, *names)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return if any variable name is required by the conditional return.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def requires_either_one_of(self, *names):
+    &#34;&#34;&#34;Return if any variable name is required by the conditional return.&#34;&#34;&#34;
+    assert len(names) &gt; 0
+    for name in names:
+        if name in self._required_variables:
+            return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.ConditionalReturn.return_value"><code class="name flex">
+<span>def <span class="ident">return_value</span></span>(<span>self, **local_mapping)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns gathered outputs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def return_value(self, **local_mapping):
+    &#34;&#34;&#34;Returns gathered outputs.&#34;&#34;&#34;
+    if not self.should_return():
+        self._gather(
+            self._get_stack_frame_locals(depth=2),
+            **local_mapping,
+        )
+
+    assert self.should_return()
+
+    values = tuple(self._values[var] for var in self._required_variables)
+
+    if self._single_return:
+        return values[0]
+    return values</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.ConditionalReturn.should_return"><code class="name flex">
+<span>def <span class="ident">should_return</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determine if all required outputs are ready to be returned.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Ready or not to return.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def should_return(self) -&gt; bool:
+    &#34;&#34;&#34;Determine if all required outputs are ready to be returned.
+
+    Returns
+    -------
+    bool
+        Ready or not to return.
+    &#34;&#34;&#34;
+    return len(self._required_variables_left) == 0</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.ConditionalReturn.subcall"><code class="name flex">
+<span>def <span class="ident">subcall</span></span>(<span>self, fn, **names)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def subcall(self, fn, **names):
+    n = len(names)
+    names_to_index = {name: i for i, name in enumerate(names.keys())}
+    outputs = tuple(
+        name
+        for name, dependants in names.items()
+        if self.requires_either_one_of(*dependants)
+    )
+
+    def wrapped_fn(*args, **kwargs):
+        results = fn(*args, outputs=outputs, **kwargs)
+
+        normalized_result = [None] * n
+        for i, name in enumerate(outputs):
+            normalized_result[names_to_index[name]] = results[i]
+
+        return tuple(normalized_result)
+
+    return wrapped_fn</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.flow.FixedOutputFlow"><code class="flex name class">
+<span>class <span class="ident">FixedOutputFlow</span></span>
+<span>(</span><span>flow, outputs: Union[str, Tuple[str]])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FixedOutputFlow:
+    def __init__(self, flow, outputs: Union[str, Tuple[str]]) -&gt; None:
+        self._flow = flow
+        self._outputs = outputs
+
+        self._tape = self._flow.get_tape(outputs)
+        self._output_indexes = self._flow.names_to_indexes(self._outputs)
+
+    @property
+    def outputs(self):
+        return self._outputs
+
+    @property
+    def tape(self):
+        return self._tape
+
+    @property
+    def flow(self):
+        return self._flow
+
+    def __call__(self, *args, **kwargs):
+        inputs = self._flow.inputs_as_dict(*args, **kwargs)
+        return self._flow.flow_from_tape(self._tape, self._output_indexes, inputs)
+
+    def with_outputs(self, outputs):
+        return self.flow.with_outputs(outputs)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.flow.FixedOutputFlow.flow"><code class="name">var <span class="ident">flow</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flow(self):
+    return self._flow</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.FixedOutputFlow.outputs"><code class="name">var <span class="ident">outputs</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def outputs(self):
+    return self._outputs</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.FixedOutputFlow.tape"><code class="name">var <span class="ident">tape</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def tape(self):
+    return self._tape</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.flow.FixedOutputFlow.with_outputs"><code class="name flex">
+<span>def <span class="ident">with_outputs</span></span>(<span>self, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def with_outputs(self, outputs):
+    return self.flow.with_outputs(outputs)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.flow.Flow"><code class="flex name class">
+<span>class <span class="ident">Flow</span></span>
+<span>(</span><span>*inputs: Tuple[str])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Flow:
+    class Constant:
+        def __init__(self, value) -&gt; None:
+            self.value = value
+
+    def __init__(self, *inputs: Tuple[str]) -&gt; None:
+        # TODO check redundant names
+        # TODO check no &#34;outputs&#34; names
+        # TODO should not be empty
+        self._inputs = inputs
+        self._name_to_index = {}
+        self._index_to_name = {}
+        self._transitions = []
+        self._flow_signature = inspect.Signature(
+            inspect.Parameter(
+                name,
+                inspect.Parameter.POSITIONAL_OR_KEYWORD,
+                default=None,
+            )
+            for name in self._inputs
+        )
+
+        for name in self._inputs:
+            self._add_transition(_InputExtraction(name), name)
+
+    @property
+    def inputs(self):
+        return self._inputs
+
+    @property
+    def names(self):
+        return tuple(self._index_to_name.values())
+
+    def index_of(self, name):
+        # TODO check if name exist
+        if isinstance(name, str):
+            return self._name_to_index[name]
+        elif isinstance(name, Flow.Constant):
+            return self._add_transition(_ConstantExtraction(name.value))
+        raise RuntimeError(f&#34;cannot handle name of type {type(name)}&#34;)
+
+    def _add_transition(self, transition, name=None):
+        # TODO check if name doesn&#39;t already exist
+        index = len(self._transitions)
+        self._transitions.append(transition)
+        if name:
+            self._name_to_index[name] = index
+            self._index_to_name[index] = name
+        return index
+
+    def define_transition(
+        self,
+        names: Union[str, Tuple[str]],
+        function,
+        *args,
+        **kwargs,
+    ):
+        # TODO check names
+        args = tuple(self.index_of(name) for name in args)
+        kwargs = {param: self.index_of(name) for param, name in kwargs.items()}
+
+        transition = _FunctionCall(function, *args, **kwargs)
+
+        if isinstance(names, str):
+            index = self._add_transition(transition, name=names)
+        else:
+            index = self._add_transition(transition, name=None)
+            for i, name in enumerate(names):
+                self._add_transition(_TupleOutputExtraction(index, i), name=name)
+
+    def get_tape(self, outputs):
+        if isinstance(outputs, str):
+            outputs = (outputs,)
+
+        tape = []
+        max_dependants = {}
+        output_indexes = set(self._name_to_index[name] for name in outputs)
+
+        head_indexes = [
+            (-self._name_to_index[name], -self._name_to_index[name]) for name in outputs
+        ]
+        heapify(head_indexes)
+
+        last_index = None
+        while len(head_indexes) &gt; 0:
+            index, max_dependant = heappop(head_indexes)
+            if index == last_index:
+                continue
+            last_index = index
+
+            index = -index
+            if max_dependant is not None:
+                max_dependant = -max_dependant
+                if index not in output_indexes:
+                    max_dependants.setdefault(max_dependant, []).append(index)
+
+            transition = self._transitions[index]
+            for idx in transition.dependencies:
+                heappush(head_indexes, (-idx, -index))
+
+            tape.append(index)
+
+        for i, index in enumerate(tape):
+            tape[i] = (index, max_dependants.get(index, ()))
+
+        return tuple(tape[::-1])
+
+    def flow_from_tape(self, tape, output_indexes, inputs):
+        session = [None] * len(self._transitions)
+        for index, to_clean in tape:
+            session[index] = self._transitions[index](session, inputs)
+            for i in to_clean:
+                session[i] = None
+
+        if isinstance(output_indexes, int):
+            return session[output_indexes]
+        return tuple(session[index] for index in output_indexes)
+
+    def names_to_indexes(self, names):
+        if isinstance(names, str):
+            return self._name_to_index[names]
+        return tuple(self._name_to_index[name] for name in names)
+
+    def inputs_as_dict(self, *args, **kwargs):
+        return self._flow_signature.bind(*args, **kwargs).arguments
+
+    def flow(self, outputs, *inputs_args, **inputs_kwargs):
+        inputs = self.inputs_as_dict(*inputs_args, **inputs_kwargs)
+        tape = self.get_tape(outputs)
+        output_indexes = self.names_to_indexes(outputs)
+        return self.flow_from_tape(tape, output_indexes, inputs)
+
+    __call__ = flow
+
+    def with_outputs(self, outputs):
+        return FixedOutputFlow(self, outputs)
+
+    def tape_as_pseudocode(self, tape):
+        instructions = []
+        for index, to_clean in tape:
+            name = self._index_to_name.get(index, &#34;@&#34;)
+            transition = self._transitions[index]
+            if isinstance(transition, _FunctionCall):
+                dep = tuple(
+                    self._index_to_name.get(index, &#34;@&#34;)
+                    for index in transition.dependencies
+                )
+                args = transition.args(dep)
+                kwargs = {k: v for k, v in transition.kwargs(dep).items()}
+                all_args = itertools.chain(args, kwargs)
+                all_args = &#34;,&#34;.join(all_args)
+                func_name = getattr(
+                    transition._function, &#34;__name__&#34;, repr(transition._function)
+                )
+                instructions.append(f&#34;{name} = {func_name}({all_args})&#34;)
+            elif isinstance(transition, _InputExtraction):
+                instructions.append(f&#34;${transition._name}&#34;)
+            elif isinstance(transition, _TupleOutputExtraction):
+                instructions.append(f&#34;{name} = @[{transition._tuple_index}]&#34;)
+
+            for i in to_clean:
+                name = self._index_to_name.get(i, &#34;@&#34;)
+                instructions.append(f&#34;delete {name}&#34;)
+
+        return &#34;\n&#34;.join(instructions)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.flow.Flow.Constant"><code class="name">var <span class="ident">Constant</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.flow.Flow.inputs"><code class="name">var <span class="ident">inputs</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def inputs(self):
+    return self._inputs</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.names"><code class="name">var <span class="ident">names</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def names(self):
+    return tuple(self._index_to_name.values())</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.flow.Flow.define_transition"><code class="name flex">
+<span>def <span class="ident">define_transition</span></span>(<span>self, names: Union[str, Tuple[str]], function, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def define_transition(
+    self,
+    names: Union[str, Tuple[str]],
+    function,
+    *args,
+    **kwargs,
+):
+    # TODO check names
+    args = tuple(self.index_of(name) for name in args)
+    kwargs = {param: self.index_of(name) for param, name in kwargs.items()}
+
+    transition = _FunctionCall(function, *args, **kwargs)
+
+    if isinstance(names, str):
+        index = self._add_transition(transition, name=names)
+    else:
+        index = self._add_transition(transition, name=None)
+        for i, name in enumerate(names):
+            self._add_transition(_TupleOutputExtraction(index, i), name=name)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.flow"><code class="name flex">
+<span>def <span class="ident">flow</span></span>(<span>self, outputs, *inputs_args, **inputs_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flow(self, outputs, *inputs_args, **inputs_kwargs):
+    inputs = self.inputs_as_dict(*inputs_args, **inputs_kwargs)
+    tape = self.get_tape(outputs)
+    output_indexes = self.names_to_indexes(outputs)
+    return self.flow_from_tape(tape, output_indexes, inputs)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.flow_from_tape"><code class="name flex">
+<span>def <span class="ident">flow_from_tape</span></span>(<span>self, tape, output_indexes, inputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flow_from_tape(self, tape, output_indexes, inputs):
+    session = [None] * len(self._transitions)
+    for index, to_clean in tape:
+        session[index] = self._transitions[index](session, inputs)
+        for i in to_clean:
+            session[i] = None
+
+    if isinstance(output_indexes, int):
+        return session[output_indexes]
+    return tuple(session[index] for index in output_indexes)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.get_tape"><code class="name flex">
+<span>def <span class="ident">get_tape</span></span>(<span>self, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_tape(self, outputs):
+    if isinstance(outputs, str):
+        outputs = (outputs,)
+
+    tape = []
+    max_dependants = {}
+    output_indexes = set(self._name_to_index[name] for name in outputs)
+
+    head_indexes = [
+        (-self._name_to_index[name], -self._name_to_index[name]) for name in outputs
+    ]
+    heapify(head_indexes)
+
+    last_index = None
+    while len(head_indexes) &gt; 0:
+        index, max_dependant = heappop(head_indexes)
+        if index == last_index:
+            continue
+        last_index = index
+
+        index = -index
+        if max_dependant is not None:
+            max_dependant = -max_dependant
+            if index not in output_indexes:
+                max_dependants.setdefault(max_dependant, []).append(index)
+
+        transition = self._transitions[index]
+        for idx in transition.dependencies:
+            heappush(head_indexes, (-idx, -index))
+
+        tape.append(index)
+
+    for i, index in enumerate(tape):
+        tape[i] = (index, max_dependants.get(index, ()))
+
+    return tuple(tape[::-1])</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.index_of"><code class="name flex">
+<span>def <span class="ident">index_of</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def index_of(self, name):
+    # TODO check if name exist
+    if isinstance(name, str):
+        return self._name_to_index[name]
+    elif isinstance(name, Flow.Constant):
+        return self._add_transition(_ConstantExtraction(name.value))
+    raise RuntimeError(f&#34;cannot handle name of type {type(name)}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.inputs_as_dict"><code class="name flex">
+<span>def <span class="ident">inputs_as_dict</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def inputs_as_dict(self, *args, **kwargs):
+    return self._flow_signature.bind(*args, **kwargs).arguments</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.names_to_indexes"><code class="name flex">
+<span>def <span class="ident">names_to_indexes</span></span>(<span>self, names)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def names_to_indexes(self, names):
+    if isinstance(names, str):
+        return self._name_to_index[names]
+    return tuple(self._name_to_index[name] for name in names)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.tape_as_pseudocode"><code class="name flex">
+<span>def <span class="ident">tape_as_pseudocode</span></span>(<span>self, tape)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tape_as_pseudocode(self, tape):
+    instructions = []
+    for index, to_clean in tape:
+        name = self._index_to_name.get(index, &#34;@&#34;)
+        transition = self._transitions[index]
+        if isinstance(transition, _FunctionCall):
+            dep = tuple(
+                self._index_to_name.get(index, &#34;@&#34;)
+                for index in transition.dependencies
+            )
+            args = transition.args(dep)
+            kwargs = {k: v for k, v in transition.kwargs(dep).items()}
+            all_args = itertools.chain(args, kwargs)
+            all_args = &#34;,&#34;.join(all_args)
+            func_name = getattr(
+                transition._function, &#34;__name__&#34;, repr(transition._function)
+            )
+            instructions.append(f&#34;{name} = {func_name}({all_args})&#34;)
+        elif isinstance(transition, _InputExtraction):
+            instructions.append(f&#34;${transition._name}&#34;)
+        elif isinstance(transition, _TupleOutputExtraction):
+            instructions.append(f&#34;{name} = @[{transition._tuple_index}]&#34;)
+
+        for i in to_clean:
+            name = self._index_to_name.get(i, &#34;@&#34;)
+            instructions.append(f&#34;delete {name}&#34;)
+
+    return &#34;\n&#34;.join(instructions)</code></pre>
+</details>
+</dd>
+<dt id="silk.flow.Flow.with_outputs"><code class="name flex">
+<span>def <span class="ident">with_outputs</span></span>(<span>self, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def with_outputs(self, outputs):
+    return FixedOutputFlow(self, outputs)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk" href="index.html">silk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.flow.AutoForward" href="#silk.flow.AutoForward">AutoForward</a></code></h4>
+<ul class="">
+<li><code><a title="silk.flow.AutoForward.default_outputs" href="#silk.flow.AutoForward.default_outputs">default_outputs</a></code></li>
+<li><code><a title="silk.flow.AutoForward.flow" href="#silk.flow.AutoForward.flow">flow</a></code></li>
+<li><code><a title="silk.flow.AutoForward.forward" href="#silk.flow.AutoForward.forward">forward</a></code></li>
+<li><code><a title="silk.flow.AutoForward.forward_flow" href="#silk.flow.AutoForward.forward_flow">forward_flow</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.flow.ConditionalReturn" href="#silk.flow.ConditionalReturn">ConditionalReturn</a></code></h4>
+<ul class="">
+<li><code><a title="silk.flow.ConditionalReturn.gather" href="#silk.flow.ConditionalReturn.gather">gather</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.gathered" href="#silk.flow.ConditionalReturn.gathered">gathered</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.requires_either_one_of" href="#silk.flow.ConditionalReturn.requires_either_one_of">requires_either_one_of</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.return_value" href="#silk.flow.ConditionalReturn.return_value">return_value</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.should_return" href="#silk.flow.ConditionalReturn.should_return">should_return</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.split" href="#silk.flow.ConditionalReturn.split">split</a></code></li>
+<li><code><a title="silk.flow.ConditionalReturn.subcall" href="#silk.flow.ConditionalReturn.subcall">subcall</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.flow.FixedOutputFlow" href="#silk.flow.FixedOutputFlow">FixedOutputFlow</a></code></h4>
+<ul class="">
+<li><code><a title="silk.flow.FixedOutputFlow.flow" href="#silk.flow.FixedOutputFlow.flow">flow</a></code></li>
+<li><code><a title="silk.flow.FixedOutputFlow.outputs" href="#silk.flow.FixedOutputFlow.outputs">outputs</a></code></li>
+<li><code><a title="silk.flow.FixedOutputFlow.tape" href="#silk.flow.FixedOutputFlow.tape">tape</a></code></li>
+<li><code><a title="silk.flow.FixedOutputFlow.with_outputs" href="#silk.flow.FixedOutputFlow.with_outputs">with_outputs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.flow.Flow" href="#silk.flow.Flow">Flow</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.flow.Flow.Constant" href="#silk.flow.Flow.Constant">Constant</a></code></li>
+<li><code><a title="silk.flow.Flow.define_transition" href="#silk.flow.Flow.define_transition">define_transition</a></code></li>
+<li><code><a title="silk.flow.Flow.flow" href="#silk.flow.Flow.flow">flow</a></code></li>
+<li><code><a title="silk.flow.Flow.flow_from_tape" href="#silk.flow.Flow.flow_from_tape">flow_from_tape</a></code></li>
+<li><code><a title="silk.flow.Flow.get_tape" href="#silk.flow.Flow.get_tape">get_tape</a></code></li>
+<li><code><a title="silk.flow.Flow.index_of" href="#silk.flow.Flow.index_of">index_of</a></code></li>
+<li><code><a title="silk.flow.Flow.inputs" href="#silk.flow.Flow.inputs">inputs</a></code></li>
+<li><code><a title="silk.flow.Flow.inputs_as_dict" href="#silk.flow.Flow.inputs_as_dict">inputs_as_dict</a></code></li>
+<li><code><a title="silk.flow.Flow.names" href="#silk.flow.Flow.names">names</a></code></li>
+<li><code><a title="silk.flow.Flow.names_to_indexes" href="#silk.flow.Flow.names_to_indexes">names_to_indexes</a></code></li>
+<li><code><a title="silk.flow.Flow.tape_as_pseudocode" href="#silk.flow.Flow.tape_as_pseudocode">tape_as_pseudocode</a></code></li>
+<li><code><a title="silk.flow.Flow.with_outputs" href="#silk.flow.Flow.with_outputs">with_outputs</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

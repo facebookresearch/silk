@@ -1,0 +1,6 @@
+defaults:
+  - defaults
+  - _self_
+
+name: json
+sort_keys: true

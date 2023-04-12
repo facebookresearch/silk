@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.backbones.silk.coords API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.backbones.silk.coords</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from typing import Tuple, Iterable
+
+import torch
+
+
+class CoordinateMapping:
+    def apply(self, positions):
+        raise NotImplementedError
+
+    def reverse(self, positions):
+        raise NotImplementedError
+
+    def __add__(self, other):
+        return SequentialCoordinateMapping((self, other))
+
+    def __neg__(self):
+        raise NotImplementedError
+
+    def __str__(self):
+        raise NotImplementedError
+
+
+class LinearCoordinateMapping(CoordinateMapping):
+    def __init__(self, scale=1.0, bias=0.0) -&gt; None:
+        super().__init__()
+        self.scale = scale
+        self.bias = bias
+
+    def apply(self, positions):
+        device = (
+            positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+        )
+        return positions * self.scale.to(device) + self.bias.to(device)
+
+    def reverse(self, positions):
+        device = (
+            positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+        )
+        return (positions - self.bias.to(device)) / self.scale.to(device)
+
+    def __add__(self, other):
+        if isinstance(other, LinearCoordinateMapping):
+            return LinearCoordinateMapping(
+                self.scale * other.scale,
+                self.bias * other.scale + other.bias,
+            )
+        elif isinstance(other, Identity):
+            return self
+        return CoordinateMapping.__add__(self, other)
+
+    def __neg__(self):
+        return LinearCoordinateMapping(
+            scale=1.0 / self.scale,
+            bias=-self.bias / self.scale,
+        )
+
+    def __str__(self):
+        return f&#34;x &lt;- {self.scale} x + {self.bias}&#34;
+
+
+class Conv2dCoordinateMapping(LinearCoordinateMapping):
+    @staticmethod
+    def from_conv_module(module):
+        assert (
+            isinstance(module, torch.nn.Conv2d)
+            or isinstance(module, torch.nn.MaxPool2d)
+            or isinstance(module, torch.nn.ConvTranspose2d)
+        )
+        if isinstance(module, torch.nn.ConvTranspose2d):
+            return -Conv2dCoordinateMapping(
+                kernel_size=module.kernel_size,
+                stride=module.stride,
+                padding=module.padding,
+                dilation=module.dilation,
+            )
+        return Conv2dCoordinateMapping(
+            kernel_size=module.kernel_size,
+            stride=module.stride,
+            padding=module.padding,
+            dilation=module.dilation,
+        )
+
+    def __init__(self, kernel_size, stride=1, padding=0, dilation=1) -&gt; None:
+        # TODO(Pierre) : Generalize later if necessary
+        assert dilation == 1 or dilation == (1, 1)
+
+        kernel_size = torch.tensor(kernel_size)
+        stride = torch.tensor(stride)
+        padding = torch.tensor(padding)
+
+        output_coord_to_input_coord = LinearCoordinateMapping(
+            scale=stride,
+            bias=-0.5 * stride - padding + kernel_size / 2,
+        )
+        input_coord_to_output_coord = -output_coord_to_input_coord
+
+        LinearCoordinateMapping.__init__(
+            self,
+            input_coord_to_output_coord.scale,
+            input_coord_to_output_coord.bias,
+        )
+
+
+class Identity(CoordinateMapping):
+    def apply(self, positions):
+        return positions
+
+    def reverse(self, positions):
+        return positions
+
+    def __add__(self, other):
+        return other
+
+    def __radd__(self, other):
+        return other
+
+    def __neg__(self):
+        return self
+
+    def __str__(self):
+        return &#34;x &lt;- x&#34;
+
+
+class SequentialCoordinateMapping(CoordinateMapping):
+    def __init__(self, mappings: Iterable[CoordinateMapping]) -&gt; None:
+        super().__init__()
+        self.mappings = tuple(mappings)
+
+    def apply(self, positions):
+        for mapping in self.mappings:
+            positions = mapping.apply(positions)
+        return positions
+
+    def reverse(self, positions):
+        for mapping in reversed(self.mappings):
+            positions = mapping.reverse(positions)
+        return positions
+
+    def __radd__(self, other):
+        if isinstance(other, SequentialCoordinateMapping):
+            return SequentialCoordinateMapping(other.mappings + self.mappings)
+        return SequentialCoordinateMapping((other,) + self.mappings)
+
+    def __neg__(self):
+        return SequentialCoordinateMapping(reversed(self.mappings))
+
+    def __str__(self):
+        return &#34; &lt;- &#34;.join(f&#34;({str(mapping)})&#34; for mapping in reversed(self.mappings))
+
+
+class CoordinateMappingComposer:
+    def __init__(self) -&gt; None:
+        self._mappings = {}
+        self._arrows = set()
+
+    def _set(self, id_from, id_to, mapping):
+        if (id_to, id_from) in self._arrows:
+            raise RuntimeError(f&#34;the mapping &#39;{id_to}&#39; &lt;- &#39;{id_from}&#39; already exist&#34;)
+
+        m = self._mappings.setdefault(id_to, {})
+        m[id_from] = mapping
+
+        m = self._mappings.setdefault(id_from, {})
+        m[id_to] = -mapping
+
+        self._arrows.add((id_to, id_from))
+        self._arrows.add((id_from, id_to))
+
+    def set(self, id_from, id_to, mapping: CoordinateMapping):
+        if not isinstance(mapping, CoordinateMapping):
+            raise RuntimeError(
+                f&#34;the provided mapping should subclass `CoordinateMapping` to provide coordinate mapping between {id_from} and {id_to}&#34;
+            )
+
+        for node_id in self._mappings.get(id_from, {}):
+            self._set(node_id, id_to, self._mappings[id_from][node_id] + mapping)
+
+        self._set(id_from, id_to, mapping)
+
+    def get(self, id_from, id_to):
+        return self._mappings[id_to][id_from]
+
+
+class CoordinateMappingProvider:
+    def mappings(self) -&gt; Tuple[CoordinateMapping]:
+        raise NotImplementedError
+
+def function_coordinate_mapping_provider(mapping = None):
+    mapping = Identity() if mapping is None else mapping
+
+    def wrapper(fn):
+        class AugFn(CoordinateMappingProvider):
+            def __init__(self) -&gt; None:
+                super().__init__()
+            def __call__(self, *args, **kwds):
+                return fn(*args, **kwds)
+            def mappings(self) -&gt; Tuple[CoordinateMapping]:
+                return mapping
+
+        return AugFn()
+
+    return wrapper
+
+
+def mapping_from_torch_module(module) -&gt; CoordinateMapping:
+    if isinstance(module, CoordinateMappingProvider):
+        return module.mappings()
+    elif isinstance(module, torch.nn.Conv2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.ConvTranspose2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.modules.pooling.MaxPool2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.Sequential):
+        return sum((mapping_from_torch_module(mod) for mod in module), start=Identity())
+    elif (
+        isinstance(module, torch.nn.modules.activation.ReLU)
+        or isinstance(module, torch.nn.modules.activation.LeakyReLU)
+        or isinstance(module, torch.nn.Identity)
+        or isinstance(module, torch.nn.BatchNorm2d)
+        or isinstance(module, torch.nn.InstanceNorm2d)
+        or isinstance(module, torch.nn.GroupNorm)
+    ):
+        return Identity()
+    else:
+        raise RuntimeError(
+            f&#34;cannot get the coordinate mappings of module of type {type(module)}&#34;
+        )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.backbones.silk.coords.function_coordinate_mapping_provider"><code class="name flex">
+<span>def <span class="ident">function_coordinate_mapping_provider</span></span>(<span>mapping=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def function_coordinate_mapping_provider(mapping = None):
+    mapping = Identity() if mapping is None else mapping
+
+    def wrapper(fn):
+        class AugFn(CoordinateMappingProvider):
+            def __init__(self) -&gt; None:
+                super().__init__()
+            def __call__(self, *args, **kwds):
+                return fn(*args, **kwds)
+            def mappings(self) -&gt; Tuple[CoordinateMapping]:
+                return mapping
+
+        return AugFn()
+
+    return wrapper</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.mapping_from_torch_module"><code class="name flex">
+<span>def <span class="ident">mapping_from_torch_module</span></span>(<span>module) ‑> <a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mapping_from_torch_module(module) -&gt; CoordinateMapping:
+    if isinstance(module, CoordinateMappingProvider):
+        return module.mappings()
+    elif isinstance(module, torch.nn.Conv2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.ConvTranspose2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.modules.pooling.MaxPool2d):
+        return Conv2dCoordinateMapping.from_conv_module(module)
+    elif isinstance(module, torch.nn.Sequential):
+        return sum((mapping_from_torch_module(mod) for mod in module), start=Identity())
+    elif (
+        isinstance(module, torch.nn.modules.activation.ReLU)
+        or isinstance(module, torch.nn.modules.activation.LeakyReLU)
+        or isinstance(module, torch.nn.Identity)
+        or isinstance(module, torch.nn.BatchNorm2d)
+        or isinstance(module, torch.nn.InstanceNorm2d)
+        or isinstance(module, torch.nn.GroupNorm)
+    ):
+        return Identity()
+    else:
+        raise RuntimeError(
+            f&#34;cannot get the coordinate mappings of module of type {type(module)}&#34;
+        )</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.backbones.silk.coords.Conv2dCoordinateMapping"><code class="flex name class">
+<span>class <span class="ident">Conv2dCoordinateMapping</span></span>
+<span>(</span><span>kernel_size, stride=1, padding=0, dilation=1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Conv2dCoordinateMapping(LinearCoordinateMapping):
+    @staticmethod
+    def from_conv_module(module):
+        assert (
+            isinstance(module, torch.nn.Conv2d)
+            or isinstance(module, torch.nn.MaxPool2d)
+            or isinstance(module, torch.nn.ConvTranspose2d)
+        )
+        if isinstance(module, torch.nn.ConvTranspose2d):
+            return -Conv2dCoordinateMapping(
+                kernel_size=module.kernel_size,
+                stride=module.stride,
+                padding=module.padding,
+                dilation=module.dilation,
+            )
+        return Conv2dCoordinateMapping(
+            kernel_size=module.kernel_size,
+            stride=module.stride,
+            padding=module.padding,
+            dilation=module.dilation,
+        )
+
+    def __init__(self, kernel_size, stride=1, padding=0, dilation=1) -&gt; None:
+        # TODO(Pierre) : Generalize later if necessary
+        assert dilation == 1 or dilation == (1, 1)
+
+        kernel_size = torch.tensor(kernel_size)
+        stride = torch.tensor(stride)
+        padding = torch.tensor(padding)
+
+        output_coord_to_input_coord = LinearCoordinateMapping(
+            scale=stride,
+            bias=-0.5 * stride - padding + kernel_size / 2,
+        )
+        input_coord_to_output_coord = -output_coord_to_input_coord
+
+        LinearCoordinateMapping.__init__(
+            self,
+            input_coord_to_output_coord.scale,
+            input_coord_to_output_coord.bias,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.LinearCoordinateMapping" href="#silk.backbones.silk.coords.LinearCoordinateMapping">LinearCoordinateMapping</a></li>
+<li><a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.Conv2dCoordinateMapping.from_conv_module"><code class="name flex">
+<span>def <span class="ident">from_conv_module</span></span>(<span>module)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_conv_module(module):
+    assert (
+        isinstance(module, torch.nn.Conv2d)
+        or isinstance(module, torch.nn.MaxPool2d)
+        or isinstance(module, torch.nn.ConvTranspose2d)
+    )
+    if isinstance(module, torch.nn.ConvTranspose2d):
+        return -Conv2dCoordinateMapping(
+            kernel_size=module.kernel_size,
+            stride=module.stride,
+            padding=module.padding,
+            dilation=module.dilation,
+        )
+    return Conv2dCoordinateMapping(
+        kernel_size=module.kernel_size,
+        stride=module.stride,
+        padding=module.padding,
+        dilation=module.dilation,
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.CoordinateMapping"><code class="flex name class">
+<span>class <span class="ident">CoordinateMapping</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CoordinateMapping:
+    def apply(self, positions):
+        raise NotImplementedError
+
+    def reverse(self, positions):
+        raise NotImplementedError
+
+    def __add__(self, other):
+        return SequentialCoordinateMapping((self, other))
+
+    def __neg__(self):
+        raise NotImplementedError
+
+    def __str__(self):
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.Identity" href="#silk.backbones.silk.coords.Identity">Identity</a></li>
+<li><a title="silk.backbones.silk.coords.LinearCoordinateMapping" href="#silk.backbones.silk.coords.LinearCoordinateMapping">LinearCoordinateMapping</a></li>
+<li><a title="silk.backbones.silk.coords.SequentialCoordinateMapping" href="#silk.backbones.silk.coords.SequentialCoordinateMapping">SequentialCoordinateMapping</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.CoordinateMapping.apply"><code class="name flex">
+<span>def <span class="ident">apply</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply(self, positions):
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.CoordinateMapping.reverse"><code class="name flex">
+<span>def <span class="ident">reverse</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse(self, positions):
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.CoordinateMappingComposer"><code class="flex name class">
+<span>class <span class="ident">CoordinateMappingComposer</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CoordinateMappingComposer:
+    def __init__(self) -&gt; None:
+        self._mappings = {}
+        self._arrows = set()
+
+    def _set(self, id_from, id_to, mapping):
+        if (id_to, id_from) in self._arrows:
+            raise RuntimeError(f&#34;the mapping &#39;{id_to}&#39; &lt;- &#39;{id_from}&#39; already exist&#34;)
+
+        m = self._mappings.setdefault(id_to, {})
+        m[id_from] = mapping
+
+        m = self._mappings.setdefault(id_from, {})
+        m[id_to] = -mapping
+
+        self._arrows.add((id_to, id_from))
+        self._arrows.add((id_from, id_to))
+
+    def set(self, id_from, id_to, mapping: CoordinateMapping):
+        if not isinstance(mapping, CoordinateMapping):
+            raise RuntimeError(
+                f&#34;the provided mapping should subclass `CoordinateMapping` to provide coordinate mapping between {id_from} and {id_to}&#34;
+            )
+
+        for node_id in self._mappings.get(id_from, {}):
+            self._set(node_id, id_to, self._mappings[id_from][node_id] + mapping)
+
+        self._set(id_from, id_to, mapping)
+
+    def get(self, id_from, id_to):
+        return self._mappings[id_to][id_from]</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.CoordinateMappingComposer.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self, id_from, id_to)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get(self, id_from, id_to):
+    return self._mappings[id_to][id_from]</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.CoordinateMappingComposer.set"><code class="name flex">
+<span>def <span class="ident">set</span></span>(<span>self, id_from, id_to, mapping: <a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set(self, id_from, id_to, mapping: CoordinateMapping):
+    if not isinstance(mapping, CoordinateMapping):
+        raise RuntimeError(
+            f&#34;the provided mapping should subclass `CoordinateMapping` to provide coordinate mapping between {id_from} and {id_to}&#34;
+        )
+
+    for node_id in self._mappings.get(id_from, {}):
+        self._set(node_id, id_to, self._mappings[id_from][node_id] + mapping)
+
+    self._set(id_from, id_to, mapping)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.CoordinateMappingProvider"><code class="flex name class">
+<span>class <span class="ident">CoordinateMappingProvider</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CoordinateMappingProvider:
+    def mappings(self) -&gt; Tuple[CoordinateMapping]:
+        raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.loftr.resnet_fpn.BasicBlock" href="../loftr/resnet_fpn.html#silk.backbones.loftr.resnet_fpn.BasicBlock">BasicBlock</a></li>
+<li><a title="silk.backbones.loftr.resnet_fpn.RemovePad" href="../loftr/resnet_fpn.html#silk.backbones.loftr.resnet_fpn.RemovePad">RemovePad</a></li>
+<li><a title="silk.backbones.loftr.resnet_fpn.ResNetFPN_8_2" href="../loftr/resnet_fpn.html#silk.backbones.loftr.resnet_fpn.ResNetFPN_8_2">ResNetFPN_8_2</a></li>
+<li><a title="silk.backbones.superpoint.magicpoint.DetectorHead" href="../superpoint/magicpoint.html#silk.backbones.superpoint.magicpoint.DetectorHead">DetectorHead</a></li>
+<li><a title="silk.backbones.superpoint.superpoint.DescriptorHead" href="../superpoint/superpoint.html#silk.backbones.superpoint.superpoint.DescriptorHead">DescriptorHead</a></li>
+<li><a title="silk.backbones.superpoint.vgg.ParametricVGG" href="../superpoint/vgg.html#silk.backbones.superpoint.vgg.ParametricVGG">ParametricVGG</a></li>
+<li><a title="silk.backbones.superpoint.vgg.VGG" href="../superpoint/vgg.html#silk.backbones.superpoint.vgg.VGG">VGG</a></li>
+<li><a title="silk.backbones.unet.unet.MultiConv" href="../unet/unet.html#silk.backbones.unet.unet.MultiConv">MultiConv</a></li>
+<li><a title="silk.backbones.unet.unet.OutConv" href="../unet/unet.html#silk.backbones.unet.unet.OutConv">OutConv</a></li>
+<li><a title="silk.backbones.unet.unet.ParametricDown" href="../unet/unet.html#silk.backbones.unet.unet.ParametricDown">ParametricDown</a></li>
+<li><a title="silk.backbones.unet.unet.ParametricUNet" href="../unet/unet.html#silk.backbones.unet.unet.ParametricUNet">ParametricUNet</a></li>
+<li><a title="silk.backbones.unet.unet.ParametricUp" href="../unet/unet.html#silk.backbones.unet.unet.ParametricUp">ParametricUp</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.CoordinateMappingProvider.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self) ‑> Tuple[<a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self) -&gt; Tuple[CoordinateMapping]:
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.Identity"><code class="flex name class">
+<span>class <span class="ident">Identity</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Identity(CoordinateMapping):
+    def apply(self, positions):
+        return positions
+
+    def reverse(self, positions):
+        return positions
+
+    def __add__(self, other):
+        return other
+
+    def __radd__(self, other):
+        return other
+
+    def __neg__(self):
+        return self
+
+    def __str__(self):
+        return &#34;x &lt;- x&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.Identity.apply"><code class="name flex">
+<span>def <span class="ident">apply</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply(self, positions):
+    return positions</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.Identity.reverse"><code class="name flex">
+<span>def <span class="ident">reverse</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse(self, positions):
+    return positions</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.LinearCoordinateMapping"><code class="flex name class">
+<span>class <span class="ident">LinearCoordinateMapping</span></span>
+<span>(</span><span>scale=1.0, bias=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LinearCoordinateMapping(CoordinateMapping):
+    def __init__(self, scale=1.0, bias=0.0) -&gt; None:
+        super().__init__()
+        self.scale = scale
+        self.bias = bias
+
+    def apply(self, positions):
+        device = (
+            positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+        )
+        return positions * self.scale.to(device) + self.bias.to(device)
+
+    def reverse(self, positions):
+        device = (
+            positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+        )
+        return (positions - self.bias.to(device)) / self.scale.to(device)
+
+    def __add__(self, other):
+        if isinstance(other, LinearCoordinateMapping):
+            return LinearCoordinateMapping(
+                self.scale * other.scale,
+                self.bias * other.scale + other.bias,
+            )
+        elif isinstance(other, Identity):
+            return self
+        return CoordinateMapping.__add__(self, other)
+
+    def __neg__(self):
+        return LinearCoordinateMapping(
+            scale=1.0 / self.scale,
+            bias=-self.bias / self.scale,
+        )
+
+    def __str__(self):
+        return f&#34;x &lt;- {self.scale} x + {self.bias}&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.Conv2dCoordinateMapping" href="#silk.backbones.silk.coords.Conv2dCoordinateMapping">Conv2dCoordinateMapping</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.LinearCoordinateMapping.apply"><code class="name flex">
+<span>def <span class="ident">apply</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply(self, positions):
+    device = (
+        positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+    )
+    return positions * self.scale.to(device) + self.bias.to(device)</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.LinearCoordinateMapping.reverse"><code class="name flex">
+<span>def <span class="ident">reverse</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse(self, positions):
+    device = (
+        positions.device if isinstance(positions, torch.torch.Tensor) else &#34;cpu&#34;
+    )
+    return (positions - self.bias.to(device)) / self.scale.to(device)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.silk.coords.SequentialCoordinateMapping"><code class="flex name class">
+<span>class <span class="ident">SequentialCoordinateMapping</span></span>
+<span>(</span><span>mappings: Iterable[<a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SequentialCoordinateMapping(CoordinateMapping):
+    def __init__(self, mappings: Iterable[CoordinateMapping]) -&gt; None:
+        super().__init__()
+        self.mappings = tuple(mappings)
+
+    def apply(self, positions):
+        for mapping in self.mappings:
+            positions = mapping.apply(positions)
+        return positions
+
+    def reverse(self, positions):
+        for mapping in reversed(self.mappings):
+            positions = mapping.reverse(positions)
+        return positions
+
+    def __radd__(self, other):
+        if isinstance(other, SequentialCoordinateMapping):
+            return SequentialCoordinateMapping(other.mappings + self.mappings)
+        return SequentialCoordinateMapping((other,) + self.mappings)
+
+    def __neg__(self):
+        return SequentialCoordinateMapping(reversed(self.mappings))
+
+    def __str__(self):
+        return &#34; &lt;- &#34;.join(f&#34;({str(mapping)})&#34; for mapping in reversed(self.mappings))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.silk.coords.SequentialCoordinateMapping.apply"><code class="name flex">
+<span>def <span class="ident">apply</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply(self, positions):
+    for mapping in self.mappings:
+        positions = mapping.apply(positions)
+    return positions</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.silk.coords.SequentialCoordinateMapping.reverse"><code class="name flex">
+<span>def <span class="ident">reverse</span></span>(<span>self, positions)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reverse(self, positions):
+    for mapping in reversed(self.mappings):
+        positions = mapping.reverse(positions)
+    return positions</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.backbones.silk" href="index.html">silk.backbones.silk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.function_coordinate_mapping_provider" href="#silk.backbones.silk.coords.function_coordinate_mapping_provider">function_coordinate_mapping_provider</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.mapping_from_torch_module" href="#silk.backbones.silk.coords.mapping_from_torch_module">mapping_from_torch_module</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.Conv2dCoordinateMapping" href="#silk.backbones.silk.coords.Conv2dCoordinateMapping">Conv2dCoordinateMapping</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.Conv2dCoordinateMapping.from_conv_module" href="#silk.backbones.silk.coords.Conv2dCoordinateMapping.from_conv_module">from_conv_module</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.CoordinateMapping" href="#silk.backbones.silk.coords.CoordinateMapping">CoordinateMapping</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.CoordinateMapping.apply" href="#silk.backbones.silk.coords.CoordinateMapping.apply">apply</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.CoordinateMapping.reverse" href="#silk.backbones.silk.coords.CoordinateMapping.reverse">reverse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.CoordinateMappingComposer" href="#silk.backbones.silk.coords.CoordinateMappingComposer">CoordinateMappingComposer</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.CoordinateMappingComposer.get" href="#silk.backbones.silk.coords.CoordinateMappingComposer.get">get</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.CoordinateMappingComposer.set" href="#silk.backbones.silk.coords.CoordinateMappingComposer.set">set</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.CoordinateMappingProvider.mappings" href="#silk.backbones.silk.coords.CoordinateMappingProvider.mappings">mappings</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.Identity" href="#silk.backbones.silk.coords.Identity">Identity</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.Identity.apply" href="#silk.backbones.silk.coords.Identity.apply">apply</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.Identity.reverse" href="#silk.backbones.silk.coords.Identity.reverse">reverse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.LinearCoordinateMapping" href="#silk.backbones.silk.coords.LinearCoordinateMapping">LinearCoordinateMapping</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.LinearCoordinateMapping.apply" href="#silk.backbones.silk.coords.LinearCoordinateMapping.apply">apply</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.LinearCoordinateMapping.reverse" href="#silk.backbones.silk.coords.LinearCoordinateMapping.reverse">reverse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.silk.coords.SequentialCoordinateMapping" href="#silk.backbones.silk.coords.SequentialCoordinateMapping">SequentialCoordinateMapping</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.silk.coords.SequentialCoordinateMapping.apply" href="#silk.backbones.silk.coords.SequentialCoordinateMapping.apply">apply</a></code></li>
+<li><code><a title="silk.backbones.silk.coords.SequentialCoordinateMapping.reverse" href="#silk.backbones.silk.coords.SequentialCoordinateMapping.reverse">reverse</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

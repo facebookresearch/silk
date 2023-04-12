@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.backbones.loftr.transformer API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.backbones.loftr.transformer</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import copy
+
+import torch
+import torch.nn as nn
+from silk.backbones.loftr.linear_attention import LinearAttention, FullAttention
+
+
+class LoFTREncoderLayer(nn.Module):
+    def __init__(self, d_model, nhead, attention=&#34;linear&#34;):
+        super(LoFTREncoderLayer, self).__init__()
+
+        self.dim = d_model // nhead
+        self.nhead = nhead
+
+        # multi-head attention
+        self.q_proj = nn.Linear(d_model, d_model, bias=False)
+        self.k_proj = nn.Linear(d_model, d_model, bias=False)
+        self.v_proj = nn.Linear(d_model, d_model, bias=False)
+        self.attention = LinearAttention() if attention == &#34;linear&#34; else FullAttention()
+        self.merge = nn.Linear(d_model, d_model, bias=False)
+
+        # feed-forward network
+        self.mlp = nn.Sequential(
+            nn.Linear(d_model * 2, d_model * 2, bias=False),
+            nn.ReLU(True),
+            nn.Linear(d_model * 2, d_model, bias=False),
+        )
+
+        # norm and dropout
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+
+    def forward(self, x, source, x_mask=None, source_mask=None):
+        &#34;&#34;&#34;
+        Args:
+            x (torch.Tensor): [N, L, C]
+            source (torch.Tensor): [N, S, C]
+            x_mask (torch.Tensor): [N, L] (optional)
+            source_mask (torch.Tensor): [N, S] (optional)
+        &#34;&#34;&#34;
+        bs = x.size(0)
+        query, key, value = x, source, source
+
+        # multi-head attention
+        query = self.q_proj(query).view(bs, -1, self.nhead, self.dim)  # [N, L, (H, D)]
+        key = self.k_proj(key).view(bs, -1, self.nhead, self.dim)  # [N, S, (H, D)]
+        value = self.v_proj(value).view(bs, -1, self.nhead, self.dim)
+        message = self.attention(
+            query, key, value, q_mask=x_mask, kv_mask=source_mask
+        )  # [N, L, (H, D)]
+        message = self.merge(message.view(bs, -1, self.nhead * self.dim))  # [N, L, C]
+        message = self.norm1(message)
+
+        # feed-forward network
+        message = self.mlp(torch.cat([x, message], dim=2))
+        message = self.norm2(message)
+
+        return x + message
+
+
+class LocalFeatureTransformer(nn.Module):
+    &#34;&#34;&#34;A Local Feature Transformer (LoFTR) module.&#34;&#34;&#34;
+
+    def __init__(self, config):
+        super(LocalFeatureTransformer, self).__init__()
+
+        self.config = config
+        self.d_model = config[&#34;d_model&#34;]
+        self.nhead = config[&#34;nhead&#34;]
+        self.layer_names = config[&#34;layer_names&#34;]
+        encoder_layer = LoFTREncoderLayer(
+            config[&#34;d_model&#34;],
+            config[&#34;nhead&#34;],
+            config[&#34;attention&#34;],
+        )
+        self.layers = nn.ModuleList(
+            [copy.deepcopy(encoder_layer) for _ in range(len(self.layer_names))]
+        )
+        self._reset_parameters()
+
+    def _reset_parameters(self):
+        for p in self.parameters():
+            if p.dim() &gt; 1:
+                nn.init.xavier_uniform_(p)
+
+    def forward(self, feat0, feat1, mask0=None, mask1=None):
+        &#34;&#34;&#34;
+        Args:
+            feat0 (torch.Tensor): [N, L, C]
+            feat1 (torch.Tensor): [N, S, C]
+            mask0 (torch.Tensor): [N, L] (optional)
+            mask1 (torch.Tensor): [N, S] (optional)
+        &#34;&#34;&#34;
+
+        assert self.d_model == feat0.size(
+            2
+        ), &#34;the feature number of src and transformer must be equal&#34;
+
+        for layer, name in zip(self.layers, self.layer_names):
+            if name == &#34;self&#34;:
+                feat0 = layer(feat0, feat0, mask0, mask0)
+                feat1 = layer(feat1, feat1, mask1, mask1)
+            elif name == &#34;cross&#34;:
+                feat0 = layer(feat0, feat1, mask0, mask1)
+                feat1 = layer(feat1, feat0, mask1, mask0)
+            else:
+                raise KeyError
+
+        return feat0, feat1</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.backbones.loftr.transformer.LoFTREncoderLayer"><code class="flex name class">
+<span>class <span class="ident">LoFTREncoderLayer</span></span>
+<span>(</span><span>d_model, nhead, attention='linear')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LoFTREncoderLayer(nn.Module):
+    def __init__(self, d_model, nhead, attention=&#34;linear&#34;):
+        super(LoFTREncoderLayer, self).__init__()
+
+        self.dim = d_model // nhead
+        self.nhead = nhead
+
+        # multi-head attention
+        self.q_proj = nn.Linear(d_model, d_model, bias=False)
+        self.k_proj = nn.Linear(d_model, d_model, bias=False)
+        self.v_proj = nn.Linear(d_model, d_model, bias=False)
+        self.attention = LinearAttention() if attention == &#34;linear&#34; else FullAttention()
+        self.merge = nn.Linear(d_model, d_model, bias=False)
+
+        # feed-forward network
+        self.mlp = nn.Sequential(
+            nn.Linear(d_model * 2, d_model * 2, bias=False),
+            nn.ReLU(True),
+            nn.Linear(d_model * 2, d_model, bias=False),
+        )
+
+        # norm and dropout
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+
+    def forward(self, x, source, x_mask=None, source_mask=None):
+        &#34;&#34;&#34;
+        Args:
+            x (torch.Tensor): [N, L, C]
+            source (torch.Tensor): [N, S, C]
+            x_mask (torch.Tensor): [N, L] (optional)
+            source_mask (torch.Tensor): [N, S] (optional)
+        &#34;&#34;&#34;
+        bs = x.size(0)
+        query, key, value = x, source, source
+
+        # multi-head attention
+        query = self.q_proj(query).view(bs, -1, self.nhead, self.dim)  # [N, L, (H, D)]
+        key = self.k_proj(key).view(bs, -1, self.nhead, self.dim)  # [N, S, (H, D)]
+        value = self.v_proj(value).view(bs, -1, self.nhead, self.dim)
+        message = self.attention(
+            query, key, value, q_mask=x_mask, kv_mask=source_mask
+        )  # [N, L, (H, D)]
+        message = self.merge(message.view(bs, -1, self.nhead * self.dim))  # [N, L, C]
+        message = self.norm1(message)
+
+        # feed-forward network
+        message = self.mlp(torch.cat([x, message], dim=2))
+        message = self.norm2(message)
+
+        return x + message</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.loftr.transformer.LoFTREncoderLayer.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.loftr.transformer.LoFTREncoderLayer.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.loftr.transformer.LoFTREncoderLayer.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x, source, x_mask=None, source_mask=None) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, L, C]</dd>
+<dt><strong><code>source</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, S, C]</dd>
+<dt><strong><code>x_mask</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, L] (optional)</dd>
+<dt><strong><code>source_mask</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, S] (optional)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x, source, x_mask=None, source_mask=None):
+    &#34;&#34;&#34;
+    Args:
+        x (torch.Tensor): [N, L, C]
+        source (torch.Tensor): [N, S, C]
+        x_mask (torch.Tensor): [N, L] (optional)
+        source_mask (torch.Tensor): [N, S] (optional)
+    &#34;&#34;&#34;
+    bs = x.size(0)
+    query, key, value = x, source, source
+
+    # multi-head attention
+    query = self.q_proj(query).view(bs, -1, self.nhead, self.dim)  # [N, L, (H, D)]
+    key = self.k_proj(key).view(bs, -1, self.nhead, self.dim)  # [N, S, (H, D)]
+    value = self.v_proj(value).view(bs, -1, self.nhead, self.dim)
+    message = self.attention(
+        query, key, value, q_mask=x_mask, kv_mask=source_mask
+    )  # [N, L, (H, D)]
+    message = self.merge(message.view(bs, -1, self.nhead * self.dim))  # [N, L, C]
+    message = self.norm1(message)
+
+    # feed-forward network
+    message = self.mlp(torch.cat([x, message], dim=2))
+    message = self.norm2(message)
+
+    return x + message</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.loftr.transformer.LocalFeatureTransformer"><code class="flex name class">
+<span>class <span class="ident">LocalFeatureTransformer</span></span>
+<span>(</span><span>config)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A Local Feature Transformer (LoFTR) module.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocalFeatureTransformer(nn.Module):
+    &#34;&#34;&#34;A Local Feature Transformer (LoFTR) module.&#34;&#34;&#34;
+
+    def __init__(self, config):
+        super(LocalFeatureTransformer, self).__init__()
+
+        self.config = config
+        self.d_model = config[&#34;d_model&#34;]
+        self.nhead = config[&#34;nhead&#34;]
+        self.layer_names = config[&#34;layer_names&#34;]
+        encoder_layer = LoFTREncoderLayer(
+            config[&#34;d_model&#34;],
+            config[&#34;nhead&#34;],
+            config[&#34;attention&#34;],
+        )
+        self.layers = nn.ModuleList(
+            [copy.deepcopy(encoder_layer) for _ in range(len(self.layer_names))]
+        )
+        self._reset_parameters()
+
+    def _reset_parameters(self):
+        for p in self.parameters():
+            if p.dim() &gt; 1:
+                nn.init.xavier_uniform_(p)
+
+    def forward(self, feat0, feat1, mask0=None, mask1=None):
+        &#34;&#34;&#34;
+        Args:
+            feat0 (torch.Tensor): [N, L, C]
+            feat1 (torch.Tensor): [N, S, C]
+            mask0 (torch.Tensor): [N, L] (optional)
+            mask1 (torch.Tensor): [N, S] (optional)
+        &#34;&#34;&#34;
+
+        assert self.d_model == feat0.size(
+            2
+        ), &#34;the feature number of src and transformer must be equal&#34;
+
+        for layer, name in zip(self.layers, self.layer_names):
+            if name == &#34;self&#34;:
+                feat0 = layer(feat0, feat0, mask0, mask0)
+                feat1 = layer(feat1, feat1, mask1, mask1)
+            elif name == &#34;cross&#34;:
+                feat0 = layer(feat0, feat1, mask0, mask1)
+                feat1 = layer(feat1, feat0, mask1, mask0)
+            else:
+                raise KeyError
+
+        return feat0, feat1</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.loftr.transformer.LocalFeatureTransformer.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.loftr.transformer.LocalFeatureTransformer.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.loftr.transformer.LocalFeatureTransformer.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, feat0, feat1, mask0=None, mask1=None) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>feat0</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, L, C]</dd>
+<dt><strong><code>feat1</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, S, C]</dd>
+<dt><strong><code>mask0</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, L] (optional)</dd>
+<dt><strong><code>mask1</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, S] (optional)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, feat0, feat1, mask0=None, mask1=None):
+    &#34;&#34;&#34;
+    Args:
+        feat0 (torch.Tensor): [N, L, C]
+        feat1 (torch.Tensor): [N, S, C]
+        mask0 (torch.Tensor): [N, L] (optional)
+        mask1 (torch.Tensor): [N, S] (optional)
+    &#34;&#34;&#34;
+
+    assert self.d_model == feat0.size(
+        2
+    ), &#34;the feature number of src and transformer must be equal&#34;
+
+    for layer, name in zip(self.layers, self.layer_names):
+        if name == &#34;self&#34;:
+            feat0 = layer(feat0, feat0, mask0, mask0)
+            feat1 = layer(feat1, feat1, mask1, mask1)
+        elif name == &#34;cross&#34;:
+            feat0 = layer(feat0, feat1, mask0, mask1)
+            feat1 = layer(feat1, feat0, mask1, mask0)
+        else:
+            raise KeyError
+
+    return feat0, feat1</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.backbones.loftr" href="index.html">silk.backbones.loftr</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.backbones.loftr.transformer.LoFTREncoderLayer" href="#silk.backbones.loftr.transformer.LoFTREncoderLayer">LoFTREncoderLayer</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.loftr.transformer.LoFTREncoderLayer.dump_patches" href="#silk.backbones.loftr.transformer.LoFTREncoderLayer.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.loftr.transformer.LoFTREncoderLayer.forward" href="#silk.backbones.loftr.transformer.LoFTREncoderLayer.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.loftr.transformer.LoFTREncoderLayer.training" href="#silk.backbones.loftr.transformer.LoFTREncoderLayer.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.loftr.transformer.LocalFeatureTransformer" href="#silk.backbones.loftr.transformer.LocalFeatureTransformer">LocalFeatureTransformer</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.loftr.transformer.LocalFeatureTransformer.dump_patches" href="#silk.backbones.loftr.transformer.LocalFeatureTransformer.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.loftr.transformer.LocalFeatureTransformer.forward" href="#silk.backbones.loftr.transformer.LocalFeatureTransformer.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.loftr.transformer.LocalFeatureTransformer.training" href="#silk.backbones.loftr.transformer.LocalFeatureTransformer.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+defaults:
+  - train-superpoint
+  - /datasets/homographically-adapted-coco@loaders.training.dataset: phase-2-training
+  - /datasets/homographically-adapted-coco@loaders.validation.dataset: phase-2-validation
+  - _self_
+
+model:
+  warp_original: false
+  lamdba_descriptor_loss: 0.0001

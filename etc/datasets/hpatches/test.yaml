@@ -1,0 +1,16 @@
+defaults:
+  - defaults
+  - _self_
+
+img_alteration: null # "v" or "i" or null
+num_to_load: null
+img_size: null
+
+## image sized tested below
+# min_img_size: [240, 240]
+# min_img_size: [360, 360]
+min_img_size: [480, 480]
+# min_img_size: [600, 600]
+# min_img_size: [720, 720]
+
+force_min_max_resizing: true

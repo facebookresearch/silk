@@ -1,0 +1,9 @@
+defaults:
+  - training-all
+  - _self_
+
+scan_filter:
+  _target_: silk.datasets.scannet.helper.ScanIDFilter
+  scan_uids:
+    _target_: silk.config.paths.join
+    _args_: ???

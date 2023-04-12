@@ -1,0 +1,8 @@
+defaults:
+  - frozen
+  - /models@model: superpoint
+  - _self_
+
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [MODELS, "superpoint", "superpoint-phase-1.ckpt"]

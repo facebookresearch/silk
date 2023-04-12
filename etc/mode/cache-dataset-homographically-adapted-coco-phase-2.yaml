@@ -1,0 +1,9 @@
+defaults:
+  - /models@model: superpoint-frozen-phase-1-best
+  - cache-dataset-homographically-adapted-coco
+  - _self_
+
+model:
+  model:
+    model:
+      detection_threshold: 0.015

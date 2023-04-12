@@ -1,0 +1,2402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.scannet.helper API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.scannet.helper</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from __future__ import annotations
+
+import json
+import math
+import os
+import pickle as pkl
+import re
+import shutil
+import sqlite3
+import struct
+import zlib
+from glob import glob
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple, Union
+
+import imageio
+import numpy as np
+import torch
+from diskcache import Cache
+from silk.logger import LOG
+from pytorchvideo.data.utils import thwc_to_cthw, optional_threaded_foreach
+from pytorchvideo.data.video import Video
+
+
+class _CacheBase:
+    def __contains__(self, key: bytes) -&gt; bool:
+        raise NotImplementedError
+
+    def __getitem__(self, key: bytes) -&gt; bytes:
+        raise NotImplementedError
+
+    def __setitem__(self, key: bytes, value: bytes) -&gt; None:
+        raise NotImplementedError
+
+
+class _AlwaysEmptyCache(_CacheBase):
+    &#34;&#34;&#34;Fake cache that is always empty and never actually caches anything.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __contains__(self, key: bytes) -&gt; bool:
+        return False
+
+    def __getitem__(self, key: bytes) -&gt; bytes:
+        raise AssertionError(
+            &#34;`__getitem__` should not have been called since the cache is always empty&#34;
+        )
+
+    def __setitem__(self, key: bytes, value: bytes) -&gt; None:
+        pass
+
+
+class _DiskCache(_CacheBase):
+    &#34;&#34;&#34;Cache wrapper to handle potention errors.&#34;&#34;&#34;
+
+    FAIL_RETRIES = 3
+    VERSION = 1
+    VERSION_BYTES = int.to_bytes(1, 2, &#34;little&#34;)
+
+    def __init__(self, *args, **kwargs) -&gt; None:
+        super().__init__()
+        self._args = args
+        self._kwargs = kwargs
+        self._cache = Cache(*args, **kwargs)
+
+        # check version
+        if (&#34;version&#34; not in self) or (self[&#34;version&#34;] != _DiskCache.VERSION_BYTES):
+            self._reopen_cache(delete_cache=True)
+            self[&#34;version&#34;] = _DiskCache.VERSION_BYTES
+
+    def _reopen_cache(self, delete_cache=False):
+        self._cache.close()
+        if delete_cache:
+            LOG.warning(f&#39;cache &#34;{self._cache.directory}&#34; has been removed&#39;)
+            shutil.rmtree(self._cache.directory)
+        self._cache = Cache(*self._args, **self._kwargs)
+
+    def _try(
+        self,
+        fn,
+        ignore_exception=False,
+        default_return=None,
+    ):
+        result = default_return
+        for attempt in range(_DiskCache.FAIL_RETRIES + 1):
+            try:
+                result = fn()
+                break
+            except sqlite3.DatabaseError:
+                if attempt &lt; _DiskCache.FAIL_RETRIES:
+                    LOG.warning(
+                        f&#34;disk cache error occured (attempt #{attempt}/{_DiskCache.FAIL_RETRIES}), attempting to re-open cache ...&#34;
+                    )
+
+                    # try re-opening the cache
+                    self._reopen_cache()
+                else:
+                    LOG.opt(exception=True).error(
+                        f&#34;disk cache error occured (attempt #{attempt}/{_DiskCache.FAIL_RETRIES})&#34;
+                    )
+                    raise
+            except BaseException:
+                LOG.opt(exception=True).error(&#34;unhandled disk cache error occured&#34;)
+                if ignore_exception:
+                    break
+                else:
+                    raise
+        return result
+
+    def __contains__(self, key: bytes) -&gt; bool:
+        def contains():
+            return key in self._cache
+
+        return self._try(contains, ignore_exception=True, default_return=False)
+
+    def __getitem__(self, key: bytes) -&gt; bytes:
+        def getitem():
+            return self._cache[key]
+
+        return self._try(getitem, ignore_exception=False, default_return=None)
+
+    def __setitem__(self, key: bytes, value: bytes) -&gt; None:
+        def setitem():
+            self._cache[key] = value
+
+        return self._try(setitem, ignore_exception=True, default_return=None)
+
+
+CacheType = Union[Cache, _AlwaysEmptyCache]
+
+
+class Space:
+    &#34;&#34;&#34;A Space is a collection of Scans&#34;&#34;&#34;
+
+    def __init__(self, id: int) -&gt; None:
+        self._id = id
+        self._scans = []
+
+    @property
+    def id(self):
+        return self._id
+
+    def _add(self, scan: Scan):
+        scan._parent = self
+        self._scans.append(scan)
+
+    def _remove(self, scan: Scan):
+        scan._parent = None
+        self._scans.remove(scan)
+
+    def __getitem__(self, idx: int):
+        return self._scans[idx]
+
+    def __len__(self):
+        return len(self._scans)
+
+
+class Scan:
+    &#34;&#34;&#34;Scan contains information related to a particular scan (frames, mesh, metadata, ...).&#34;&#34;&#34;
+
+    # regex used to extract ids
+    SPACE_ID_SCAN_ID_RE = re.compile(
+        r&#34;scene(?P&lt;spaceId&gt;[0-9]{4})_(?P&lt;sceneId&gt;[0-9]{2})&#34;
+    )
+
+    @staticmethod
+    def space_id_scan_id_from_path(path: str) -&gt; Tuple[int, int]:
+        &#34;&#34;&#34;Return space id and scan id from directory path of scan.&#34;&#34;&#34;
+        basename = os.path.basename(path)
+        m = Scan.SPACE_ID_SCAN_ID_RE.match(basename)
+
+        # no match
+        if m is None:
+            raise RuntimeError(
+                f&#39;cannot extract space id and scan id from basename &#34;{basename}&#34;&#39;
+            )
+
+        spaceId = int(m.group(&#34;spaceId&#34;))
+        sceneId = int(m.group(&#34;sceneId&#34;))
+
+        return spaceId, sceneId
+
+    @staticmethod
+    def scan_file_path(path: str, extension: str, mesh=None) -&gt; str:
+        &#34;&#34;&#34;Get full path of file present in scan directory by providing its extension.&#34;&#34;&#34;
+        if not mesh:
+            relative_path = os.path.basename(path)
+        else:
+            relative_path = f&#34;{os.path.basename(path)}_vh_{mesh}&#34;
+
+        return os.path.join(path, f&#34;{relative_path}.{extension}&#34;)
+
+    @staticmethod
+    def load_from_directory(
+        path: str,
+        cache: CacheType,
+    ) -&gt; Union[Scan, None]:
+        &#34;&#34;&#34;Load a Scan object by providing its directory path.&#34;&#34;&#34;
+        # get ids
+        try:
+            _, scan_id = Scan.space_id_scan_id_from_path(path)
+        except RuntimeError:
+            LOG.opt(exception=True).warning(f&#34;could not extract ids from path : {path}&#34;)
+            return None
+
+        # load sens file
+        sens_path = Scan.scan_file_path(path, &#34;sens&#34;)
+        frames = Frames.load_from_file(sens_path)
+
+        return Scan(path, scan_id, frames=frames, cache=cache)
+
+    def __init__(self, path: str, id: int, frames: Frames, cache: CacheType) -&gt; None:
+        self._parent: Space = None
+        self._path = path
+        self._id = id
+        self._frames = frames
+        self._frames._parent = self
+        self._txt = None
+        self._mesh = None
+        self._cache = cache
+
+    @property
+    def parent(self) -&gt; Space:
+        return self._parent
+
+    @property
+    def id(self) -&gt; int:
+        return self._id
+
+    @property
+    def uid(self) -&gt; Tuple[int, int]:
+        return (self.parent.id, self.id)
+
+    @property
+    def frames(self) -&gt; Frames:
+        return self._frames
+
+    @property
+    def cache(self) -&gt; CacheType:
+        return self._cache
+
+    @property
+    def txt(self) -&gt; Txt:
+        if self._txt is None:
+            txt_path = Scan.scan_file_path(self._path, &#34;txt&#34;)
+            self._txt = Txt(txt_path)
+        return self._txt
+
+    def mesh(self, mode=&#34;clean&#34;) -&gt; Mesh:
+        assert mode in {&#34;clean&#34;, &#34;clean_2&#34;, &#34;clean_2.labels&#34;}
+
+        mesh_path = Scan.scan_file_path(self._path, &#34;ply&#34;, mode)
+        self._mesh = Mesh(mesh_path)
+
+        return self._mesh
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Scan(path={self._path}, id={self._id}, frames={self._frames}, txt={self._txt})&#34;
+
+    def __len__(self):
+        return len(self._frames)
+
+    def __getitem__(self, idx):
+        return self._frames[idx]
+
+
+class Txt(dict):
+    &#34;&#34;&#34;Loads information contained in the &#34;.txt&#34; file.&#34;&#34;&#34;
+
+    SCENE_TYPE_LIST = [
+        &#34;Apartment&#34;,
+        &#34;Bathroom&#34;,
+        &#34;Bedroom / Hotel&#34;,
+        &#34;Bookstore / Library&#34;,
+        &#34;Classroom&#34;,
+        &#34;Closet&#34;,
+        &#34;ComputerCluster&#34;,
+        &#34;Conference Room&#34;,
+        &#34;Copy/Mail Room&#34;,
+        &#34;Dining Room&#34;,
+        &#34;Game room&#34;,
+        &#34;Gym&#34;,
+        &#34;Hallway&#34;,
+        &#34;Kitchen&#34;,
+        &#34;Laundry Room&#34;,
+        &#34;Living room / Lounge&#34;,
+        &#34;Lobby&#34;,
+        &#34;Misc.&#34;,
+        &#34;Office&#34;,
+        &#34;Stairs&#34;,
+        &#34;Storage/Basement/Garage&#34;,
+    ]
+
+    TEST_SET_SCENE_TYPE_FIX = {
+        &#34;scene0707_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0708_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0709_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0710_00&#34;: &#34;Office&#34;,
+        &#34;scene0711_00&#34;: &#34;Office&#34;,
+        &#34;scene0712_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0713_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0714_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0715_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0716_00&#34;: &#34;Laundry Room&#34;,
+        &#34;scene0717_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0718_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0719_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0720_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0721_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0722_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0723_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0724_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0725_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0726_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0727_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0728_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0729_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0730_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0731_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0732_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0733_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0734_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0735_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0736_00&#34;: &#34;Office&#34;,
+        &#34;scene0737_00&#34;: &#34;Office&#34;,
+        &#34;scene0738_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0739_00&#34;: &#34;Office&#34;,
+        &#34;scene0740_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0741_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0742_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0743_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0744_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0745_00&#34;: &#34;Office&#34;,
+        &#34;scene0746_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0747_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0748_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0749_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0750_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0751_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0752_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0753_00&#34;: &#34;Office&#34;,
+        &#34;scene0754_00&#34;: &#34;Office&#34;,
+        &#34;scene0755_00&#34;: &#34;Office&#34;,
+        &#34;scene0756_00&#34;: &#34;Office&#34;,
+        &#34;scene0757_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0758_00&#34;: &#34;Office&#34;,
+        &#34;scene0759_00&#34;: &#34;Office&#34;,
+        &#34;scene0760_00&#34;: &#34;Office&#34;,
+        &#34;scene0761_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0762_00&#34;: &#34;Office&#34;,
+        &#34;scene0763_00&#34;: &#34;Closet&#34;,
+        &#34;scene0764_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0765_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0766_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0767_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0768_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0769_00&#34;: &#34;Office&#34;,
+        &#34;scene0770_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0771_00&#34;: &#34;Conference Room&#34;,
+        &#34;scene0772_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0773_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0774_00&#34;: &#34;Conference Room&#34;,
+        &#34;scene0775_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0776_00&#34;: &#34;Game room&#34;,
+        &#34;scene0777_00&#34;: &#34;Game room&#34;,
+        &#34;scene0778_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0779_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0780_00&#34;: &#34;Laundry Room&#34;,
+        &#34;scene0781_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0782_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0783_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0784_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0785_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0786_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0787_00&#34;: &#34;Storage/Basement/Garage&#34;,
+        &#34;scene0788_00&#34;: &#34;Gym&#34;,
+        &#34;scene0789_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0790_00&#34;: &#34;Copy/Mail Room&#34;,
+        &#34;scene0791_00&#34;: &#34;Classroom&#34;,
+        &#34;scene0792_00&#34;: &#34;Stairs&#34;,
+        &#34;scene0793_00&#34;: &#34;Classroom&#34;,
+        &#34;scene0794_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0795_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0796_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0797_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0798_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0799_00&#34;: &#34;Bookstore / Library&#34;,
+        &#34;scene0800_00&#34;: &#34;Bookstore / Library&#34;,
+        &#34;scene0801_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0802_00&#34;: &#34;Lobby&#34;,
+        &#34;scene0803_00&#34;: &#34;Storage/Basement/Garage&#34;,
+        &#34;scene0804_00&#34;: &#34;Copy/Mail Room&#34;,
+        &#34;scene0805_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0806_00&#34;: &#34;Game room&#34;,
+    }
+
+    @staticmethod
+    def _remove_new_line(value: str):
+        if len(value) &gt; 0 and value[-1] == &#34;\n&#34;:
+            value = value[:-1]
+        return value
+
+    def __init__(self, path) -&gt; None:
+        super().__init__()
+        self._path = path
+
+        # TEMPORARY(Pierre): Fix missing label classes in test set
+        # TODO(Pierre): Integrate in original files directly
+        scan_name = os.path.basename(path)
+        if scan_name.endswith(&#34;.txt&#34;):
+            scan_name = scan_name[:-len(&#34;.txt&#34;)]
+
+        if scan_name in Txt.TEST_SET_SCENE_TYPE_FIX:
+            # TODO(Pierre): Add warning here
+            self[&#34;sceneType&#34;] = Txt.TEST_SET_SCENE_TYPE_FIX[scan_name]
+
+        with open(path, &#34;r&#34;) as f:
+            for line in f.readlines():
+                key, value = line.split(&#34; = &#34;)
+                self[key] = Txt._remove_new_line(value)
+
+
+class Mesh:
+    def __init__(
+        self,
+        path,
+    ):
+        self._path = path
+        self.mesh_name = os.path.basename(path).rstrip(&#34;.ply&#34;)
+
+    def get_mesh(self, device=&#34;cpu&#34;):
+        return IO().load_mesh(self._path, device=device)
+
+
+class Frames(Video):
+    &#34;&#34;&#34;The Frames class handled the loading / reading of the &#34;.sens&#34; files containing RGB and depth frames.&#34;&#34;&#34;
+
+    SENS_VERSION = 4
+    FRAME_RATE = 30
+    SENS_VALID_COLOR_COMPRESSION_TYPE = &#34;jpeg&#34;
+    SENS_VALID_DEPTH_COMPRESSION_TYPE = &#34;zlib_ushort&#34;
+    COMPRESSION_TYPE_COLOR = {-1: &#34;unknown&#34;, 0: &#34;raw&#34;, 1: &#34;png&#34;, 2: &#34;jpeg&#34;}
+    COMPRESSION_TYPE_DEPTH = {
+        -1: &#34;unknown&#34;,
+        0: &#34;raw_ushort&#34;,
+        1: &#34;zlib_ushort&#34;,
+        2: &#34;occi_ushort&#34;,
+    }
+
+    @staticmethod
+    def load_from_file(path: str) -&gt; Frames:
+        &#34;&#34;&#34;Load Frames object by providing path to &#34;.sens&#34; file.&#34;&#34;&#34;
+        with open(path, &#34;rb&#34;) as f:
+            header = Frames._read_sens_header(f)
+        return Frames(path, header)
+
+    @staticmethod
+    def _read_sens_header(reader):
+        &#34;&#34;&#34;Read header of &#34;.sens&#34; file.&#34;&#34;&#34;
+        header = {}
+
+        # version
+        header[&#34;version&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        assert header[&#34;version&#34;] == Frames.SENS_VERSION
+
+        # sensor name
+        strlen = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        header[&#34;sensor_name&#34;] = reader.read(strlen).decode(&#34;utf-8&#34;)
+
+        # camera poses
+        header[&#34;intrinsic_color&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;extrinsic_color&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;intrinsic_depth&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;extrinsic_depth&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+
+        header[&#34;color_compression_type&#34;] = Frames.COMPRESSION_TYPE_COLOR[
+            struct.unpack(&#34;i&#34;, reader.read(4))[0]
+        ]
+        assert (
+            header[&#34;color_compression_type&#34;] == Frames.SENS_VALID_COLOR_COMPRESSION_TYPE
+        )
+
+        header[&#34;depth_compression_type&#34;] = Frames.COMPRESSION_TYPE_DEPTH[
+            struct.unpack(&#34;i&#34;, reader.read(4))[0]
+        ]
+        assert (
+            header[&#34;depth_compression_type&#34;] == Frames.SENS_VALID_DEPTH_COMPRESSION_TYPE
+        )
+
+        header[&#34;color_width&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;color_height&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_width&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_height&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_shift&#34;] = struct.unpack(&#34;f&#34;, reader.read(4))[0]
+        header[&#34;num_frames&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+
+        # useful to skip header next time we read the file
+        header[&#34;header_size&#34;] = reader.tell()
+
+        return header
+
+    def __init__(self, path: str, header: Dict[str, Any]) -&gt; None:
+        self._parent: Scan = None
+        self._path = path
+        self._header = header
+        self._frames = None
+        self._duration = self._header[&#34;num_frames&#34;] / self.FRAME_RATE
+
+    @property
+    def header(self):
+        return self._header
+
+    def _load_frames(self) -&gt; None:
+        # check if memory cached
+        if self._frames is not None:
+            return
+
+        # check if disk cached
+        cache = self.parent.cache
+        if self._path in cache:
+            self._frames = pkl.loads(cache[self._path])
+            for frame in self._frames:
+                frame._parent = self
+            return
+
+        with open(self._path, &#34;rb&#34;) as f:
+            # skip header
+            f.seek(self._header[&#34;header_size&#34;])
+            self._frames = [Frame.load_from_reader(f) for _ in range(len(self))]
+            for frame in self._frames:
+                frame._parent = self
+
+        # add frames to disk cache
+        cache[self._path] = pkl.dumps(self._frames)
+
+    def __getitem__(self, idx: int) -&gt; Frame:
+        # load frame offsets / sizes only during first call to `__getitem__`
+        self._load_frames()
+        return self._frames[idx]
+
+    def __len__(self) -&gt; int:
+        return self._header[&#34;num_frames&#34;]
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Frames(path={self._path}, header={self._header})&#34;
+
+    @property
+    def duration(self) -&gt; float:
+        return self._duration
+
+    @property
+    def parent(self) -&gt; Scan:
+        return self._parent
+
+    def get_clip(
+        self,
+        start_sec: float,
+        end_sec: float,
+        frame_filter: Optional[Callable[[List[int]], List[int]]] = None,
+        frame_transform: Optional[
+            Callable[[np.ndarray], Union[torch.Tensor, np.ndarray]]
+        ] = None,
+        multithreaded: bool = True,
+    ) -&gt; Dict[str, Optional[torch.Tensor]]:
+        if start_sec &lt; 0 or end_sec &gt; self.duration:
+            raise RuntimeError(
+                f&#34;out-of-bound `start_sec`, should be in range [0, {self._duration}]&#34;
+            )
+
+        if end_sec &gt; self.duration:
+            LOG.warning(
+                f&#34;provided `end_sec` has been clamped since it has been found to be above video duration ({end_sec} &gt; {self._duration})&#34;
+            )
+            end_sec = self._duration
+
+        idx_start = math.ceil(start_sec * Frames.FRAME_RATE)
+        idx_end = math.ceil(end_sec * Frames.FRAME_RATE)
+        idx_end = min(idx_end, len(self))
+
+        idxs = list(range(idx_start, idx_end))
+        if frame_filter:
+            idxs = frame_filter(idxs)
+
+        frames = [self[i] for i in idxs]
+
+        # extract color frames
+        def set_color_frame(i, frame):
+            frames[i] = frame.color
+
+        optional_threaded_foreach(set_color_frame, enumerate(frames), multithreaded)
+
+        # transform frames
+        if frame_transform:
+
+            def transform_frame(i, frame):
+                frames[i] = frame_transform(frame)
+
+            optional_threaded_foreach(transform_frame, enumerate(frames), multithreaded)
+
+        # check output type
+        frames = [
+            torch.from_numpy(frame) if isinstance(frame, np.ndarray) else frame
+            for frame in frames
+        ]
+
+        frames = torch.stack(frames, dim=0)
+        frames = thwc_to_cthw(frames)
+        frames = frames.to(torch.float32)
+
+        return {&#34;video&#34;: frames, &#34;frame_indices&#34;: idxs, &#34;audio&#34;: None}
+
+
+class Frame:
+    &#34;&#34;&#34;Contains all frame related information.&#34;&#34;&#34;
+
+    STATE_ATTRS = {
+        &#34;_header_offset&#34;,
+        &#34;_color_offset&#34;,
+        &#34;_color_size&#34;,
+        &#34;_depth_offset&#34;,
+        &#34;_depth_size&#34;,
+    }
+
+    @staticmethod
+    def _read_header(reader):
+        header = {}
+        header[&#34;camera_to_world&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)), dtype=np.float32
+        ).reshape(4, 4)
+        header[&#34;timestamp_color&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        header[&#34;timestamp_depth&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+
+        color_size = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        depth_size = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        return header, color_size, depth_size
+
+    @staticmethod
+    def load_from_reader(reader):
+        &#34;&#34;&#34;Load frame from read by only gathering lightweight information (ignoring color and depth frames).&#34;&#34;&#34;
+
+        header_offset = reader.tell()
+        _, color_size, depth_size = Frame._read_header(reader)
+
+        # useful for quick random access loading later (reduces memory uusage)
+        color_offset = reader.tell()
+        reader.seek(color_size, os.SEEK_CUR)
+        depth_offset = reader.tell()
+        reader.seek(depth_size, os.SEEK_CUR)
+
+        return Frame(
+            header_offset,
+            color_offset,
+            color_size,
+            depth_offset,
+            depth_size,
+        )
+
+    def __init__(
+        self,
+        header_offset,
+        color_offset,
+        color_size,
+        depth_offset,
+        depth_size,
+    ) -&gt; None:
+        self._parent: Frames = None
+        self._header_offset = header_offset
+        self._color_offset = color_offset
+        self._color_size = color_size
+        self._depth_offset = depth_offset
+        self._depth_size = depth_size
+
+    def _read_bytes(self, offset, size):
+        &#34;&#34;&#34;Read bytes at specific offset / size.&#34;&#34;&#34;
+        with open(self._parent._path, &#34;rb&#34;) as f:
+            f.seek(offset)
+            return f.read(size)
+
+    @property
+    def header(self):
+        with open(self._parent._path, &#34;rb&#34;) as f:
+            f.seek(self._header_offset)
+            header, _, _ = Frame._read_header(f)
+        return header
+
+    @property
+    def color(self):
+        &#34;&#34;&#34;Get color frame as a HxWx3 numpy array.&#34;&#34;&#34;
+        bytes = self._read_bytes(self._color_offset, self._color_size)
+        array = imageio.imread(bytes)
+        return np.asarray(array)
+
+    @property
+    def depth(self):
+        &#34;&#34;&#34;Get depth frame as a HxW numpy array.&#34;&#34;&#34;
+        bytes = self._read_bytes(self._depth_offset, self._depth_size)
+        bytes = zlib.decompress(bytes)
+        depth = np.frombuffer(bytes, dtype=np.uint16)
+        header = self._parent._header
+        depth_shift = self._parent.header[&#34;depth_shift&#34;]
+        depth = depth / depth_shift
+        return depth.reshape(header[&#34;depth_height&#34;], header[&#34;depth_width&#34;])
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Frame(header={self.header}, color_offset={self._color_offset}, color_size={self._color_size}, depth_offset={self._depth_offset}, depth_size={self._depth_size})&#34;
+
+    @property
+    def parent(self) -&gt; Frames:
+        return self._parent
+
+    @property
+    def scan(self) -&gt; Scan:
+        return self.parent.parent
+
+    def __getstate__(self):
+        return {attr: getattr(self, attr) for attr in Frame.STATE_ATTRS}
+
+    def __setstate__(self, newstate):
+        keys = set(newstate.keys())
+        if keys != Frame.STATE_ATTRS:
+            raise RuntimeError(
+                f&#34;invalid keys found : {keys}, should be : {Frame.STATE_ATTRS}&#34;
+            )
+        self.__dict__.update(newstate)
+
+
+class ScanIDFilter:
+    def __init__(self, scan_uids: Union[str, Iterable[Tuple[int, int]]]) -&gt; None:
+        if isinstance(scan_uids, str):
+            with open(scan_uids, &#34;r&#34;) as f:
+                scan_uids = json.load(f)
+
+        self._uids = {tuple(uid) for uid in scan_uids}
+
+    def __call__(self, scan: Scan) -&gt; bool:
+        return scan.uid in self._uids
+
+
+class ScanNet:
+    &#34;&#34;&#34;Helper class to load ScanNet data in an efficient way (speed and memory-wise).
+    We do only load the necessary data as they are required, in order to void huge memory footprint and costly initialization.
+    IMPORTANT : This class is NOT a PyTorch dataset. Please refer to `ScansDataset` and `FramesDataset` for that.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        path: str,
+        cache_path: Union[str, None] = None,
+        scan_filter: Callable[[Scan], bool] = None,
+    ) -&gt; None:
+        self._path = path
+        self._scans = []
+        self._spaces = []
+        self._space_id_to_space = {}
+        self._frames = []
+        self._cache = (
+            _AlwaysEmptyCache() if cache_path is None else _DiskCache(cache_path)
+        )
+
+        self._load_initial_data(scan_filter)
+
+    @property
+    def n_spaces(self):
+        &#34;&#34;&#34;Return number of spaces found.&#34;&#34;&#34;
+        return len(self._spaces)
+
+    @property
+    def n_scans(self):
+        &#34;&#34;&#34;Return number of scans found.&#34;&#34;&#34;
+        return len(self._scans)
+
+    @property
+    def n_frames(self):
+        &#34;&#34;&#34;Return number of frames found.&#34;&#34;&#34;
+        return self._n_frames
+
+    def space(self, idx):
+        &#34;&#34;&#34;Access to ith Space.&#34;&#34;&#34;
+        return self._spaces[idx]
+
+    def scan(self, idx):
+        &#34;&#34;&#34;Access to ith Scan.&#34;&#34;&#34;
+        return self._scans[idx]
+
+    def frame(self, idx):
+        &#34;&#34;&#34;Access to ith Frame.&#34;&#34;&#34;
+        frame = self._frames[idx]
+        # lazy initialization of requested frame
+        if isinstance(frame, tuple):
+            self._frames[idx] = frame = self._scans[frame[0]][frame[1]]
+        return frame
+
+    def _load_initial_data(self, scan_filter):
+        LOG.info(f&#34;loading ScanNet dataset from : {self._path}&#34;)
+        self._n_frames = 0
+        glob_path = os.path.join(self._path, &#34;scene*&#34;)
+        for scan_path in sorted(glob(glob_path, recursive=False)):
+            # try to load scan
+            scan = Scan.load_from_directory(scan_path, self._cache)
+
+            if scan is None:
+                scan_basename = os.path.basename(scan_path)
+                LOG.warning(f&#39;&#34;{scan_basename}&#34; is not a scene, skipping ...&#39;)
+                continue
+
+            spaceId, _ = Scan.space_id_scan_id_from_path(scan_path)
+
+            # check if same space has already been loaded
+            if not (spaceId in self._space_id_to_space):
+                space = Space(spaceId)
+                self._space_id_to_space[spaceId] = space
+                self._spaces.append(space)
+            else:
+                space = self._space_id_to_space[spaceId]
+
+            space._add(scan)
+
+            if (scan_filter is not None) and (not scan_filter(scan)):
+                space._remove(scan)
+                continue
+
+            self._frames.extend((len(self._scans), i) for i in range(len(scan)))
+            self._n_frames += len(scan)
+            self._scans.append(scan)
+
+        LOG.info(f&#34;{self.n_spaces} spaces found&#34;)
+        LOG.info(f&#34;{self.n_scans} scans found&#34;)
+        LOG.info(f&#34;{self.n_frames} frames found&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frame"><code class="flex name class">
+<span>class <span class="ident">Frame</span></span>
+<span>(</span><span>header_offset, color_offset, color_size, depth_offset, depth_size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains all frame related information.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Frame:
+    &#34;&#34;&#34;Contains all frame related information.&#34;&#34;&#34;
+
+    STATE_ATTRS = {
+        &#34;_header_offset&#34;,
+        &#34;_color_offset&#34;,
+        &#34;_color_size&#34;,
+        &#34;_depth_offset&#34;,
+        &#34;_depth_size&#34;,
+    }
+
+    @staticmethod
+    def _read_header(reader):
+        header = {}
+        header[&#34;camera_to_world&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)), dtype=np.float32
+        ).reshape(4, 4)
+        header[&#34;timestamp_color&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        header[&#34;timestamp_depth&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+
+        color_size = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        depth_size = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        return header, color_size, depth_size
+
+    @staticmethod
+    def load_from_reader(reader):
+        &#34;&#34;&#34;Load frame from read by only gathering lightweight information (ignoring color and depth frames).&#34;&#34;&#34;
+
+        header_offset = reader.tell()
+        _, color_size, depth_size = Frame._read_header(reader)
+
+        # useful for quick random access loading later (reduces memory uusage)
+        color_offset = reader.tell()
+        reader.seek(color_size, os.SEEK_CUR)
+        depth_offset = reader.tell()
+        reader.seek(depth_size, os.SEEK_CUR)
+
+        return Frame(
+            header_offset,
+            color_offset,
+            color_size,
+            depth_offset,
+            depth_size,
+        )
+
+    def __init__(
+        self,
+        header_offset,
+        color_offset,
+        color_size,
+        depth_offset,
+        depth_size,
+    ) -&gt; None:
+        self._parent: Frames = None
+        self._header_offset = header_offset
+        self._color_offset = color_offset
+        self._color_size = color_size
+        self._depth_offset = depth_offset
+        self._depth_size = depth_size
+
+    def _read_bytes(self, offset, size):
+        &#34;&#34;&#34;Read bytes at specific offset / size.&#34;&#34;&#34;
+        with open(self._parent._path, &#34;rb&#34;) as f:
+            f.seek(offset)
+            return f.read(size)
+
+    @property
+    def header(self):
+        with open(self._parent._path, &#34;rb&#34;) as f:
+            f.seek(self._header_offset)
+            header, _, _ = Frame._read_header(f)
+        return header
+
+    @property
+    def color(self):
+        &#34;&#34;&#34;Get color frame as a HxWx3 numpy array.&#34;&#34;&#34;
+        bytes = self._read_bytes(self._color_offset, self._color_size)
+        array = imageio.imread(bytes)
+        return np.asarray(array)
+
+    @property
+    def depth(self):
+        &#34;&#34;&#34;Get depth frame as a HxW numpy array.&#34;&#34;&#34;
+        bytes = self._read_bytes(self._depth_offset, self._depth_size)
+        bytes = zlib.decompress(bytes)
+        depth = np.frombuffer(bytes, dtype=np.uint16)
+        header = self._parent._header
+        depth_shift = self._parent.header[&#34;depth_shift&#34;]
+        depth = depth / depth_shift
+        return depth.reshape(header[&#34;depth_height&#34;], header[&#34;depth_width&#34;])
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Frame(header={self.header}, color_offset={self._color_offset}, color_size={self._color_size}, depth_offset={self._depth_offset}, depth_size={self._depth_size})&#34;
+
+    @property
+    def parent(self) -&gt; Frames:
+        return self._parent
+
+    @property
+    def scan(self) -&gt; Scan:
+        return self.parent.parent
+
+    def __getstate__(self):
+        return {attr: getattr(self, attr) for attr in Frame.STATE_ATTRS}
+
+    def __setstate__(self, newstate):
+        keys = set(newstate.keys())
+        if keys != Frame.STATE_ATTRS:
+            raise RuntimeError(
+                f&#34;invalid keys found : {keys}, should be : {Frame.STATE_ATTRS}&#34;
+            )
+        self.__dict__.update(newstate)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frame.STATE_ATTRS"><code class="name">var <span class="ident">STATE_ATTRS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frame.load_from_reader"><code class="name flex">
+<span>def <span class="ident">load_from_reader</span></span>(<span>reader)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load frame from read by only gathering lightweight information (ignoring color and depth frames).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def load_from_reader(reader):
+    &#34;&#34;&#34;Load frame from read by only gathering lightweight information (ignoring color and depth frames).&#34;&#34;&#34;
+
+    header_offset = reader.tell()
+    _, color_size, depth_size = Frame._read_header(reader)
+
+    # useful for quick random access loading later (reduces memory uusage)
+    color_offset = reader.tell()
+    reader.seek(color_size, os.SEEK_CUR)
+    depth_offset = reader.tell()
+    reader.seek(depth_size, os.SEEK_CUR)
+
+    return Frame(
+        header_offset,
+        color_offset,
+        color_size,
+        depth_offset,
+        depth_size,
+    )</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frame.color"><code class="name">var <span class="ident">color</span></code></dt>
+<dd>
+<div class="desc"><p>Get color frame as a HxWx3 numpy array.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def color(self):
+    &#34;&#34;&#34;Get color frame as a HxWx3 numpy array.&#34;&#34;&#34;
+    bytes = self._read_bytes(self._color_offset, self._color_size)
+    array = imageio.imread(bytes)
+    return np.asarray(array)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frame.depth"><code class="name">var <span class="ident">depth</span></code></dt>
+<dd>
+<div class="desc"><p>Get depth frame as a HxW numpy array.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def depth(self):
+    &#34;&#34;&#34;Get depth frame as a HxW numpy array.&#34;&#34;&#34;
+    bytes = self._read_bytes(self._depth_offset, self._depth_size)
+    bytes = zlib.decompress(bytes)
+    depth = np.frombuffer(bytes, dtype=np.uint16)
+    header = self._parent._header
+    depth_shift = self._parent.header[&#34;depth_shift&#34;]
+    depth = depth / depth_shift
+    return depth.reshape(header[&#34;depth_height&#34;], header[&#34;depth_width&#34;])</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frame.header"><code class="name">var <span class="ident">header</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def header(self):
+    with open(self._parent._path, &#34;rb&#34;) as f:
+        f.seek(self._header_offset)
+        header, _, _ = Frame._read_header(f)
+    return header</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frame.parent"><code class="name">var <span class="ident">parent</span> : <a title="silk.datasets.scannet.helper.Frames" href="#silk.datasets.scannet.helper.Frames">Frames</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def parent(self) -&gt; Frames:
+    return self._parent</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frame.scan"><code class="name">var <span class="ident">scan</span> : <a title="silk.datasets.scannet.helper.Scan" href="#silk.datasets.scannet.helper.Scan">Scan</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def scan(self) -&gt; Scan:
+    return self.parent.parent</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames"><code class="flex name class">
+<span>class <span class="ident">Frames</span></span>
+<span>(</span><span>path: str, header: Dict[str, Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The Frames class handled the loading / reading of the ".sens" files containing RGB and depth frames.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file</code></strong> :&ensp;<code>BinaryIO</code></dt>
+<dd>a file-like object (e.g. io.BytesIO or io.StringIO) that
+contains the encoded video.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Frames(Video):
+    &#34;&#34;&#34;The Frames class handled the loading / reading of the &#34;.sens&#34; files containing RGB and depth frames.&#34;&#34;&#34;
+
+    SENS_VERSION = 4
+    FRAME_RATE = 30
+    SENS_VALID_COLOR_COMPRESSION_TYPE = &#34;jpeg&#34;
+    SENS_VALID_DEPTH_COMPRESSION_TYPE = &#34;zlib_ushort&#34;
+    COMPRESSION_TYPE_COLOR = {-1: &#34;unknown&#34;, 0: &#34;raw&#34;, 1: &#34;png&#34;, 2: &#34;jpeg&#34;}
+    COMPRESSION_TYPE_DEPTH = {
+        -1: &#34;unknown&#34;,
+        0: &#34;raw_ushort&#34;,
+        1: &#34;zlib_ushort&#34;,
+        2: &#34;occi_ushort&#34;,
+    }
+
+    @staticmethod
+    def load_from_file(path: str) -&gt; Frames:
+        &#34;&#34;&#34;Load Frames object by providing path to &#34;.sens&#34; file.&#34;&#34;&#34;
+        with open(path, &#34;rb&#34;) as f:
+            header = Frames._read_sens_header(f)
+        return Frames(path, header)
+
+    @staticmethod
+    def _read_sens_header(reader):
+        &#34;&#34;&#34;Read header of &#34;.sens&#34; file.&#34;&#34;&#34;
+        header = {}
+
+        # version
+        header[&#34;version&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        assert header[&#34;version&#34;] == Frames.SENS_VERSION
+
+        # sensor name
+        strlen = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+        header[&#34;sensor_name&#34;] = reader.read(strlen).decode(&#34;utf-8&#34;)
+
+        # camera poses
+        header[&#34;intrinsic_color&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;extrinsic_color&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;intrinsic_depth&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+        header[&#34;extrinsic_depth&#34;] = np.asarray(
+            struct.unpack(&#34;f&#34; * 16, reader.read(16 * 4)),
+            dtype=np.float32,
+        ).reshape(4, 4)
+
+        header[&#34;color_compression_type&#34;] = Frames.COMPRESSION_TYPE_COLOR[
+            struct.unpack(&#34;i&#34;, reader.read(4))[0]
+        ]
+        assert (
+            header[&#34;color_compression_type&#34;] == Frames.SENS_VALID_COLOR_COMPRESSION_TYPE
+        )
+
+        header[&#34;depth_compression_type&#34;] = Frames.COMPRESSION_TYPE_DEPTH[
+            struct.unpack(&#34;i&#34;, reader.read(4))[0]
+        ]
+        assert (
+            header[&#34;depth_compression_type&#34;] == Frames.SENS_VALID_DEPTH_COMPRESSION_TYPE
+        )
+
+        header[&#34;color_width&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;color_height&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_width&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_height&#34;] = struct.unpack(&#34;I&#34;, reader.read(4))[0]
+        header[&#34;depth_shift&#34;] = struct.unpack(&#34;f&#34;, reader.read(4))[0]
+        header[&#34;num_frames&#34;] = struct.unpack(&#34;Q&#34;, reader.read(8))[0]
+
+        # useful to skip header next time we read the file
+        header[&#34;header_size&#34;] = reader.tell()
+
+        return header
+
+    def __init__(self, path: str, header: Dict[str, Any]) -&gt; None:
+        self._parent: Scan = None
+        self._path = path
+        self._header = header
+        self._frames = None
+        self._duration = self._header[&#34;num_frames&#34;] / self.FRAME_RATE
+
+    @property
+    def header(self):
+        return self._header
+
+    def _load_frames(self) -&gt; None:
+        # check if memory cached
+        if self._frames is not None:
+            return
+
+        # check if disk cached
+        cache = self.parent.cache
+        if self._path in cache:
+            self._frames = pkl.loads(cache[self._path])
+            for frame in self._frames:
+                frame._parent = self
+            return
+
+        with open(self._path, &#34;rb&#34;) as f:
+            # skip header
+            f.seek(self._header[&#34;header_size&#34;])
+            self._frames = [Frame.load_from_reader(f) for _ in range(len(self))]
+            for frame in self._frames:
+                frame._parent = self
+
+        # add frames to disk cache
+        cache[self._path] = pkl.dumps(self._frames)
+
+    def __getitem__(self, idx: int) -&gt; Frame:
+        # load frame offsets / sizes only during first call to `__getitem__`
+        self._load_frames()
+        return self._frames[idx]
+
+    def __len__(self) -&gt; int:
+        return self._header[&#34;num_frames&#34;]
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Frames(path={self._path}, header={self._header})&#34;
+
+    @property
+    def duration(self) -&gt; float:
+        return self._duration
+
+    @property
+    def parent(self) -&gt; Scan:
+        return self._parent
+
+    def get_clip(
+        self,
+        start_sec: float,
+        end_sec: float,
+        frame_filter: Optional[Callable[[List[int]], List[int]]] = None,
+        frame_transform: Optional[
+            Callable[[np.ndarray], Union[torch.Tensor, np.ndarray]]
+        ] = None,
+        multithreaded: bool = True,
+    ) -&gt; Dict[str, Optional[torch.Tensor]]:
+        if start_sec &lt; 0 or end_sec &gt; self.duration:
+            raise RuntimeError(
+                f&#34;out-of-bound `start_sec`, should be in range [0, {self._duration}]&#34;
+            )
+
+        if end_sec &gt; self.duration:
+            LOG.warning(
+                f&#34;provided `end_sec` has been clamped since it has been found to be above video duration ({end_sec} &gt; {self._duration})&#34;
+            )
+            end_sec = self._duration
+
+        idx_start = math.ceil(start_sec * Frames.FRAME_RATE)
+        idx_end = math.ceil(end_sec * Frames.FRAME_RATE)
+        idx_end = min(idx_end, len(self))
+
+        idxs = list(range(idx_start, idx_end))
+        if frame_filter:
+            idxs = frame_filter(idxs)
+
+        frames = [self[i] for i in idxs]
+
+        # extract color frames
+        def set_color_frame(i, frame):
+            frames[i] = frame.color
+
+        optional_threaded_foreach(set_color_frame, enumerate(frames), multithreaded)
+
+        # transform frames
+        if frame_transform:
+
+            def transform_frame(i, frame):
+                frames[i] = frame_transform(frame)
+
+            optional_threaded_foreach(transform_frame, enumerate(frames), multithreaded)
+
+        # check output type
+        frames = [
+            torch.from_numpy(frame) if isinstance(frame, np.ndarray) else frame
+            for frame in frames
+        ]
+
+        frames = torch.stack(frames, dim=0)
+        frames = thwc_to_cthw(frames)
+        frames = frames.to(torch.float32)
+
+        return {&#34;video&#34;: frames, &#34;frame_indices&#34;: idxs, &#34;audio&#34;: None}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pytorchvideo.data.video.Video</li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_COLOR"><code class="name">var <span class="ident">COMPRESSION_TYPE_COLOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_DEPTH"><code class="name">var <span class="ident">COMPRESSION_TYPE_DEPTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.FRAME_RATE"><code class="name">var <span class="ident">FRAME_RATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.SENS_VALID_COLOR_COMPRESSION_TYPE"><code class="name">var <span class="ident">SENS_VALID_COLOR_COMPRESSION_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.SENS_VALID_DEPTH_COMPRESSION_TYPE"><code class="name">var <span class="ident">SENS_VALID_DEPTH_COMPRESSION_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.SENS_VERSION"><code class="name">var <span class="ident">SENS_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frames.load_from_file"><code class="name flex">
+<span>def <span class="ident">load_from_file</span></span>(<span>path: str) ‑> <a title="silk.datasets.scannet.helper.Frames" href="#silk.datasets.scannet.helper.Frames">Frames</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load Frames object by providing path to ".sens" file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def load_from_file(path: str) -&gt; Frames:
+    &#34;&#34;&#34;Load Frames object by providing path to &#34;.sens&#34; file.&#34;&#34;&#34;
+    with open(path, &#34;rb&#34;) as f:
+        header = Frames._read_sens_header(f)
+    return Frames(path, header)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frames.duration"><code class="name">var <span class="ident">duration</span> : float</code></dt>
+<dd>
+<div class="desc"><h2 id="returns">Returns</h2>
+<p>duration of the video in seconds</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def duration(self) -&gt; float:
+    return self._duration</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.header"><code class="name">var <span class="ident">header</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def header(self):
+    return self._header</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Frames.parent"><code class="name">var <span class="ident">parent</span> : <a title="silk.datasets.scannet.helper.Scan" href="#silk.datasets.scannet.helper.Scan">Scan</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def parent(self) -&gt; Scan:
+    return self._parent</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Frames.get_clip"><code class="name flex">
+<span>def <span class="ident">get_clip</span></span>(<span>self, start_sec: float, end_sec: float, frame_filter: Optional[Callable[[List[int]], List[int]]] = None, frame_transform: Optional[Callable[[np.ndarray], Union[torch.Tensor, np.ndarray]]] = None, multithreaded: bool = True) ‑> Dict[str, Optional[torch.Tensor]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieves frames from the internal video at the specified start and end times
+in seconds (the video always starts at 0 seconds).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_sec</code></strong> :&ensp;<code>float</code></dt>
+<dd>the clip start time in seconds</dd>
+<dt><strong><code>end_sec</code></strong> :&ensp;<code>float</code></dt>
+<dd>the clip end time in seconds</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>video_data_dictonary</code></dt>
+<dd>A dictionary mapping strings to tensor of the clip's
+underlying data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_clip(
+    self,
+    start_sec: float,
+    end_sec: float,
+    frame_filter: Optional[Callable[[List[int]], List[int]]] = None,
+    frame_transform: Optional[
+        Callable[[np.ndarray], Union[torch.Tensor, np.ndarray]]
+    ] = None,
+    multithreaded: bool = True,
+) -&gt; Dict[str, Optional[torch.Tensor]]:
+    if start_sec &lt; 0 or end_sec &gt; self.duration:
+        raise RuntimeError(
+            f&#34;out-of-bound `start_sec`, should be in range [0, {self._duration}]&#34;
+        )
+
+    if end_sec &gt; self.duration:
+        LOG.warning(
+            f&#34;provided `end_sec` has been clamped since it has been found to be above video duration ({end_sec} &gt; {self._duration})&#34;
+        )
+        end_sec = self._duration
+
+    idx_start = math.ceil(start_sec * Frames.FRAME_RATE)
+    idx_end = math.ceil(end_sec * Frames.FRAME_RATE)
+    idx_end = min(idx_end, len(self))
+
+    idxs = list(range(idx_start, idx_end))
+    if frame_filter:
+        idxs = frame_filter(idxs)
+
+    frames = [self[i] for i in idxs]
+
+    # extract color frames
+    def set_color_frame(i, frame):
+        frames[i] = frame.color
+
+    optional_threaded_foreach(set_color_frame, enumerate(frames), multithreaded)
+
+    # transform frames
+    if frame_transform:
+
+        def transform_frame(i, frame):
+            frames[i] = frame_transform(frame)
+
+        optional_threaded_foreach(transform_frame, enumerate(frames), multithreaded)
+
+    # check output type
+    frames = [
+        torch.from_numpy(frame) if isinstance(frame, np.ndarray) else frame
+        for frame in frames
+    ]
+
+    frames = torch.stack(frames, dim=0)
+    frames = thwc_to_cthw(frames)
+    frames = frames.to(torch.float32)
+
+    return {&#34;video&#34;: frames, &#34;frame_indices&#34;: idxs, &#34;audio&#34;: None}</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.Mesh"><code class="flex name class">
+<span>class <span class="ident">Mesh</span></span>
+<span>(</span><span>path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Mesh:
+    def __init__(
+        self,
+        path,
+    ):
+        self._path = path
+        self.mesh_name = os.path.basename(path).rstrip(&#34;.ply&#34;)
+
+    def get_mesh(self, device=&#34;cpu&#34;):
+        return IO().load_mesh(self._path, device=device)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Mesh.get_mesh"><code class="name flex">
+<span>def <span class="ident">get_mesh</span></span>(<span>self, device='cpu')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mesh(self, device=&#34;cpu&#34;):
+    return IO().load_mesh(self._path, device=device)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan"><code class="flex name class">
+<span>class <span class="ident">Scan</span></span>
+<span>(</span><span>path: str, id: int, frames: <a title="silk.datasets.scannet.helper.Frames" href="#silk.datasets.scannet.helper.Frames">Frames</a>, cache: CacheType)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scan contains information related to a particular scan (frames, mesh, metadata, &hellip;).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Scan:
+    &#34;&#34;&#34;Scan contains information related to a particular scan (frames, mesh, metadata, ...).&#34;&#34;&#34;
+
+    # regex used to extract ids
+    SPACE_ID_SCAN_ID_RE = re.compile(
+        r&#34;scene(?P&lt;spaceId&gt;[0-9]{4})_(?P&lt;sceneId&gt;[0-9]{2})&#34;
+    )
+
+    @staticmethod
+    def space_id_scan_id_from_path(path: str) -&gt; Tuple[int, int]:
+        &#34;&#34;&#34;Return space id and scan id from directory path of scan.&#34;&#34;&#34;
+        basename = os.path.basename(path)
+        m = Scan.SPACE_ID_SCAN_ID_RE.match(basename)
+
+        # no match
+        if m is None:
+            raise RuntimeError(
+                f&#39;cannot extract space id and scan id from basename &#34;{basename}&#34;&#39;
+            )
+
+        spaceId = int(m.group(&#34;spaceId&#34;))
+        sceneId = int(m.group(&#34;sceneId&#34;))
+
+        return spaceId, sceneId
+
+    @staticmethod
+    def scan_file_path(path: str, extension: str, mesh=None) -&gt; str:
+        &#34;&#34;&#34;Get full path of file present in scan directory by providing its extension.&#34;&#34;&#34;
+        if not mesh:
+            relative_path = os.path.basename(path)
+        else:
+            relative_path = f&#34;{os.path.basename(path)}_vh_{mesh}&#34;
+
+        return os.path.join(path, f&#34;{relative_path}.{extension}&#34;)
+
+    @staticmethod
+    def load_from_directory(
+        path: str,
+        cache: CacheType,
+    ) -&gt; Union[Scan, None]:
+        &#34;&#34;&#34;Load a Scan object by providing its directory path.&#34;&#34;&#34;
+        # get ids
+        try:
+            _, scan_id = Scan.space_id_scan_id_from_path(path)
+        except RuntimeError:
+            LOG.opt(exception=True).warning(f&#34;could not extract ids from path : {path}&#34;)
+            return None
+
+        # load sens file
+        sens_path = Scan.scan_file_path(path, &#34;sens&#34;)
+        frames = Frames.load_from_file(sens_path)
+
+        return Scan(path, scan_id, frames=frames, cache=cache)
+
+    def __init__(self, path: str, id: int, frames: Frames, cache: CacheType) -&gt; None:
+        self._parent: Space = None
+        self._path = path
+        self._id = id
+        self._frames = frames
+        self._frames._parent = self
+        self._txt = None
+        self._mesh = None
+        self._cache = cache
+
+    @property
+    def parent(self) -&gt; Space:
+        return self._parent
+
+    @property
+    def id(self) -&gt; int:
+        return self._id
+
+    @property
+    def uid(self) -&gt; Tuple[int, int]:
+        return (self.parent.id, self.id)
+
+    @property
+    def frames(self) -&gt; Frames:
+        return self._frames
+
+    @property
+    def cache(self) -&gt; CacheType:
+        return self._cache
+
+    @property
+    def txt(self) -&gt; Txt:
+        if self._txt is None:
+            txt_path = Scan.scan_file_path(self._path, &#34;txt&#34;)
+            self._txt = Txt(txt_path)
+        return self._txt
+
+    def mesh(self, mode=&#34;clean&#34;) -&gt; Mesh:
+        assert mode in {&#34;clean&#34;, &#34;clean_2&#34;, &#34;clean_2.labels&#34;}
+
+        mesh_path = Scan.scan_file_path(self._path, &#34;ply&#34;, mode)
+        self._mesh = Mesh(mesh_path)
+
+        return self._mesh
+
+    def __repr__(self) -&gt; str:
+        return f&#34;Scan(path={self._path}, id={self._id}, frames={self._frames}, txt={self._txt})&#34;
+
+    def __len__(self):
+        return len(self._frames)
+
+    def __getitem__(self, idx):
+        return self._frames[idx]</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Scan.SPACE_ID_SCAN_ID_RE"><code class="name">var <span class="ident">SPACE_ID_SCAN_ID_RE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Scan.load_from_directory"><code class="name flex">
+<span>def <span class="ident">load_from_directory</span></span>(<span>path: str, cache: CacheType) ‑> Optional[<a title="silk.datasets.scannet.helper.Scan" href="#silk.datasets.scannet.helper.Scan">Scan</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load a Scan object by providing its directory path.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def load_from_directory(
+    path: str,
+    cache: CacheType,
+) -&gt; Union[Scan, None]:
+    &#34;&#34;&#34;Load a Scan object by providing its directory path.&#34;&#34;&#34;
+    # get ids
+    try:
+        _, scan_id = Scan.space_id_scan_id_from_path(path)
+    except RuntimeError:
+        LOG.opt(exception=True).warning(f&#34;could not extract ids from path : {path}&#34;)
+        return None
+
+    # load sens file
+    sens_path = Scan.scan_file_path(path, &#34;sens&#34;)
+    frames = Frames.load_from_file(sens_path)
+
+    return Scan(path, scan_id, frames=frames, cache=cache)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.scan_file_path"><code class="name flex">
+<span>def <span class="ident">scan_file_path</span></span>(<span>path: str, extension: str, mesh=None) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get full path of file present in scan directory by providing its extension.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def scan_file_path(path: str, extension: str, mesh=None) -&gt; str:
+    &#34;&#34;&#34;Get full path of file present in scan directory by providing its extension.&#34;&#34;&#34;
+    if not mesh:
+        relative_path = os.path.basename(path)
+    else:
+        relative_path = f&#34;{os.path.basename(path)}_vh_{mesh}&#34;
+
+    return os.path.join(path, f&#34;{relative_path}.{extension}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.space_id_scan_id_from_path"><code class="name flex">
+<span>def <span class="ident">space_id_scan_id_from_path</span></span>(<span>path: str) ‑> Tuple[int, int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return space id and scan id from directory path of scan.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def space_id_scan_id_from_path(path: str) -&gt; Tuple[int, int]:
+    &#34;&#34;&#34;Return space id and scan id from directory path of scan.&#34;&#34;&#34;
+    basename = os.path.basename(path)
+    m = Scan.SPACE_ID_SCAN_ID_RE.match(basename)
+
+    # no match
+    if m is None:
+        raise RuntimeError(
+            f&#39;cannot extract space id and scan id from basename &#34;{basename}&#34;&#39;
+        )
+
+    spaceId = int(m.group(&#34;spaceId&#34;))
+    sceneId = int(m.group(&#34;sceneId&#34;))
+
+    return spaceId, sceneId</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Scan.cache"><code class="name">var <span class="ident">cache</span> : Union[diskcache.core.Cache, silk.datasets.scannet.helper._AlwaysEmptyCache]</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cache(self) -&gt; CacheType:
+    return self._cache</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.frames"><code class="name">var <span class="ident">frames</span> : <a title="silk.datasets.scannet.helper.Frames" href="#silk.datasets.scannet.helper.Frames">Frames</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def frames(self) -&gt; Frames:
+    return self._frames</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.id"><code class="name">var <span class="ident">id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def id(self) -&gt; int:
+    return self._id</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.parent"><code class="name">var <span class="ident">parent</span> : <a title="silk.datasets.scannet.helper.Space" href="#silk.datasets.scannet.helper.Space">Space</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def parent(self) -&gt; Space:
+    return self._parent</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.txt"><code class="name">var <span class="ident">txt</span> : <a title="silk.datasets.scannet.helper.Txt" href="#silk.datasets.scannet.helper.Txt">Txt</a></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def txt(self) -&gt; Txt:
+    if self._txt is None:
+        txt_path = Scan.scan_file_path(self._path, &#34;txt&#34;)
+        self._txt = Txt(txt_path)
+    return self._txt</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.Scan.uid"><code class="name">var <span class="ident">uid</span> : Tuple[int, int]</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def uid(self) -&gt; Tuple[int, int]:
+    return (self.parent.id, self.id)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Scan.mesh"><code class="name flex">
+<span>def <span class="ident">mesh</span></span>(<span>self, mode='clean') ‑> <a title="silk.datasets.scannet.helper.Mesh" href="#silk.datasets.scannet.helper.Mesh">Mesh</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mesh(self, mode=&#34;clean&#34;) -&gt; Mesh:
+    assert mode in {&#34;clean&#34;, &#34;clean_2&#34;, &#34;clean_2.labels&#34;}
+
+    mesh_path = Scan.scan_file_path(self._path, &#34;ply&#34;, mode)
+    self._mesh = Mesh(mesh_path)
+
+    return self._mesh</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanIDFilter"><code class="flex name class">
+<span>class <span class="ident">ScanIDFilter</span></span>
+<span>(</span><span>scan_uids: Union[str, Iterable[Tuple[int, int]]])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScanIDFilter:
+    def __init__(self, scan_uids: Union[str, Iterable[Tuple[int, int]]]) -&gt; None:
+        if isinstance(scan_uids, str):
+            with open(scan_uids, &#34;r&#34;) as f:
+                scan_uids = json.load(f)
+
+        self._uids = {tuple(uid) for uid in scan_uids}
+
+    def __call__(self, scan: Scan) -&gt; bool:
+        return scan.uid in self._uids</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanNet"><code class="flex name class">
+<span>class <span class="ident">ScanNet</span></span>
+<span>(</span><span>path: str, cache_path: Union[str, None] = None, scan_filter: Callable[[<a title="silk.datasets.scannet.helper.Scan" href="#silk.datasets.scannet.helper.Scan">Scan</a>], bool] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper class to load ScanNet data in an efficient way (speed and memory-wise).
+We do only load the necessary data as they are required, in order to void huge memory footprint and costly initialization.
+IMPORTANT : This class is NOT a PyTorch dataset. Please refer to <code>ScansDataset</code> and <code>FramesDataset</code> for that.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScanNet:
+    &#34;&#34;&#34;Helper class to load ScanNet data in an efficient way (speed and memory-wise).
+    We do only load the necessary data as they are required, in order to void huge memory footprint and costly initialization.
+    IMPORTANT : This class is NOT a PyTorch dataset. Please refer to `ScansDataset` and `FramesDataset` for that.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        path: str,
+        cache_path: Union[str, None] = None,
+        scan_filter: Callable[[Scan], bool] = None,
+    ) -&gt; None:
+        self._path = path
+        self._scans = []
+        self._spaces = []
+        self._space_id_to_space = {}
+        self._frames = []
+        self._cache = (
+            _AlwaysEmptyCache() if cache_path is None else _DiskCache(cache_path)
+        )
+
+        self._load_initial_data(scan_filter)
+
+    @property
+    def n_spaces(self):
+        &#34;&#34;&#34;Return number of spaces found.&#34;&#34;&#34;
+        return len(self._spaces)
+
+    @property
+    def n_scans(self):
+        &#34;&#34;&#34;Return number of scans found.&#34;&#34;&#34;
+        return len(self._scans)
+
+    @property
+    def n_frames(self):
+        &#34;&#34;&#34;Return number of frames found.&#34;&#34;&#34;
+        return self._n_frames
+
+    def space(self, idx):
+        &#34;&#34;&#34;Access to ith Space.&#34;&#34;&#34;
+        return self._spaces[idx]
+
+    def scan(self, idx):
+        &#34;&#34;&#34;Access to ith Scan.&#34;&#34;&#34;
+        return self._scans[idx]
+
+    def frame(self, idx):
+        &#34;&#34;&#34;Access to ith Frame.&#34;&#34;&#34;
+        frame = self._frames[idx]
+        # lazy initialization of requested frame
+        if isinstance(frame, tuple):
+            self._frames[idx] = frame = self._scans[frame[0]][frame[1]]
+        return frame
+
+    def _load_initial_data(self, scan_filter):
+        LOG.info(f&#34;loading ScanNet dataset from : {self._path}&#34;)
+        self._n_frames = 0
+        glob_path = os.path.join(self._path, &#34;scene*&#34;)
+        for scan_path in sorted(glob(glob_path, recursive=False)):
+            # try to load scan
+            scan = Scan.load_from_directory(scan_path, self._cache)
+
+            if scan is None:
+                scan_basename = os.path.basename(scan_path)
+                LOG.warning(f&#39;&#34;{scan_basename}&#34; is not a scene, skipping ...&#39;)
+                continue
+
+            spaceId, _ = Scan.space_id_scan_id_from_path(scan_path)
+
+            # check if same space has already been loaded
+            if not (spaceId in self._space_id_to_space):
+                space = Space(spaceId)
+                self._space_id_to_space[spaceId] = space
+                self._spaces.append(space)
+            else:
+                space = self._space_id_to_space[spaceId]
+
+            space._add(scan)
+
+            if (scan_filter is not None) and (not scan_filter(scan)):
+                space._remove(scan)
+                continue
+
+            self._frames.extend((len(self._scans), i) for i in range(len(scan)))
+            self._n_frames += len(scan)
+            self._scans.append(scan)
+
+        LOG.info(f&#34;{self.n_spaces} spaces found&#34;)
+        LOG.info(f&#34;{self.n_scans} scans found&#34;)
+        LOG.info(f&#34;{self.n_frames} frames found&#34;)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.ScanNet.n_frames"><code class="name">var <span class="ident">n_frames</span></code></dt>
+<dd>
+<div class="desc"><p>Return number of frames found.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def n_frames(self):
+    &#34;&#34;&#34;Return number of frames found.&#34;&#34;&#34;
+    return self._n_frames</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanNet.n_scans"><code class="name">var <span class="ident">n_scans</span></code></dt>
+<dd>
+<div class="desc"><p>Return number of scans found.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def n_scans(self):
+    &#34;&#34;&#34;Return number of scans found.&#34;&#34;&#34;
+    return len(self._scans)</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanNet.n_spaces"><code class="name">var <span class="ident">n_spaces</span></code></dt>
+<dd>
+<div class="desc"><p>Return number of spaces found.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def n_spaces(self):
+    &#34;&#34;&#34;Return number of spaces found.&#34;&#34;&#34;
+    return len(self._spaces)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.ScanNet.frame"><code class="name flex">
+<span>def <span class="ident">frame</span></span>(<span>self, idx)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Access to ith Frame.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def frame(self, idx):
+    &#34;&#34;&#34;Access to ith Frame.&#34;&#34;&#34;
+    frame = self._frames[idx]
+    # lazy initialization of requested frame
+    if isinstance(frame, tuple):
+        self._frames[idx] = frame = self._scans[frame[0]][frame[1]]
+    return frame</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanNet.scan"><code class="name flex">
+<span>def <span class="ident">scan</span></span>(<span>self, idx)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Access to ith Scan.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scan(self, idx):
+    &#34;&#34;&#34;Access to ith Scan.&#34;&#34;&#34;
+    return self._scans[idx]</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.helper.ScanNet.space"><code class="name flex">
+<span>def <span class="ident">space</span></span>(<span>self, idx)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Access to ith Space.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def space(self, idx):
+    &#34;&#34;&#34;Access to ith Space.&#34;&#34;&#34;
+    return self._spaces[idx]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.Space"><code class="flex name class">
+<span>class <span class="ident">Space</span></span>
+<span>(</span><span>id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A Space is a collection of Scans</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Space:
+    &#34;&#34;&#34;A Space is a collection of Scans&#34;&#34;&#34;
+
+    def __init__(self, id: int) -&gt; None:
+        self._id = id
+        self._scans = []
+
+    @property
+    def id(self):
+        return self._id
+
+    def _add(self, scan: Scan):
+        scan._parent = self
+        self._scans.append(scan)
+
+    def _remove(self, scan: Scan):
+        scan._parent = None
+        self._scans.remove(scan)
+
+    def __getitem__(self, idx: int):
+        return self._scans[idx]
+
+    def __len__(self):
+        return len(self._scans)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Space.id"><code class="name">var <span class="ident">id</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def id(self):
+    return self._id</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.datasets.scannet.helper.Txt"><code class="flex name class">
+<span>class <span class="ident">Txt</span></span>
+<span>(</span><span>path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads information contained in the ".txt" file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Txt(dict):
+    &#34;&#34;&#34;Loads information contained in the &#34;.txt&#34; file.&#34;&#34;&#34;
+
+    SCENE_TYPE_LIST = [
+        &#34;Apartment&#34;,
+        &#34;Bathroom&#34;,
+        &#34;Bedroom / Hotel&#34;,
+        &#34;Bookstore / Library&#34;,
+        &#34;Classroom&#34;,
+        &#34;Closet&#34;,
+        &#34;ComputerCluster&#34;,
+        &#34;Conference Room&#34;,
+        &#34;Copy/Mail Room&#34;,
+        &#34;Dining Room&#34;,
+        &#34;Game room&#34;,
+        &#34;Gym&#34;,
+        &#34;Hallway&#34;,
+        &#34;Kitchen&#34;,
+        &#34;Laundry Room&#34;,
+        &#34;Living room / Lounge&#34;,
+        &#34;Lobby&#34;,
+        &#34;Misc.&#34;,
+        &#34;Office&#34;,
+        &#34;Stairs&#34;,
+        &#34;Storage/Basement/Garage&#34;,
+    ]
+
+    TEST_SET_SCENE_TYPE_FIX = {
+        &#34;scene0707_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0708_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0709_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0710_00&#34;: &#34;Office&#34;,
+        &#34;scene0711_00&#34;: &#34;Office&#34;,
+        &#34;scene0712_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0713_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0714_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0715_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0716_00&#34;: &#34;Laundry Room&#34;,
+        &#34;scene0717_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0718_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0719_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0720_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0721_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0722_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0723_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0724_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0725_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0726_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0727_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0728_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0729_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0730_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0731_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0732_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0733_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0734_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0735_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0736_00&#34;: &#34;Office&#34;,
+        &#34;scene0737_00&#34;: &#34;Office&#34;,
+        &#34;scene0738_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0739_00&#34;: &#34;Office&#34;,
+        &#34;scene0740_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0741_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0742_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0743_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0744_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0745_00&#34;: &#34;Office&#34;,
+        &#34;scene0746_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0747_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0748_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0749_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0750_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0751_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0752_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0753_00&#34;: &#34;Office&#34;,
+        &#34;scene0754_00&#34;: &#34;Office&#34;,
+        &#34;scene0755_00&#34;: &#34;Office&#34;,
+        &#34;scene0756_00&#34;: &#34;Office&#34;,
+        &#34;scene0757_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0758_00&#34;: &#34;Office&#34;,
+        &#34;scene0759_00&#34;: &#34;Office&#34;,
+        &#34;scene0760_00&#34;: &#34;Office&#34;,
+        &#34;scene0761_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0762_00&#34;: &#34;Office&#34;,
+        &#34;scene0763_00&#34;: &#34;Closet&#34;,
+        &#34;scene0764_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0765_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0766_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0767_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0768_00&#34;: &#34;Bedroom / Hotel&#34;,
+        &#34;scene0769_00&#34;: &#34;Office&#34;,
+        &#34;scene0770_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0771_00&#34;: &#34;Conference Room&#34;,
+        &#34;scene0772_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0773_00&#34;: &#34;Kitchen&#34;,
+        &#34;scene0774_00&#34;: &#34;Conference Room&#34;,
+        &#34;scene0775_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0776_00&#34;: &#34;Game room&#34;,
+        &#34;scene0777_00&#34;: &#34;Game room&#34;,
+        &#34;scene0778_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0779_00&#34;: &#34;Bathroom&#34;,
+        &#34;scene0780_00&#34;: &#34;Laundry Room&#34;,
+        &#34;scene0781_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0782_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0783_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0784_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0785_00&#34;: &#34;Apartment&#34;,
+        &#34;scene0786_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0787_00&#34;: &#34;Storage/Basement/Garage&#34;,
+        &#34;scene0788_00&#34;: &#34;Gym&#34;,
+        &#34;scene0789_00&#34;: &#34;Hallway&#34;,
+        &#34;scene0790_00&#34;: &#34;Copy/Mail Room&#34;,
+        &#34;scene0791_00&#34;: &#34;Classroom&#34;,
+        &#34;scene0792_00&#34;: &#34;Stairs&#34;,
+        &#34;scene0793_00&#34;: &#34;Classroom&#34;,
+        &#34;scene0794_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0795_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0796_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0797_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0798_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0799_00&#34;: &#34;Bookstore / Library&#34;,
+        &#34;scene0800_00&#34;: &#34;Bookstore / Library&#34;,
+        &#34;scene0801_00&#34;: &#34;Dining Room&#34;,
+        &#34;scene0802_00&#34;: &#34;Lobby&#34;,
+        &#34;scene0803_00&#34;: &#34;Storage/Basement/Garage&#34;,
+        &#34;scene0804_00&#34;: &#34;Copy/Mail Room&#34;,
+        &#34;scene0805_00&#34;: &#34;Living room / Lounge&#34;,
+        &#34;scene0806_00&#34;: &#34;Game room&#34;,
+    }
+
+    @staticmethod
+    def _remove_new_line(value: str):
+        if len(value) &gt; 0 and value[-1] == &#34;\n&#34;:
+            value = value[:-1]
+        return value
+
+    def __init__(self, path) -&gt; None:
+        super().__init__()
+        self._path = path
+
+        # TEMPORARY(Pierre): Fix missing label classes in test set
+        # TODO(Pierre): Integrate in original files directly
+        scan_name = os.path.basename(path)
+        if scan_name.endswith(&#34;.txt&#34;):
+            scan_name = scan_name[:-len(&#34;.txt&#34;)]
+
+        if scan_name in Txt.TEST_SET_SCENE_TYPE_FIX:
+            # TODO(Pierre): Add warning here
+            self[&#34;sceneType&#34;] = Txt.TEST_SET_SCENE_TYPE_FIX[scan_name]
+
+        with open(path, &#34;r&#34;) as f:
+            for line in f.readlines():
+                key, value = line.split(&#34; = &#34;)
+                self[key] = Txt._remove_new_line(value)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.datasets.scannet.helper.Txt.SCENE_TYPE_LIST"><code class="name">var <span class="ident">SCENE_TYPE_LIST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.datasets.scannet.helper.Txt.TEST_SET_SCENE_TYPE_FIX"><code class="name">var <span class="ident">TEST_SET_SCENE_TYPE_FIX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets.scannet" href="index.html">silk.datasets.scannet</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Frame" href="#silk.datasets.scannet.helper.Frame">Frame</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.datasets.scannet.helper.Frame.STATE_ATTRS" href="#silk.datasets.scannet.helper.Frame.STATE_ATTRS">STATE_ATTRS</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.color" href="#silk.datasets.scannet.helper.Frame.color">color</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.depth" href="#silk.datasets.scannet.helper.Frame.depth">depth</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.header" href="#silk.datasets.scannet.helper.Frame.header">header</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.load_from_reader" href="#silk.datasets.scannet.helper.Frame.load_from_reader">load_from_reader</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.parent" href="#silk.datasets.scannet.helper.Frame.parent">parent</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frame.scan" href="#silk.datasets.scannet.helper.Frame.scan">scan</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Frames" href="#silk.datasets.scannet.helper.Frames">Frames</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_COLOR" href="#silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_COLOR">COMPRESSION_TYPE_COLOR</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_DEPTH" href="#silk.datasets.scannet.helper.Frames.COMPRESSION_TYPE_DEPTH">COMPRESSION_TYPE_DEPTH</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.FRAME_RATE" href="#silk.datasets.scannet.helper.Frames.FRAME_RATE">FRAME_RATE</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.SENS_VALID_COLOR_COMPRESSION_TYPE" href="#silk.datasets.scannet.helper.Frames.SENS_VALID_COLOR_COMPRESSION_TYPE">SENS_VALID_COLOR_COMPRESSION_TYPE</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.SENS_VALID_DEPTH_COMPRESSION_TYPE" href="#silk.datasets.scannet.helper.Frames.SENS_VALID_DEPTH_COMPRESSION_TYPE">SENS_VALID_DEPTH_COMPRESSION_TYPE</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.SENS_VERSION" href="#silk.datasets.scannet.helper.Frames.SENS_VERSION">SENS_VERSION</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.duration" href="#silk.datasets.scannet.helper.Frames.duration">duration</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.get_clip" href="#silk.datasets.scannet.helper.Frames.get_clip">get_clip</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.header" href="#silk.datasets.scannet.helper.Frames.header">header</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.load_from_file" href="#silk.datasets.scannet.helper.Frames.load_from_file">load_from_file</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Frames.parent" href="#silk.datasets.scannet.helper.Frames.parent">parent</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Mesh" href="#silk.datasets.scannet.helper.Mesh">Mesh</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.helper.Mesh.get_mesh" href="#silk.datasets.scannet.helper.Mesh.get_mesh">get_mesh</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Scan" href="#silk.datasets.scannet.helper.Scan">Scan</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.helper.Scan.SPACE_ID_SCAN_ID_RE" href="#silk.datasets.scannet.helper.Scan.SPACE_ID_SCAN_ID_RE">SPACE_ID_SCAN_ID_RE</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.cache" href="#silk.datasets.scannet.helper.Scan.cache">cache</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.frames" href="#silk.datasets.scannet.helper.Scan.frames">frames</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.id" href="#silk.datasets.scannet.helper.Scan.id">id</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.load_from_directory" href="#silk.datasets.scannet.helper.Scan.load_from_directory">load_from_directory</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.mesh" href="#silk.datasets.scannet.helper.Scan.mesh">mesh</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.parent" href="#silk.datasets.scannet.helper.Scan.parent">parent</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.scan_file_path" href="#silk.datasets.scannet.helper.Scan.scan_file_path">scan_file_path</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.space_id_scan_id_from_path" href="#silk.datasets.scannet.helper.Scan.space_id_scan_id_from_path">space_id_scan_id_from_path</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.txt" href="#silk.datasets.scannet.helper.Scan.txt">txt</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Scan.uid" href="#silk.datasets.scannet.helper.Scan.uid">uid</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.ScanIDFilter" href="#silk.datasets.scannet.helper.ScanIDFilter">ScanIDFilter</a></code></h4>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.ScanNet" href="#silk.datasets.scannet.helper.ScanNet">ScanNet</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.frame" href="#silk.datasets.scannet.helper.ScanNet.frame">frame</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.n_frames" href="#silk.datasets.scannet.helper.ScanNet.n_frames">n_frames</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.n_scans" href="#silk.datasets.scannet.helper.ScanNet.n_scans">n_scans</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.n_spaces" href="#silk.datasets.scannet.helper.ScanNet.n_spaces">n_spaces</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.scan" href="#silk.datasets.scannet.helper.ScanNet.scan">scan</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.ScanNet.space" href="#silk.datasets.scannet.helper.ScanNet.space">space</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Space" href="#silk.datasets.scannet.helper.Space">Space</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.helper.Space.id" href="#silk.datasets.scannet.helper.Space.id">id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.datasets.scannet.helper.Txt" href="#silk.datasets.scannet.helper.Txt">Txt</a></code></h4>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.helper.Txt.SCENE_TYPE_LIST" href="#silk.datasets.scannet.helper.Txt.SCENE_TYPE_LIST">SCENE_TYPE_LIST</a></code></li>
+<li><code><a title="silk.datasets.scannet.helper.Txt.TEST_SET_SCENE_TYPE_FIX" href="#silk.datasets.scannet.helper.Txt.TEST_SET_SCENE_TYPE_FIX">TEST_SET_SCENE_TYPE_FIX</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

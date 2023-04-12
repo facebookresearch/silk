@@ -1,0 +1,6 @@
+_target_: silk.transforms.metric.MetricUpdate
+_args_:
+  - null
+  - _target_: silk.metrics.hpatches_metrics.AvgShapeCount
+  - "@original_points"
+  - "@warped_points"

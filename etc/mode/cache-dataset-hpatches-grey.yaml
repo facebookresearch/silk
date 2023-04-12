@@ -1,0 +1,51 @@
+defaults:
+  - cache-dataset-defaults
+  - /datasets/hpatches@loader.dataset: test
+  - _self_
+
+output:
+  path: "dataset.h5"
+  take_n: null # set to null to go through all the loader
+
+# dataset loader to extract images from
+loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 0
+  shuffle: false
+  collate_fn: ${mode.collate_fn}
+  pin_memory: true
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "original_img"
+          - "warped_img"
+          - "homography"
+      # convert numpy arrays to tensors
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.tensor.ToTensor
+
+      - _target_: silk.transforms.abstract.Lambda
+        name: "original_img_shape"
+        function:
+          _target_: silk.transforms.tensor.Shape
+          start: 1
+        item: "@original_img"
+
+      - _target_: silk.transforms.abstract.Lambda
+        name: "warped_img_shape"
+        function:
+          _target_: silk.transforms.tensor.Shape
+          start: 1
+        item: "@warped_img"
+
+transform:
+  _target_: silk.transforms.tensor.Unbatch
+  tuple_as_list: true

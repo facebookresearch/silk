@@ -1,0 +1,100 @@
+defaults:
+  - /datasets/hpatches@loader.dataset: test
+  - /metrics/repeatability@metric_updates.repeatability-1
+  - /metrics/repeatability@metric_updates.repeatability-2
+  - /metrics/repeatability@metric_updates.repeatability-3
+  - /metrics/homography_estimation_accuracy@metric_updates.homography_estimation_acc-1
+  - /metrics/homography_estimation_accuracy@metric_updates.homography_estimation_acc-2
+  - /metrics/homography_estimation_accuracy@metric_updates.homography_estimation_acc-3
+  - /metrics/homography_estimation_auc@metric_updates.homography_estimation_auc-1
+  - /metrics/homography_estimation_auc@metric_updates.homography_estimation_auc-2
+  - /metrics/homography_estimation_auc@metric_updates.homography_estimation_auc-3
+  - /metrics/mean_matching_accuracy@metric_updates.mma-1
+  - /metrics/mean_matching_accuracy@metric_updates.mma-2
+  - /metrics/mean_matching_accuracy@metric_updates.mma-3
+  - /metrics/keypoint_avg_count@metric_updates.kp-count
+  - /metrics/matched_keypoint_avg_count@metric_updates.matched-kp-count
+  - _self_
+
+command: "hpatches_tests"
+
+visualization:
+  enabled: false
+  directory: "./viz"
+
+model: ???
+transform: ???
+
+loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 1
+  num_workers: 12
+  shuffle: ${mode.visualization.enabled}
+  collate_fn: ${mode.collate_fn}
+
+metric_updates:
+  repeatability-1:
+    metric:
+      distance_thresh: 1
+  repeatability-2:
+    metric:
+      distance_thresh: 2
+  repeatability-3:
+    metric:
+      distance_thresh: 3
+  homography_estimation_acc-1:
+    metric:
+      correctness_thresh: 1
+  homography_estimation_acc-2:
+    metric:
+      correctness_thresh: 2
+  homography_estimation_acc-3:
+    metric:
+      correctness_thresh: 3
+  homography_estimation_auc-1:
+    metric:
+      correctness_thresh: 1
+  homography_estimation_auc-2:
+    metric:
+      correctness_thresh: 2
+  homography_estimation_auc-3:
+    metric:
+      correctness_thresh: 3
+  mma-1:
+    metric:
+      threshold: 1
+  mma-2:
+    metric:
+      threshold: 2
+  mma-3:
+    metric:
+      threshold: 3
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "original_img"
+          - "warped_img"
+          - "homography"
+      # convert numpy arrays to tensors
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.tensor.ToTensor
+
+      - _target_: silk.transforms.abstract.Lambda
+        name: "original_img_shape"
+        function:
+          _target_: silk.transforms.tensor.Shape
+          start: 1
+        item: "@original_img"
+
+      - _target_: silk.transforms.abstract.Lambda
+        name: "warped_img_shape"
+        function:
+          _target_: silk.transforms.tensor.Shape
+          start: 1
+        item: "@warped_img"

@@ -1,0 +1,102 @@
+defaults:
+  - train-defaults
+  - /models@model: silk-vgg
+
+  ### Datasets
+  ## COCO
+  - /datasets/coco@loaders.training.dataset: training
+  - /datasets/coco@loaders.validation.dataset: validation
+  ## ImageNet
+  # - /datasets/image-net@loaders.training.dataset: training
+  # - /datasets/image-net@loaders.validation.dataset: validation
+  ## MegaDepth
+  # - /datasets/megadepth@loaders.training.dataset: train-val
+  # - /datasets/megadepth@loaders.validation.dataset: test
+  ## ScanNet (uncomment lines specified in this file)
+  # - /datasets/scannet-frames@loaders.training.dataset: training-98-2-scan-split
+  # - /datasets/scannet-frames@loaders.validation.dataset: validation-98-2-scan-split
+  ## C + I + M + S
+  # - /datasets/coco-image-net-megadepth-scannet@loaders.training.dataset: training
+  # - /datasets/coco-image-net-megadepth-scannet@loaders.validation.dataset: validation
+  ## C + I + M
+  # - /datasets/coco-image-net-megadepth@loaders.training.dataset: training
+  # - /datasets/coco-image-net-megadepth@loaders.validation.dataset: validation
+  - _self_
+
+trainer:
+  max_epochs: 100
+  limit_val_batches: 100
+  limit_train_batches: 1000
+  # need two GPUs, PyTorch use GPU 1, and Jax uses GPU 0.
+  gpus:
+    - 1
+  # fast_dev_run: true
+  # profiler: simple
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: "val.f1"
+      save_top_k: 10
+      mode: "max"
+
+loaders:
+  training:
+    batch_size: 1
+    num_workers: 6
+    collate_fn: ${mode.collate_fn}
+    persistent_workers: true
+    ## Uncomment below for ScanNet only
+    # dataset:
+    #   extractor:
+    #     - "color"
+    #     - "room"
+  validation:
+    batch_size: 1
+    num_workers: 6
+    collate_fn: ${mode.collate_fn}
+    persistent_workers: true
+    ## Uncomment below for ScanNet only
+    # dataset:
+    #   extractor:
+    #     - "color"
+    #     - "room"
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "image"
+          - null # we ignore the labels
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.abstract.Compose
+          _args_:
+            # convert PIL images to tensors
+            - _target_: silk.transforms.tensor.ToTensor
+            # convert image from HWC to CHW format
+            - _target_: silk.transforms.cv.image.HWCToCHW
+            # # crop sampling strategy #1
+            # - _target_: torchvision.transforms.RandomResizedCrop
+            #   _args_:
+            #     - [164, 164] # size
+            #     - [0.25, 1.0] # scale
+            # crop sampling strategy #2
+            - _target_: torchvision.transforms.RandomCrop
+              ## Sizes used for backbone ablation
+              size: [164, 164] # VGG-4 (146 + 2x9)
+              # size: [160, 160] # VGG-3 (146 + 2x7)
+              # size: [156, 156] # VGG-2 (146 + 2x5)
+              # size: [152, 152] # VGG-1 (146 + 2x3)
+              # size: [324, 324] # ResFPN [LoFTR]
+              # size: [332, 332] # PUNet [DISK]
+
+              ## Sizes used for training image size ablation
+              # size: [100, 100] # 82 + 2x9
+              # size: [132, 132] # 114 + 2x9
+              # size: [164, 164] # 146 + 2x9
+              # size: [196, 196] # 178 + 2x9
+              # size: [228, 228] # 210 + 2x9
+              pad_if_needed: true

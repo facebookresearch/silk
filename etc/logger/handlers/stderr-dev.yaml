@@ -1,0 +1,3 @@
+defaults:
+  - defaults@stderr-dev
+  - level/debug@stderr-dev

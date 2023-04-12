@@ -1,0 +1,4 @@
+defaults:
+  - sink/stderr@
+  - format/defaults@
+  - level/warning@

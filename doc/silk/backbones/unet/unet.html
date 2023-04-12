@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.backbones.unet.unet API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.backbones.unet.unet</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+# source : https://github.com/milesial/Pytorch-UNet/tree/master/unet
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from silk.backbones.silk.coords import (
+    CoordinateMappingProvider,
+    mapping_from_torch_module,
+)
+
+
+class DoubleConv(nn.Module):
+    &#34;&#34;&#34;(convolution =&gt; [BN] =&gt; ReLU) * 2&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels, mid_channels=None):
+        super().__init__()
+        if not mid_channels:
+            mid_channels = out_channels
+        self.double_conv = nn.Sequential(
+            nn.Conv2d(in_channels, mid_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(mid_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(mid_channels, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True),
+        )
+
+    def forward(self, x):
+        return self.double_conv(x)
+
+
+class Down(nn.Module):
+    &#34;&#34;&#34;Downscaling with maxpool then double conv&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        self.maxpool_conv = nn.Sequential(
+            nn.MaxPool2d(2),
+            DoubleConv(in_channels, out_channels),
+        )
+
+    def forward(self, x):
+        return self.maxpool_conv(x)
+
+
+class Up(nn.Module):
+    &#34;&#34;&#34;Upscaling then double conv&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels, bilinear=True):
+        super().__init__()
+
+        # if bilinear, use the normal convolutions to reduce the number of channels
+        if bilinear:
+            self.up = nn.Upsample(scale_factor=2, mode=&#34;bilinear&#34;, align_corners=True)
+            self.conv = DoubleConv(in_channels, out_channels, in_channels // 2)
+        else:
+            self.up = nn.ConvTranspose2d(
+                in_channels, in_channels // 2, kernel_size=2, stride=2
+            )
+            self.conv = DoubleConv(in_channels, out_channels)
+
+    def forward(self, x1, x2):
+        x1 = self.up(x1)
+        # input is CHW
+        diffY = x2.size()[2] - x1.size()[2]
+        diffX = x2.size()[3] - x1.size()[3]
+
+        x1 = F.pad(x1, [diffX // 2, diffX - diffX // 2, diffY // 2, diffY - diffY // 2])
+        # if you have padding issues, see
+        # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+        # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+        x = torch.cat([x2, x1], dim=1)
+        return self.conv(x)
+
+
+class OutConv(nn.Module, CoordinateMappingProvider):
+    def __init__(self, in_channels, out_channels):
+        super(OutConv, self).__init__()
+        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=1)
+
+    def mappings(self):
+        return mapping_from_torch_module(self.conv)
+
+    def forward(self, x):
+        return self.conv(x)
+
+
+class UNet(nn.Module):
+    def __init__(self, n_channels, n_classes, bilinear=False):
+        super(UNet, self).__init__()
+        self.n_channels = n_channels
+        self.n_classes = n_classes
+        self.bilinear = bilinear
+
+        self.inc = DoubleConv(n_channels, 64)
+        self.down1 = Down(64, 128)
+        self.down2 = Down(128, 256)
+        self.down3 = Down(256, 512)
+        factor = 2 if bilinear else 1
+        self.down4 = Down(512, 1024 // factor)
+        self.up1 = Up(1024, 512 // factor, bilinear)
+        self.up2 = Up(512, 256 // factor, bilinear)
+        self.up3 = Up(256, 128 // factor, bilinear)
+        self.up4 = Up(128, 64, bilinear)
+        self.outc = OutConv(64, n_classes)
+
+    def forward(self, x):
+        x1 = self.inc(x)
+        x2 = self.down1(x1)
+        x3 = self.down2(x2)
+        x4 = self.down3(x3)
+        x5 = self.down4(x4)
+        x = self.up1(x5, x4)
+        x = self.up2(x, x3)
+        x = self.up3(x, x2)
+        x = self.up4(x, x1)
+        logits = self.outc(x)
+        return logits
+
+
+class MultiConv(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        length=1,
+        mid_channels=None,
+        padding=1,
+        kernel=3,
+    ):
+        super().__init__()
+
+        if not mid_channels:
+            mid_channels = out_channels
+
+        self.channels = [in_channels] + [mid_channels] * (length - 1) + [out_channels]
+        self.multi_conv = nn.Sequential(
+            *sum(
+                [
+                    [
+                        nn.Conv2d(
+                            self.channels[i],
+                            self.channels[i + 1],
+                            kernel_size=kernel,
+                            padding=padding,
+                            bias=False,
+                        ),
+                        nn.BatchNorm2d(self.channels[i + 1]),
+                        nn.ReLU(inplace=True),
+                    ]
+                    for i in range(length)
+                ],
+                [],
+            )
+        )
+
+    def mappings(self):
+        return mapping_from_torch_module(self.multi_conv)
+
+    def forward(self, x):
+        return self.multi_conv(x)
+
+
+class ParametricDown(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        length=1,
+        use_max_pooling=True,
+        padding=1,
+        kernel=3,
+    ):
+        super().__init__()
+
+        downscale_layer = (
+            nn.MaxPool2d(2)
+            if use_max_pooling
+            else nn.Conv2d(in_channels, in_channels, kernel_size=2, stride=2)
+        )
+
+        self.maxpool_conv = nn.Sequential(
+            downscale_layer,
+            MultiConv(
+                in_channels,
+                out_channels,
+                length,
+                padding=padding,
+                kernel=kernel,
+            ),
+        )
+
+    def mappings(self):
+        return mapping_from_torch_module(self.maxpool_conv)
+
+    def forward(self, x):
+        return self.maxpool_conv(x)
+
+
+class ParametricUp(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        hor_channels=None,
+        length=1,
+        bilinear=True,
+        padding=1,
+        kernel=3,
+        hor_mapping=None,
+        below_mapping=None,
+    ):
+        super().__init__()
+
+        assert padding in {0, 1}
+        self.padding = padding
+        self.hor_channels = in_channels // 2 if hor_channels is None else hor_channels
+
+        # if bilinear, use the normal convolutions to reduce the number of channels
+        if bilinear:
+            self.up = nn.Sequential(
+                nn.Conv2d(in_channels, self.hor_channels, kernel_size=1),
+                nn.Upsample(scale_factor=2, mode=&#34;bilinear&#34;, align_corners=True),
+            )
+        else:
+            self.up = nn.ConvTranspose2d(
+                in_channels,
+                self.hor_channels,
+                kernel_size=2,
+                stride=2,
+            )
+
+        self.conv = MultiConv(
+            2 * self.hor_channels,
+            out_channels,
+            length,
+            padding=padding,
+            kernel=kernel,
+        )
+
+        self._calculate_pad(hor_mapping, below_mapping)
+
+    def _calculate_pad(self, hor_mapping=None, below_mapping=None):
+        if (hor_mapping is None) or (below_mapping is None):
+            self.top_pad = None
+            self.left_pad = None
+            return
+
+        up_mapping = below_mapping + self.mappings()
+        if not (hor_mapping.scale == up_mapping.scale).all():
+            raise RuntimeError(
+                f&#34;only layer of same scale can be combine in upsampling layer : {hor_mapping.scale} != {up_mapping.scale}&#34;
+            )
+
+        top_pad = (hor_mapping.bias[0] - up_mapping.bias[0]).item()
+        left_pad = (hor_mapping.bias[1] - up_mapping.bias[1]).item()
+
+        assert top_pad &gt;= 0
+        assert left_pad &gt;= 0
+        assert float(int(top_pad)) == top_pad
+        assert float(int(left_pad)) == left_pad
+
+        self.top_pad = int(top_pad)
+        self.left_pad = int(left_pad)
+
+    def mappings(self):
+        # return  #LinearCoordinateMapping(scale=2., bias=(self.top_pad, self.left_pad)) + mapping_from_torch_module(self.multi_conv)
+        return mapping_from_torch_module(self.up) + mapping_from_torch_module(self.conv)
+
+    def forward(self, x1, x2):
+        x1 = self.up(x1)
+
+        # input is CHW
+        dy = x2.shape[2] - x1.shape[2]
+        dx = x2.shape[3] - x1.shape[3]
+
+        if self.top_pad is None:
+            pad_y_top = dy // 2
+        else:
+            pad_y_top = self.top_pad
+        pad_y_bottom = dy - pad_y_top
+
+        if self.left_pad is None:
+            pad_x_left = dx // 2
+        else:
+            pad_x_left = self.left_pad
+        pad_x_right = dx - pad_x_left
+
+        if self.padding:
+            x1 = F.pad(x1, (pad_x_left, pad_x_right, pad_y_top, pad_y_bottom))
+            # if you have padding issues, see
+            # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+            # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+        else:
+            x2 = x2[..., pad_y_top:-pad_y_bottom, pad_x_left:-pad_x_right]
+
+        x = torch.cat([x2, x1], dim=1)
+
+        return self.conv(x)
+
+
+class ParametricUNet(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        n_channels,
+        n_classes,
+        bilinear=False,
+        input_feature_channels=64,
+        n_scales=4,
+        length=1,
+        use_max_pooling=True,
+        padding=1,
+        kernel=3,
+        up_channels=None,
+        down_channels=None,
+    ):
+        nn.Module.__init__(self)
+        CoordinateMappingProvider.__init__(self)
+
+        self.n_channels = n_channels
+        self.n_classes = n_classes
+        self.bilinear = bilinear
+        self.input_feature_channels = input_feature_channels
+        self.down_channels = (
+            [input_feature_channels * (2 ** i) for i in reversed(range(n_scales + 1))]
+            if down_channels is None
+            else [input_feature_channels] + down_channels
+        )
+        self.up_channels = (
+            [input_feature_channels * (2 ** i) for i in range(n_scales + 1)]
+            if up_channels is None
+            else [self.down_channels[-1]] + up_channels
+        )
+
+        assert len(self.up_channels) == n_scales + 1
+        assert len(self.down_channels) == n_scales + 1
+
+        self.padding = padding
+        self.length = length
+        self.n_scales = n_scales
+        self.kernel = kernel
+
+        self.up_mappings = [None] * (n_scales + 1)
+
+        self.inc = MultiConv(
+            n_channels,
+            input_feature_channels,
+            length,
+            padding=padding,
+            kernel=self.kernel,
+        )
+
+        self.down_mappings = [None] * (n_scales + 1)
+        self.down_mappings[0] = mapping_from_torch_module(self.inc)
+
+        down = []
+        for i in range(n_scales):
+            layer = ParametricDown(
+                self.down_channels[i],
+                self.down_channels[i + 1],
+                length,
+                use_max_pooling=use_max_pooling,
+                padding=padding,
+                kernel=self.kernel,
+            )
+
+            down.append(layer)
+            self.down_mappings[i + 1] = self.down_mappings[
+                i
+            ] + mapping_from_torch_module(layer)
+
+        up = []
+        self.up_mappings[0] = self.down_mappings[-1]
+        for i in range(n_scales):
+            layer = ParametricUp(
+                self.up_channels[i],
+                self.up_channels[i + 1],
+                self.down_channels[n_scales - 1 - i],
+                length,
+                bilinear=bilinear,
+                padding=padding,
+                kernel=self.kernel,
+                hor_mapping=self.down_mappings[n_scales - i - 1],
+                below_mapping=self.up_mappings[i],
+            )
+
+            up.append(layer)
+
+            self.up_mappings[i + 1] = self.up_mappings[i] + mapping_from_torch_module(
+                layer
+            )
+
+        self.down = nn.ModuleList(down)
+        self.up = nn.ModuleList(up)
+
+        self.outc = OutConv(self.up_channels[-1], n_classes)
+
+    def total_pad(self):
+        pad = (1 - self.padding) * (self.kernel // 2)
+        return (
+            sum(2 * pad * (2 ** i) * self.length for i in range(self.n_scales))
+            + pad * (2 ** self.n_scales) * self.length
+        )
+
+    def mappings(self):
+        mapping = mapping_from_torch_module(self.inc)
+        for down in self.down:
+            mapping = mapping + mapping_from_torch_module(down)
+        for up in self.up:
+            mapping = mapping + mapping_from_torch_module(up)
+        mapping = mapping + mapping_from_torch_module(self.outc)
+        return mapping
+
+    def forward(self, x):
+        layers = [self.inc(x)]
+
+        # downscale
+        for down in self.down:
+            layers.append(down(layers[-1]))
+
+        # upscale
+        x = layers.pop(-1)
+        for up in self.up:
+            x = up(x, layers.pop(-1))
+
+        logits = self.outc(x)
+        return logits</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.backbones.unet.unet.DoubleConv"><code class="flex name class">
+<span>class <span class="ident">DoubleConv</span></span>
+<span>(</span><span>in_channels, out_channels, mid_channels=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>(convolution =&gt; [BN] =&gt; ReLU) * 2</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DoubleConv(nn.Module):
+    &#34;&#34;&#34;(convolution =&gt; [BN] =&gt; ReLU) * 2&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels, mid_channels=None):
+        super().__init__()
+        if not mid_channels:
+            mid_channels = out_channels
+        self.double_conv = nn.Sequential(
+            nn.Conv2d(in_channels, mid_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(mid_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(mid_channels, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True),
+        )
+
+    def forward(self, x):
+        return self.double_conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.DoubleConv.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.DoubleConv.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.DoubleConv.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return self.double_conv(x)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.Down"><code class="flex name class">
+<span>class <span class="ident">Down</span></span>
+<span>(</span><span>in_channels, out_channels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Downscaling with maxpool then double conv</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Down(nn.Module):
+    &#34;&#34;&#34;Downscaling with maxpool then double conv&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        self.maxpool_conv = nn.Sequential(
+            nn.MaxPool2d(2),
+            DoubleConv(in_channels, out_channels),
+        )
+
+    def forward(self, x):
+        return self.maxpool_conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.Down.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.Down.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.Down.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return self.maxpool_conv(x)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.MultiConv"><code class="flex name class">
+<span>class <span class="ident">MultiConv</span></span>
+<span>(</span><span>in_channels, out_channels, length=1, mid_channels=None, padding=1, kernel=3)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultiConv(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        length=1,
+        mid_channels=None,
+        padding=1,
+        kernel=3,
+    ):
+        super().__init__()
+
+        if not mid_channels:
+            mid_channels = out_channels
+
+        self.channels = [in_channels] + [mid_channels] * (length - 1) + [out_channels]
+        self.multi_conv = nn.Sequential(
+            *sum(
+                [
+                    [
+                        nn.Conv2d(
+                            self.channels[i],
+                            self.channels[i + 1],
+                            kernel_size=kernel,
+                            padding=padding,
+                            bias=False,
+                        ),
+                        nn.BatchNorm2d(self.channels[i + 1]),
+                        nn.ReLU(inplace=True),
+                    ]
+                    for i in range(length)
+                ],
+                [],
+            )
+        )
+
+    def mappings(self):
+        return mapping_from_torch_module(self.multi_conv)
+
+    def forward(self, x):
+        return self.multi_conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+<li><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="../silk/coords.html#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.MultiConv.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.MultiConv.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.MultiConv.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return self.multi_conv(x)</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.MultiConv.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self):
+    return mapping_from_torch_module(self.multi_conv)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.OutConv"><code class="flex name class">
+<span>class <span class="ident">OutConv</span></span>
+<span>(</span><span>in_channels, out_channels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OutConv(nn.Module, CoordinateMappingProvider):
+    def __init__(self, in_channels, out_channels):
+        super(OutConv, self).__init__()
+        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=1)
+
+    def mappings(self):
+        return mapping_from_torch_module(self.conv)
+
+    def forward(self, x):
+        return self.conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+<li><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="../silk/coords.html#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.OutConv.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.OutConv.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.OutConv.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return self.conv(x)</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.OutConv.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self):
+    return mapping_from_torch_module(self.conv)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricDown"><code class="flex name class">
+<span>class <span class="ident">ParametricDown</span></span>
+<span>(</span><span>in_channels, out_channels, length=1, use_max_pooling=True, padding=1, kernel=3)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParametricDown(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        length=1,
+        use_max_pooling=True,
+        padding=1,
+        kernel=3,
+    ):
+        super().__init__()
+
+        downscale_layer = (
+            nn.MaxPool2d(2)
+            if use_max_pooling
+            else nn.Conv2d(in_channels, in_channels, kernel_size=2, stride=2)
+        )
+
+        self.maxpool_conv = nn.Sequential(
+            downscale_layer,
+            MultiConv(
+                in_channels,
+                out_channels,
+                length,
+                padding=padding,
+                kernel=kernel,
+            ),
+        )
+
+    def mappings(self):
+        return mapping_from_torch_module(self.maxpool_conv)
+
+    def forward(self, x):
+        return self.maxpool_conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+<li><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="../silk/coords.html#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricDown.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricDown.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricDown.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    return self.maxpool_conv(x)</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricDown.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self):
+    return mapping_from_torch_module(self.maxpool_conv)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUNet"><code class="flex name class">
+<span>class <span class="ident">ParametricUNet</span></span>
+<span>(</span><span>n_channels, n_classes, bilinear=False, input_feature_channels=64, n_scales=4, length=1, use_max_pooling=True, padding=1, kernel=3, up_channels=None, down_channels=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParametricUNet(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        n_channels,
+        n_classes,
+        bilinear=False,
+        input_feature_channels=64,
+        n_scales=4,
+        length=1,
+        use_max_pooling=True,
+        padding=1,
+        kernel=3,
+        up_channels=None,
+        down_channels=None,
+    ):
+        nn.Module.__init__(self)
+        CoordinateMappingProvider.__init__(self)
+
+        self.n_channels = n_channels
+        self.n_classes = n_classes
+        self.bilinear = bilinear
+        self.input_feature_channels = input_feature_channels
+        self.down_channels = (
+            [input_feature_channels * (2 ** i) for i in reversed(range(n_scales + 1))]
+            if down_channels is None
+            else [input_feature_channels] + down_channels
+        )
+        self.up_channels = (
+            [input_feature_channels * (2 ** i) for i in range(n_scales + 1)]
+            if up_channels is None
+            else [self.down_channels[-1]] + up_channels
+        )
+
+        assert len(self.up_channels) == n_scales + 1
+        assert len(self.down_channels) == n_scales + 1
+
+        self.padding = padding
+        self.length = length
+        self.n_scales = n_scales
+        self.kernel = kernel
+
+        self.up_mappings = [None] * (n_scales + 1)
+
+        self.inc = MultiConv(
+            n_channels,
+            input_feature_channels,
+            length,
+            padding=padding,
+            kernel=self.kernel,
+        )
+
+        self.down_mappings = [None] * (n_scales + 1)
+        self.down_mappings[0] = mapping_from_torch_module(self.inc)
+
+        down = []
+        for i in range(n_scales):
+            layer = ParametricDown(
+                self.down_channels[i],
+                self.down_channels[i + 1],
+                length,
+                use_max_pooling=use_max_pooling,
+                padding=padding,
+                kernel=self.kernel,
+            )
+
+            down.append(layer)
+            self.down_mappings[i + 1] = self.down_mappings[
+                i
+            ] + mapping_from_torch_module(layer)
+
+        up = []
+        self.up_mappings[0] = self.down_mappings[-1]
+        for i in range(n_scales):
+            layer = ParametricUp(
+                self.up_channels[i],
+                self.up_channels[i + 1],
+                self.down_channels[n_scales - 1 - i],
+                length,
+                bilinear=bilinear,
+                padding=padding,
+                kernel=self.kernel,
+                hor_mapping=self.down_mappings[n_scales - i - 1],
+                below_mapping=self.up_mappings[i],
+            )
+
+            up.append(layer)
+
+            self.up_mappings[i + 1] = self.up_mappings[i] + mapping_from_torch_module(
+                layer
+            )
+
+        self.down = nn.ModuleList(down)
+        self.up = nn.ModuleList(up)
+
+        self.outc = OutConv(self.up_channels[-1], n_classes)
+
+    def total_pad(self):
+        pad = (1 - self.padding) * (self.kernel // 2)
+        return (
+            sum(2 * pad * (2 ** i) * self.length for i in range(self.n_scales))
+            + pad * (2 ** self.n_scales) * self.length
+        )
+
+    def mappings(self):
+        mapping = mapping_from_torch_module(self.inc)
+        for down in self.down:
+            mapping = mapping + mapping_from_torch_module(down)
+        for up in self.up:
+            mapping = mapping + mapping_from_torch_module(up)
+        mapping = mapping + mapping_from_torch_module(self.outc)
+        return mapping
+
+    def forward(self, x):
+        layers = [self.inc(x)]
+
+        # downscale
+        for down in self.down:
+            layers.append(down(layers[-1]))
+
+        # upscale
+        x = layers.pop(-1)
+        for up in self.up:
+            x = up(x, layers.pop(-1))
+
+        logits = self.outc(x)
+        return logits</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+<li><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="../silk/coords.html#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricUNet.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUNet.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricUNet.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    layers = [self.inc(x)]
+
+    # downscale
+    for down in self.down:
+        layers.append(down(layers[-1]))
+
+    # upscale
+    x = layers.pop(-1)
+    for up in self.up:
+        x = up(x, layers.pop(-1))
+
+    logits = self.outc(x)
+    return logits</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUNet.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self):
+    mapping = mapping_from_torch_module(self.inc)
+    for down in self.down:
+        mapping = mapping + mapping_from_torch_module(down)
+    for up in self.up:
+        mapping = mapping + mapping_from_torch_module(up)
+    mapping = mapping + mapping_from_torch_module(self.outc)
+    return mapping</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUNet.total_pad"><code class="name flex">
+<span>def <span class="ident">total_pad</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_pad(self):
+    pad = (1 - self.padding) * (self.kernel // 2)
+    return (
+        sum(2 * pad * (2 ** i) * self.length for i in range(self.n_scales))
+        + pad * (2 ** self.n_scales) * self.length
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUp"><code class="flex name class">
+<span>class <span class="ident">ParametricUp</span></span>
+<span>(</span><span>in_channels, out_channels, hor_channels=None, length=1, bilinear=True, padding=1, kernel=3, hor_mapping=None, below_mapping=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParametricUp(nn.Module, CoordinateMappingProvider):
+    def __init__(
+        self,
+        in_channels,
+        out_channels,
+        hor_channels=None,
+        length=1,
+        bilinear=True,
+        padding=1,
+        kernel=3,
+        hor_mapping=None,
+        below_mapping=None,
+    ):
+        super().__init__()
+
+        assert padding in {0, 1}
+        self.padding = padding
+        self.hor_channels = in_channels // 2 if hor_channels is None else hor_channels
+
+        # if bilinear, use the normal convolutions to reduce the number of channels
+        if bilinear:
+            self.up = nn.Sequential(
+                nn.Conv2d(in_channels, self.hor_channels, kernel_size=1),
+                nn.Upsample(scale_factor=2, mode=&#34;bilinear&#34;, align_corners=True),
+            )
+        else:
+            self.up = nn.ConvTranspose2d(
+                in_channels,
+                self.hor_channels,
+                kernel_size=2,
+                stride=2,
+            )
+
+        self.conv = MultiConv(
+            2 * self.hor_channels,
+            out_channels,
+            length,
+            padding=padding,
+            kernel=kernel,
+        )
+
+        self._calculate_pad(hor_mapping, below_mapping)
+
+    def _calculate_pad(self, hor_mapping=None, below_mapping=None):
+        if (hor_mapping is None) or (below_mapping is None):
+            self.top_pad = None
+            self.left_pad = None
+            return
+
+        up_mapping = below_mapping + self.mappings()
+        if not (hor_mapping.scale == up_mapping.scale).all():
+            raise RuntimeError(
+                f&#34;only layer of same scale can be combine in upsampling layer : {hor_mapping.scale} != {up_mapping.scale}&#34;
+            )
+
+        top_pad = (hor_mapping.bias[0] - up_mapping.bias[0]).item()
+        left_pad = (hor_mapping.bias[1] - up_mapping.bias[1]).item()
+
+        assert top_pad &gt;= 0
+        assert left_pad &gt;= 0
+        assert float(int(top_pad)) == top_pad
+        assert float(int(left_pad)) == left_pad
+
+        self.top_pad = int(top_pad)
+        self.left_pad = int(left_pad)
+
+    def mappings(self):
+        # return  #LinearCoordinateMapping(scale=2., bias=(self.top_pad, self.left_pad)) + mapping_from_torch_module(self.multi_conv)
+        return mapping_from_torch_module(self.up) + mapping_from_torch_module(self.conv)
+
+    def forward(self, x1, x2):
+        x1 = self.up(x1)
+
+        # input is CHW
+        dy = x2.shape[2] - x1.shape[2]
+        dx = x2.shape[3] - x1.shape[3]
+
+        if self.top_pad is None:
+            pad_y_top = dy // 2
+        else:
+            pad_y_top = self.top_pad
+        pad_y_bottom = dy - pad_y_top
+
+        if self.left_pad is None:
+            pad_x_left = dx // 2
+        else:
+            pad_x_left = self.left_pad
+        pad_x_right = dx - pad_x_left
+
+        if self.padding:
+            x1 = F.pad(x1, (pad_x_left, pad_x_right, pad_y_top, pad_y_bottom))
+            # if you have padding issues, see
+            # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+            # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+        else:
+            x2 = x2[..., pad_y_top:-pad_y_bottom, pad_x_left:-pad_x_right]
+
+        x = torch.cat([x2, x1], dim=1)
+
+        return self.conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+<li><a title="silk.backbones.silk.coords.CoordinateMappingProvider" href="../silk/coords.html#silk.backbones.silk.coords.CoordinateMappingProvider">CoordinateMappingProvider</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricUp.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUp.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.ParametricUp.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x1, x2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x1, x2):
+    x1 = self.up(x1)
+
+    # input is CHW
+    dy = x2.shape[2] - x1.shape[2]
+    dx = x2.shape[3] - x1.shape[3]
+
+    if self.top_pad is None:
+        pad_y_top = dy // 2
+    else:
+        pad_y_top = self.top_pad
+    pad_y_bottom = dy - pad_y_top
+
+    if self.left_pad is None:
+        pad_x_left = dx // 2
+    else:
+        pad_x_left = self.left_pad
+    pad_x_right = dx - pad_x_left
+
+    if self.padding:
+        x1 = F.pad(x1, (pad_x_left, pad_x_right, pad_y_top, pad_y_bottom))
+        # if you have padding issues, see
+        # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+        # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+    else:
+        x2 = x2[..., pad_y_top:-pad_y_bottom, pad_x_left:-pad_x_right]
+
+    x = torch.cat([x2, x1], dim=1)
+
+    return self.conv(x)</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.unet.unet.ParametricUp.mappings"><code class="name flex">
+<span>def <span class="ident">mappings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mappings(self):
+    # return  #LinearCoordinateMapping(scale=2., bias=(self.top_pad, self.left_pad)) + mapping_from_torch_module(self.multi_conv)
+    return mapping_from_torch_module(self.up) + mapping_from_torch_module(self.conv)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.UNet"><code class="flex name class">
+<span>class <span class="ident">UNet</span></span>
+<span>(</span><span>n_channels, n_classes, bilinear=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UNet(nn.Module):
+    def __init__(self, n_channels, n_classes, bilinear=False):
+        super(UNet, self).__init__()
+        self.n_channels = n_channels
+        self.n_classes = n_classes
+        self.bilinear = bilinear
+
+        self.inc = DoubleConv(n_channels, 64)
+        self.down1 = Down(64, 128)
+        self.down2 = Down(128, 256)
+        self.down3 = Down(256, 512)
+        factor = 2 if bilinear else 1
+        self.down4 = Down(512, 1024 // factor)
+        self.up1 = Up(1024, 512 // factor, bilinear)
+        self.up2 = Up(512, 256 // factor, bilinear)
+        self.up3 = Up(256, 128 // factor, bilinear)
+        self.up4 = Up(128, 64, bilinear)
+        self.outc = OutConv(64, n_classes)
+
+    def forward(self, x):
+        x1 = self.inc(x)
+        x2 = self.down1(x1)
+        x3 = self.down2(x2)
+        x4 = self.down3(x3)
+        x5 = self.down4(x4)
+        x = self.up1(x5, x4)
+        x = self.up2(x, x3)
+        x = self.up3(x, x2)
+        x = self.up4(x, x1)
+        logits = self.outc(x)
+        return logits</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.UNet.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.UNet.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.UNet.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    x1 = self.inc(x)
+    x2 = self.down1(x1)
+    x3 = self.down2(x2)
+    x4 = self.down3(x3)
+    x5 = self.down4(x4)
+    x = self.up1(x5, x4)
+    x = self.up2(x, x3)
+    x = self.up3(x, x2)
+    x = self.up4(x, x1)
+    logits = self.outc(x)
+    return logits</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.backbones.unet.unet.Up"><code class="flex name class">
+<span>class <span class="ident">Up</span></span>
+<span>(</span><span>in_channels, out_channels, bilinear=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Upscaling then double conv</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Up(nn.Module):
+    &#34;&#34;&#34;Upscaling then double conv&#34;&#34;&#34;
+
+    def __init__(self, in_channels, out_channels, bilinear=True):
+        super().__init__()
+
+        # if bilinear, use the normal convolutions to reduce the number of channels
+        if bilinear:
+            self.up = nn.Upsample(scale_factor=2, mode=&#34;bilinear&#34;, align_corners=True)
+            self.conv = DoubleConv(in_channels, out_channels, in_channels // 2)
+        else:
+            self.up = nn.ConvTranspose2d(
+                in_channels, in_channels // 2, kernel_size=2, stride=2
+            )
+            self.conv = DoubleConv(in_channels, out_channels)
+
+    def forward(self, x1, x2):
+        x1 = self.up(x1)
+        # input is CHW
+        diffY = x2.size()[2] - x1.size()[2]
+        diffX = x2.size()[3] - x1.size()[3]
+
+        x1 = F.pad(x1, [diffX // 2, diffX - diffX // 2, diffY // 2, diffY - diffY // 2])
+        # if you have padding issues, see
+        # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+        # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+        x = torch.cat([x2, x1], dim=1)
+        return self.conv(x)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.Up.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.backbones.unet.unet.Up.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.backbones.unet.unet.Up.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x1, x2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x1, x2):
+    x1 = self.up(x1)
+    # input is CHW
+    diffY = x2.size()[2] - x1.size()[2]
+    diffX = x2.size()[3] - x1.size()[3]
+
+    x1 = F.pad(x1, [diffX // 2, diffX - diffX // 2, diffY // 2, diffY - diffY // 2])
+    # if you have padding issues, see
+    # https://github.com/HaiyongJiang/U-Net-Pytorch-Unstructured-Buggy/commit/0e854509c2cea854e247a9c615f175f76fbb2e3a
+    # https://github.com/xiaopeng-liao/Pytorch-UNet/commit/8ebac70e633bac59fc22bb5195e513d5832fb3bd
+    x = torch.cat([x2, x1], dim=1)
+    return self.conv(x)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.backbones.unet" href="index.html">silk.backbones.unet</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.DoubleConv" href="#silk.backbones.unet.unet.DoubleConv">DoubleConv</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.DoubleConv.dump_patches" href="#silk.backbones.unet.unet.DoubleConv.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.DoubleConv.forward" href="#silk.backbones.unet.unet.DoubleConv.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.DoubleConv.training" href="#silk.backbones.unet.unet.DoubleConv.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.Down" href="#silk.backbones.unet.unet.Down">Down</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.Down.dump_patches" href="#silk.backbones.unet.unet.Down.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.Down.forward" href="#silk.backbones.unet.unet.Down.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.Down.training" href="#silk.backbones.unet.unet.Down.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.MultiConv" href="#silk.backbones.unet.unet.MultiConv">MultiConv</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.MultiConv.dump_patches" href="#silk.backbones.unet.unet.MultiConv.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.MultiConv.forward" href="#silk.backbones.unet.unet.MultiConv.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.MultiConv.mappings" href="#silk.backbones.unet.unet.MultiConv.mappings">mappings</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.MultiConv.training" href="#silk.backbones.unet.unet.MultiConv.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.OutConv" href="#silk.backbones.unet.unet.OutConv">OutConv</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.OutConv.dump_patches" href="#silk.backbones.unet.unet.OutConv.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.OutConv.forward" href="#silk.backbones.unet.unet.OutConv.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.OutConv.mappings" href="#silk.backbones.unet.unet.OutConv.mappings">mappings</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.OutConv.training" href="#silk.backbones.unet.unet.OutConv.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.ParametricDown" href="#silk.backbones.unet.unet.ParametricDown">ParametricDown</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.ParametricDown.dump_patches" href="#silk.backbones.unet.unet.ParametricDown.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricDown.forward" href="#silk.backbones.unet.unet.ParametricDown.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricDown.mappings" href="#silk.backbones.unet.unet.ParametricDown.mappings">mappings</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricDown.training" href="#silk.backbones.unet.unet.ParametricDown.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.ParametricUNet" href="#silk.backbones.unet.unet.ParametricUNet">ParametricUNet</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.ParametricUNet.dump_patches" href="#silk.backbones.unet.unet.ParametricUNet.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUNet.forward" href="#silk.backbones.unet.unet.ParametricUNet.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUNet.mappings" href="#silk.backbones.unet.unet.ParametricUNet.mappings">mappings</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUNet.total_pad" href="#silk.backbones.unet.unet.ParametricUNet.total_pad">total_pad</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUNet.training" href="#silk.backbones.unet.unet.ParametricUNet.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.ParametricUp" href="#silk.backbones.unet.unet.ParametricUp">ParametricUp</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.ParametricUp.dump_patches" href="#silk.backbones.unet.unet.ParametricUp.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUp.forward" href="#silk.backbones.unet.unet.ParametricUp.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUp.mappings" href="#silk.backbones.unet.unet.ParametricUp.mappings">mappings</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.ParametricUp.training" href="#silk.backbones.unet.unet.ParametricUp.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.UNet" href="#silk.backbones.unet.unet.UNet">UNet</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.UNet.dump_patches" href="#silk.backbones.unet.unet.UNet.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.UNet.forward" href="#silk.backbones.unet.unet.UNet.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.UNet.training" href="#silk.backbones.unet.unet.UNet.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.backbones.unet.unet.Up" href="#silk.backbones.unet.unet.Up">Up</a></code></h4>
+<ul class="">
+<li><code><a title="silk.backbones.unet.unet.Up.dump_patches" href="#silk.backbones.unet.unet.Up.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.Up.forward" href="#silk.backbones.unet.unet.Up.forward">forward</a></code></li>
+<li><code><a title="silk.backbones.unet.unet.Up.training" href="#silk.backbones.unet.unet.Up.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

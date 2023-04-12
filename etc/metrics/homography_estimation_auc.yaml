@@ -1,0 +1,6 @@
+defaults:
+  - homography_estimation_accuracy
+  - _self_
+
+metric:
+  auc: true

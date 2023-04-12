@@ -1,0 +1,9 @@
+_target_: silk.transforms.metric.MetricUpdate
+name: null
+metric:
+  _target_: silk.metrics.hpatches_metrics.HomographyEstimation
+  correctness_thresh: ???
+  auc: false
+img_shape: "@original_img_shape"
+estimated_homography: "@estimated_homography"
+true_homography: "@homography"

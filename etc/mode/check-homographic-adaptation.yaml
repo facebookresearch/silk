@@ -1,0 +1,78 @@
+defaults:
+  - check-defaults
+  - /models@model: magicpoint-frozen-best
+  # - /models@model: superpoint-frozen-phase-1-best
+  # - /models@model: superpoint-frozen-magicleap-v1
+  - /datasets/coco/training@loader.dataset
+  - _self_
+
+procedure: "homographic_adaptation"
+
+output:
+  n_batches: 5 # number of images to sample
+  directory: "./output" # output directory
+
+model:
+  device: "cuda:0"
+  model:
+    random_homographic_adaptation_kwargs:
+      scaling_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: 0.4
+        max_value: 1.2
+      x_rotation_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: -0.78
+        max_value: +0.78
+      y_rotation_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: -0.78
+        max_value: +0.78
+      z_rotation_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: -1.57
+        max_value: +1.57
+      x_translation_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: -1.0
+        max_value: +1.0
+      y_translation_sampler:
+        _target_: silk.config.sampler.Uniform
+        min_value: -1.0
+        max_value: +1.0
+
+# dataset loader to extract images from
+loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 2
+  num_workers: 12
+  shuffle: false
+  collate_fn: ${mode.collate_fn}
+  pin_memory: true
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "image"
+          - null
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.abstract.Compose
+          _args_:
+            # convert PIL images to tensors
+            - _target_: silk.transforms.tensor.ToTensor
+            # convert image from HWC to CHW format
+            - _target_: silk.transforms.cv.image.HWCToCHW
+            - _target_: silk.transforms.cv.image.Resize
+              size: [240, 360]
+            - _target_: torchvision.transforms.Grayscale
+            - _target_: silk.transforms.tensor.NormalizeRange
+              ilow: 0.
+              ihigh: 255.
+              olow: 0.
+              ohigh: 1.

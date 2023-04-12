@@ -1,0 +1,12 @@
+defaults:
+  - defaults
+  - /datasets/coco@coco: training
+  - /datasets/image-net@image-net: training
+  - /datasets/megadepth@megadepth: train-val
+  - /datasets/scannet-frames@scannet: training-98-2-scan-split
+  - _self_
+
+scannet:
+  extractor:
+    - "color"
+    - "room"

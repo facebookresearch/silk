@@ -1,0 +1,4 @@
+#!/bin/bash
+aws s3 --profile saml sync s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:gleize/silk/assets assets
+aws s3 --profile saml sync s3://dl.fbaipublicfiles.com/silk/assets assets
+

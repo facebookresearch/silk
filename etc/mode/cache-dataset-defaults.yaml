@@ -1,0 +1,11 @@
+defaults:
+  - defaults
+
+command: "cache_dataset"
+
+output:
+  path: ???
+  take_n: ???
+
+loader: ???
+transform: ???

@@ -1,0 +1,7 @@
+defaults:
+  - frozen
+  - /models@model: magicpoint
+
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [MODELS, "superpoint", "magicpoint.ckpt"]

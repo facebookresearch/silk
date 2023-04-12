@@ -1,0 +1,11 @@
+defaults:
+  - silk-rand-homo
+  # - /backbones@model: silk-vgg
+  - /backbones@model: silk-pvgg-4
+  # - /backbones@model: silk-pvgg-3
+  # - /backbones@model: silk-pvgg-2
+  # - /backbones@model: silk-pvgg-1
+  # - /backbones@model: silk-pvgg-4-pad-1
+  # - /backbones@model: silk-pvgg-micro
+  # - /backbones@model: silk-vgg-punet
+  - _self_

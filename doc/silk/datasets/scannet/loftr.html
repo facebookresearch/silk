@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.scannet.loftr API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.scannet.loftr</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+# original source : https://github.com/zju3dv/LoFTR
+
+import os
+
+import h5py
+import numpy as np
+import torch
+import torch.utils as utils
+from einops import repeat
+from kornia.utils import create_meshgrid
+from silk.datasets.scannet.helper import ScanNet
+from torch.utils.data.dataset import ConcatDataset
+
+
+@torch.no_grad()
+def mask_pts_at_padded_regions(grid_pt, mask):
+    &#34;&#34;&#34;For megadepth dataset, zero-padding exists in images&#34;&#34;&#34;
+    mask = repeat(mask, &#34;n h w -&gt; n (h w) c&#34;, c=2)
+    grid_pt[~mask.bool()] = 0
+    return grid_pt
+
+
+@torch.no_grad()
+def warp_kpts(kpts0, depth0, depth1, T_0to1, K0, K1):
+    &#34;&#34;&#34;Warp kpts0 from I0 to I1 with depth, K and Rt
+    Also check covisibility and depth consistency.
+    Depth is consistent if relative error &lt; 0.2 (hard-coded).
+
+    Args:
+        kpts0 (torch.Tensor): [N, L, 2] - &lt;x, y&gt;,
+        depth0 (torch.Tensor): [N, H, W],
+        depth1 (torch.Tensor): [N, H, W],
+        T_0to1 (torch.Tensor): [N, 3, 4],
+        K0 (torch.Tensor): [N, 3, 3],
+        K1 (torch.Tensor): [N, 3, 3],
+    Returns:
+        calculable_mask (torch.Tensor): [N, L]
+        warped_keypoints0 (torch.Tensor): [N, L, 2] &lt;x0_hat, y1_hat&gt;
+    &#34;&#34;&#34;
+    kpts0_long = kpts0.round().long()
+
+    # Sample depth, get calculable_mask on depth != 0
+    kpts0_depth = torch.stack(
+        [
+            depth0[i, kpts0_long[i, :, 1], kpts0_long[i, :, 0]]
+            for i in range(kpts0.shape[0])
+        ],
+        dim=0,
+    )  # (N, L)
+    nonzero_mask = kpts0_depth != 0
+
+    # Unproject
+    kpts0_h = (
+        torch.cat([kpts0, torch.ones_like(kpts0[:, :, [0]])], dim=-1)
+        * kpts0_depth[..., None]
+    )  # (N, L, 3)
+    kpts0_cam = K0.inverse() @ kpts0_h.transpose(2, 1)  # (N, 3, L)
+
+    # Rigid Transform
+    w_kpts0_cam = T_0to1[:, :3, :3] @ kpts0_cam + T_0to1[:, :3, [3]]  # (N, 3, L)
+    w_kpts0_depth_computed = w_kpts0_cam[:, 2, :]
+
+    # Project
+    w_kpts0_h = (K1 @ w_kpts0_cam).transpose(2, 1)  # (N, L, 3)
+    w_kpts0 = w_kpts0_h[:, :, :2] / (
+        w_kpts0_h[:, :, [2]] + 1e-4
+    )  # (N, L, 2), +1e-4 to avoid zero depth
+
+    # Covisible Check
+    h, w = depth1.shape[1:3]
+    covisible_mask = (
+        (w_kpts0[:, :, 0] &gt; 0)
+        * (w_kpts0[:, :, 0] &lt; w - 1)
+        * (w_kpts0[:, :, 1] &gt; 0)
+        * (w_kpts0[:, :, 1] &lt; h - 1)
+    )
+    w_kpts0_long = w_kpts0.long()
+    w_kpts0_long[~covisible_mask, :] = 0
+
+    w_kpts0_depth = torch.stack(
+        [
+            depth1[i, w_kpts0_long[i, :, 1], w_kpts0_long[i, :, 0]]
+            for i in range(w_kpts0_long.shape[0])
+        ],
+        dim=0,
+    )  # (N, L)
+    consistent_mask = (
+        (w_kpts0_depth - w_kpts0_depth_computed) / w_kpts0_depth
+    ).abs() &lt; 0.2
+    valid_mask = nonzero_mask * covisible_mask * consistent_mask
+
+    return valid_mask, w_kpts0
+
+
+@torch.no_grad()
+def spvs_coarse(data, descriptors):
+    &#34;&#34;&#34;
+    Update:
+        data (dict): {
+            &#34;conf_matrix_gt&#34;: [N, hw0, hw1],
+            &#39;spv_b_ids&#39;: [M]
+            &#39;spv_i_ids&#39;: [M]
+            &#39;spv_j_ids&#39;: [M]
+            &#39;spv_w_pt0_i&#39;: [N, hw0, 2], in original image resolution
+            &#39;spv_pt1_i&#39;: [N, hw1, 2], in original image resolution
+        }
+
+    NOTE:
+        - for scannet dataset, there&#39;re 3 kinds of resolution {i, c, f}
+        - for megadepth dataset, there&#39;re 4 kinds of resolution {i, i_resize, c, f}
+    &#34;&#34;&#34;
+    # 1. misc
+    device = data[&#34;image_0&#34;].device
+    N, _, H0, W0 = data[&#34;image_0&#34;].shape
+    _, _, H1, W1 = data[&#34;image_1&#34;].shape
+
+    assert H0 == H1
+    assert W0 == W1
+
+    DN, DH0, DW0 = data[&#34;depth_0&#34;].shape
+    _, DH1, DW1 = data[&#34;depth_1&#34;].shape
+
+    assert N == DN
+    assert DH0 == DH1
+    assert DW0 == DW1
+
+    h, w = descriptors.shape[-2:]
+
+    scale_h = DH0 / h
+    scale_w = DW0 / w
+
+    assert scale_h == scale_w
+    scale = scale_w
+
+    # 2. warp grids
+    # create kpts in meshgrid and resize them to image resolution
+    grid_pt0_c = (
+        create_meshgrid(h, w, False, device).reshape(1, h * w, 2).repeat(N, 1, 1)
+    )  # [N, hw, 2]
+    # grid_pt0_c += 0.5
+    grid_pt0_i = scale * grid_pt0_c
+
+    grid_pt1_c = (
+        create_meshgrid(h, w, False, device).reshape(1, h * w, 2).repeat(N, 1, 1)
+    )
+    # grid_pt1_c += 0.5
+    grid_pt1_i = scale * grid_pt1_c
+
+    # mask padded region to (0, 0), so no need to manually mask conf_matrix_gt
+    if &#34;mask0&#34; in data:
+        grid_pt0_i = mask_pts_at_padded_regions(grid_pt0_i, data[&#34;mask0&#34;])
+        grid_pt1_i = mask_pts_at_padded_regions(grid_pt1_i, data[&#34;mask1&#34;])
+
+    # warp kpts bi-directionally and resize them to coarse-level resolution
+    # (no depth consistency check, since it leads to worse results experimentally)
+    # (unhandled edge case: points with 0-depth will be warped to the left-up corner)
+    _, w_pt0_i = warp_kpts(
+        grid_pt0_i,
+        data[&#34;depth_0&#34;],
+        data[&#34;depth_1&#34;],
+        data[&#34;T_0to1&#34;],
+        data[&#34;K_0&#34;],
+        data[&#34;K_1&#34;],
+    )
+    _, w_pt1_i = warp_kpts(
+        grid_pt1_i,
+        data[&#34;depth_1&#34;],
+        data[&#34;depth_0&#34;],
+        data[&#34;T_1to0&#34;],
+        data[&#34;K_1&#34;],
+        data[&#34;K_0&#34;],
+    )
+    w_pt0_c = w_pt0_i / scale
+    w_pt1_c = w_pt1_i / scale
+
+    return w_pt0_c, w_pt1_c
+
+
+def read_scannet_depth(frame):
+    depth = frame.depth
+    depth = torch.from_numpy(depth).float()  # (h, w)
+    return depth
+
+
+def scannet_all(dataset_path, npz_path, mode, min_overlap_score):
+    npz_names = os.listdir(npz_path)
+    helper = ScanNet(dataset_path)
+    return ConcatDataset(
+        ScanNetDataset(
+            helper,
+            os.path.join(npz_path, name),
+            mode=mode,
+            min_overlap_score=min_overlap_score,
+            augment_fn=None,
+        )
+        for name in npz_names
+        if name.endswith(&#34;.npz&#34;)
+    )
+
+
+class ScanNetDataset(utils.data.Dataset):
+    def __init__(
+        self,
+        helper,
+        npz_path,
+        mode=&#34;train&#34;,
+        min_overlap_score=0.4,
+        augment_fn=None,
+    ):
+        &#34;&#34;&#34;Manage one scene of ScanNet Dataset.
+        Args:
+            root_dir (str): ScanNet root directory that contains scene folders.
+            npz_path (str): {scene_id}.npz path. This contains image pair information of a scene.
+            intrinsic_path (str): path to depth-camera intrinsic file.
+            mode (str): options are [&#39;train&#39;, &#39;val&#39;, &#39;test&#39;].
+            augment_fn (callable, optional): augments images with pre-defined visual effects.
+            pose_dir (str): ScanNet root directory that contains all poses.
+                (we use a separate (optional) pose_dir since we store images and poses separately.)
+        &#34;&#34;&#34;
+        super().__init__()
+        self.mode = mode
+        self._helper = helper
+
+        assert npz_path.endswith(&#34;.npz&#34;)
+        h5_path = npz_path[:-4] + &#34;.h5&#34;
+
+        if not os.path.exists(h5_path):
+            # cache numpy original data to h5py
+            with h5py.File(h5_path, &#34;w&#34;) as f:
+                with np.load(npz_path) as data:
+                    for name in data.keys():
+                        f[name] = data[name]
+
+        self._h5file = h5py.File(h5_path, &#34;r&#34;)
+        self.data_names = self._h5file[&#34;name&#34;]
+
+        # filter out pairs with low overlap score
+        if &#34;score&#34; in self._h5file.keys() and mode not in [&#34;val&#34; or &#34;test&#34;]:
+            kept_mask = self._h5file[&#34;score&#34;][()] &gt; min_overlap_score
+            self.kept_indices = np.nonzero(kept_mask)[0]
+        else:
+            self.kept_indices = np.arange(len(self.data_names), dtype=np.uint64)
+
+        self.augment_fn = augment_fn if mode == &#34;train&#34; else None
+
+    def __len__(self):
+        return len(self.kept_indices)
+
+    def __getitem__(self, idx):
+        data_name = self.data_names[self.kept_indices[idx]]
+        space_id, scene_id, frame_index_0, frame_index_1 = data_name
+
+        # get frames
+        scan = self._helper.space(space_id)[scene_id]
+        frame0 = scan.frames[frame_index_0]
+        frame1 = scan.frames[frame_index_1]
+
+        # get depth and images
+        depth0 = read_scannet_depth(frame0)
+        depth1 = read_scannet_depth(frame1)
+        image0 = frame0.color
+        image1 = frame1.color
+
+        # get intrinsics
+        K_0 = K_1 = torch.tensor(
+            scan.frames.header[&#34;intrinsic_depth&#34;][:3, :3],
+            dtype=torch.float,
+        )
+
+        # get extrinsics
+        pose0 = torch.tensor(
+            frame0.header[&#34;camera_to_world&#34;],
+            dtype=torch.float,
+        )
+        pose1 = torch.tensor(
+            frame1.header[&#34;camera_to_world&#34;],
+            dtype=torch.float,
+        )
+
+        T_0to1 = pose1.inverse() @ pose0
+        T_1to0 = pose0.inverse() @ pose1
+
+        return image0, image1, depth0, depth1, T_0to1, T_1to0, K_0, K_1</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.datasets.scannet.loftr.mask_pts_at_padded_regions"><code class="name flex">
+<span>def <span class="ident">mask_pts_at_padded_regions</span></span>(<span>grid_pt, mask)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For megadepth dataset, zero-padding exists in images</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@torch.no_grad()
+def mask_pts_at_padded_regions(grid_pt, mask):
+    &#34;&#34;&#34;For megadepth dataset, zero-padding exists in images&#34;&#34;&#34;
+    mask = repeat(mask, &#34;n h w -&gt; n (h w) c&#34;, c=2)
+    grid_pt[~mask.bool()] = 0
+    return grid_pt</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.loftr.read_scannet_depth"><code class="name flex">
+<span>def <span class="ident">read_scannet_depth</span></span>(<span>frame)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_scannet_depth(frame):
+    depth = frame.depth
+    depth = torch.from_numpy(depth).float()  # (h, w)
+    return depth</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.loftr.scannet_all"><code class="name flex">
+<span>def <span class="ident">scannet_all</span></span>(<span>dataset_path, npz_path, mode, min_overlap_score)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scannet_all(dataset_path, npz_path, mode, min_overlap_score):
+    npz_names = os.listdir(npz_path)
+    helper = ScanNet(dataset_path)
+    return ConcatDataset(
+        ScanNetDataset(
+            helper,
+            os.path.join(npz_path, name),
+            mode=mode,
+            min_overlap_score=min_overlap_score,
+            augment_fn=None,
+        )
+        for name in npz_names
+        if name.endswith(&#34;.npz&#34;)
+    )</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.loftr.spvs_coarse"><code class="name flex">
+<span>def <span class="ident">spvs_coarse</span></span>(<span>data, descriptors)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="update">Update</h2>
+<p>data (dict): {
+"conf_matrix_gt": [N, hw0, hw1],
+'spv_b_ids': [M]
+'spv_i_ids': [M]
+'spv_j_ids': [M]
+'spv_w_pt0_i': [N, hw0, 2], in original image resolution
+'spv_pt1_i': [N, hw1, 2], in original image resolution
+}</p>
+<h2 id="note">Note</h2>
+<ul>
+<li>for scannet dataset, there're 3 kinds of resolution {i, c, f}</li>
+<li>for megadepth dataset, there're 4 kinds of resolution {i, i_resize, c, f}</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@torch.no_grad()
+def spvs_coarse(data, descriptors):
+    &#34;&#34;&#34;
+    Update:
+        data (dict): {
+            &#34;conf_matrix_gt&#34;: [N, hw0, hw1],
+            &#39;spv_b_ids&#39;: [M]
+            &#39;spv_i_ids&#39;: [M]
+            &#39;spv_j_ids&#39;: [M]
+            &#39;spv_w_pt0_i&#39;: [N, hw0, 2], in original image resolution
+            &#39;spv_pt1_i&#39;: [N, hw1, 2], in original image resolution
+        }
+
+    NOTE:
+        - for scannet dataset, there&#39;re 3 kinds of resolution {i, c, f}
+        - for megadepth dataset, there&#39;re 4 kinds of resolution {i, i_resize, c, f}
+    &#34;&#34;&#34;
+    # 1. misc
+    device = data[&#34;image_0&#34;].device
+    N, _, H0, W0 = data[&#34;image_0&#34;].shape
+    _, _, H1, W1 = data[&#34;image_1&#34;].shape
+
+    assert H0 == H1
+    assert W0 == W1
+
+    DN, DH0, DW0 = data[&#34;depth_0&#34;].shape
+    _, DH1, DW1 = data[&#34;depth_1&#34;].shape
+
+    assert N == DN
+    assert DH0 == DH1
+    assert DW0 == DW1
+
+    h, w = descriptors.shape[-2:]
+
+    scale_h = DH0 / h
+    scale_w = DW0 / w
+
+    assert scale_h == scale_w
+    scale = scale_w
+
+    # 2. warp grids
+    # create kpts in meshgrid and resize them to image resolution
+    grid_pt0_c = (
+        create_meshgrid(h, w, False, device).reshape(1, h * w, 2).repeat(N, 1, 1)
+    )  # [N, hw, 2]
+    # grid_pt0_c += 0.5
+    grid_pt0_i = scale * grid_pt0_c
+
+    grid_pt1_c = (
+        create_meshgrid(h, w, False, device).reshape(1, h * w, 2).repeat(N, 1, 1)
+    )
+    # grid_pt1_c += 0.5
+    grid_pt1_i = scale * grid_pt1_c
+
+    # mask padded region to (0, 0), so no need to manually mask conf_matrix_gt
+    if &#34;mask0&#34; in data:
+        grid_pt0_i = mask_pts_at_padded_regions(grid_pt0_i, data[&#34;mask0&#34;])
+        grid_pt1_i = mask_pts_at_padded_regions(grid_pt1_i, data[&#34;mask1&#34;])
+
+    # warp kpts bi-directionally and resize them to coarse-level resolution
+    # (no depth consistency check, since it leads to worse results experimentally)
+    # (unhandled edge case: points with 0-depth will be warped to the left-up corner)
+    _, w_pt0_i = warp_kpts(
+        grid_pt0_i,
+        data[&#34;depth_0&#34;],
+        data[&#34;depth_1&#34;],
+        data[&#34;T_0to1&#34;],
+        data[&#34;K_0&#34;],
+        data[&#34;K_1&#34;],
+    )
+    _, w_pt1_i = warp_kpts(
+        grid_pt1_i,
+        data[&#34;depth_1&#34;],
+        data[&#34;depth_0&#34;],
+        data[&#34;T_1to0&#34;],
+        data[&#34;K_1&#34;],
+        data[&#34;K_0&#34;],
+    )
+    w_pt0_c = w_pt0_i / scale
+    w_pt1_c = w_pt1_i / scale
+
+    return w_pt0_c, w_pt1_c</code></pre>
+</details>
+</dd>
+<dt id="silk.datasets.scannet.loftr.warp_kpts"><code class="name flex">
+<span>def <span class="ident">warp_kpts</span></span>(<span>kpts0, depth0, depth1, T_0to1, K0, K1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Warp kpts0 from I0 to I1 with depth, K and Rt
+Also check covisibility and depth consistency.
+Depth is consistent if relative error &lt; 0.2 (hard-coded).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>kpts0</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, L, 2] - <x, y>,</dd>
+<dt><strong><code>depth0</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, H, W],</dd>
+<dt><strong><code>depth1</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, H, W],</dd>
+<dt><strong><code>T_0to1</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, 3, 4],</dd>
+<dt><strong><code>K0</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, 3, 3],</dd>
+<dt><strong><code>K1</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>[N, 3, 3],</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>calculable_mask (torch.Tensor): [N, L]
+warped_keypoints0 (torch.Tensor): [N, L, 2] <x0_hat, y1_hat></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@torch.no_grad()
+def warp_kpts(kpts0, depth0, depth1, T_0to1, K0, K1):
+    &#34;&#34;&#34;Warp kpts0 from I0 to I1 with depth, K and Rt
+    Also check covisibility and depth consistency.
+    Depth is consistent if relative error &lt; 0.2 (hard-coded).
+
+    Args:
+        kpts0 (torch.Tensor): [N, L, 2] - &lt;x, y&gt;,
+        depth0 (torch.Tensor): [N, H, W],
+        depth1 (torch.Tensor): [N, H, W],
+        T_0to1 (torch.Tensor): [N, 3, 4],
+        K0 (torch.Tensor): [N, 3, 3],
+        K1 (torch.Tensor): [N, 3, 3],
+    Returns:
+        calculable_mask (torch.Tensor): [N, L]
+        warped_keypoints0 (torch.Tensor): [N, L, 2] &lt;x0_hat, y1_hat&gt;
+    &#34;&#34;&#34;
+    kpts0_long = kpts0.round().long()
+
+    # Sample depth, get calculable_mask on depth != 0
+    kpts0_depth = torch.stack(
+        [
+            depth0[i, kpts0_long[i, :, 1], kpts0_long[i, :, 0]]
+            for i in range(kpts0.shape[0])
+        ],
+        dim=0,
+    )  # (N, L)
+    nonzero_mask = kpts0_depth != 0
+
+    # Unproject
+    kpts0_h = (
+        torch.cat([kpts0, torch.ones_like(kpts0[:, :, [0]])], dim=-1)
+        * kpts0_depth[..., None]
+    )  # (N, L, 3)
+    kpts0_cam = K0.inverse() @ kpts0_h.transpose(2, 1)  # (N, 3, L)
+
+    # Rigid Transform
+    w_kpts0_cam = T_0to1[:, :3, :3] @ kpts0_cam + T_0to1[:, :3, [3]]  # (N, 3, L)
+    w_kpts0_depth_computed = w_kpts0_cam[:, 2, :]
+
+    # Project
+    w_kpts0_h = (K1 @ w_kpts0_cam).transpose(2, 1)  # (N, L, 3)
+    w_kpts0 = w_kpts0_h[:, :, :2] / (
+        w_kpts0_h[:, :, [2]] + 1e-4
+    )  # (N, L, 2), +1e-4 to avoid zero depth
+
+    # Covisible Check
+    h, w = depth1.shape[1:3]
+    covisible_mask = (
+        (w_kpts0[:, :, 0] &gt; 0)
+        * (w_kpts0[:, :, 0] &lt; w - 1)
+        * (w_kpts0[:, :, 1] &gt; 0)
+        * (w_kpts0[:, :, 1] &lt; h - 1)
+    )
+    w_kpts0_long = w_kpts0.long()
+    w_kpts0_long[~covisible_mask, :] = 0
+
+    w_kpts0_depth = torch.stack(
+        [
+            depth1[i, w_kpts0_long[i, :, 1], w_kpts0_long[i, :, 0]]
+            for i in range(w_kpts0_long.shape[0])
+        ],
+        dim=0,
+    )  # (N, L)
+    consistent_mask = (
+        (w_kpts0_depth - w_kpts0_depth_computed) / w_kpts0_depth
+    ).abs() &lt; 0.2
+    valid_mask = nonzero_mask * covisible_mask * consistent_mask
+
+    return valid_mask, w_kpts0</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.datasets.scannet.loftr.ScanNetDataset"><code class="flex name class">
+<span>class <span class="ident">ScanNetDataset</span></span>
+<span>(</span><span>helper, npz_path, mode='train', min_overlap_score=0.4, augment_fn=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An abstract class representing a :class:<code>Dataset</code>.</p>
+<p>All datasets that represent a map from keys to data samples should subclass
+it. All subclasses should overwrite :meth:<code>__getitem__</code>, supporting fetching a
+data sample for a given key. Subclasses could also optionally overwrite
+:meth:<code>__len__</code>, which is expected to return the size of the dataset by many
+:class:<code>~torch.utils.data.Sampler</code> implementations and the default options
+of :class:<code>~torch.utils.data.DataLoader</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:class:<code>~torch.utils.data.DataLoader</code> by default constructs a index
+sampler that yields integral indices.
+To make it work with a map-style
+dataset with non-integral indices/keys, a custom sampler must be provided.</p>
+</div>
+<p>Manage one scene of ScanNet Dataset.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>root_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>ScanNet root directory that contains scene folders.</dd>
+<dt><strong><code>npz_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>{scene_id}.npz path. This contains image pair information of a scene.</dd>
+<dt><strong><code>intrinsic_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to depth-camera intrinsic file.</dd>
+<dt><strong><code>mode</code></strong> :&ensp;<code>str</code></dt>
+<dd>options are ['train', 'val', 'test'].</dd>
+<dt><strong><code>augment_fn</code></strong> :&ensp;<code>callable</code>, optional</dt>
+<dd>augments images with pre-defined visual effects.</dd>
+<dt><strong><code>pose_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>ScanNet root directory that contains all poses.
+(we use a separate (optional) pose_dir since we store images and poses separately.)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScanNetDataset(utils.data.Dataset):
+    def __init__(
+        self,
+        helper,
+        npz_path,
+        mode=&#34;train&#34;,
+        min_overlap_score=0.4,
+        augment_fn=None,
+    ):
+        &#34;&#34;&#34;Manage one scene of ScanNet Dataset.
+        Args:
+            root_dir (str): ScanNet root directory that contains scene folders.
+            npz_path (str): {scene_id}.npz path. This contains image pair information of a scene.
+            intrinsic_path (str): path to depth-camera intrinsic file.
+            mode (str): options are [&#39;train&#39;, &#39;val&#39;, &#39;test&#39;].
+            augment_fn (callable, optional): augments images with pre-defined visual effects.
+            pose_dir (str): ScanNet root directory that contains all poses.
+                (we use a separate (optional) pose_dir since we store images and poses separately.)
+        &#34;&#34;&#34;
+        super().__init__()
+        self.mode = mode
+        self._helper = helper
+
+        assert npz_path.endswith(&#34;.npz&#34;)
+        h5_path = npz_path[:-4] + &#34;.h5&#34;
+
+        if not os.path.exists(h5_path):
+            # cache numpy original data to h5py
+            with h5py.File(h5_path, &#34;w&#34;) as f:
+                with np.load(npz_path) as data:
+                    for name in data.keys():
+                        f[name] = data[name]
+
+        self._h5file = h5py.File(h5_path, &#34;r&#34;)
+        self.data_names = self._h5file[&#34;name&#34;]
+
+        # filter out pairs with low overlap score
+        if &#34;score&#34; in self._h5file.keys() and mode not in [&#34;val&#34; or &#34;test&#34;]:
+            kept_mask = self._h5file[&#34;score&#34;][()] &gt; min_overlap_score
+            self.kept_indices = np.nonzero(kept_mask)[0]
+        else:
+            self.kept_indices = np.arange(len(self.data_names), dtype=np.uint64)
+
+        self.augment_fn = augment_fn if mode == &#34;train&#34; else None
+
+    def __len__(self):
+        return len(self.kept_indices)
+
+    def __getitem__(self, idx):
+        data_name = self.data_names[self.kept_indices[idx]]
+        space_id, scene_id, frame_index_0, frame_index_1 = data_name
+
+        # get frames
+        scan = self._helper.space(space_id)[scene_id]
+        frame0 = scan.frames[frame_index_0]
+        frame1 = scan.frames[frame_index_1]
+
+        # get depth and images
+        depth0 = read_scannet_depth(frame0)
+        depth1 = read_scannet_depth(frame1)
+        image0 = frame0.color
+        image1 = frame1.color
+
+        # get intrinsics
+        K_0 = K_1 = torch.tensor(
+            scan.frames.header[&#34;intrinsic_depth&#34;][:3, :3],
+            dtype=torch.float,
+        )
+
+        # get extrinsics
+        pose0 = torch.tensor(
+            frame0.header[&#34;camera_to_world&#34;],
+            dtype=torch.float,
+        )
+        pose1 = torch.tensor(
+            frame1.header[&#34;camera_to_world&#34;],
+            dtype=torch.float,
+        )
+
+        T_0to1 = pose1.inverse() @ pose0
+        T_1to0 = pose0.inverse() @ pose1
+
+        return image0, image1, depth0, depth1, T_0to1, T_1to0, K_0, K_1</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets.scannet" href="index.html">silk.datasets.scannet</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.datasets.scannet.loftr.mask_pts_at_padded_regions" href="#silk.datasets.scannet.loftr.mask_pts_at_padded_regions">mask_pts_at_padded_regions</a></code></li>
+<li><code><a title="silk.datasets.scannet.loftr.read_scannet_depth" href="#silk.datasets.scannet.loftr.read_scannet_depth">read_scannet_depth</a></code></li>
+<li><code><a title="silk.datasets.scannet.loftr.scannet_all" href="#silk.datasets.scannet.loftr.scannet_all">scannet_all</a></code></li>
+<li><code><a title="silk.datasets.scannet.loftr.spvs_coarse" href="#silk.datasets.scannet.loftr.spvs_coarse">spvs_coarse</a></code></li>
+<li><code><a title="silk.datasets.scannet.loftr.warp_kpts" href="#silk.datasets.scannet.loftr.warp_kpts">warp_kpts</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.datasets.scannet.loftr.ScanNetDataset" href="#silk.datasets.scannet.loftr.ScanNetDataset">ScanNetDataset</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

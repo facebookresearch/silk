@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BIN_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+SILK_CLI="$BIN_DIR/silk-cli"
+
+$SILK_CLI mode=check-superpoint-parity
+$SILK_CLI mode=check-homographic-sampler
+$SILK_CLI mode=check-homographic-adaptation

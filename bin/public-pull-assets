@@ -1,0 +1,11 @@
+#!/bin/bash
+
+public_url="https://dl.fbaipublicfiles.com"
+
+while read -r line; do
+  file_url="$public_url/$line"
+  file_path="${line#"silk/"}"
+  dir_path="$(dirname $file_path)"
+  mkdir -p "$dir_path"
+  wget -xv "$file_url" -O "./$file_path"
+done < assets/public-assets.txt

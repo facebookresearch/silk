@@ -1,0 +1,26 @@
+#!/bin/bash -ev
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+
+# Run this script at project root with "./bin/linter" before you commit.
+
+echo "Running autoflake..."
+python -m autoflake --remove-all-unused-imports -i .
+
+echo "Running isort..."
+usort format .
+
+echo "Running black..."
+black .
+
+echo "Running flake8..."
+FLAKE_OPTS="--ignore=E501,W503,E203,E402"
+if [ -x "$(command -v flake8-3)" ]; then
+  flake8-3 $FLAKE_OPTS .
+else
+  python3 -m flake8 $FLAKE_OPTS .
+fi
+
+command -v arc > /dev/null && {
+  echo "Running arc lint ..."
+  arc lint
+}

@@ -1,0 +1,4 @@
+defaults:
+  - defaults@record-all
+  - level/trace@record-all
+  - sink/file@record-all

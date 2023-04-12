@@ -1,0 +1,2 @@
+_target_: silk.datasets.megadepth.frames.Frames
+root: "/checkpoint/weiyaowang/silk/data/MegaDepth/"

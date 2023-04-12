@@ -1,0 +1,13 @@
+defaults:
+  - defaults
+  - /models@model: superpoint-frozen-magicleap-v1
+  - _self_
+
+command: "image_pair_visualization"
+
+image_1_file_path: "/datasets01/hpatches/01042022/v_blueprint/1.ppm"
+image_2_file_path: "/datasets01/hpatches/01042022/v_blueprint/2.ppm"
+
+save_output: true
+save_location: "output"
+save_file_name: "output_img_pair.jpg"

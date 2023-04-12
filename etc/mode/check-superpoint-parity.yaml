@@ -1,0 +1,13 @@
+defaults:
+  - check-defaults
+  - /models@model: superpoint-frozen-magicleap-v1
+  - _self_
+
+procedure: "superpoint_parity"
+
+output:
+  n_batches: 5 # number of images to sample
+  directory: "./output" # output directory
+
+model:
+  device: "cuda:0"

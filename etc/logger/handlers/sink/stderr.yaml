@@ -1,0 +1,2 @@
+sink:
+  _target_: silk.logger.stderr

@@ -1,0 +1,9 @@
+_target_: silk.backbones.silk.silk.SiLKLoFTR
+in_channels: 1 # grayscale
+detection_threshold: 1.
+detection_top_k: 10000
+nms_dist: 0
+padding: 0
+border_dist: 0
+descriptor_scale_factor: 1.41
+resolution_preserving: false

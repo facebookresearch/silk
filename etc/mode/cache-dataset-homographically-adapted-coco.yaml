@@ -1,0 +1,75 @@
+defaults:
+  - cache-dataset-defaults
+  - /datasets/coco@loader.dataset: training
+  - _self_
+
+output:
+  path: "dataset.h5"
+  take_n: null # set to null to go through all the loader
+
+model:
+  device: "cuda:0"
+
+# dataset loader to extract images from
+loader:
+  _target_: torch.utils.data.DataLoader
+  batch_size: 2
+  num_workers: 24
+  shuffle: false
+  collate_fn: ${mode.collate_fn}
+  pin_memory: true
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "image"
+          - null # we ignore the labels
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.abstract.Compose
+          _args_:
+            # convert PIL images to tensors
+            - _target_: silk.transforms.tensor.ToTensor
+            # convert image from HWC to CHW format
+            - _target_: silk.transforms.cv.image.HWCToCHW
+            - _target_: silk.transforms.cv.image.Resize
+              size: [240, 360]
+            - _target_: torchvision.transforms.Grayscale
+            - _target_: silk.transforms.tensor.NormalizeRange
+              ilow: 0.
+              ihigh: 255.
+              olow: 0.
+              ohigh: 1.
+
+transform:
+  _target_: silk.transforms.abstract.Compose
+  _args_:
+    # send all tensors to GPU
+    - _target_: silk.transforms.abstract.Map
+      function:
+        _target_: silk.transforms.tensor.ToDevice
+        device: "cuda:0"
+
+    # run model on batch
+    - _target_: silk.transforms.abstract.MethodCall
+      name: null
+      self_: ${mode.model}
+      method:
+        _target_: silk.config.core.find_class_or_callable_from_target
+        target: silk.models.magicpoint.HomographyAdaptation.homographic_adaptation_prediction
+      batch: "@"
+      n_samples: 100
+
+    # send all tensors to CPU
+    - _target_: silk.transforms.abstract.Map
+      function:
+        _target_: silk.transforms.tensor.ToDevice
+        device: "cpu"
+
+    # unbatch results
+    - _target_: silk.transforms.tensor.Unbatch

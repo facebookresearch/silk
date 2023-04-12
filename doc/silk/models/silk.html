@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.models.silk API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.models.silk</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from functools import partial
+from typing import Any, Dict, Optional, Union
+
+import pytorch_lightning as pl
+import torch
+from silk.backbones.loftr.positional_encoding import PositionEncodingSine
+from silk.backbones.silk.silk import SiLKBase as BackboneBase
+from silk.config.core import ensure_is_instance
+from silk.config.optimizer import Spec
+from silk.cv.homography import HomographicSampler
+from silk.datasets.scannet.loftr import spvs_coarse
+from silk.flow import Flow, AutoForward
+from silk.losses.info_nce import (
+    positions_to_unidirectional_correspondence,
+    keep_mutual_correspondences_only,
+)
+from silk.matching.mnn import (
+    mutual_nearest_neighbor,
+    double_softmax_distance,
+    match_descriptors,
+    compute_dist,
+)
+from silk.models.abstract import OptimizersHandler
+from silk.models.abstract import StateDictRedirect
+from silk.transforms.abstract import MixedModuleDict, NamedContext
+from silk.transforms.abstract import Transform
+from silk.transforms.cv.homography import RandomHomographicSampler
+
+_DEBUG_MODE_ENABLED = True
+
+
+def matcher(postprocessing=&#34;none&#34;, threshold=1.0, temperature=0.1):
+    if postprocessing == &#34;none&#34;:
+        return mutual_nearest_neighbor
+    elif postprocessing == &#34;ratio-test&#34;:
+        return partial(
+            mutual_nearest_neighbor,
+            match_fn=partial(match_descriptors, max_ratio=threshold),
+            distance_fn=partial(compute_dist, dist_type=&#34;cosine&#34;),
+        )
+    elif postprocessing == &#34;double-softmax&#34;:
+        return partial(
+            mutual_nearest_neighbor,
+            match_fn=partial(match_descriptors, max_distance=threshold),
+            distance_fn=partial(double_softmax_distance, temperature=temperature),
+        )
+
+    raise RuntimeError(f&#34;postprocessing {postprocessing} is invalid&#34;)
+
+
+class SiLKBase(
+    OptimizersHandler,
+    AutoForward,
+    StateDictRedirect,
+    pl.LightningModule,
+):
+    def __init__(
+        self,
+        model,
+        loss,
+        optimizer_spec: Optional[Spec] = None,
+        image_aug_transform: Optional[Transform] = None,
+        contextualizer: Optional[torch.nn.Module] = None,
+        ghost_similarity: Optional[float] = None,
+        learn_ghost_similarity: bool = False,
+        feature_downsampling_mode: str = &#34;scale&#34;,
+        **kwargs,
+    ):
+        pl.LightningModule.__init__(self, **kwargs)
+        OptimizersHandler.__init__(self, optimizer_spec)  # see below
+
+        assert isinstance(model, BackboneBase)
+
+        self._feature_downsampling_mode = feature_downsampling_mode
+
+        if ghost_similarity is not None:
+            self._ghost_sim = torch.nn.parameter.Parameter(
+                torch.tensor(ghost_similarity),
+                requires_grad=learn_ghost_similarity,
+            )
+        else:
+            self._ghost_sim = None
+
+        ghost_sim_module = torch.nn.Module()
+        ghost_sim_module.ghost_sim = self._ghost_sim
+
+        state = MixedModuleDict(
+            {
+                &#34;model&#34;: model,
+                &#34;contextualizer&#34;: contextualizer,
+                &#34;ghost_similarity&#34;: ghost_sim_module,
+            }
+        )
+
+        StateDictRedirect.__init__(self, state)
+        AutoForward.__init__(self, Flow(&#34;batch&#34;, &#34;use_image_aug&#34;), &#34;loss&#34;)
+
+        self._loss = loss
+        self._model = model
+        self._contextualizer = contextualizer
+        if contextualizer:
+            self._pe = PositionEncodingSine(256, max_shape=(512, 512))
+        self._image_aug_transform = image_aug_transform
+
+    @property
+    def coordinate_mapping_composer(self):
+        return self._model.coordinate_mapping_composer
+
+    def _init_loss_flow(
+        self,
+        images_input_name: str,
+        corr_fn,
+        *corr_args,
+        **corr_kwargs,
+    ):
+        self.flow.define_transition(
+            &#34;augmented_images&#34;,
+            self._aug_images,
+            images_input_name,
+            &#34;use_image_aug&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;descriptors&#34;, &#34;logits&#34;),
+            self._model.forward_flow,
+            outputs=Flow.Constant((&#34;normalized_descriptors&#34;, &#34;logits&#34;)),
+            images=&#34;augmented_images&#34;,
+        )
+        self.flow.define_transition(
+            &#34;descriptors_shape&#34;,
+            lambda x: x.shape,
+            &#34;descriptors&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;corr_forward&#34;, &#34;corr_backward&#34;),
+            corr_fn,
+            *corr_args,
+            **corr_kwargs,
+        )
+        self.flow.define_transition(
+            (&#34;logits_0&#34;, &#34;logits_1&#34;),
+            self._split_logits,
+            &#34;logits&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;descriptors_0&#34;, &#34;descriptors_1&#34;),
+            self._split_descriptors,
+            &#34;descriptors&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;acontextual_descriptor_loss&#34;, &#34;keypoint_loss&#34;, &#34;precision&#34;, &#34;recall&#34;),
+            self._loss,
+            &#34;descriptors_0&#34;,
+            &#34;descriptors_1&#34;,
+            &#34;corr_forward&#34;,
+            &#34;corr_backward&#34;,
+            &#34;logits_0&#34;,
+            &#34;logits_1&#34;,
+            Flow.Constant(self._ghost_sim),
+        )
+        self.flow.define_transition(
+            (&#34;contextual_descriptor_0&#34;, &#34;contextual_descriptor_1&#34;),
+            self._contextualize,
+            &#34;descriptors_0&#34;,
+            &#34;descriptors_1&#34;,
+            &#34;descriptors_shape&#34;,
+        )
+        self.flow.define_transition(
+            &#34;contextual_descriptor_loss&#34;,
+            self._contextual_loss,
+            &#34;contextual_descriptor_0&#34;,
+            &#34;contextual_descriptor_1&#34;,
+            &#34;corr_forward&#34;,
+            &#34;corr_backward&#34;,
+            &#34;logits_0&#34;,
+            &#34;logits_1&#34;,
+        )
+        self._loss_fn = self.flow.with_outputs(
+            (
+                &#34;contextual_descriptor_loss&#34;,
+                &#34;acontextual_descriptor_loss&#34;,
+                &#34;keypoint_loss&#34;,
+                &#34;precision&#34;,
+                &#34;recall&#34;,
+            )
+        )
+
+    @property
+    def model(self):
+        return self._model
+
+    def model_forward_flow(self, *args, **kwargs):
+        return self._model.forward_flow(*args, **kwargs)
+
+    def _apply_pe(self, descriptors_0, descriptors_1, descriptors_shape):
+        if not self._pe:
+            return descriptors_0, descriptors_1
+        _0 = torch.zeros((1,) + descriptors_shape[1:], device=descriptors_0.device)
+        pe = self._pe(_0)
+        pe = self._img_to_flat(pe)
+        pe = pe * self.model.descriptor_scale_factor
+
+        return descriptors_0 + pe, descriptors_1 + pe
+
+    def _contextualize(self, descriptors_0, descriptors_1, descriptors_shape=None):
+        if self._contextualizer is None:
+            return descriptors_0, descriptors_1
+
+        spatial_shape = False
+        if not descriptors_shape:
+            spatial_shape = True
+            assert descriptors_0.ndim == 4
+            assert descriptors_1.ndim == 4
+
+            descriptors_shape = descriptors_0.shape
+            descriptors_0 = self._img_to_flat(descriptors_0)
+            descriptors_1 = self._img_to_flat(descriptors_1)
+
+        assert descriptors_0.ndim == 3
+        assert descriptors_1.ndim == 3
+
+        descriptors_0 = descriptors_0.detach()
+        descriptors_1 = descriptors_1.detach()
+
+        descriptors_0, descriptors_1 = self._apply_pe(
+            descriptors_0, descriptors_1, descriptors_shape
+        )
+
+        descriptors_0, descriptors_1 = self._contextualizer(
+            descriptors_0, descriptors_1
+        )
+
+        if spatial_shape:
+            descriptors_0 = self._flat_to_img(descriptors_0, descriptors_shape)
+            descriptors_1 = self._flat_to_img(descriptors_1, descriptors_shape)
+
+        return descriptors_0, descriptors_1
+
+    def _contextual_loss(
+        self,
+        descriptors_0,
+        descriptors_1,
+        corr_forward,
+        corr_backward,
+        logits_0,
+        logits_1,
+    ):
+        if self._contextualizer is None:
+            return 0.0
+
+        logits_0 = logits_0.detach()
+        logits_1 = logits_1.detach()
+
+        desc_loss, _, _, _ = self._loss(
+            descriptors_0,
+            descriptors_1,
+            corr_forward,
+            corr_backward,
+            logits_0,
+            logits_1,
+        )
+
+        return desc_loss
+
+    def _aug_images(self, images, use_image_aug):
+        if use_image_aug:
+            images = self._image_aug_transform(images)
+        return images
+
+    def _split_descriptors(self, descriptors):
+        desc_0 = SiLKBase._img_to_flat(descriptors[0::2])
+        desc_1 = SiLKBase._img_to_flat(descriptors[1::2])
+        return desc_0, desc_1
+
+    def _split_logits(self, logits):
+        logits_0 = SiLKBase._img_to_flat(logits[0::2]).squeeze(-1)
+        logits_1 = SiLKBase._img_to_flat(logits[1::2]).squeeze(-1)
+        return logits_0, logits_1
+
+    @staticmethod
+    def _img_to_flat(x):
+        # x : BxCxHxW
+        batch_size = x.shape[0]
+        channels = x.shape[1]
+        x = x.reshape(batch_size, channels, -1)
+        x = x.permute(0, 2, 1)
+        return x
+
+    @staticmethod
+    def _flat_to_img(x, shape):
+        # x : BxNxC
+        assert len(shape) == 4
+        assert shape[0] == x.shape[0]
+        assert shape[1] == x.shape[2]
+
+        x = x.permute(0, 2, 1)
+        x = x.reshape(shape)
+        return x
+
+    def _total_loss(self, mode, batch, use_image_aug: bool):
+        ctx_desc_loss, actx_desc_loss, keypt_loss, precision, recall = self._loss_fn(
+            batch, use_image_aug
+        )
+        f1 = (2 * precision * recall) / (precision + recall)
+
+        loss = ctx_desc_loss + actx_desc_loss + keypt_loss
+
+        self.log(f&#34;{mode}.total.loss&#34;, loss)
+        self.log(f&#34;{mode}.contextual.descriptors.loss&#34;, ctx_desc_loss)
+        self.log(f&#34;{mode}.acontextual.descriptors.loss&#34;, actx_desc_loss)
+        self.log(f&#34;{mode}.keypoints.loss&#34;, keypt_loss)
+        self.log(f&#34;{mode}.precision&#34;, precision)
+        self.log(f&#34;{mode}.recall&#34;, recall)
+        self.log(f&#34;{mode}.f1&#34;, f1)
+        if (self._ghost_sim is not None) and (mode == &#34;train&#34;):
+            self.log(&#34;ghost.sim&#34;, self._ghost_sim)
+
+        return loss
+
+    def training_step(self, batch, batch_idx):
+        return self._total_loss(
+            &#34;train&#34;,
+            batch,
+            use_image_aug=True,
+        )
+
+    def validation_step(self, batch, batch_idx):
+        return self._total_loss(
+            &#34;val&#34;,
+            batch,
+            use_image_aug=False,
+        )
+
+
+class SiLKRandomHomographies(SiLKBase):
+    def __init__(
+        self,
+        model,
+        loss,
+        optimizer_spec: Union[Spec, None] = None,
+        image_aug_transform: Union[Transform, None] = None,
+        training_random_homography_kwargs: Union[Dict[str, Any], None] = None,
+        **kwargs,
+    ):
+        SiLKBase.__init__(
+            self,
+            model,
+            loss,
+            optimizer_spec,
+            image_aug_transform,
+            **kwargs,
+        )
+
+        # homographic sampler arguments
+        self._training_random_homography_kwargs = (
+            {}
+            if training_random_homography_kwargs is None
+            else training_random_homography_kwargs
+        )
+
+        self.flow.define_transition(&#34;checked_batch&#34;, self._check_batch, &#34;batch&#34;)
+        self.flow.define_transition(
+            (&#34;images&#34;, &#34;image_shape&#34;),
+            self._get_images,
+            &#34;checked_batch&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;sampler&#34;, &#34;warped_images&#34;),
+            self._warp_images,
+            &#34;images&#34;,
+        )
+
+        self._init_loss_flow(
+            &#34;warped_images&#34;,
+            self._get_corr,
+            &#34;sampler&#34;,
+            &#34;descriptors&#34;,
+            &#34;image_shape&#34;,
+        )
+
+    def _check_batch(self, batch):
+        # check batch
+        ensure_is_instance(batch, NamedContext)
+        batch.ensure_exists(&#34;image&#34;)
+
+        # check data shape
+        assert len(batch[&#34;image&#34;].shape) == 4
+
+        def to_device(el):
+            if isinstance(el, torch.Tensor):
+                return el.to(self.device)
+            raise RuntimeError(f&#34;type {type(el)} not handled&#34;)
+
+        # send data to model&#39;s device
+        batch = batch.map(to_device)
+
+        return batch
+
+    def _get_images(self, batch):
+        assert isinstance(batch[&#34;image&#34;], torch.Tensor)
+
+        # check data shape
+        shape = batch[&#34;image&#34;].shape
+
+        return batch[&#34;image&#34;], shape
+
+    def _warp_images(self, images):
+        shape = images.shape
+
+        # apply two homographic transforms to each input images
+        sampler = RandomHomographicSampler(
+            shape[0],
+            shape[-2:],
+            device=images.device,
+            **self._training_random_homography_kwargs,
+        )
+
+        warped_images = sampler.forward_sampling(images)
+
+        images = torch.stack((images, warped_images), dim=1)
+        images = images.view((-1,) + shape[1:])
+
+        return sampler, images
+
+    def _get_corr(self, sampler, descriptors, image_shape):
+        batch_size = image_shape[0]
+        descriptors_height = descriptors.shape[2]
+        descriptors_width = descriptors.shape[3]
+        cell_size = 1.0
+
+        # remove confidence value
+        positions = HomographicSampler._create_meshgrid(
+            descriptors_height,
+            descriptors_width,
+            device=descriptors.device,
+            normalized=False,
+        )
+        positions = positions.expand(batch_size, -1, -1, -1)  # add batch dim
+        positions = positions.reshape(batch_size, -1, 2)
+
+        coord_mapping = self._model.coordinate_mapping_composer.get(
+            &#34;images&#34;,
+            &#34;raw_descriptors&#34;,
+        )
+
+        # send to image coordinates
+        positions = coord_mapping.reverse(positions)
+
+        # transform label positions to transformed image space
+        warped_positions_forward = sampler.transform_points(
+            positions,
+            image_shape=image_shape[-2:],
+            direction=&#34;forward&#34;,
+            ordering=&#34;xy&#34;,
+        )
+
+        warped_positions_backward = sampler.transform_points(
+            positions,
+            image_shape=image_shape[-2:],
+            direction=&#34;backward&#34;,
+            ordering=&#34;xy&#34;,
+        )
+
+        # send back to descriptor coordinates
+        warped_positions_forward = coord_mapping.apply(warped_positions_forward)
+        warped_positions_backward = coord_mapping.apply(warped_positions_backward)
+
+        corr_forward = positions_to_unidirectional_correspondence(
+            warped_positions_forward,
+            descriptors_width,
+            descriptors_height,
+            cell_size,
+            ordering=&#34;xy&#34;,
+        )
+
+        corr_backward = positions_to_unidirectional_correspondence(
+            warped_positions_backward,
+            descriptors_width,
+            descriptors_height,
+            cell_size,
+            ordering=&#34;xy&#34;,
+        )
+
+        corr_forward, corr_backward = keep_mutual_correspondences_only(
+            corr_forward, corr_backward
+        )
+
+        return corr_forward, corr_backward</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.models.silk.matcher"><code class="name flex">
+<span>def <span class="ident">matcher</span></span>(<span>postprocessing='none', threshold=1.0, temperature=0.1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def matcher(postprocessing=&#34;none&#34;, threshold=1.0, temperature=0.1):
+    if postprocessing == &#34;none&#34;:
+        return mutual_nearest_neighbor
+    elif postprocessing == &#34;ratio-test&#34;:
+        return partial(
+            mutual_nearest_neighbor,
+            match_fn=partial(match_descriptors, max_ratio=threshold),
+            distance_fn=partial(compute_dist, dist_type=&#34;cosine&#34;),
+        )
+    elif postprocessing == &#34;double-softmax&#34;:
+        return partial(
+            mutual_nearest_neighbor,
+            match_fn=partial(match_descriptors, max_distance=threshold),
+            distance_fn=partial(double_softmax_distance, temperature=temperature),
+        )
+
+    raise RuntimeError(f&#34;postprocessing {postprocessing} is invalid&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.models.silk.SiLKBase"><code class="flex name class">
+<span>class <span class="ident">SiLKBase</span></span>
+<span>(</span><span>model, loss, optimizer_spec: Optional[<a title="silk.config.optimizer.Spec" href="../config/optimizer.html#silk.config.optimizer.Spec">Spec</a>] = None, image_aug_transform: Optional[<a title="silk.transforms.abstract.Transform" href="../transforms/abstract.html#silk.transforms.abstract.Transform">Transform</a>] = None, contextualizer: Optional[torch.nn.modules.module.Module] = None, ghost_similarity: Optional[float] = None, learn_ghost_similarity: bool = False, feature_downsampling_mode: str = 'scale', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Automate the most common pattern of optimizer creation.
+This pattern consists of one optimizer per model.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">class MyCustomModel(OptimizersHandler, pl.LightningModule):
+    def __init__(self, optimizer_spec, **kwargs):
+        OptimizersHandler.__init__(self, optimizer_spec)
+        pl.LightningModule.__init__(self, **kwargs)
+        ...
+</code></pre>
+<p>This will automatically equip <code>MyCustomModel</code> with the <code>configure_optimizers</code> method required by Pytorch Lightning.
+Notice how <code>OptimizersHandler</code> is before <code>pl.LightningModule</code> in the list of base classes.
+This is necessary since <code>pl.LightningModule</code> checks if the current class has a method called <code>configure_optimizers</code>.</p>
+<pre><code class="language-python">class MyCustomModel(OptimizersHandler, pl.LightningModule):
+    def __init__(self, optimizer_spec_A, optimizer_spec_B, **kwargs):
+        self.submodel_A = ModelA(...)
+        self.submodel_B = ModelB(...)
+
+        OptimizersHandler.__init__(self,
+            MultiSpec(optimizer_spec_A, optimizer_spec_B),
+            self.submodel_A, self.submodel_B
+        )
+        pl.LightningModule.__init__(self, **kwargs)
+        ...
+</code></pre>
+<p>In this case, two optimizers will be automatically created and attached to their relative model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SiLKBase(
+    OptimizersHandler,
+    AutoForward,
+    StateDictRedirect,
+    pl.LightningModule,
+):
+    def __init__(
+        self,
+        model,
+        loss,
+        optimizer_spec: Optional[Spec] = None,
+        image_aug_transform: Optional[Transform] = None,
+        contextualizer: Optional[torch.nn.Module] = None,
+        ghost_similarity: Optional[float] = None,
+        learn_ghost_similarity: bool = False,
+        feature_downsampling_mode: str = &#34;scale&#34;,
+        **kwargs,
+    ):
+        pl.LightningModule.__init__(self, **kwargs)
+        OptimizersHandler.__init__(self, optimizer_spec)  # see below
+
+        assert isinstance(model, BackboneBase)
+
+        self._feature_downsampling_mode = feature_downsampling_mode
+
+        if ghost_similarity is not None:
+            self._ghost_sim = torch.nn.parameter.Parameter(
+                torch.tensor(ghost_similarity),
+                requires_grad=learn_ghost_similarity,
+            )
+        else:
+            self._ghost_sim = None
+
+        ghost_sim_module = torch.nn.Module()
+        ghost_sim_module.ghost_sim = self._ghost_sim
+
+        state = MixedModuleDict(
+            {
+                &#34;model&#34;: model,
+                &#34;contextualizer&#34;: contextualizer,
+                &#34;ghost_similarity&#34;: ghost_sim_module,
+            }
+        )
+
+        StateDictRedirect.__init__(self, state)
+        AutoForward.__init__(self, Flow(&#34;batch&#34;, &#34;use_image_aug&#34;), &#34;loss&#34;)
+
+        self._loss = loss
+        self._model = model
+        self._contextualizer = contextualizer
+        if contextualizer:
+            self._pe = PositionEncodingSine(256, max_shape=(512, 512))
+        self._image_aug_transform = image_aug_transform
+
+    @property
+    def coordinate_mapping_composer(self):
+        return self._model.coordinate_mapping_composer
+
+    def _init_loss_flow(
+        self,
+        images_input_name: str,
+        corr_fn,
+        *corr_args,
+        **corr_kwargs,
+    ):
+        self.flow.define_transition(
+            &#34;augmented_images&#34;,
+            self._aug_images,
+            images_input_name,
+            &#34;use_image_aug&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;descriptors&#34;, &#34;logits&#34;),
+            self._model.forward_flow,
+            outputs=Flow.Constant((&#34;normalized_descriptors&#34;, &#34;logits&#34;)),
+            images=&#34;augmented_images&#34;,
+        )
+        self.flow.define_transition(
+            &#34;descriptors_shape&#34;,
+            lambda x: x.shape,
+            &#34;descriptors&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;corr_forward&#34;, &#34;corr_backward&#34;),
+            corr_fn,
+            *corr_args,
+            **corr_kwargs,
+        )
+        self.flow.define_transition(
+            (&#34;logits_0&#34;, &#34;logits_1&#34;),
+            self._split_logits,
+            &#34;logits&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;descriptors_0&#34;, &#34;descriptors_1&#34;),
+            self._split_descriptors,
+            &#34;descriptors&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;acontextual_descriptor_loss&#34;, &#34;keypoint_loss&#34;, &#34;precision&#34;, &#34;recall&#34;),
+            self._loss,
+            &#34;descriptors_0&#34;,
+            &#34;descriptors_1&#34;,
+            &#34;corr_forward&#34;,
+            &#34;corr_backward&#34;,
+            &#34;logits_0&#34;,
+            &#34;logits_1&#34;,
+            Flow.Constant(self._ghost_sim),
+        )
+        self.flow.define_transition(
+            (&#34;contextual_descriptor_0&#34;, &#34;contextual_descriptor_1&#34;),
+            self._contextualize,
+            &#34;descriptors_0&#34;,
+            &#34;descriptors_1&#34;,
+            &#34;descriptors_shape&#34;,
+        )
+        self.flow.define_transition(
+            &#34;contextual_descriptor_loss&#34;,
+            self._contextual_loss,
+            &#34;contextual_descriptor_0&#34;,
+            &#34;contextual_descriptor_1&#34;,
+            &#34;corr_forward&#34;,
+            &#34;corr_backward&#34;,
+            &#34;logits_0&#34;,
+            &#34;logits_1&#34;,
+        )
+        self._loss_fn = self.flow.with_outputs(
+            (
+                &#34;contextual_descriptor_loss&#34;,
+                &#34;acontextual_descriptor_loss&#34;,
+                &#34;keypoint_loss&#34;,
+                &#34;precision&#34;,
+                &#34;recall&#34;,
+            )
+        )
+
+    @property
+    def model(self):
+        return self._model
+
+    def model_forward_flow(self, *args, **kwargs):
+        return self._model.forward_flow(*args, **kwargs)
+
+    def _apply_pe(self, descriptors_0, descriptors_1, descriptors_shape):
+        if not self._pe:
+            return descriptors_0, descriptors_1
+        _0 = torch.zeros((1,) + descriptors_shape[1:], device=descriptors_0.device)
+        pe = self._pe(_0)
+        pe = self._img_to_flat(pe)
+        pe = pe * self.model.descriptor_scale_factor
+
+        return descriptors_0 + pe, descriptors_1 + pe
+
+    def _contextualize(self, descriptors_0, descriptors_1, descriptors_shape=None):
+        if self._contextualizer is None:
+            return descriptors_0, descriptors_1
+
+        spatial_shape = False
+        if not descriptors_shape:
+            spatial_shape = True
+            assert descriptors_0.ndim == 4
+            assert descriptors_1.ndim == 4
+
+            descriptors_shape = descriptors_0.shape
+            descriptors_0 = self._img_to_flat(descriptors_0)
+            descriptors_1 = self._img_to_flat(descriptors_1)
+
+        assert descriptors_0.ndim == 3
+        assert descriptors_1.ndim == 3
+
+        descriptors_0 = descriptors_0.detach()
+        descriptors_1 = descriptors_1.detach()
+
+        descriptors_0, descriptors_1 = self._apply_pe(
+            descriptors_0, descriptors_1, descriptors_shape
+        )
+
+        descriptors_0, descriptors_1 = self._contextualizer(
+            descriptors_0, descriptors_1
+        )
+
+        if spatial_shape:
+            descriptors_0 = self._flat_to_img(descriptors_0, descriptors_shape)
+            descriptors_1 = self._flat_to_img(descriptors_1, descriptors_shape)
+
+        return descriptors_0, descriptors_1
+
+    def _contextual_loss(
+        self,
+        descriptors_0,
+        descriptors_1,
+        corr_forward,
+        corr_backward,
+        logits_0,
+        logits_1,
+    ):
+        if self._contextualizer is None:
+            return 0.0
+
+        logits_0 = logits_0.detach()
+        logits_1 = logits_1.detach()
+
+        desc_loss, _, _, _ = self._loss(
+            descriptors_0,
+            descriptors_1,
+            corr_forward,
+            corr_backward,
+            logits_0,
+            logits_1,
+        )
+
+        return desc_loss
+
+    def _aug_images(self, images, use_image_aug):
+        if use_image_aug:
+            images = self._image_aug_transform(images)
+        return images
+
+    def _split_descriptors(self, descriptors):
+        desc_0 = SiLKBase._img_to_flat(descriptors[0::2])
+        desc_1 = SiLKBase._img_to_flat(descriptors[1::2])
+        return desc_0, desc_1
+
+    def _split_logits(self, logits):
+        logits_0 = SiLKBase._img_to_flat(logits[0::2]).squeeze(-1)
+        logits_1 = SiLKBase._img_to_flat(logits[1::2]).squeeze(-1)
+        return logits_0, logits_1
+
+    @staticmethod
+    def _img_to_flat(x):
+        # x : BxCxHxW
+        batch_size = x.shape[0]
+        channels = x.shape[1]
+        x = x.reshape(batch_size, channels, -1)
+        x = x.permute(0, 2, 1)
+        return x
+
+    @staticmethod
+    def _flat_to_img(x, shape):
+        # x : BxNxC
+        assert len(shape) == 4
+        assert shape[0] == x.shape[0]
+        assert shape[1] == x.shape[2]
+
+        x = x.permute(0, 2, 1)
+        x = x.reshape(shape)
+        return x
+
+    def _total_loss(self, mode, batch, use_image_aug: bool):
+        ctx_desc_loss, actx_desc_loss, keypt_loss, precision, recall = self._loss_fn(
+            batch, use_image_aug
+        )
+        f1 = (2 * precision * recall) / (precision + recall)
+
+        loss = ctx_desc_loss + actx_desc_loss + keypt_loss
+
+        self.log(f&#34;{mode}.total.loss&#34;, loss)
+        self.log(f&#34;{mode}.contextual.descriptors.loss&#34;, ctx_desc_loss)
+        self.log(f&#34;{mode}.acontextual.descriptors.loss&#34;, actx_desc_loss)
+        self.log(f&#34;{mode}.keypoints.loss&#34;, keypt_loss)
+        self.log(f&#34;{mode}.precision&#34;, precision)
+        self.log(f&#34;{mode}.recall&#34;, recall)
+        self.log(f&#34;{mode}.f1&#34;, f1)
+        if (self._ghost_sim is not None) and (mode == &#34;train&#34;):
+            self.log(&#34;ghost.sim&#34;, self._ghost_sim)
+
+        return loss
+
+    def training_step(self, batch, batch_idx):
+        return self._total_loss(
+            &#34;train&#34;,
+            batch,
+            use_image_aug=True,
+        )
+
+    def validation_step(self, batch, batch_idx):
+        return self._total_loss(
+            &#34;val&#34;,
+            batch,
+            use_image_aug=False,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.models.abstract.OptimizersHandler" href="abstract.html#silk.models.abstract.OptimizersHandler">OptimizersHandler</a></li>
+<li><a title="silk.flow.AutoForward" href="../flow.html#silk.flow.AutoForward">AutoForward</a></li>
+<li><a title="silk.models.abstract.StateDictRedirect" href="abstract.html#silk.models.abstract.StateDictRedirect">StateDictRedirect</a></li>
+<li>pytorch_lightning.core.lightning.LightningModule</li>
+<li>pytorch_lightning.core.mixins.device_dtype_mixin.DeviceDtypeModuleMixin</li>
+<li>pytorch_lightning.core.mixins.hparams_mixin.HyperparametersMixin</li>
+<li>pytorch_lightning.core.saving.ModelIO</li>
+<li>pytorch_lightning.core.hooks.ModelHooks</li>
+<li>pytorch_lightning.core.hooks.DataHooks</li>
+<li>pytorch_lightning.core.hooks.CheckpointHooks</li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="silk.models.silk.SiLKRandomHomographies" href="#silk.models.silk.SiLKRandomHomographies">SiLKRandomHomographies</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.models.silk.SiLKBase.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.models.silk.SiLKBase.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="silk.models.silk.SiLKBase.coordinate_mapping_composer"><code class="name">var <span class="ident">coordinate_mapping_composer</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def coordinate_mapping_composer(self):
+    return self._model.coordinate_mapping_composer</code></pre>
+</details>
+</dd>
+<dt id="silk.models.silk.SiLKBase.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def model(self):
+    return self._model</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.models.silk.SiLKBase.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *args, **kwargs) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, *args, **kwargs):
+    if self._forward_flow is None:
+        self._forward_flow = self._flow.with_outputs(self._default_outputs)
+    return self._forward_flow(*args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="silk.models.silk.SiLKBase.model_forward_flow"><code class="name flex">
+<span>def <span class="ident">model_forward_flow</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def model_forward_flow(self, *args, **kwargs):
+    return self._model.forward_flow(*args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="silk.models.silk.SiLKBase.training_step"><code class="name flex">
+<span>def <span class="ident">training_step</span></span>(<span>self, batch, batch_idx)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Here you compute and return the training loss and some additional metrics for e.g.
+the progress bar or logger.</p>
+<h2 id="args">Args</h2>
+<p>batch (:class:<code>~torch.Tensor</code> | (:class:<code>~torch.Tensor</code>, &hellip;) | [:class:<code>~torch.Tensor</code>, &hellip;]):
+The output of your :class:<code>~torch.utils.data.DataLoader</code>. A tensor, tuple or list.
+batch_idx (<code>int</code>): Integer displaying index of this batch
+optimizer_idx (<code>int</code>): When using multiple optimizers, this argument will also be present.
+hiddens (<code>Any</code>): Passed in if
+:paramref:<code>~pytorch_lightning.core.lightning.LightningModule.truncated_bptt_steps</code> &gt; 0.</p>
+<h2 id="return">Return</h2>
+<p>Any of.</p>
+<ul>
+<li>:class:<code>~torch.Tensor</code> - The loss tensor</li>
+<li><code>dict</code> - A dictionary. Can include any keys, but must include the key <code>'loss'</code></li>
+<li><code>None</code> - Training will skip to the next batch. This is only for automatic optimization.
+This is not supported for multi-GPU, TPU, IPU, or DeepSpeed.</li>
+</ul>
+<p>In this step you'd normally do the forward pass and calculate the loss for a batch.
+You can also do fancier things like multiple forward passes or something model specific.</p>
+<p>Example::</p>
+<pre><code>def training_step(self, batch, batch_idx):
+    x, y, z = batch
+    out = self.encoder(x)
+    loss = self.loss(out, x)
+    return loss
+</code></pre>
+<p>If you define multiple optimizers, this step will be called with an additional
+<code>optimizer_idx</code> parameter.</p>
+<p>.. code-block:: python</p>
+<pre><code># Multiple optimizers (e.g.: GANs)
+def training_step(self, batch, batch_idx, optimizer_idx):
+    if optimizer_idx == 0:
+        # do training_step with encoder
+        ...
+    if optimizer_idx == 1:
+        # do training_step with decoder
+        ...
+</code></pre>
+<p>If you add truncated back propagation through time you will also get an additional
+argument with the hidden states of the previous step.</p>
+<p>.. code-block:: python</p>
+<pre><code># Truncated back-propagation through time
+def training_step(self, batch, batch_idx, hiddens):
+    # hiddens are the hidden states from the previous truncated backprop step
+    out, hiddens = self.lstm(data, hiddens)
+    loss = ...
+    return {"loss": loss, "hiddens": hiddens}
+</code></pre>
+<h2 id="note">Note</h2>
+<p>The loss value shown in the progress bar is smoothed (averaged) over the last values,
+so it differs from the actual loss returned in train/validation step.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def training_step(self, batch, batch_idx):
+    return self._total_loss(
+        &#34;train&#34;,
+        batch,
+        use_image_aug=True,
+    )</code></pre>
+</details>
+</dd>
+<dt id="silk.models.silk.SiLKBase.validation_step"><code class="name flex">
+<span>def <span class="ident">validation_step</span></span>(<span>self, batch, batch_idx)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Operates on a single batch of data from the validation set.
+In this step you'd might generate examples or calculate anything of interest like accuracy.</p>
+<p>.. code-block:: python</p>
+<pre><code># the pseudocode for these calls
+val_outs = []
+for val_batch in val_data:
+    out = validation_step(val_batch)
+    val_outs.append(out)
+validation_epoch_end(val_outs)
+</code></pre>
+<h2 id="args">Args</h2>
+<dl>
+<dt>batch (:class:<code>~torch.Tensor</code> | (:class:<code>~torch.Tensor</code>, &hellip;) | [:class:<code>~torch.Tensor</code>, &hellip;]):</dt>
+<dt>The output of your :class:<code>~torch.utils.data.DataLoader</code>. A tensor, tuple or list.</dt>
+<dt><strong><code>batch_idx</code></strong> :&ensp;<code>int</code></dt>
+<dd>The index of this batch</dd>
+<dt><strong><code>dataloader_idx</code></strong> :&ensp;<code>int</code></dt>
+<dd>The index of the dataloader that produced this batch
+(only if multiple val dataloaders used)</dd>
+</dl>
+<h2 id="return">Return</h2>
+<ul>
+<li>Any object or value</li>
+<li><code>None</code> - Validation will skip to the next batch</li>
+</ul>
+<p>.. code-block:: python</p>
+<pre><code># pseudocode of order
+val_outs = []
+for val_batch in val_data:
+    out = validation_step(val_batch)
+    if defined("validation_step_end"):
+        out = validation_step_end(out)
+    val_outs.append(out)
+val_outs = validation_epoch_end(val_outs)
+</code></pre>
+<p>.. code-block:: python</p>
+<pre><code># if you have one val dataloader:
+def validation_step(self, batch, batch_idx):
+    ...
+
+
+# if you have multiple val dataloaders:
+def validation_step(self, batch, batch_idx, dataloader_idx):
+    ...
+</code></pre>
+<p>Examples::</p>
+<pre><code># CASE 1: A single validation dataset
+def validation_step(self, batch, batch_idx):
+    x, y = batch
+
+    # implement your own
+    out = self(x)
+    loss = self.loss(out, y)
+
+    # log 6 example images
+    # or generated text... or whatever
+    sample_imgs = x[:6]
+    grid = torchvision.utils.make_grid(sample_imgs)
+    self.logger.experiment.add_image('example_images', grid, 0)
+
+    # calculate acc
+    labels_hat = torch.argmax(out, dim=1)
+    val_acc = torch.sum(y == labels_hat).item() / (len(y) * 1.0)
+
+    # log the outputs!
+    self.log_dict({'val_loss': loss, 'val_acc': val_acc})
+</code></pre>
+<p>If you pass in multiple val dataloaders, :meth:<code>validation_step</code> will have an additional argument.</p>
+<p>.. code-block:: python</p>
+<pre><code># CASE 2: multiple validation dataloaders
+def validation_step(self, batch, batch_idx, dataloader_idx):
+    # dataloader_idx tells you which dataset this is.
+    ...
+</code></pre>
+<h2 id="note">Note</h2>
+<p>If you don't need to validate you don't need to implement this method.</p>
+<h2 id="note_1">Note</h2>
+<p>When the :meth:<code>validation_step</code> is called, the model has been put in eval mode
+and PyTorch gradients have been disabled. At the end of validation,
+the model goes back to training mode and gradients are enabled.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validation_step(self, batch, batch_idx):
+    return self._total_loss(
+        &#34;val&#34;,
+        batch,
+        use_image_aug=False,
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.models.silk.SiLKRandomHomographies"><code class="flex name class">
+<span>class <span class="ident">SiLKRandomHomographies</span></span>
+<span>(</span><span>model, loss, optimizer_spec: Optional[<a title="silk.config.optimizer.Spec" href="../config/optimizer.html#silk.config.optimizer.Spec">Spec</a>] = None, image_aug_transform: Optional[<a title="silk.transforms.abstract.Transform" href="../transforms/abstract.html#silk.transforms.abstract.Transform">Transform</a>] = None, training_random_homography_kwargs: Optional[Dict[str, Any]] = None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Automate the most common pattern of optimizer creation.
+This pattern consists of one optimizer per model.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">class MyCustomModel(OptimizersHandler, pl.LightningModule):
+    def __init__(self, optimizer_spec, **kwargs):
+        OptimizersHandler.__init__(self, optimizer_spec)
+        pl.LightningModule.__init__(self, **kwargs)
+        ...
+</code></pre>
+<p>This will automatically equip <code>MyCustomModel</code> with the <code>configure_optimizers</code> method required by Pytorch Lightning.
+Notice how <code>OptimizersHandler</code> is before <code>pl.LightningModule</code> in the list of base classes.
+This is necessary since <code>pl.LightningModule</code> checks if the current class has a method called <code>configure_optimizers</code>.</p>
+<pre><code class="language-python">class MyCustomModel(OptimizersHandler, pl.LightningModule):
+    def __init__(self, optimizer_spec_A, optimizer_spec_B, **kwargs):
+        self.submodel_A = ModelA(...)
+        self.submodel_B = ModelB(...)
+
+        OptimizersHandler.__init__(self,
+            MultiSpec(optimizer_spec_A, optimizer_spec_B),
+            self.submodel_A, self.submodel_B
+        )
+        pl.LightningModule.__init__(self, **kwargs)
+        ...
+</code></pre>
+<p>In this case, two optimizers will be automatically created and attached to their relative model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SiLKRandomHomographies(SiLKBase):
+    def __init__(
+        self,
+        model,
+        loss,
+        optimizer_spec: Union[Spec, None] = None,
+        image_aug_transform: Union[Transform, None] = None,
+        training_random_homography_kwargs: Union[Dict[str, Any], None] = None,
+        **kwargs,
+    ):
+        SiLKBase.__init__(
+            self,
+            model,
+            loss,
+            optimizer_spec,
+            image_aug_transform,
+            **kwargs,
+        )
+
+        # homographic sampler arguments
+        self._training_random_homography_kwargs = (
+            {}
+            if training_random_homography_kwargs is None
+            else training_random_homography_kwargs
+        )
+
+        self.flow.define_transition(&#34;checked_batch&#34;, self._check_batch, &#34;batch&#34;)
+        self.flow.define_transition(
+            (&#34;images&#34;, &#34;image_shape&#34;),
+            self._get_images,
+            &#34;checked_batch&#34;,
+        )
+        self.flow.define_transition(
+            (&#34;sampler&#34;, &#34;warped_images&#34;),
+            self._warp_images,
+            &#34;images&#34;,
+        )
+
+        self._init_loss_flow(
+            &#34;warped_images&#34;,
+            self._get_corr,
+            &#34;sampler&#34;,
+            &#34;descriptors&#34;,
+            &#34;image_shape&#34;,
+        )
+
+    def _check_batch(self, batch):
+        # check batch
+        ensure_is_instance(batch, NamedContext)
+        batch.ensure_exists(&#34;image&#34;)
+
+        # check data shape
+        assert len(batch[&#34;image&#34;].shape) == 4
+
+        def to_device(el):
+            if isinstance(el, torch.Tensor):
+                return el.to(self.device)
+            raise RuntimeError(f&#34;type {type(el)} not handled&#34;)
+
+        # send data to model&#39;s device
+        batch = batch.map(to_device)
+
+        return batch
+
+    def _get_images(self, batch):
+        assert isinstance(batch[&#34;image&#34;], torch.Tensor)
+
+        # check data shape
+        shape = batch[&#34;image&#34;].shape
+
+        return batch[&#34;image&#34;], shape
+
+    def _warp_images(self, images):
+        shape = images.shape
+
+        # apply two homographic transforms to each input images
+        sampler = RandomHomographicSampler(
+            shape[0],
+            shape[-2:],
+            device=images.device,
+            **self._training_random_homography_kwargs,
+        )
+
+        warped_images = sampler.forward_sampling(images)
+
+        images = torch.stack((images, warped_images), dim=1)
+        images = images.view((-1,) + shape[1:])
+
+        return sampler, images
+
+    def _get_corr(self, sampler, descriptors, image_shape):
+        batch_size = image_shape[0]
+        descriptors_height = descriptors.shape[2]
+        descriptors_width = descriptors.shape[3]
+        cell_size = 1.0
+
+        # remove confidence value
+        positions = HomographicSampler._create_meshgrid(
+            descriptors_height,
+            descriptors_width,
+            device=descriptors.device,
+            normalized=False,
+        )
+        positions = positions.expand(batch_size, -1, -1, -1)  # add batch dim
+        positions = positions.reshape(batch_size, -1, 2)
+
+        coord_mapping = self._model.coordinate_mapping_composer.get(
+            &#34;images&#34;,
+            &#34;raw_descriptors&#34;,
+        )
+
+        # send to image coordinates
+        positions = coord_mapping.reverse(positions)
+
+        # transform label positions to transformed image space
+        warped_positions_forward = sampler.transform_points(
+            positions,
+            image_shape=image_shape[-2:],
+            direction=&#34;forward&#34;,
+            ordering=&#34;xy&#34;,
+        )
+
+        warped_positions_backward = sampler.transform_points(
+            positions,
+            image_shape=image_shape[-2:],
+            direction=&#34;backward&#34;,
+            ordering=&#34;xy&#34;,
+        )
+
+        # send back to descriptor coordinates
+        warped_positions_forward = coord_mapping.apply(warped_positions_forward)
+        warped_positions_backward = coord_mapping.apply(warped_positions_backward)
+
+        corr_forward = positions_to_unidirectional_correspondence(
+            warped_positions_forward,
+            descriptors_width,
+            descriptors_height,
+            cell_size,
+            ordering=&#34;xy&#34;,
+        )
+
+        corr_backward = positions_to_unidirectional_correspondence(
+            warped_positions_backward,
+            descriptors_width,
+            descriptors_height,
+            cell_size,
+            ordering=&#34;xy&#34;,
+        )
+
+        corr_forward, corr_backward = keep_mutual_correspondences_only(
+            corr_forward, corr_backward
+        )
+
+        return corr_forward, corr_backward</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.models.silk.SiLKBase" href="#silk.models.silk.SiLKBase">SiLKBase</a></li>
+<li><a title="silk.models.abstract.OptimizersHandler" href="abstract.html#silk.models.abstract.OptimizersHandler">OptimizersHandler</a></li>
+<li><a title="silk.flow.AutoForward" href="../flow.html#silk.flow.AutoForward">AutoForward</a></li>
+<li><a title="silk.models.abstract.StateDictRedirect" href="abstract.html#silk.models.abstract.StateDictRedirect">StateDictRedirect</a></li>
+<li>pytorch_lightning.core.lightning.LightningModule</li>
+<li>pytorch_lightning.core.mixins.device_dtype_mixin.DeviceDtypeModuleMixin</li>
+<li>pytorch_lightning.core.mixins.hparams_mixin.HyperparametersMixin</li>
+<li>pytorch_lightning.core.saving.ModelIO</li>
+<li>pytorch_lightning.core.hooks.ModelHooks</li>
+<li>pytorch_lightning.core.hooks.DataHooks</li>
+<li>pytorch_lightning.core.hooks.CheckpointHooks</li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.models.silk.SiLKRandomHomographies.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.models.silk.SiLKRandomHomographies.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.models.silk.SiLKRandomHomographies.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *args, **kwargs) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, *args, **kwargs):
+    if self._forward_flow is None:
+        self._forward_flow = self._flow.with_outputs(self._default_outputs)
+    return self._forward_flow(*args, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.models.silk.SiLKBase" href="#silk.models.silk.SiLKBase">SiLKBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.models.silk.SiLKBase.training_step" href="#silk.models.silk.SiLKBase.training_step">training_step</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.validation_step" href="#silk.models.silk.SiLKBase.validation_step">validation_step</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.models" href="index.html">silk.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.models.silk.matcher" href="#silk.models.silk.matcher">matcher</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.models.silk.SiLKBase" href="#silk.models.silk.SiLKBase">SiLKBase</a></code></h4>
+<ul class="">
+<li><code><a title="silk.models.silk.SiLKBase.coordinate_mapping_composer" href="#silk.models.silk.SiLKBase.coordinate_mapping_composer">coordinate_mapping_composer</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.dump_patches" href="#silk.models.silk.SiLKBase.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.forward" href="#silk.models.silk.SiLKBase.forward">forward</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.model" href="#silk.models.silk.SiLKBase.model">model</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.model_forward_flow" href="#silk.models.silk.SiLKBase.model_forward_flow">model_forward_flow</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.training" href="#silk.models.silk.SiLKBase.training">training</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.training_step" href="#silk.models.silk.SiLKBase.training_step">training_step</a></code></li>
+<li><code><a title="silk.models.silk.SiLKBase.validation_step" href="#silk.models.silk.SiLKBase.validation_step">validation_step</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.models.silk.SiLKRandomHomographies" href="#silk.models.silk.SiLKRandomHomographies">SiLKRandomHomographies</a></code></h4>
+<ul class="">
+<li><code><a title="silk.models.silk.SiLKRandomHomographies.dump_patches" href="#silk.models.silk.SiLKRandomHomographies.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.models.silk.SiLKRandomHomographies.forward" href="#silk.models.silk.SiLKRandomHomographies.forward">forward</a></code></li>
+<li><code><a title="silk.models.silk.SiLKRandomHomographies.training" href="#silk.models.silk.SiLKRandomHomographies.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

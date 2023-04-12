@@ -1,0 +1,6 @@
+defaults:
+  - defaults
+  - _self_
+
+name: yaml
+sort_keys: true

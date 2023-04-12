@@ -1,0 +1,8 @@
+defaults:
+  - training-all@dataset
+  - _self_
+
+_target_: silk.datasets.abstract.random_partition
+lengths: [2427378, 50000]
+partition_idx: ???
+seed: 0

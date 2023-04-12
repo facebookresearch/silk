@@ -1,0 +1,16 @@
+_target_: silk.datasets.cached.CachedDataset
+
+filepath:
+  _target_: silk.config.paths.join
+  ## indoor
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_indoor_new_240.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_indoor_new_360.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_indoor_new_480.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_indoor_new_600.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_indoor_new_720.h5"]
+  ## outdoor
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_outdoor_240.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_outdoor_360.h5"]
+  _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_outdoor_480.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_outdoor_600.h5"]
+  # _args_: [ASSETS, "results", "hpatches", "cached-results", "LoFTR_outdoor_720.h5"]

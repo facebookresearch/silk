@@ -1,0 +1,9 @@
+_target_: silk.transforms.metric.MetricUpdate
+name: null
+metric:
+  _target_: silk.metrics.hpatches_metrics.MeanMatchingAccuracy
+  threshold: ???
+  ordering: "yx"
+matched_keypoints: "@matched_original_points"
+warped_matched_keypoints: "@matched_warped_points"
+true_homography: "@homography"

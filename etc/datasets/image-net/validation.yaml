@@ -1,0 +1,4 @@
+defaults:
+  - defaults
+  - _self_
+root: "/datasets01/imagenet_full_size/061417/val"

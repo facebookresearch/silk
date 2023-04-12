@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.losses.info_nce.loss API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.losses.info_nce.loss</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import jax
+import jax.numpy as jnp
+from silk.utils.jax import delayed_vjp
+
+
+def positions_to_unidirectional_correspondence(
+    positions,
+    width,
+    height,
+    cell_size,
+    ordering=&#34;yx&#34;,
+):
+    assert ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+    # positions : Nx2
+    cell_size = jnp.array(cell_size, dtype=positions.dtype)
+    cell_size = jnp.expand_dims(cell_size, (0, 1))
+
+    floored_positions = jnp.floor(positions / cell_size).astype(jnp.int32)
+
+    if ordering == &#34;yx&#34;:
+        desc_shape = jnp.array([[height, width]])
+    elif ordering == &#34;xy&#34;:
+        desc_shape = jnp.array([[width, height]])
+
+    mask = jnp.logical_and(floored_positions &gt;= 0, floored_positions &lt; desc_shape)
+    mask = mask.all(axis=1)
+
+    if ordering == &#34;yx&#34;:
+        floored_positions = (
+            floored_positions[..., 0] * width + floored_positions[..., 1]
+        )
+    elif ordering == &#34;xy&#34;:
+        floored_positions = (
+            floored_positions[..., 1] * width + floored_positions[..., 0]
+        )
+    floored_positions = jnp.where(mask, floored_positions, -1)
+
+    return floored_positions
+
+
+def asym_keep_mutual_correspondences_only(corr_0, corr_1):
+    idx = jnp.arange(corr_0.size)
+    is_bidir = corr_1[corr_0] == idx
+    return jnp.where(is_bidir, corr_0, -1)
+
+
+def keep_mutual_correspondences_only(corr_0, corr_1):
+    corr_0 = asym_keep_mutual_correspondences_only(corr_0, corr_1)
+    corr_1 = asym_keep_mutual_correspondences_only(corr_1, corr_0)
+    return corr_0, corr_1
+
+
+def _scan_reduce(x0, x1, reducer, block_size):
+    x0_shape0 = x0.shape[0]
+    n = x0.shape[0] // block_size
+
+    if x0.shape[0] % block_size &gt; 0:
+        r = block_size - x0.shape[0] % block_size
+        _0 = jnp.array(0, dtype=x0.dtype)
+        x0 = jax.lax.pad(x0, _0, ((0, r, 0), (0, 0, 0)))
+        n += 1
+
+    x0 = jax.lax.reshape(x0, (n, block_size, x0.shape[1]))
+    xs = x0
+
+    def fun(_, x0):
+        return None, reducer(x0, x1)
+
+    _, accu = jax.lax.scan(fun, None, xs, length=n, unroll=1)
+
+    def reshape(x):
+        return jnp.ravel(x)[:x0_shape0]
+
+    return jax.tree_map(reshape, accu)
+
+
+def asym_corr_cross_entropy(
+    lse,
+    corr,
+    desc_0,
+    desc_1,
+    ghost_sim,
+    include_ghost_points=False,
+):
+    # we cannot include ghost points if we do not have the ghost similarity parameter
+    assert not (include_ghost_points and (ghost_sim is None))
+
+    # get mask of valid correspondences
+    query_corr = corr &gt;= 0
+    ghost_corr = ~query_corr
+    n_corr = query_corr.sum()
+    n_ghost = query_corr.shape[0] - n_corr
+
+    # make -1 correspondences out-of-bound (for the next get fille)
+    corr = jnp.where(query_corr, corr, desc_1.shape[0])
+
+    # align all descriptors from 1 to descriptors from 0
+    # set unmatched descriptors to 0 (those that are out-of-bound)
+    _desc_1 = desc_1.at[corr].get(
+        mode=&#34;fill&#34;,
+        fill_value=0,
+    )
+
+    # aligned dot product
+    log_num = jax.vmap(jnp.dot, in_axes=(0, 0), out_axes=0)(desc_0, _desc_1)
+
+    # compute log of denominator
+    log_den = lse
+    if ghost_sim is not None:
+        log_den = jnp.logaddexp(log_den, ghost_sim)
+
+    log_p_corr = jnp.sum(log_num, where=query_corr) - jnp.sum(log_den, where=query_corr)
+
+    if include_ghost_points:
+        log_p_ghost = ghost_sim * n_ghost - jnp.sum(log_den, where=ghost_corr)
+    else:
+        log_p_ghost = 0.0
+
+    normalize = True
+    if normalize:
+        log_p_corr /= n_corr
+        log_p_ghost /= n_ghost
+    else:
+        log_p_corr /= query_corr.shape[0]
+        log_p_ghost /= query_corr.shape[0]
+
+    log_p = log_p_corr + log_p_ghost
+
+    return -log_p
+
+
+def sym_corr_cross_entropy(
+    lse_0,
+    lse_1,
+    desc_0,
+    desc_1,
+    corr_0,
+    corr_1,
+    ghost_sim,
+):
+    loss_0 = asym_corr_cross_entropy(
+        lse_0,
+        corr_0,
+        desc_0,
+        desc_1,
+        ghost_sim=ghost_sim,
+    )
+    loss_1 = asym_corr_cross_entropy(
+        lse_1,
+        corr_1,
+        desc_1,
+        desc_0,
+        ghost_sim=ghost_sim,
+    )
+    return loss_0 + loss_1
+
+
+def corr_matching_binary_cross_entropy(
+    best_idx_0,
+    best_idx_1,
+    best_val_0,
+    best_val_1,
+    corr_0,
+    corr_1,
+    logits_0,
+    logits_1,
+    ghost_sim=None,
+):
+    if ghost_sim is not None:
+        best_idx_0 = jnp.where(best_val_0 &gt; ghost_sim, best_idx_0, -1)
+        best_idx_1 = jnp.where(best_val_1 &gt; ghost_sim, best_idx_1, -1)
+
+    best_idx_0, best_idx_1 = keep_mutual_correspondences_only(best_idx_0, best_idx_1)
+
+    # gt positives mask
+    gt_mask_0 = corr_0 &gt;= 0
+    gt_mask_1 = corr_1 &gt;= 0
+
+    # pred positives mask
+    pr_mask_0 = best_idx_0 &gt;= 0
+    pr_mask_1 = best_idx_1 &gt;= 0
+
+    # true positives
+    tp_mask_0 = jnp.logical_and(gt_mask_0, pr_mask_0)
+    tp_mask_1 = jnp.logical_and(gt_mask_1, pr_mask_1)
+
+    # correct matches
+    correct_mask_0 = corr_0 == best_idx_0
+    correct_mask_1 = corr_1 == best_idx_1
+
+    loss_0 = correct_mask_0 * jax.nn.softplus(-logits_0) + (
+        ~correct_mask_0
+    ) * jax.nn.softplus(+logits_0)
+    loss_1 = correct_mask_1 * jax.nn.softplus(-logits_1) + (
+        ~correct_mask_1
+    ) * jax.nn.softplus(+logits_1)
+
+    train_precision = False
+    train_recall = True
+
+    assert train_precision or train_recall
+
+    m0 = tp_mask_0
+    m1 = tp_mask_1
+
+    if train_recall:
+        m0 = jnp.logical_or(m0, gt_mask_0)
+        m1 = jnp.logical_or(m1, gt_mask_1)
+
+    if train_precision:
+        m0 = jnp.logical_or(m0, pr_mask_0)
+        m1 = jnp.logical_or(m1, pr_mask_1)
+
+    n0 = m0.sum()
+    n1 = m1.sum()
+
+    loss_0 = loss_0.sum(where=m0)
+    loss_1 = loss_1.sum(where=m1)
+
+    loss = (loss_0 + loss_1) / (n0 + n1)
+
+    precision = tp_mask_0.sum() / pr_mask_0.sum()
+    recall = tp_mask_0.sum() / gt_mask_0.sum()
+
+    return loss, precision, recall
+
+
+def total_loss(
+    desc_0,
+    desc_1,
+    corr_0,
+    corr_1,
+    logits_0,
+    logits_1,
+    ghost_sim,
+    block_size,
+):
+    if block_size is None:  # reduction on full similarity matrix
+        x0x1 = desc_0 @ desc_1.T
+
+        lse_0 = jax.nn.logsumexp(x0x1, axis=1)
+        lse_1 = jax.nn.logsumexp(x0x1, axis=0)
+        argmax_0 = jnp.argmax(x0x1, axis=1)
+        argmax_1 = jnp.argmax(x0x1, axis=0)
+        max_0 = jnp.max(x0x1, axis=1)
+        max_1 = jnp.max(x0x1, axis=0)
+    else:  # reduction by scanning blocks of similarity matrix
+
+        @delayed_vjp
+        def reducer(x0, x1):
+            x0x1 = x0 @ x1.T
+            output = (
+                jax.nn.logsumexp(x0x1, axis=1),
+                jnp.argmax(x0x1, axis=1),
+                jnp.max(x0x1, axis=1),
+            )
+            return output
+
+        lse_0, argmax_0, max_0 = _scan_reduce(
+            desc_0,
+            desc_1,
+            reducer,
+            block_size,
+        )
+        lse_1, argmax_1, max_1 = _scan_reduce(
+            desc_1,
+            desc_0,
+            reducer,
+            block_size,
+        )
+
+    # info nce loss
+    loss_0 = sym_corr_cross_entropy(
+        lse_0,
+        lse_1,
+        desc_0,
+        desc_1,
+        corr_0,
+        corr_1,
+        ghost_sim,
+    )
+
+    # matching loss
+    loss_1, precision, recall = corr_matching_binary_cross_entropy(
+        argmax_0,
+        argmax_1,
+        max_0,
+        max_1,
+        corr_0,
+        corr_1,
+        logits_0,
+        logits_1,
+        ghost_sim,
+    )
+    return loss_0, loss_1, precision, recall</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.losses.info_nce.loss.asym_corr_cross_entropy"><code class="name flex">
+<span>def <span class="ident">asym_corr_cross_entropy</span></span>(<span>lse, corr, desc_0, desc_1, ghost_sim, include_ghost_points=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def asym_corr_cross_entropy(
+    lse,
+    corr,
+    desc_0,
+    desc_1,
+    ghost_sim,
+    include_ghost_points=False,
+):
+    # we cannot include ghost points if we do not have the ghost similarity parameter
+    assert not (include_ghost_points and (ghost_sim is None))
+
+    # get mask of valid correspondences
+    query_corr = corr &gt;= 0
+    ghost_corr = ~query_corr
+    n_corr = query_corr.sum()
+    n_ghost = query_corr.shape[0] - n_corr
+
+    # make -1 correspondences out-of-bound (for the next get fille)
+    corr = jnp.where(query_corr, corr, desc_1.shape[0])
+
+    # align all descriptors from 1 to descriptors from 0
+    # set unmatched descriptors to 0 (those that are out-of-bound)
+    _desc_1 = desc_1.at[corr].get(
+        mode=&#34;fill&#34;,
+        fill_value=0,
+    )
+
+    # aligned dot product
+    log_num = jax.vmap(jnp.dot, in_axes=(0, 0), out_axes=0)(desc_0, _desc_1)
+
+    # compute log of denominator
+    log_den = lse
+    if ghost_sim is not None:
+        log_den = jnp.logaddexp(log_den, ghost_sim)
+
+    log_p_corr = jnp.sum(log_num, where=query_corr) - jnp.sum(log_den, where=query_corr)
+
+    if include_ghost_points:
+        log_p_ghost = ghost_sim * n_ghost - jnp.sum(log_den, where=ghost_corr)
+    else:
+        log_p_ghost = 0.0
+
+    normalize = True
+    if normalize:
+        log_p_corr /= n_corr
+        log_p_ghost /= n_ghost
+    else:
+        log_p_corr /= query_corr.shape[0]
+        log_p_ghost /= query_corr.shape[0]
+
+    log_p = log_p_corr + log_p_ghost
+
+    return -log_p</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.asym_keep_mutual_correspondences_only"><code class="name flex">
+<span>def <span class="ident">asym_keep_mutual_correspondences_only</span></span>(<span>corr_0, corr_1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def asym_keep_mutual_correspondences_only(corr_0, corr_1):
+    idx = jnp.arange(corr_0.size)
+    is_bidir = corr_1[corr_0] == idx
+    return jnp.where(is_bidir, corr_0, -1)</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.corr_matching_binary_cross_entropy"><code class="name flex">
+<span>def <span class="ident">corr_matching_binary_cross_entropy</span></span>(<span>best_idx_0, best_idx_1, best_val_0, best_val_1, corr_0, corr_1, logits_0, logits_1, ghost_sim=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def corr_matching_binary_cross_entropy(
+    best_idx_0,
+    best_idx_1,
+    best_val_0,
+    best_val_1,
+    corr_0,
+    corr_1,
+    logits_0,
+    logits_1,
+    ghost_sim=None,
+):
+    if ghost_sim is not None:
+        best_idx_0 = jnp.where(best_val_0 &gt; ghost_sim, best_idx_0, -1)
+        best_idx_1 = jnp.where(best_val_1 &gt; ghost_sim, best_idx_1, -1)
+
+    best_idx_0, best_idx_1 = keep_mutual_correspondences_only(best_idx_0, best_idx_1)
+
+    # gt positives mask
+    gt_mask_0 = corr_0 &gt;= 0
+    gt_mask_1 = corr_1 &gt;= 0
+
+    # pred positives mask
+    pr_mask_0 = best_idx_0 &gt;= 0
+    pr_mask_1 = best_idx_1 &gt;= 0
+
+    # true positives
+    tp_mask_0 = jnp.logical_and(gt_mask_0, pr_mask_0)
+    tp_mask_1 = jnp.logical_and(gt_mask_1, pr_mask_1)
+
+    # correct matches
+    correct_mask_0 = corr_0 == best_idx_0
+    correct_mask_1 = corr_1 == best_idx_1
+
+    loss_0 = correct_mask_0 * jax.nn.softplus(-logits_0) + (
+        ~correct_mask_0
+    ) * jax.nn.softplus(+logits_0)
+    loss_1 = correct_mask_1 * jax.nn.softplus(-logits_1) + (
+        ~correct_mask_1
+    ) * jax.nn.softplus(+logits_1)
+
+    train_precision = False
+    train_recall = True
+
+    assert train_precision or train_recall
+
+    m0 = tp_mask_0
+    m1 = tp_mask_1
+
+    if train_recall:
+        m0 = jnp.logical_or(m0, gt_mask_0)
+        m1 = jnp.logical_or(m1, gt_mask_1)
+
+    if train_precision:
+        m0 = jnp.logical_or(m0, pr_mask_0)
+        m1 = jnp.logical_or(m1, pr_mask_1)
+
+    n0 = m0.sum()
+    n1 = m1.sum()
+
+    loss_0 = loss_0.sum(where=m0)
+    loss_1 = loss_1.sum(where=m1)
+
+    loss = (loss_0 + loss_1) / (n0 + n1)
+
+    precision = tp_mask_0.sum() / pr_mask_0.sum()
+    recall = tp_mask_0.sum() / gt_mask_0.sum()
+
+    return loss, precision, recall</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.keep_mutual_correspondences_only"><code class="name flex">
+<span>def <span class="ident">keep_mutual_correspondences_only</span></span>(<span>corr_0, corr_1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def keep_mutual_correspondences_only(corr_0, corr_1):
+    corr_0 = asym_keep_mutual_correspondences_only(corr_0, corr_1)
+    corr_1 = asym_keep_mutual_correspondences_only(corr_1, corr_0)
+    return corr_0, corr_1</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.positions_to_unidirectional_correspondence"><code class="name flex">
+<span>def <span class="ident">positions_to_unidirectional_correspondence</span></span>(<span>positions, width, height, cell_size, ordering='yx')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def positions_to_unidirectional_correspondence(
+    positions,
+    width,
+    height,
+    cell_size,
+    ordering=&#34;yx&#34;,
+):
+    assert ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+    # positions : Nx2
+    cell_size = jnp.array(cell_size, dtype=positions.dtype)
+    cell_size = jnp.expand_dims(cell_size, (0, 1))
+
+    floored_positions = jnp.floor(positions / cell_size).astype(jnp.int32)
+
+    if ordering == &#34;yx&#34;:
+        desc_shape = jnp.array([[height, width]])
+    elif ordering == &#34;xy&#34;:
+        desc_shape = jnp.array([[width, height]])
+
+    mask = jnp.logical_and(floored_positions &gt;= 0, floored_positions &lt; desc_shape)
+    mask = mask.all(axis=1)
+
+    if ordering == &#34;yx&#34;:
+        floored_positions = (
+            floored_positions[..., 0] * width + floored_positions[..., 1]
+        )
+    elif ordering == &#34;xy&#34;:
+        floored_positions = (
+            floored_positions[..., 1] * width + floored_positions[..., 0]
+        )
+    floored_positions = jnp.where(mask, floored_positions, -1)
+
+    return floored_positions</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.sym_corr_cross_entropy"><code class="name flex">
+<span>def <span class="ident">sym_corr_cross_entropy</span></span>(<span>lse_0, lse_1, desc_0, desc_1, corr_0, corr_1, ghost_sim)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sym_corr_cross_entropy(
+    lse_0,
+    lse_1,
+    desc_0,
+    desc_1,
+    corr_0,
+    corr_1,
+    ghost_sim,
+):
+    loss_0 = asym_corr_cross_entropy(
+        lse_0,
+        corr_0,
+        desc_0,
+        desc_1,
+        ghost_sim=ghost_sim,
+    )
+    loss_1 = asym_corr_cross_entropy(
+        lse_1,
+        corr_1,
+        desc_1,
+        desc_0,
+        ghost_sim=ghost_sim,
+    )
+    return loss_0 + loss_1</code></pre>
+</details>
+</dd>
+<dt id="silk.losses.info_nce.loss.total_loss"><code class="name flex">
+<span>def <span class="ident">total_loss</span></span>(<span>desc_0, desc_1, corr_0, corr_1, logits_0, logits_1, ghost_sim, block_size)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def total_loss(
+    desc_0,
+    desc_1,
+    corr_0,
+    corr_1,
+    logits_0,
+    logits_1,
+    ghost_sim,
+    block_size,
+):
+    if block_size is None:  # reduction on full similarity matrix
+        x0x1 = desc_0 @ desc_1.T
+
+        lse_0 = jax.nn.logsumexp(x0x1, axis=1)
+        lse_1 = jax.nn.logsumexp(x0x1, axis=0)
+        argmax_0 = jnp.argmax(x0x1, axis=1)
+        argmax_1 = jnp.argmax(x0x1, axis=0)
+        max_0 = jnp.max(x0x1, axis=1)
+        max_1 = jnp.max(x0x1, axis=0)
+    else:  # reduction by scanning blocks of similarity matrix
+
+        @delayed_vjp
+        def reducer(x0, x1):
+            x0x1 = x0 @ x1.T
+            output = (
+                jax.nn.logsumexp(x0x1, axis=1),
+                jnp.argmax(x0x1, axis=1),
+                jnp.max(x0x1, axis=1),
+            )
+            return output
+
+        lse_0, argmax_0, max_0 = _scan_reduce(
+            desc_0,
+            desc_1,
+            reducer,
+            block_size,
+        )
+        lse_1, argmax_1, max_1 = _scan_reduce(
+            desc_1,
+            desc_0,
+            reducer,
+            block_size,
+        )
+
+    # info nce loss
+    loss_0 = sym_corr_cross_entropy(
+        lse_0,
+        lse_1,
+        desc_0,
+        desc_1,
+        corr_0,
+        corr_1,
+        ghost_sim,
+    )
+
+    # matching loss
+    loss_1, precision, recall = corr_matching_binary_cross_entropy(
+        argmax_0,
+        argmax_1,
+        max_0,
+        max_1,
+        corr_0,
+        corr_1,
+        logits_0,
+        logits_1,
+        ghost_sim,
+    )
+    return loss_0, loss_1, precision, recall</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.losses.info_nce" href="index.html">silk.losses.info_nce</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.losses.info_nce.loss.asym_corr_cross_entropy" href="#silk.losses.info_nce.loss.asym_corr_cross_entropy">asym_corr_cross_entropy</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.asym_keep_mutual_correspondences_only" href="#silk.losses.info_nce.loss.asym_keep_mutual_correspondences_only">asym_keep_mutual_correspondences_only</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.corr_matching_binary_cross_entropy" href="#silk.losses.info_nce.loss.corr_matching_binary_cross_entropy">corr_matching_binary_cross_entropy</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.keep_mutual_correspondences_only" href="#silk.losses.info_nce.loss.keep_mutual_correspondences_only">keep_mutual_correspondences_only</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.positions_to_unidirectional_correspondence" href="#silk.losses.info_nce.loss.positions_to_unidirectional_correspondence">positions_to_unidirectional_correspondence</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.sym_corr_cross_entropy" href="#silk.losses.info_nce.loss.sym_corr_cross_entropy">sym_corr_cross_entropy</a></code></li>
+<li><code><a title="silk.losses.info_nce.loss.total_loss" href="#silk.losses.info_nce.loss.total_loss">total_loss</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

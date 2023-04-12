@@ -1,0 +1,39 @@
+defaults:
+  - formatter: python
+  - logger: defaults
+  - hydra: local
+  - _self_
+  - mode: ???
+
+hydra:
+  sweep:
+    subdir: ${hydra.job.override_dirname}
+  hydra_logging:
+    disable_existing_loggers: true
+  job_logging:
+    disable_existing_loggers: true
+
+debug: false
+
+default:
+  ngpus:
+    _value_: ${self_instantiate:}
+    _target_: silk.config.hardware.get_gpus
+    selection: all
+  ncpus:
+    _value_: ${self_instantiate:}
+    _target_: silk.config.hardware.get_cpus
+
+  loader:
+    defaults:
+      workers:
+        _value_: ${self_instantiate:}
+        _target_: silk.config.hardware.get_cpus
+        percentage: 60
+        max_cpus: 48
+    training:
+      workers: ${..defaults.workers}
+    validation:
+      workers: ${..defaults.workers}
+    test:
+      workers: ${..defaults.workers}

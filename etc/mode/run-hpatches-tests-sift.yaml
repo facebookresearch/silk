@@ -1,0 +1,39 @@
+defaults:
+  - run-hpatches-tests-default
+  - /models/sift@model
+  - _self_
+
+command: "hpatches_tests"
+
+transform:
+  _target_: silk.transforms.abstract.Compose
+  _args_:
+    # run model on batch
+    - _target_: silk.transforms.abstract.MethodCall
+      name: ["original_points", "original_desc"]
+      self_: ${mode.model}
+      method: "__call__"
+      images: "@original_img"
+    # run model on batch
+    - _target_: silk.transforms.abstract.MethodCall
+      name: ["warped_points", "warped_desc"]
+      self_: ${mode.model}
+      method: "__call__"
+      images: "@warped_img"
+
+    # run matching
+    - _target_: silk.transforms.abstract.Lambda
+      name: ["estimated_homography", "matched_original_points", "matched_warped_points"]
+      function:
+        _target_: silk.config.core.locate
+        path: silk.matching.mnn.batched_estimate_homography
+
+      points_0: "@original_points"
+      points_1: "@warped_points"
+      desc_0: "@original_desc"
+      desc_1: "@warped_desc"
+      ordering: "yx"
+
+      matcher_fn:
+        _target_: silk.config.core.locate
+        path: silk.models.sift.matcher

@@ -1,0 +1,46 @@
+defaults:
+  - run-hpatches-tests-default
+  - /models/superpoint-frozen-magicleap-v1@model
+  ## our reproduced models below
+  # - /models/superpoint-frozen-phase-1-best@model
+  # - /models/superpoint-frozen-phase-2-best@model
+  - _self_
+
+command: "hpatches_tests"
+
+model:
+  device: "cuda:0"
+
+transform:
+  _target_: silk.transforms.abstract.Compose
+  _args_:
+    # send all tensors to model's device
+    - _target_: silk.transforms.abstract.Map
+      function:
+        _target_: silk.transforms.tensor.ToDevice
+        device: ${mode.model.device}
+    # run model on batch
+    - _target_: silk.transforms.abstract.MethodCall
+      name: ["original_probs", "original_points", "original_desc"]
+      self_: ${mode.model}
+      method: "model_forward_flow"
+      images: "@original_img"
+      outputs: ["score", "positions", "sparse_descriptors"]
+    # run model on batch
+    - _target_: silk.transforms.abstract.MethodCall
+      name: ["warped_probs", "warped_points", "warped_desc"]
+      self_: ${mode.model}
+      method: "model_forward_flow"
+      images: "@warped_img"
+      outputs: ["score", "positions", "sparse_descriptors"]
+    # run matching
+    - _target_: silk.transforms.abstract.Lambda
+      name: ["estimated_homography", "matched_original_points", "matched_warped_points"]
+      function:
+        _target_: silk.config.core.locate
+        path: silk.matching.mnn.batched_estimate_homography
+      points_0: "@original_points"
+      points_1: "@warped_points"
+      desc_0: "@original_desc"
+      desc_1: "@warped_desc"
+      ordering: "yx"

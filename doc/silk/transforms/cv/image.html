@@ -1,0 +1,1706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.transforms.cv.image API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.transforms.cv.image</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from typing import Tuple, Union
+
+import torch
+import torch.nn.functional as F
+import torchvision.transforms
+from silk.cv.homography import HomographicSampler
+from silk.transforms.abstract import Transform
+from silk.transforms.tensor import Clamp
+
+
+class HWCToCHW(Transform):
+    &#34;&#34;&#34;Convert image format from HWC to CHW. Handles batch dimension when present.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        if len(item.shape) == 3:
+            return item.permute((2, 0, 1))
+        elif len(item.shape) == 4:
+            return item.permute((0, 3, 1, 2))
+        raise RuntimeError(&#34;invalid tensor shape, 3 or 4 dimensions are expected&#34;)
+
+
+class CHWToHWC(Transform):
+    &#34;&#34;&#34;Reverse operation of `HWCToCHW`.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        if len(item.shape) == 3:
+            return item.permute((1, 2, 0))
+        elif len(item.shape) == 4:
+            return item.permute((0, 2, 3, 1))
+        raise RuntimeError(&#34;invalid tensor shape, 3 or 4 dimensions are expected&#34;)
+
+
+class Resize(Transform):
+    &#34;&#34;&#34;Simple wrapper of `torchvision.transforms.Resize` that handles `size` that are not `int`, `list` or `tuple`.&#34;&#34;&#34;
+
+    def __init__(self, size, *args, **kwargs) -&gt; None:
+        super().__init__()
+
+        if not isinstance(size, int):
+            # convert iterable to tuple to avoid invalid size type in function below
+            size = tuple(size)
+
+        self._resizer = torchvision.transforms.Resize(size, *args, **kwargs)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        return self._resizer(item)
+
+
+class GaussianNoise(Transform):
+    &#34;&#34;&#34;Add Gaussian Noise to Images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        std: Union[float, Tuple[float, float]],
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        std : Union[float, Tuple[float, float]]
+            Standard deviation.
+            If float, the same standard deviation will be used accross all images.
+            If tuple of floats (min_std, max_std), a standard deviation will be sampled per image in the provided range.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._std = std
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply the Gaussian Noise to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with added noise.
+        &#34;&#34;&#34;
+        if isinstance(self._std, float):
+            std = self._std
+        else:
+            # sample standard deviation per image
+            batch_shape = item.shape[:-3] + (1, 1, 1)
+            std = self._std[0] + torch.rand(batch_shape, device=item.device) * (
+                self._std[1] - self._std[0]
+            )
+
+        # compute noise
+        noise = torch.normal(
+            0.0,
+            1.0,
+            size=item.shape,
+            device=item.device,
+            dtype=item.dtype,
+        )
+        noise *= std
+
+        # apply noise &amp; clamp
+        item += noise
+        item = self._clamp(item)
+        return item
+
+
+class SpeckleNoise(Transform):
+    &#34;&#34;&#34;Add Speckle Noise to Images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        prob: Union[float, Tuple[float, float]],
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        prob : Union[float, Tuple[float, float]]
+            Probability of adding a min/max speckle noise.
+            If float, the same probability will be used accross all images.
+            If tuple of floats (min_prob, max_prob), a probability will be sampled per image in the provided range.
+        max_val : Union[float, None], optional
+            Max speckle noise value, by default None
+        min_val : Union[float, None], optional
+            Min speckle noise value, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        if (min_val is None) and (max_val is None):
+            raise RuntimeError(
+                &#34;either `max_val` or `min_val` (or both) have to be provided&#34;
+            )
+
+        self._prob = prob
+        self._min_val = min_val
+        self._max_val = max_val
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply the Speckle Noise to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with added noise.
+        &#34;&#34;&#34;
+        if isinstance(self._prob, float):
+            prob_range = self._prob
+        else:
+            # sample probability per image
+            batch_shape = batch_shape = item.shape[:-3] + (1, 1, 1)
+            prob_range = self._prob[0] + torch.rand(batch_shape, device=item.device) * (
+                self._prob[1] - self._prob[0]
+            )
+
+        # sample probabilities of adding speckle noise
+        prob_sampling = torch.rand(item.shape, device=item.device)
+
+        # add speckle noise
+        shape = (1,) * len(item.shape)
+
+        if self._min_val is not None:
+            min_val = torch.full(
+                shape, self._min_val, device=item.device, dtype=item.dtype
+            )
+            item = torch.where(prob_sampling &lt;= prob_range, min_val, item)
+
+        if self._max_val is not None:
+            max_val = torch.full(
+                shape, self._max_val, device=item.device, dtype=item.dtype
+            )
+            item = torch.where((1.0 - prob_sampling) &lt;= prob_range, max_val, item)
+
+        return item
+
+
+class RandomBrightness(Transform):
+    &#34;&#34;&#34;Randomly change the image brightness.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        max_delta: float,
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        max_delta : float
+            Maximum difference between current image intensity and new image intensity.
+            A delta will be sampled in `[0, max_delta]` range for each image independently.
+            Then, that delta is added to the current image intensity.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._max_delta = max_delta
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply random brightness to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with changed brightness.
+        &#34;&#34;&#34;
+        # sample delta per image
+        batch_shape = item.shape[:-3] + (1, 1, 1)
+        delta = (
+            -self._max_delta
+            + 2 * torch.rand(batch_shape, device=item.device) * self._max_delta
+        )
+
+        # apply intensity change and clamp
+        item = item.add_(delta)
+        item = self._clamp(item)
+
+        return item
+
+
+class RandomContrast(Transform):
+    &#34;&#34;&#34;Randomly change contrast of images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        max_factor_delta: float,
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        max_factor_delta : float
+            A factor will be sampled in `[1 - max_delta, 1 + max_delta]` range for each image independently.
+            That factor will be used to change the contrast as in `(I - mean) * factor + mean`.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._max_factor_delta = max_factor_delta
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply contrast change to Tensor
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with changed contrast.
+        &#34;&#34;&#34;
+
+        # compute mean per (batch, channel)
+        mean_values = torch.mean(item, (-2, -1), keepdim=True)
+
+        # sample factors per image
+        batch_shape = item.shape[:-3] + (1, 1, 1)
+        factors = (
+            1.0
+            - self._max_factor_delta
+            + 2 * torch.rand(batch_shape, device=item.device) * self._max_factor_delta
+        )
+
+        # apply contrast change and clamp
+        item = (item - mean_values) * factors + mean_values
+        item = self._clamp(item)
+
+        return item
+
+
+class MotionBlur(Transform):
+    &#34;&#34;&#34;Blur 2D images using the motion filter.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        kernel_size: int,
+        angle: Union[torch.Tensor, float],
+        direction: Union[torch.Tensor, float],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        kernel_size : int
+            Kernel size of motion filter.
+        angle : Union[torch.Tensor, float]
+            Angle of the motion.
+            If float, the same angle will be used for every inputs.
+            If tensor of size B, the `angle[i]` will be applied to `input[i]`.
+        direction : Union[torch.Tensor, float]
+            Direction of the motion :
+              -1 for direction towards the back.
+              +1 for direction towards the front.
+              0  for uniform direction.
+            If float, the same direction will be used for every inputs.
+            If tensor of size B, the `direction[i]` will be applied to `input[i]`.
+        &#34;&#34;&#34;
+        super().__init__()
+        self.kernel_size = kernel_size
+        self.angle: float = angle
+        self.direction: float = direction
+
+    @staticmethod
+    def motion_blur(
+        input: torch.Tensor,
+        kernel_size: int,
+        angle: Union[float, torch.Tensor],
+        direction: Union[float, torch.Tensor],
+        mode: str = &#34;bilinear&#34;,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply motion blur to input.
+
+        Parameters
+        ----------
+        input : torch.Tensor
+            Input as tensor of shape BxCxHxW.
+        kernel_size : int
+            See `MotionBlur.__init__`.
+        angle : Union[torch.Tensor, float]
+           See `MotionBlur.__init__`.
+        direction : Union[torch.Tensor, float]
+            See `MotionBlur.__init__`.
+        mode : str, optional
+            Sampling mode to use for kernel rotation. &#34;bilinear&#34; or &#34;nearest&#34;.
+        &#34;&#34;&#34;
+        kernel: torch.Tensor = MotionBlur._get_motion_kernel2d(
+            kernel_size, angle, direction, mode, input.device
+        )
+
+        if input.size(0) &gt; 1 and kernel.size(0) == 1:
+            kernel = kernel.expand((input.size(0), -1, -1, -1))
+
+        return MotionBlur._filter2d(input, kernel)
+
+    @staticmethod
+    def _filter2d(
+        input: torch.Tensor,
+        kernel: torch.Tensor,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Convolve a tensor with a 2d kernel.&#34;&#34;&#34;
+        # get shapes
+        bi, ci, hi, wi = input.shape
+        bk, ck, hk, wk = kernel.shape
+
+        # check kernel is of odd size and large enough
+        assert hk &gt; 2
+        assert wk &gt; 2
+        assert hk % 2 == 1
+        assert wk % 2 == 1
+        assert bi == bk
+        assert ck == 1
+
+        # prepare kernel for group convolution
+        # TODO(Pierre) : re-check if line below is indeed unecessary
+        # kernel = kernel.expand(-1, ci, -1, -1)
+        kernel = kernel.reshape(-1, 1, hk, wk)
+
+        # prepare input for group convolution
+        input = input.permute((1, 0, 2, 3))
+
+        # convolve the tensor with the kernel.
+        output = F.conv2d(
+            input,
+            kernel,
+            groups=bk,
+            padding=&#34;same&#34;,
+            stride=1,
+        )
+
+        # permute back to original shape
+        output = output.permute((1, 0, 2, 3))
+
+        return output
+
+    @staticmethod
+    def _get_motion_kernel2d(
+        kernel_size: int,
+        angle: Union[torch.Tensor, float],
+        direction: Union[torch.Tensor, float] = 0.0,
+        mode: str = &#34;nearest&#34;,
+        device: str = &#34;cpu&#34;,
+        dtype: torch.dtype = torch.float,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Return 2D motion blur kernel.&#34;&#34;&#34;
+        # check kernel size
+        if not isinstance(kernel_size, int) or kernel_size % 2 == 0 or kernel_size &lt; 3:
+            raise TypeError(&#34;kernel_size must be an odd integer &gt;= than 3&#34;)
+
+        # check angle parameter
+        if not isinstance(angle, torch.Tensor):
+            angle = torch.tensor(angle, device=device, dtype=dtype)
+        else:
+            angle = angle.to(device=device, dtype=dtype)
+
+        # check direction parameter
+        if not isinstance(direction, torch.Tensor):
+            direction = torch.tensor(direction, device=device, dtype=dtype)
+        else:
+            direction = direction.to(device=device, dtype=dtype)
+
+        # add batch dimension if needed
+        if angle.dim() == 0:
+            angle = angle.unsqueeze(0)
+        if direction.dim() == 0:
+            direction = direction.unsqueeze(0)
+
+        # build kernel with angle 0
+        kernel_tuple: Tuple[int, int] = (kernel_size, kernel_size)
+        direction = (torch.clamp(direction, -1.0, 1.0) + 1.0) / 2.0
+
+        k = torch.stack(
+            [
+                (direction + ((1 - 2 * direction) / (kernel_size - 1)) * i)
+                for i in range(kernel_size)
+            ],
+            dim=-1,
+        )
+        kernel = torch.nn.functional.pad(
+            k[:, None], [0, 0, kernel_size // 2, kernel_size // 2, 0, 0]
+        )
+
+        assert kernel.shape == torch.Size([direction.size(0), *kernel_tuple])
+
+        # add channel
+        kernel = kernel.unsqueeze(1)
+
+        # rotate (counter-clockwise) kernel by given angle
+        kernel = MotionBlur._rotate_kernels(
+            kernel,
+            angle,
+            mode=mode,
+            padding_mode=&#34;zeros&#34;,
+        )
+
+        # normalize
+        kernel = kernel / kernel.sum(dim=(2, 3), keepdim=True)
+
+        return kernel
+
+    @staticmethod
+    def _rotate_kernels(
+        kernels: torch.Tensor,
+        angles: torch.Tensor,
+        mode: str = &#34;bilinear&#34;,
+        padding_mode: str = &#34;zeros&#34;,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Rotate kernels by provided angles.&#34;&#34;&#34;
+
+        sampler = HomographicSampler(angles.size(0), device=kernels.device)
+        sampler.rotate(angles.unsqueeze(-1))
+        return sampler.extract_crop(
+            kernels,
+            kernels.shape[-2:],
+            mode=mode,
+            padding_mode=padding_mode,
+        )
+
+    def __call__(self, x: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply motion blur.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Images as BxCxHxW tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            Motion blurred images.
+        &#34;&#34;&#34;
+        return MotionBlur.motion_blur(
+            x,
+            self.kernel_size,
+            self.angle,
+            self.direction,
+        )
+
+
+class RandomMotionBlur(Transform):
+    &#34;&#34;&#34;Apply random motion blur filter.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        kernel_size: int,
+        angle: Union[float, Tuple[float, float]] = (0, 2 * torch.pi),
+        direction: Union[float, Tuple[float, float]] = 0.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        kernel_size : int
+            Size of motion blur kernel.
+        angle : Union[float, Tuple[float, float]], optional
+            Angle to use, or range to uniformely sample from, by default (0, 2 * torch.pi)
+        direction : Union[float, Tuple[float, float]], optional
+            Direction to use, or range to uniformely sample from, by default 0.0
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._kernel_size = kernel_size
+        self._angle = angle
+        self._direction = direction
+
+    def __call__(self, x: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply randomly generated motion blur to images.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Image as BxCxHxW tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            Motion blurred images.
+        &#34;&#34;&#34;
+        batch_size = x.size(0)
+
+        # sample angles
+        if isinstance(self._angle, float):
+            angle = self._angle
+        else:
+            angle = self._angle[0] + torch.rand(batch_size, device=x.device) * (
+                self._angle[1] - self._angle[0]
+            )
+
+        # sample positions
+        if isinstance(self._direction, float):
+            direction = self._direction
+        else:
+            direction = self._direction[0] + torch.rand(batch_size, device=x.device) * (
+                self._direction[1] - self._direction[0]
+            )
+
+        return MotionBlur.motion_blur(
+            x,
+            self._kernel_size,
+            angle,
+            direction,
+        )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.transforms.cv.image.CHWToHWC"><code class="flex name class">
+<span>class <span class="ident">CHWToHWC</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reverse operation of <code><a title="silk.transforms.cv.image.HWCToCHW" href="#silk.transforms.cv.image.HWCToCHW">HWCToCHW</a></code>.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CHWToHWC(Transform):
+    &#34;&#34;&#34;Reverse operation of `HWCToCHW`.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        if len(item.shape) == 3:
+            return item.permute((1, 2, 0))
+        elif len(item.shape) == 4:
+            return item.permute((0, 2, 3, 1))
+        raise RuntimeError(&#34;invalid tensor shape, 3 or 4 dimensions are expected&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.CHWToHWC.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.CHWToHWC.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.GaussianNoise"><code class="flex name class">
+<span>class <span class="ident">GaussianNoise</span></span>
+<span>(</span><span>std: Union[float, Tuple[float, float]], max_val: Optional[float] = None, min_val: Optional[float] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add Gaussian Noise to Images.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>std</code></strong> :&ensp;<code>Union[float, Tuple[float, float]]</code></dt>
+<dd>Standard deviation.
+If float, the same standard deviation will be used accross all images.
+If tuple of floats (min_std, max_std), a standard deviation will be sampled per image in the provided range.</dd>
+<dt><strong><code>max_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s max_val, by default None</dd>
+<dt><strong><code>min_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s min_val, by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GaussianNoise(Transform):
+    &#34;&#34;&#34;Add Gaussian Noise to Images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        std: Union[float, Tuple[float, float]],
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        std : Union[float, Tuple[float, float]]
+            Standard deviation.
+            If float, the same standard deviation will be used accross all images.
+            If tuple of floats (min_std, max_std), a standard deviation will be sampled per image in the provided range.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._std = std
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply the Gaussian Noise to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with added noise.
+        &#34;&#34;&#34;
+        if isinstance(self._std, float):
+            std = self._std
+        else:
+            # sample standard deviation per image
+            batch_shape = item.shape[:-3] + (1, 1, 1)
+            std = self._std[0] + torch.rand(batch_shape, device=item.device) * (
+                self._std[1] - self._std[0]
+            )
+
+        # compute noise
+        noise = torch.normal(
+            0.0,
+            1.0,
+            size=item.shape,
+            device=item.device,
+            dtype=item.dtype,
+        )
+        noise *= std
+
+        # apply noise &amp; clamp
+        item += noise
+        item = self._clamp(item)
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.GaussianNoise.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.GaussianNoise.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.HWCToCHW"><code class="flex name class">
+<span>class <span class="ident">HWCToCHW</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert image format from HWC to CHW. Handles batch dimension when present.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HWCToCHW(Transform):
+    &#34;&#34;&#34;Convert image format from HWC to CHW. Handles batch dimension when present.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        if len(item.shape) == 3:
+            return item.permute((2, 0, 1))
+        elif len(item.shape) == 4:
+            return item.permute((0, 3, 1, 2))
+        raise RuntimeError(&#34;invalid tensor shape, 3 or 4 dimensions are expected&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.HWCToCHW.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.HWCToCHW.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.MotionBlur"><code class="flex name class">
+<span>class <span class="ident">MotionBlur</span></span>
+<span>(</span><span>kernel_size: int, angle: Union[float, torch.Tensor], direction: Union[float, torch.Tensor])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Blur 2D images using the motion filter.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>kernel_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Kernel size of motion filter.</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>Union[torch.Tensor, float]</code></dt>
+<dd>Angle of the motion.
+If float, the same angle will be used for every inputs.
+If tensor of size B, the <code>angle[i]</code> will be applied to <code>input[i]</code>.</dd>
+<dt><strong><code>direction</code></strong> :&ensp;<code>Union[torch.Tensor, float]</code></dt>
+<dd>Direction of the motion :
+-1 for direction towards the back.
++1 for direction towards the front.
+0
+for uniform direction.
+If float, the same direction will be used for every inputs.
+If tensor of size B, the <code>direction[i]</code> will be applied to <code>input[i]</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MotionBlur(Transform):
+    &#34;&#34;&#34;Blur 2D images using the motion filter.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        kernel_size: int,
+        angle: Union[torch.Tensor, float],
+        direction: Union[torch.Tensor, float],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        kernel_size : int
+            Kernel size of motion filter.
+        angle : Union[torch.Tensor, float]
+            Angle of the motion.
+            If float, the same angle will be used for every inputs.
+            If tensor of size B, the `angle[i]` will be applied to `input[i]`.
+        direction : Union[torch.Tensor, float]
+            Direction of the motion :
+              -1 for direction towards the back.
+              +1 for direction towards the front.
+              0  for uniform direction.
+            If float, the same direction will be used for every inputs.
+            If tensor of size B, the `direction[i]` will be applied to `input[i]`.
+        &#34;&#34;&#34;
+        super().__init__()
+        self.kernel_size = kernel_size
+        self.angle: float = angle
+        self.direction: float = direction
+
+    @staticmethod
+    def motion_blur(
+        input: torch.Tensor,
+        kernel_size: int,
+        angle: Union[float, torch.Tensor],
+        direction: Union[float, torch.Tensor],
+        mode: str = &#34;bilinear&#34;,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply motion blur to input.
+
+        Parameters
+        ----------
+        input : torch.Tensor
+            Input as tensor of shape BxCxHxW.
+        kernel_size : int
+            See `MotionBlur.__init__`.
+        angle : Union[torch.Tensor, float]
+           See `MotionBlur.__init__`.
+        direction : Union[torch.Tensor, float]
+            See `MotionBlur.__init__`.
+        mode : str, optional
+            Sampling mode to use for kernel rotation. &#34;bilinear&#34; or &#34;nearest&#34;.
+        &#34;&#34;&#34;
+        kernel: torch.Tensor = MotionBlur._get_motion_kernel2d(
+            kernel_size, angle, direction, mode, input.device
+        )
+
+        if input.size(0) &gt; 1 and kernel.size(0) == 1:
+            kernel = kernel.expand((input.size(0), -1, -1, -1))
+
+        return MotionBlur._filter2d(input, kernel)
+
+    @staticmethod
+    def _filter2d(
+        input: torch.Tensor,
+        kernel: torch.Tensor,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Convolve a tensor with a 2d kernel.&#34;&#34;&#34;
+        # get shapes
+        bi, ci, hi, wi = input.shape
+        bk, ck, hk, wk = kernel.shape
+
+        # check kernel is of odd size and large enough
+        assert hk &gt; 2
+        assert wk &gt; 2
+        assert hk % 2 == 1
+        assert wk % 2 == 1
+        assert bi == bk
+        assert ck == 1
+
+        # prepare kernel for group convolution
+        # TODO(Pierre) : re-check if line below is indeed unecessary
+        # kernel = kernel.expand(-1, ci, -1, -1)
+        kernel = kernel.reshape(-1, 1, hk, wk)
+
+        # prepare input for group convolution
+        input = input.permute((1, 0, 2, 3))
+
+        # convolve the tensor with the kernel.
+        output = F.conv2d(
+            input,
+            kernel,
+            groups=bk,
+            padding=&#34;same&#34;,
+            stride=1,
+        )
+
+        # permute back to original shape
+        output = output.permute((1, 0, 2, 3))
+
+        return output
+
+    @staticmethod
+    def _get_motion_kernel2d(
+        kernel_size: int,
+        angle: Union[torch.Tensor, float],
+        direction: Union[torch.Tensor, float] = 0.0,
+        mode: str = &#34;nearest&#34;,
+        device: str = &#34;cpu&#34;,
+        dtype: torch.dtype = torch.float,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Return 2D motion blur kernel.&#34;&#34;&#34;
+        # check kernel size
+        if not isinstance(kernel_size, int) or kernel_size % 2 == 0 or kernel_size &lt; 3:
+            raise TypeError(&#34;kernel_size must be an odd integer &gt;= than 3&#34;)
+
+        # check angle parameter
+        if not isinstance(angle, torch.Tensor):
+            angle = torch.tensor(angle, device=device, dtype=dtype)
+        else:
+            angle = angle.to(device=device, dtype=dtype)
+
+        # check direction parameter
+        if not isinstance(direction, torch.Tensor):
+            direction = torch.tensor(direction, device=device, dtype=dtype)
+        else:
+            direction = direction.to(device=device, dtype=dtype)
+
+        # add batch dimension if needed
+        if angle.dim() == 0:
+            angle = angle.unsqueeze(0)
+        if direction.dim() == 0:
+            direction = direction.unsqueeze(0)
+
+        # build kernel with angle 0
+        kernel_tuple: Tuple[int, int] = (kernel_size, kernel_size)
+        direction = (torch.clamp(direction, -1.0, 1.0) + 1.0) / 2.0
+
+        k = torch.stack(
+            [
+                (direction + ((1 - 2 * direction) / (kernel_size - 1)) * i)
+                for i in range(kernel_size)
+            ],
+            dim=-1,
+        )
+        kernel = torch.nn.functional.pad(
+            k[:, None], [0, 0, kernel_size // 2, kernel_size // 2, 0, 0]
+        )
+
+        assert kernel.shape == torch.Size([direction.size(0), *kernel_tuple])
+
+        # add channel
+        kernel = kernel.unsqueeze(1)
+
+        # rotate (counter-clockwise) kernel by given angle
+        kernel = MotionBlur._rotate_kernels(
+            kernel,
+            angle,
+            mode=mode,
+            padding_mode=&#34;zeros&#34;,
+        )
+
+        # normalize
+        kernel = kernel / kernel.sum(dim=(2, 3), keepdim=True)
+
+        return kernel
+
+    @staticmethod
+    def _rotate_kernels(
+        kernels: torch.Tensor,
+        angles: torch.Tensor,
+        mode: str = &#34;bilinear&#34;,
+        padding_mode: str = &#34;zeros&#34;,
+    ) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Rotate kernels by provided angles.&#34;&#34;&#34;
+
+        sampler = HomographicSampler(angles.size(0), device=kernels.device)
+        sampler.rotate(angles.unsqueeze(-1))
+        return sampler.extract_crop(
+            kernels,
+            kernels.shape[-2:],
+            mode=mode,
+            padding_mode=padding_mode,
+        )
+
+    def __call__(self, x: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply motion blur.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Images as BxCxHxW tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            Motion blurred images.
+        &#34;&#34;&#34;
+        return MotionBlur.motion_blur(
+            x,
+            self.kernel_size,
+            self.angle,
+            self.direction,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.MotionBlur.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.MotionBlur.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.transforms.cv.image.MotionBlur.motion_blur"><code class="name flex">
+<span>def <span class="ident">motion_blur</span></span>(<span>input: torch.Tensor, kernel_size: int, angle: Union[float, torch.Tensor], direction: Union[float, torch.Tensor], mode: str = 'bilinear') ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply motion blur to input.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>input</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>Input as tensor of shape BxCxHxW.</dd>
+<dt><strong><code>kernel_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>See <code><a title="silk.transforms.cv.image.MotionBlur" href="#silk.transforms.cv.image.MotionBlur">MotionBlur</a></code>.</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>Union[torch.Tensor, float]</code></dt>
+<dd>&nbsp;</dd>
+<dt>See <code><a title="silk.transforms.cv.image.MotionBlur" href="#silk.transforms.cv.image.MotionBlur">MotionBlur</a></code>.</dt>
+<dt><strong><code>direction</code></strong> :&ensp;<code>Union[torch.Tensor, float]</code></dt>
+<dd>See <code><a title="silk.transforms.cv.image.MotionBlur" href="#silk.transforms.cv.image.MotionBlur">MotionBlur</a></code>.</dd>
+<dt><strong><code>mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Sampling mode to use for kernel rotation. "bilinear" or "nearest".</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def motion_blur(
+    input: torch.Tensor,
+    kernel_size: int,
+    angle: Union[float, torch.Tensor],
+    direction: Union[float, torch.Tensor],
+    mode: str = &#34;bilinear&#34;,
+) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Apply motion blur to input.
+
+    Parameters
+    ----------
+    input : torch.Tensor
+        Input as tensor of shape BxCxHxW.
+    kernel_size : int
+        See `MotionBlur.__init__`.
+    angle : Union[torch.Tensor, float]
+       See `MotionBlur.__init__`.
+    direction : Union[torch.Tensor, float]
+        See `MotionBlur.__init__`.
+    mode : str, optional
+        Sampling mode to use for kernel rotation. &#34;bilinear&#34; or &#34;nearest&#34;.
+    &#34;&#34;&#34;
+    kernel: torch.Tensor = MotionBlur._get_motion_kernel2d(
+        kernel_size, angle, direction, mode, input.device
+    )
+
+    if input.size(0) &gt; 1 and kernel.size(0) == 1:
+        kernel = kernel.expand((input.size(0), -1, -1, -1))
+
+    return MotionBlur._filter2d(input, kernel)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.RandomBrightness"><code class="flex name class">
+<span>class <span class="ident">RandomBrightness</span></span>
+<span>(</span><span>max_delta: float, max_val: Optional[float] = None, min_val: Optional[float] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Randomly change the image brightness.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>max_delta</code></strong> :&ensp;<code>float</code></dt>
+<dd>Maximum difference between current image intensity and new image intensity.
+A delta will be sampled in <code>[0, max_delta]</code> range for each image independently.
+Then, that delta is added to the current image intensity.</dd>
+<dt><strong><code>max_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s max_val, by default None</dd>
+<dt><strong><code>min_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s min_val, by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RandomBrightness(Transform):
+    &#34;&#34;&#34;Randomly change the image brightness.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        max_delta: float,
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        max_delta : float
+            Maximum difference between current image intensity and new image intensity.
+            A delta will be sampled in `[0, max_delta]` range for each image independently.
+            Then, that delta is added to the current image intensity.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._max_delta = max_delta
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply random brightness to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with changed brightness.
+        &#34;&#34;&#34;
+        # sample delta per image
+        batch_shape = item.shape[:-3] + (1, 1, 1)
+        delta = (
+            -self._max_delta
+            + 2 * torch.rand(batch_shape, device=item.device) * self._max_delta
+        )
+
+        # apply intensity change and clamp
+        item = item.add_(delta)
+        item = self._clamp(item)
+
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.RandomBrightness.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.RandomBrightness.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.RandomContrast"><code class="flex name class">
+<span>class <span class="ident">RandomContrast</span></span>
+<span>(</span><span>max_factor_delta: float, max_val: Optional[float] = None, min_val: Optional[float] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Randomly change contrast of images.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>max_factor_delta</code></strong> :&ensp;<code>float</code></dt>
+<dd>A factor will be sampled in <code>[1 - max_delta, 1 + max_delta]</code> range for each image independently.
+That factor will be used to change the contrast as in <code>(I - mean) * factor + mean</code>.</dd>
+<dt><strong><code>max_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s max_val, by default None</dd>
+<dt><strong><code>min_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd><code>Clamp</code>'s min_val, by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RandomContrast(Transform):
+    &#34;&#34;&#34;Randomly change contrast of images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        max_factor_delta: float,
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        max_factor_delta : float
+            A factor will be sampled in `[1 - max_delta, 1 + max_delta]` range for each image independently.
+            That factor will be used to change the contrast as in `(I - mean) * factor + mean`.
+        max_val : Union[float, None], optional
+            `Clamp`&#39;s max_val, by default None
+        min_val : Union[float, None], optional
+            `Clamp`&#39;s min_val, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._max_factor_delta = max_factor_delta
+        self._clamp = Clamp(min_val, max_val)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply contrast change to Tensor
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with changed contrast.
+        &#34;&#34;&#34;
+
+        # compute mean per (batch, channel)
+        mean_values = torch.mean(item, (-2, -1), keepdim=True)
+
+        # sample factors per image
+        batch_shape = item.shape[:-3] + (1, 1, 1)
+        factors = (
+            1.0
+            - self._max_factor_delta
+            + 2 * torch.rand(batch_shape, device=item.device) * self._max_factor_delta
+        )
+
+        # apply contrast change and clamp
+        item = (item - mean_values) * factors + mean_values
+        item = self._clamp(item)
+
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.RandomContrast.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.RandomContrast.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.RandomMotionBlur"><code class="flex name class">
+<span>class <span class="ident">RandomMotionBlur</span></span>
+<span>(</span><span>kernel_size: int, angle: Union[float, Tuple[float, float]] = (0, 6.283185307179586), direction: Union[float, Tuple[float, float]] = 0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply random motion blur filter.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>kernel_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Size of motion blur kernel.</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>Union[float, Tuple[float, float]]</code>, optional</dt>
+<dd>Angle to use, or range to uniformely sample from, by default (0, 2 * torch.pi)</dd>
+<dt><strong><code>direction</code></strong> :&ensp;<code>Union[float, Tuple[float, float]]</code>, optional</dt>
+<dd>Direction to use, or range to uniformely sample from, by default 0.0</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RandomMotionBlur(Transform):
+    &#34;&#34;&#34;Apply random motion blur filter.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        kernel_size: int,
+        angle: Union[float, Tuple[float, float]] = (0, 2 * torch.pi),
+        direction: Union[float, Tuple[float, float]] = 0.0,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        kernel_size : int
+            Size of motion blur kernel.
+        angle : Union[float, Tuple[float, float]], optional
+            Angle to use, or range to uniformely sample from, by default (0, 2 * torch.pi)
+        direction : Union[float, Tuple[float, float]], optional
+            Direction to use, or range to uniformely sample from, by default 0.0
+        &#34;&#34;&#34;
+        super().__init__()
+
+        self._kernel_size = kernel_size
+        self._angle = angle
+        self._direction = direction
+
+    def __call__(self, x: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply randomly generated motion blur to images.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Image as BxCxHxW tensor.
+
+        Returns
+        -------
+        torch.Tensor
+            Motion blurred images.
+        &#34;&#34;&#34;
+        batch_size = x.size(0)
+
+        # sample angles
+        if isinstance(self._angle, float):
+            angle = self._angle
+        else:
+            angle = self._angle[0] + torch.rand(batch_size, device=x.device) * (
+                self._angle[1] - self._angle[0]
+            )
+
+        # sample positions
+        if isinstance(self._direction, float):
+            direction = self._direction
+        else:
+            direction = self._direction[0] + torch.rand(batch_size, device=x.device) * (
+                self._direction[1] - self._direction[0]
+            )
+
+        return MotionBlur.motion_blur(
+            x,
+            self._kernel_size,
+            angle,
+            direction,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.RandomMotionBlur.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.RandomMotionBlur.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.Resize"><code class="flex name class">
+<span>class <span class="ident">Resize</span></span>
+<span>(</span><span>size, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Simple wrapper of <code>torchvision.transforms.Resize</code> that handles <code>size</code> that are not <code>int</code>, <code>list</code> or <code>tuple</code>.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Resize(Transform):
+    &#34;&#34;&#34;Simple wrapper of `torchvision.transforms.Resize` that handles `size` that are not `int`, `list` or `tuple`.&#34;&#34;&#34;
+
+    def __init__(self, size, *args, **kwargs) -&gt; None:
+        super().__init__()
+
+        if not isinstance(size, int):
+            # convert iterable to tuple to avoid invalid size type in function below
+            size = tuple(size)
+
+        self._resizer = torchvision.transforms.Resize(size, *args, **kwargs)
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        return self._resizer(item)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.Resize.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.Resize.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="silk.transforms.cv.image.SpeckleNoise"><code class="flex name class">
+<span>class <span class="ident">SpeckleNoise</span></span>
+<span>(</span><span>prob: Union[float, Tuple[float, float]], max_val: Optional[float] = None, min_val: Optional[float] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add Speckle Noise to Images.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>prob</code></strong> :&ensp;<code>Union[float, Tuple[float, float]]</code></dt>
+<dd>Probability of adding a min/max speckle noise.
+If float, the same probability will be used accross all images.
+If tuple of floats (min_prob, max_prob), a probability will be sampled per image in the provided range.</dd>
+<dt><strong><code>max_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd>Max speckle noise value, by default None</dd>
+<dt><strong><code>min_val</code></strong> :&ensp;<code>Union[float, None]</code>, optional</dt>
+<dd>Min speckle noise value, by default None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpeckleNoise(Transform):
+    &#34;&#34;&#34;Add Speckle Noise to Images.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        prob: Union[float, Tuple[float, float]],
+        max_val: Union[float, None] = None,
+        min_val: Union[float, None] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        prob : Union[float, Tuple[float, float]]
+            Probability of adding a min/max speckle noise.
+            If float, the same probability will be used accross all images.
+            If tuple of floats (min_prob, max_prob), a probability will be sampled per image in the provided range.
+        max_val : Union[float, None], optional
+            Max speckle noise value, by default None
+        min_val : Union[float, None], optional
+            Min speckle noise value, by default None
+        &#34;&#34;&#34;
+        super().__init__()
+
+        if (min_val is None) and (max_val is None):
+            raise RuntimeError(
+                &#34;either `max_val` or `min_val` (or both) have to be provided&#34;
+            )
+
+        self._prob = prob
+        self._min_val = min_val
+        self._max_val = max_val
+
+    def __call__(self, item: torch.Tensor) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Apply the Speckle Noise to Tensor.
+
+        Parameters
+        ----------
+        item : torch.Tensor
+            Tensor of shape ...xCxHxW
+
+        Returns
+        -------
+        torch.Tensor
+            Input item with added noise.
+        &#34;&#34;&#34;
+        if isinstance(self._prob, float):
+            prob_range = self._prob
+        else:
+            # sample probability per image
+            batch_shape = batch_shape = item.shape[:-3] + (1, 1, 1)
+            prob_range = self._prob[0] + torch.rand(batch_shape, device=item.device) * (
+                self._prob[1] - self._prob[0]
+            )
+
+        # sample probabilities of adding speckle noise
+        prob_sampling = torch.rand(item.shape, device=item.device)
+
+        # add speckle noise
+        shape = (1,) * len(item.shape)
+
+        if self._min_val is not None:
+            min_val = torch.full(
+                shape, self._min_val, device=item.device, dtype=item.dtype
+            )
+            item = torch.where(prob_sampling &lt;= prob_range, min_val, item)
+
+        if self._max_val is not None:
+            max_val = torch.full(
+                shape, self._max_val, device=item.device, dtype=item.dtype
+            )
+            item = torch.where((1.0 - prob_sampling) &lt;= prob_range, max_val, item)
+
+        return item</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.transforms.cv.image.SpeckleNoise.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.transforms.cv.image.SpeckleNoise.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="silk.transforms.abstract.Transform" href="../abstract.html#silk.transforms.abstract.Transform">Transform</a></b></code>:
+<ul class="hlist">
+<li><code><a title="silk.transforms.abstract.Transform.forward" href="../abstract.html#silk.transforms.abstract.Transform.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.transforms.cv" href="index.html">silk.transforms.cv</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.transforms.cv.image.CHWToHWC" href="#silk.transforms.cv.image.CHWToHWC">CHWToHWC</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.CHWToHWC.dump_patches" href="#silk.transforms.cv.image.CHWToHWC.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.CHWToHWC.training" href="#silk.transforms.cv.image.CHWToHWC.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.GaussianNoise" href="#silk.transforms.cv.image.GaussianNoise">GaussianNoise</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.GaussianNoise.dump_patches" href="#silk.transforms.cv.image.GaussianNoise.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.GaussianNoise.training" href="#silk.transforms.cv.image.GaussianNoise.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.HWCToCHW" href="#silk.transforms.cv.image.HWCToCHW">HWCToCHW</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.HWCToCHW.dump_patches" href="#silk.transforms.cv.image.HWCToCHW.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.HWCToCHW.training" href="#silk.transforms.cv.image.HWCToCHW.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.MotionBlur" href="#silk.transforms.cv.image.MotionBlur">MotionBlur</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.MotionBlur.dump_patches" href="#silk.transforms.cv.image.MotionBlur.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.MotionBlur.motion_blur" href="#silk.transforms.cv.image.MotionBlur.motion_blur">motion_blur</a></code></li>
+<li><code><a title="silk.transforms.cv.image.MotionBlur.training" href="#silk.transforms.cv.image.MotionBlur.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.RandomBrightness" href="#silk.transforms.cv.image.RandomBrightness">RandomBrightness</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.RandomBrightness.dump_patches" href="#silk.transforms.cv.image.RandomBrightness.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.RandomBrightness.training" href="#silk.transforms.cv.image.RandomBrightness.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.RandomContrast" href="#silk.transforms.cv.image.RandomContrast">RandomContrast</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.RandomContrast.dump_patches" href="#silk.transforms.cv.image.RandomContrast.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.RandomContrast.training" href="#silk.transforms.cv.image.RandomContrast.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.RandomMotionBlur" href="#silk.transforms.cv.image.RandomMotionBlur">RandomMotionBlur</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.RandomMotionBlur.dump_patches" href="#silk.transforms.cv.image.RandomMotionBlur.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.RandomMotionBlur.training" href="#silk.transforms.cv.image.RandomMotionBlur.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.Resize" href="#silk.transforms.cv.image.Resize">Resize</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.Resize.dump_patches" href="#silk.transforms.cv.image.Resize.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.Resize.training" href="#silk.transforms.cv.image.Resize.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.transforms.cv.image.SpeckleNoise" href="#silk.transforms.cv.image.SpeckleNoise">SpeckleNoise</a></code></h4>
+<ul class="">
+<li><code><a title="silk.transforms.cv.image.SpeckleNoise.dump_patches" href="#silk.transforms.cv.image.SpeckleNoise.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.transforms.cv.image.SpeckleNoise.training" href="#silk.transforms.cv.image.SpeckleNoise.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

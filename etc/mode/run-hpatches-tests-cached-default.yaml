@@ -1,0 +1,7 @@
+defaults:
+  - run-hpatches-tests-default
+  - _self_
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform: null

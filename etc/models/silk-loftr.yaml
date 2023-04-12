@@ -1,0 +1,4 @@
+defaults:
+  - silk-rand-homo
+  - /backbones@model: silk-loftr
+  - _self_

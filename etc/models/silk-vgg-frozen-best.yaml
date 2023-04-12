@@ -1,0 +1,101 @@
+defaults:
+  - frozen
+  - /models@model: silk-vgg
+
+### Analysis
+
+## HPatches
+# VGG-4
+checkpoint_path:
+  _target_: silk.config.paths.join
+  _args_: [MODELS, "silk", "analysis", "alpha", "pvgg-4.ckpt"]
+# VGG-1
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "alpha", "pvgg-1.ckpt"]
+# VGG-micro
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "alpha", "pvgg-micro.ckpt"]
+
+## Dataset
+# COCO
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "coco.ckpt"]
+# ImageNet
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "image-net.ckpt"]
+# MegaDepth
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "megadepth.ckpt"]
+# ScanNet
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "scannet.ckpt"]
+# All
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "all.ckpt"]
+# All \ ScanNet
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "dataset", "all-minus-scannet.ckpt"]
+
+## Backbone
+# VGG-4
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "pvgg-4.ckpt"]
+# VGG-3
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "pvgg-3.ckpt"]
+# VGG-2
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "pvgg-2.ckpt"]
+# VGG-1
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "pvgg-1.ckpt"]
+# VGG-Tiny
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "pvgg-tiny.ckpt"]
+# ResFPN [NOT HERE]
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "resfpn.ckpt"]
+# UNet
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "backbone", "punet-disk.ckpt"]
+
+## Size
+# 82 (~100 minutes)
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "size", "82.ckpt"]
+# 114 (~165 minutes)
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "size", "114.ckpt"]
+# 146 (~300 minutes)
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "size", "146.ckpt"]
+# 178 (~570 minutes)
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "size", "178.ckpt"]
+# 210 (~1080 minutes)
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "size", "210.ckpt"]
+## 1-Padding
+# checkpoint_path:
+#   _target_: silk.config.paths.join
+#   _args_: [MODELS, "silk", "analysis", "padding", "1-padding.ckpt"]

@@ -1,0 +1,74 @@
+loss:
+  _target_: silk.losses.info_nce.Loss
+  block_size: 5400
+  jax_device: "cuda:0"
+  temperature: 0.1
+
+contextualizer: null
+ghost_similarity: null
+learn_ghost_similarity: false
+feature_downsampling_mode: "padding"
+greyscale_input: True
+optimizer_spec:
+  _target_: silk.config.optimizer.Spec
+  optimizer_class: torch.optim.Adam
+  lr: 0.0001
+  betas:
+    - 0.9
+    - 0.999
+image_aug_transform:
+  # augmentation used for IMC (4.3) and ScanNet (4.4.1)
+  _target_: silk.transforms.cv.image.Albu
+  _args_:
+    - _target_: albumentations.Compose
+      p: 0.95
+      transforms:
+        - _target_: albumentations.RandomGamma
+          p: 0.1
+          gamma_limit: [15, 65]
+        - _target_: albumentations.HueSaturationValue
+          p: 0.1
+          val_shift_limit: [-100, -40]
+        - _target_: albumentations.Blur
+          p: 0.1
+          blur_limit: [3, 9]
+        - _target_: albumentations.MotionBlur
+          p: 0.2
+          blur_limit: [3, 25]
+        - _target_: albumentations.RandomBrightnessContrast
+          p: 0.5
+          brightness_limit: [-0.3, 0.0]
+          contrast_limit: [-0.5, 0.3]
+        - _target_: albumentations.GaussNoise
+          p: 0.5
+
+  # # augmentation used for HPatches (4.2), ScanNet (4.4.2) and ablations (suppl.)
+  # _target_: silk.transforms.abstract.Compose
+  # _args_:
+  #   - _target_: silk.transforms.tensor.NormalizeRange
+  #     ilow: 0.
+  #     ihigh: 255.
+  #     olow: 0.
+  #     ohigh: 1.
+  #   - _target_: silk.transforms.cv.image.RandomBrightness
+  #     max_delta: 0.5
+  #   - _target_: silk.transforms.cv.image.RandomContrast
+  #     max_factor_delta: 0.5
+  #   - _target_: silk.transforms.cv.image.GaussianNoise
+  #     std: [0., 0.04]
+  #   - _target_: silk.transforms.cv.image.SpeckleNoise
+  #     prob: [0., 0.0035]
+  #     min_val: 0.
+  #     max_val: 1.
+  #   - _target_: silk.transforms.abstract.Stochastic
+  #     probability: 0.5
+  #     transform:
+  #       _target_: silk.transforms.cv.image.RandomMotionBlur
+  #       kernel_size: 3
+  #       angle: [0, 6.28]
+  #       direction: 0.
+  #   - _target_: silk.transforms.tensor.NormalizeRange
+  #     ilow: 0.
+  #     ihigh: 1.
+  #     olow: 0.
+  #     ohigh: 255.

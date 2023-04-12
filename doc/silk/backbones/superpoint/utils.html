@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.backbones.superpoint.utils API documentation</title>
+<meta name="description" content="Utils functions for the magicpoint model." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.backbones.superpoint.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utils functions for the magicpoint model.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+Utils functions for the magicpoint model.
+&#34;&#34;&#34;
+
+import math
+from typing import Iterable, Tuple
+from typing import Union
+
+import torch
+import torch.nn.functional as F
+
+
+def logits_to_prob(logits: torch.Tensor, channel_dim: int = 1) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Get the probabilities given the logits output.
+
+    The probabilities are the chances that each of the points
+    in the image is a corner.
+
+    Args:
+        logits (tensor): the logits output from the model
+
+    Returns:
+        prob (tensor): the probabilities tensor (not reshaped) with shape
+            (batch_size, 65, H/8, W/8) for cell_size = 8
+    &#34;&#34;&#34;
+
+    # the logits tensor size is batch_size, 65, img_height, img_width
+    # 65 is 8 * 8 + 1, where cell_size = 8
+    channels = logits.shape[channel_dim]
+    if channels == 1:
+        prob = torch.sigmoid(logits)
+    else:
+        prob = torch.softmax(logits, dim=channel_dim)
+    return prob
+
+
+def depth_to_space(
+    prob: torch.Tensor,
+    cell_size: int = 8,
+    channel_dim: int = 1,
+) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Reorganizes output shape to be of size batch_size x img_height x img_width.
+
+    Converts the structure of the outputs from a tensor consisting
+    of a series of cells of size cell_size x cell_size, where
+    cells correspond to groups of pixels in the image, to a tensor
+    where the shape corresponds exactly to the shape of the image.
+
+    Args:
+        prob (tensor): the tensor comprising the corner probabilities for each
+            pixel in a &#34;depth&#34; format as a tensor of cell_size x cell_size cells
+        cell_size (int): the size of each cell (default is always 8)
+
+    Returns:
+        image_probs (tensor): the reshaped tensor where each image in the batch
+            is shaped in a tensor of size 1 x H x W
+    &#34;&#34;&#34;
+    if cell_size &gt; 1:
+        assert prob.shape[channel_dim] == cell_size * cell_size + 1
+
+        # remove the last (dustbin) cell from the list
+        prob, _ = prob.split(cell_size * cell_size, dim=channel_dim)
+
+        # change the dimensions to get an output shape of (batch_size, H, W)
+        image_probs = F.pixel_shuffle(prob, cell_size)
+    else:
+        assert prob.shape[channel_dim] == 1
+        image_probs = prob
+
+    return image_probs
+
+
+def prob_map_to_points_map(
+    prob_map: torch.Tensor,
+    prob_thresh: float = 0.015,
+    nms_dist: int = 4,
+    border_dist: int = 4,
+    use_fast_nms: bool = True,
+    top_k: int = None,
+):
+    prob_map = remove_border_points(prob_map, border_dist=border_dist)
+
+    prob_map = prob_map.squeeze(dim=1)
+
+    prob_thresh = torch.tensor(prob_thresh, device=prob_map.device)
+    prob_thresh = prob_thresh.unsqueeze(0)
+
+    if use_fast_nms:
+        # add missing channel
+        prob_map = prob_map.unsqueeze(1)
+        nms = fast_nms(prob_map, nms_dist=nms_dist)
+        # remove added channel
+        prob_map = nms.squeeze(1)
+    else:
+        # Original Implementation
+        # NMS only runs one image at a time, so go through each elem in the batch
+        prob_map = torch.stack(
+            [original_nms(image, nms_dist=nms_dist) for image in prob_map]
+        )
+
+    if top_k:
+        if top_k &gt;= prob_map.shape[-1] * prob_map.shape[-2]:
+            top_k_threshold = torch.zeros_like(prob_thresh)
+        else:
+            # infer top k threshold
+            top_k = torch.tensor(top_k, device=prob_map.device)
+            reshaped_prob_map = prob_map.reshape(prob_map.shape[0], -1)
+
+            top_k_percentile = (
+                reshaped_prob_map[0].size()[0] - top_k - 1
+            ) / reshaped_prob_map[0].size()[0]
+
+            top_k_threshold = reshaped_prob_map.quantile(
+                top_k_percentile,
+                dim=1,
+                interpolation=&#34;midpoint&#34;,
+            )
+        prob_thresh = torch.minimum(top_k_threshold, prob_thresh)
+        prob_thresh = prob_thresh.unsqueeze(-1).unsqueeze(-1)
+
+    # only take points with probability above the probability threshold
+    prob_map = torch.where(
+        prob_map &gt; prob_thresh,
+        prob_map,
+        torch.tensor(0.0, device=prob_map.device),
+    )
+
+    return prob_map  # batch_output
+
+
+def remove_border_points(image_nms: torch.Tensor, border_dist: int = 4) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Remove predicted points within border_dist pixels of the image border.
+
+    Args:
+        image_nms (tensor): the output of the nms function, a tensor of shape
+            (img_height, img_width) with corner probability values at each pixel location
+        border_dist (int): the distance from the border to remove points
+
+    Returns:
+        image_nms (tensor): the image with all probability values equal to 0.0
+            for pixel locations within border_dist of the image border
+    &#34;&#34;&#34;
+    if border_dist &gt; 0:
+        # left columns
+        image_nms[..., :, :border_dist] = 0.0
+
+        # right columns
+        image_nms[..., :, -border_dist:] = 0.0
+
+        # top rows
+        image_nms[..., :border_dist, :] = 0.0
+
+        # bottom rows
+        image_nms[..., -border_dist:, :] = 0.0
+
+    return image_nms
+
+
+def original_nms(image_probs: torch.Tensor, nms_dist: int = 4) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Run non-maximum suppression on the predicted corner points.
+
+    NMS removes nearby points within a distance of nms_dist from the point
+    with the highest probability value in that region. The algorithm is as
+    follows:
+        1. Order the predicted corner points from highest to lowest probability.
+        2. Set up the input tensor with probability values for each pixel location
+        to have padding of size nms_dist so points near the border can be suppressed.
+        3. Go through each point in the list from step 1. If the point has not already
+        been suppressed in the probability value tensor with padding from step 2
+        (meaning the probability value has been changed to 0.0), suppress all
+        points within nms_dist from that point by changing their probability values
+        to 0.0. Keep the probability value of the current point as is.
+        3. At the end, remove the padding from the tensor. Thus, the output is
+        a tensor of size (img_height, img_width) with probability values for the remaining
+        predicted corner pixels (those not suppressed) and 0.0 for non-corner pixels.
+
+    Args:
+        image_probs (tensor): a tensor of size (img_height, img_width) where each
+            pixel location has value equal to the probability value of it being a corner,
+            as predicted by the model.
+        nms_dist (int): the minimum distance between two predicted corners after NMS
+
+    Returns:
+        image_probs_nms (tensor): a tensor of size (img_height, img_width) where each
+            pixel location has value equal to the probability value of it being a corner,
+            after running the non-maximum suppression algorithm. Thus, no two predicted
+            corners will be within nms_dist pixels of each other.
+    &#34;&#34;&#34;
+    # each elem in corners_list is (row, col) for predicted corners in image_probs
+    corners_list = torch.nonzero(image_probs)
+
+    # list of the probability values in the same order as the list of their locations
+    list_of_prob = image_probs[torch.nonzero(image_probs, as_tuple=True)]
+
+    # concatenate the probability values with their locations (prob, row, col) for each
+    corners_list_with_prob = torch.cat(
+        (list_of_prob.unsqueeze(dim=1), corners_list), dim=1
+    )
+
+    # sort the list of probability values with most confident corners first
+    prob_indices = torch.argsort(list_of_prob, dim=0, descending=True)
+
+    # sort the list of corner locations according to the order of the indices
+    sorted_corners_list = corners_list_with_prob[prob_indices]
+
+    # pad the border of the grid with zeros, so that we can NMS points near the border
+    padding = (nms_dist, nms_dist, nms_dist, nms_dist)
+    padded_image_probs = F.pad(image_probs, padding, &#34;constant&#34;, 0)
+
+    # go through each element in the sorted list of corners
+    # suppress surrounding points by converting their probabilities to 0.0
+    # TODO: Benchmark this to see if this loop is a bottleneck
+    for prob, row, col in sorted_corners_list:
+        row = int(row)
+        col = int(col)
+
+        # if the point hasn&#39;t already been suppressed
+        if padded_image_probs[row + nms_dist][col + nms_dist] != 0.0:
+            # suppress all points in the (2*nms_dist, 2*nms_dist) square around the point
+            padded_image_probs[
+                row : row + 2 * nms_dist + 1,  # noqa: E203
+                col : col + 2 * nms_dist + 1,  # noqa: E203
+            ] = 0.0
+
+            # then add back in the one point not suppressed
+            padded_image_probs[row + nms_dist][col + nms_dist] = prob
+
+    # remove the image padding to get the actual image size
+    image_probs_nms = padded_image_probs[nms_dist:-nms_dist, nms_dist:-nms_dist]
+
+    return image_probs_nms
+
+
+def fast_nms(
+    image_probs: torch.Tensor,
+    nms_dist: int = 4,
+    max_iter: int = -1,
+    min_value: float = 0.0,
+) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Produce same result as `original_nms` (see documentation).
+    The process is slightly different :
+      1. Find any local maximum (and count them).
+      2. Suppress their neighbors (by setting them to 0).
+      3. Repeat 1. and 2. until the number of local maximum stays the same.
+
+    Performance
+    -----------
+    The original implementation takes about 2-4 seconds on a batch of 32 images of resolution 240x320.
+    This fast implementation takes about ~90ms on the same input.
+
+    Parameters
+    ----------
+    image_probs : torch.Tensor
+        Tensor of shape BxCxHxW.
+    nms_dist : int, optional
+        The minimum distance between two predicted corners after NMS, by default 4
+    max_iter : int, optional
+        Maximum number of iteration, by default -1.
+        Setting this number to a positive integer guarantees execution speed, but not correctness (i.e. good approximation).
+    min_value : float
+        Minimum value used for suppression.
+
+    Returns
+    -------
+    torch.Tensor
+        Tensor of shape BxCxHxW containing NMS suppressed input.
+    &#34;&#34;&#34;
+    if nms_dist == 0:
+        return image_probs
+
+    ks = 2 * nms_dist + 1
+    midpoint = (ks * ks) // 2
+    count = None
+    batch_size = image_probs.shape[0]
+
+    i = 0
+    while True:
+        if i == max_iter:
+            break
+
+        # get neighbor probs in last dimension
+        unfold_image_probs = F.unfold(
+            image_probs,
+            kernel_size=(ks, ks),
+            dilation=1,
+            padding=nms_dist,
+            stride=1,
+        )
+        unfold_image_probs = unfold_image_probs.reshape(
+            batch_size,
+            ks * ks,
+            image_probs.shape[-2],
+            image_probs.shape[-1],
+        )
+
+        # check if middle point is local maximum
+        max_idx = unfold_image_probs.argmax(dim=1, keepdim=True)
+        mask = max_idx == midpoint
+
+        # count all local maximum that are found
+        new_count = mask.sum()
+
+        # we stop if we din&#39;t not find any additional local maximum
+        if new_count == count:
+            break
+        count = new_count
+
+        # propagate local-maximum information to local neighbors (to suppress them)
+        mask = mask.float()
+        mask = mask.expand(-1, ks * ks, -1, -1)
+        mask = mask.view(batch_size, ks * ks, -1)
+        mask = mask.contiguous()
+        mask[:, midpoint] = 0.0  # make sure we don&#39;t suppress the local maximum itself
+        fold_ = F.fold(
+            mask,
+            output_size=image_probs.shape[-2:],
+            kernel_size=(ks, ks),
+            dilation=1,
+            padding=nms_dist,
+            stride=1,
+        )
+
+        # suppress all points who have a local maximum in their neighboorhood
+        image_probs = image_probs.masked_fill(fold_ &gt; 0.0, min_value)
+
+        i += 1
+
+    return image_probs
+
+
+def space_to_depth(prob: torch.Tensor, cell_size: int = 8) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Reshapes probabilities cell_size x cell_size cells to depth. Add dustbin
+    corresponding to remaining probability.
+
+    Args:
+        prob (tensor): pobability tensor of shape (batch x 1 x height x width).
+            The sum of probabilities per cell could be higher than one.
+        cell_size (int): size of cell, by default 8
+
+    Returns:
+        prob (tensor): reshaped probability tensor with size
+            (batch x (cell_size^2 + 1) x (height/cell_size) x (width/cell_size)).
+            The sum of probabilities per cell could be higher than one.
+    &#34;&#34;&#34;
+    prob = torch.nn.functional.pixel_unshuffle(prob, cell_size)
+    prob_sum = torch.sum(prob, dim=1, keepdim=True)
+    dustbin = torch.clamp_min(
+        1.0 - prob_sum, torch.tensor(0.0, device=prob_sum.device)
+    )  # make sure dustbin is not negative when `prob_sum[...]` &gt; 1.
+    prob = torch.concat((prob, dustbin), dim=1)
+    return prob
+
+
+def positions_to_label_map(
+    positions: Union[torch.Tensor, Iterable[torch.Tensor]],
+    image_or_shape: Union[torch.Tensor, Tuple[int, int]],
+):
+    &#34;&#34;&#34;
+    Create label map of same size as image where provided positions
+    coordinates are set to 1., while everything else is set to 0.
+
+    Args:
+        positions (tensor): tensor of shape N x D or B x N x D or Iterable[Ni x D] (with D &gt;= 2) containing the image
+            coordinates (first two elements in the D dimension) that contain keypoints.
+        image_or_shape (tensor or tuple): image tensor of shape H x W x 1 containing the keypoints or a tuple (H, W).
+
+    Returns:
+        label_map (tensor): label map of same size as image whose position
+            coordinates are set to 1.
+    &#34;&#34;&#34;
+    # run with added batch dimension if not present
+    if isinstance(positions, torch.Tensor) and positions.ndim == 2:
+        return positions_to_label_map((positions,), image_or_shape)[0]
+
+    batch_size = len(positions)
+    if isinstance(image_or_shape, torch.Tensor):
+        shape = (batch_size,) + image_or_shape.shape
+    else:
+        shape = (batch_size,) + image_or_shape + (1,)
+
+    device = positions[0].device
+
+    label_map = torch.zeros(shape, dtype=torch.bool, device=device)
+
+    batch_i = torch.cat(
+        [torch.full((len(p),), i, device=device) for i, p in enumerate(positions)],
+        dim=0,
+    )
+
+    if isinstance(positions, torch.Tensor):
+        positions = positions.view(-1, positions.shape[-1])
+    else:
+        positions = torch.cat(positions, dim=0)
+
+    # positions might also contain additional data like confidence
+    positions = positions[:, :2]
+    positions = torch.floor(positions).long()
+
+    image_shape = torch.tensor(
+        [label_map.shape[-3:-1]],
+        device=device,
+    )
+
+    mask = torch.logical_and(positions &gt;= 0, positions &lt; image_shape).all(dim=1)
+    positions = positions[mask]
+    batch_i = batch_i[mask]
+
+    indices = (batch_i,) + (positions[:, 0], positions[:, 1])
+    label_map[indices] = 1
+
+    return label_map
+
+
+def float_positions_to_int(
+    y: float,
+    x: float,
+    shape: Tuple[int, int],
+) -&gt; Union[Tuple[int, int], Tuple[None, None]]:
+    &#34;&#34;&#34;Convert floating positions y, x to integer positions
+
+    Parameters
+    ----------
+    y : float
+        Float value of y coordinate.
+    x : float
+        Float value of x coordinate.
+    shape : Tuple[int, int]
+        Shape of tensor those coordinates are used for.
+
+    Returns
+    -------
+    Union[Tuple[int, int], Tuple[None, None]]
+        Converted coordinates. Returns (None, None) if the coordinates are out of bound.
+    &#34;&#34;&#34;
+    y, x = math.floor(y), math.floor(x)
+    if 0 &lt;= y &lt; shape[0] and 0 &lt;= x &lt; shape[1]:
+        return y, x
+    return None, None
+
+
+def prob_map_to_positions_with_prob(
+    prob_map: torch.Tensor,
+    threshold: float = 0.0,
+) -&gt; Tuple[torch.Tensor]:
+    &#34;&#34;&#34;Convert probability map to positions with probability associated with each position.
+
+    Parameters
+    ----------
+    prob_map : torch.Tensor
+        Probability map. Tensor of size N x 1 x H x W.
+    threshold : float, optional
+        Threshold used to discard positions with low probability, by default 0.0
+
+    Returns
+    -------
+    Tuple[Tensor]
+        Tuple of positions (with probability) tensors of size P x 3 (x, y and prob).
+    &#34;&#34;&#34;
+    prob_map = prob_map.squeeze(dim=1)
+    positions = tuple(
+        torch.nonzero(prob_map[i] &gt; threshold).float() + 0.5
+        for i in range(prob_map.shape[0])
+    )
+    prob = tuple(
+        prob_map[i][torch.nonzero(prob_map[i] &gt; threshold, as_tuple=True)][:, None]
+        for i in range(prob_map.shape[0])
+    )
+    positions_with_prob = tuple(
+        torch.cat((pos, prob), dim=1) for pos, prob in zip(positions, prob)
+    )
+    return positions_with_prob</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.backbones.superpoint.utils.depth_to_space"><code class="name flex">
+<span>def <span class="ident">depth_to_space</span></span>(<span>prob: torch.Tensor, cell_size: int = 8, channel_dim: int = 1) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reorganizes output shape to be of size batch_size x img_height x img_width.</p>
+<p>Converts the structure of the outputs from a tensor consisting
+of a series of cells of size cell_size x cell_size, where
+cells correspond to groups of pixels in the image, to a tensor
+where the shape corresponds exactly to the shape of the image.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prob</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the tensor comprising the corner probabilities for each
+pixel in a "depth" format as a tensor of cell_size x cell_size cells</dd>
+<dt><strong><code>cell_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>the size of each cell (default is always 8)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>image_probs (tensor): the reshaped tensor where each image in the batch
+is shaped in a tensor of size 1 x H x W</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def depth_to_space(
+    prob: torch.Tensor,
+    cell_size: int = 8,
+    channel_dim: int = 1,
+) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Reorganizes output shape to be of size batch_size x img_height x img_width.
+
+    Converts the structure of the outputs from a tensor consisting
+    of a series of cells of size cell_size x cell_size, where
+    cells correspond to groups of pixels in the image, to a tensor
+    where the shape corresponds exactly to the shape of the image.
+
+    Args:
+        prob (tensor): the tensor comprising the corner probabilities for each
+            pixel in a &#34;depth&#34; format as a tensor of cell_size x cell_size cells
+        cell_size (int): the size of each cell (default is always 8)
+
+    Returns:
+        image_probs (tensor): the reshaped tensor where each image in the batch
+            is shaped in a tensor of size 1 x H x W
+    &#34;&#34;&#34;
+    if cell_size &gt; 1:
+        assert prob.shape[channel_dim] == cell_size * cell_size + 1
+
+        # remove the last (dustbin) cell from the list
+        prob, _ = prob.split(cell_size * cell_size, dim=channel_dim)
+
+        # change the dimensions to get an output shape of (batch_size, H, W)
+        image_probs = F.pixel_shuffle(prob, cell_size)
+    else:
+        assert prob.shape[channel_dim] == 1
+        image_probs = prob
+
+    return image_probs</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.fast_nms"><code class="name flex">
+<span>def <span class="ident">fast_nms</span></span>(<span>image_probs: torch.Tensor, nms_dist: int = 4, max_iter: int = -1, min_value: float = 0.0) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Produce same result as <code><a title="silk.backbones.superpoint.utils.original_nms" href="#silk.backbones.superpoint.utils.original_nms">original_nms()</a></code> (see documentation).
+The process is slightly different :
+1. Find any local maximum (and count them).
+2. Suppress their neighbors (by setting them to 0).
+3. Repeat 1. and 2. until the number of local maximum stays the same.</p>
+<h2 id="performance">Performance</h2>
+<p>The original implementation takes about 2-4 seconds on a batch of 32 images of resolution 240x320.
+This fast implementation takes about ~90ms on the same input.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>image_probs</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>Tensor of shape BxCxHxW.</dd>
+<dt><strong><code>nms_dist</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>The minimum distance between two predicted corners after NMS, by default 4</dd>
+<dt><strong><code>max_iter</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Maximum number of iteration, by default -1.
+Setting this number to a positive integer guarantees execution speed, but not correctness (i.e. good approximation).</dd>
+<dt><strong><code>min_value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Minimum value used for suppression.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>Tensor of shape BxCxHxW containing NMS suppressed input.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fast_nms(
+    image_probs: torch.Tensor,
+    nms_dist: int = 4,
+    max_iter: int = -1,
+    min_value: float = 0.0,
+) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Produce same result as `original_nms` (see documentation).
+    The process is slightly different :
+      1. Find any local maximum (and count them).
+      2. Suppress their neighbors (by setting them to 0).
+      3. Repeat 1. and 2. until the number of local maximum stays the same.
+
+    Performance
+    -----------
+    The original implementation takes about 2-4 seconds on a batch of 32 images of resolution 240x320.
+    This fast implementation takes about ~90ms on the same input.
+
+    Parameters
+    ----------
+    image_probs : torch.Tensor
+        Tensor of shape BxCxHxW.
+    nms_dist : int, optional
+        The minimum distance between two predicted corners after NMS, by default 4
+    max_iter : int, optional
+        Maximum number of iteration, by default -1.
+        Setting this number to a positive integer guarantees execution speed, but not correctness (i.e. good approximation).
+    min_value : float
+        Minimum value used for suppression.
+
+    Returns
+    -------
+    torch.Tensor
+        Tensor of shape BxCxHxW containing NMS suppressed input.
+    &#34;&#34;&#34;
+    if nms_dist == 0:
+        return image_probs
+
+    ks = 2 * nms_dist + 1
+    midpoint = (ks * ks) // 2
+    count = None
+    batch_size = image_probs.shape[0]
+
+    i = 0
+    while True:
+        if i == max_iter:
+            break
+
+        # get neighbor probs in last dimension
+        unfold_image_probs = F.unfold(
+            image_probs,
+            kernel_size=(ks, ks),
+            dilation=1,
+            padding=nms_dist,
+            stride=1,
+        )
+        unfold_image_probs = unfold_image_probs.reshape(
+            batch_size,
+            ks * ks,
+            image_probs.shape[-2],
+            image_probs.shape[-1],
+        )
+
+        # check if middle point is local maximum
+        max_idx = unfold_image_probs.argmax(dim=1, keepdim=True)
+        mask = max_idx == midpoint
+
+        # count all local maximum that are found
+        new_count = mask.sum()
+
+        # we stop if we din&#39;t not find any additional local maximum
+        if new_count == count:
+            break
+        count = new_count
+
+        # propagate local-maximum information to local neighbors (to suppress them)
+        mask = mask.float()
+        mask = mask.expand(-1, ks * ks, -1, -1)
+        mask = mask.view(batch_size, ks * ks, -1)
+        mask = mask.contiguous()
+        mask[:, midpoint] = 0.0  # make sure we don&#39;t suppress the local maximum itself
+        fold_ = F.fold(
+            mask,
+            output_size=image_probs.shape[-2:],
+            kernel_size=(ks, ks),
+            dilation=1,
+            padding=nms_dist,
+            stride=1,
+        )
+
+        # suppress all points who have a local maximum in their neighboorhood
+        image_probs = image_probs.masked_fill(fold_ &gt; 0.0, min_value)
+
+        i += 1
+
+    return image_probs</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.float_positions_to_int"><code class="name flex">
+<span>def <span class="ident">float_positions_to_int</span></span>(<span>y: float, x: float, shape: Tuple[int, int]) ‑> Union[Tuple[int, int], Tuple[None, None]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert floating positions y, x to integer positions</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>y</code></strong> :&ensp;<code>float</code></dt>
+<dd>Float value of y coordinate.</dd>
+<dt><strong><code>x</code></strong> :&ensp;<code>float</code></dt>
+<dd>Float value of x coordinate.</dd>
+<dt><strong><code>shape</code></strong> :&ensp;<code>Tuple[int, int]</code></dt>
+<dd>Shape of tensor those coordinates are used for.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Union[Tuple[int, int], Tuple[None, None]]</code></dt>
+<dd>Converted coordinates. Returns (None, None) if the coordinates are out of bound.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def float_positions_to_int(
+    y: float,
+    x: float,
+    shape: Tuple[int, int],
+) -&gt; Union[Tuple[int, int], Tuple[None, None]]:
+    &#34;&#34;&#34;Convert floating positions y, x to integer positions
+
+    Parameters
+    ----------
+    y : float
+        Float value of y coordinate.
+    x : float
+        Float value of x coordinate.
+    shape : Tuple[int, int]
+        Shape of tensor those coordinates are used for.
+
+    Returns
+    -------
+    Union[Tuple[int, int], Tuple[None, None]]
+        Converted coordinates. Returns (None, None) if the coordinates are out of bound.
+    &#34;&#34;&#34;
+    y, x = math.floor(y), math.floor(x)
+    if 0 &lt;= y &lt; shape[0] and 0 &lt;= x &lt; shape[1]:
+        return y, x
+    return None, None</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.logits_to_prob"><code class="name flex">
+<span>def <span class="ident">logits_to_prob</span></span>(<span>logits: torch.Tensor, channel_dim: int = 1) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the probabilities given the logits output.</p>
+<p>The probabilities are the chances that each of the points
+in the image is a corner.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logits</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the logits output from the model</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>prob (tensor): the probabilities tensor (not reshaped) with shape
+(batch_size, 65, H/8, W/8) for cell_size = 8</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logits_to_prob(logits: torch.Tensor, channel_dim: int = 1) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Get the probabilities given the logits output.
+
+    The probabilities are the chances that each of the points
+    in the image is a corner.
+
+    Args:
+        logits (tensor): the logits output from the model
+
+    Returns:
+        prob (tensor): the probabilities tensor (not reshaped) with shape
+            (batch_size, 65, H/8, W/8) for cell_size = 8
+    &#34;&#34;&#34;
+
+    # the logits tensor size is batch_size, 65, img_height, img_width
+    # 65 is 8 * 8 + 1, where cell_size = 8
+    channels = logits.shape[channel_dim]
+    if channels == 1:
+        prob = torch.sigmoid(logits)
+    else:
+        prob = torch.softmax(logits, dim=channel_dim)
+    return prob</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.original_nms"><code class="name flex">
+<span>def <span class="ident">original_nms</span></span>(<span>image_probs: torch.Tensor, nms_dist: int = 4) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Run non-maximum suppression on the predicted corner points.</p>
+<p>NMS removes nearby points within a distance of nms_dist from the point
+with the highest probability value in that region. The algorithm is as
+follows:
+1. Order the predicted corner points from highest to lowest probability.
+2. Set up the input tensor with probability values for each pixel location
+to have padding of size nms_dist so points near the border can be suppressed.
+3. Go through each point in the list from step 1. If the point has not already
+been suppressed in the probability value tensor with padding from step 2
+(meaning the probability value has been changed to 0.0), suppress all
+points within nms_dist from that point by changing their probability values
+to 0.0. Keep the probability value of the current point as is.
+3. At the end, remove the padding from the tensor. Thus, the output is
+a tensor of size (img_height, img_width) with probability values for the remaining
+predicted corner pixels (those not suppressed) and 0.0 for non-corner pixels.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>image_probs</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>a tensor of size (img_height, img_width) where each
+pixel location has value equal to the probability value of it being a corner,
+as predicted by the model.</dd>
+<dt><strong><code>nms_dist</code></strong> :&ensp;<code>int</code></dt>
+<dd>the minimum distance between two predicted corners after NMS</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>image_probs_nms (tensor): a tensor of size (img_height, img_width) where each
+pixel location has value equal to the probability value of it being a corner,
+after running the non-maximum suppression algorithm. Thus, no two predicted
+corners will be within nms_dist pixels of each other.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def original_nms(image_probs: torch.Tensor, nms_dist: int = 4) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Run non-maximum suppression on the predicted corner points.
+
+    NMS removes nearby points within a distance of nms_dist from the point
+    with the highest probability value in that region. The algorithm is as
+    follows:
+        1. Order the predicted corner points from highest to lowest probability.
+        2. Set up the input tensor with probability values for each pixel location
+        to have padding of size nms_dist so points near the border can be suppressed.
+        3. Go through each point in the list from step 1. If the point has not already
+        been suppressed in the probability value tensor with padding from step 2
+        (meaning the probability value has been changed to 0.0), suppress all
+        points within nms_dist from that point by changing their probability values
+        to 0.0. Keep the probability value of the current point as is.
+        3. At the end, remove the padding from the tensor. Thus, the output is
+        a tensor of size (img_height, img_width) with probability values for the remaining
+        predicted corner pixels (those not suppressed) and 0.0 for non-corner pixels.
+
+    Args:
+        image_probs (tensor): a tensor of size (img_height, img_width) where each
+            pixel location has value equal to the probability value of it being a corner,
+            as predicted by the model.
+        nms_dist (int): the minimum distance between two predicted corners after NMS
+
+    Returns:
+        image_probs_nms (tensor): a tensor of size (img_height, img_width) where each
+            pixel location has value equal to the probability value of it being a corner,
+            after running the non-maximum suppression algorithm. Thus, no two predicted
+            corners will be within nms_dist pixels of each other.
+    &#34;&#34;&#34;
+    # each elem in corners_list is (row, col) for predicted corners in image_probs
+    corners_list = torch.nonzero(image_probs)
+
+    # list of the probability values in the same order as the list of their locations
+    list_of_prob = image_probs[torch.nonzero(image_probs, as_tuple=True)]
+
+    # concatenate the probability values with their locations (prob, row, col) for each
+    corners_list_with_prob = torch.cat(
+        (list_of_prob.unsqueeze(dim=1), corners_list), dim=1
+    )
+
+    # sort the list of probability values with most confident corners first
+    prob_indices = torch.argsort(list_of_prob, dim=0, descending=True)
+
+    # sort the list of corner locations according to the order of the indices
+    sorted_corners_list = corners_list_with_prob[prob_indices]
+
+    # pad the border of the grid with zeros, so that we can NMS points near the border
+    padding = (nms_dist, nms_dist, nms_dist, nms_dist)
+    padded_image_probs = F.pad(image_probs, padding, &#34;constant&#34;, 0)
+
+    # go through each element in the sorted list of corners
+    # suppress surrounding points by converting their probabilities to 0.0
+    # TODO: Benchmark this to see if this loop is a bottleneck
+    for prob, row, col in sorted_corners_list:
+        row = int(row)
+        col = int(col)
+
+        # if the point hasn&#39;t already been suppressed
+        if padded_image_probs[row + nms_dist][col + nms_dist] != 0.0:
+            # suppress all points in the (2*nms_dist, 2*nms_dist) square around the point
+            padded_image_probs[
+                row : row + 2 * nms_dist + 1,  # noqa: E203
+                col : col + 2 * nms_dist + 1,  # noqa: E203
+            ] = 0.0
+
+            # then add back in the one point not suppressed
+            padded_image_probs[row + nms_dist][col + nms_dist] = prob
+
+    # remove the image padding to get the actual image size
+    image_probs_nms = padded_image_probs[nms_dist:-nms_dist, nms_dist:-nms_dist]
+
+    return image_probs_nms</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.positions_to_label_map"><code class="name flex">
+<span>def <span class="ident">positions_to_label_map</span></span>(<span>positions: Union[torch.Tensor, Iterable[torch.Tensor]], image_or_shape: Union[torch.Tensor, Tuple[int, int]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create label map of same size as image where provided positions
+coordinates are set to 1., while everything else is set to 0.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>positions</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>tensor of shape N x D or B x N x D or Iterable[Ni x D] (with D &gt;= 2) containing the image
+coordinates (first two elements in the D dimension) that contain keypoints.</dd>
+<dt><strong><code>image_or_shape</code></strong> :&ensp;<code>tensor</code> or <code>tuple</code></dt>
+<dd>image tensor of shape H x W x 1 containing the keypoints or a tuple (H, W).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>label_map (tensor): label map of same size as image whose position
+coordinates are set to 1.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def positions_to_label_map(
+    positions: Union[torch.Tensor, Iterable[torch.Tensor]],
+    image_or_shape: Union[torch.Tensor, Tuple[int, int]],
+):
+    &#34;&#34;&#34;
+    Create label map of same size as image where provided positions
+    coordinates are set to 1., while everything else is set to 0.
+
+    Args:
+        positions (tensor): tensor of shape N x D or B x N x D or Iterable[Ni x D] (with D &gt;= 2) containing the image
+            coordinates (first two elements in the D dimension) that contain keypoints.
+        image_or_shape (tensor or tuple): image tensor of shape H x W x 1 containing the keypoints or a tuple (H, W).
+
+    Returns:
+        label_map (tensor): label map of same size as image whose position
+            coordinates are set to 1.
+    &#34;&#34;&#34;
+    # run with added batch dimension if not present
+    if isinstance(positions, torch.Tensor) and positions.ndim == 2:
+        return positions_to_label_map((positions,), image_or_shape)[0]
+
+    batch_size = len(positions)
+    if isinstance(image_or_shape, torch.Tensor):
+        shape = (batch_size,) + image_or_shape.shape
+    else:
+        shape = (batch_size,) + image_or_shape + (1,)
+
+    device = positions[0].device
+
+    label_map = torch.zeros(shape, dtype=torch.bool, device=device)
+
+    batch_i = torch.cat(
+        [torch.full((len(p),), i, device=device) for i, p in enumerate(positions)],
+        dim=0,
+    )
+
+    if isinstance(positions, torch.Tensor):
+        positions = positions.view(-1, positions.shape[-1])
+    else:
+        positions = torch.cat(positions, dim=0)
+
+    # positions might also contain additional data like confidence
+    positions = positions[:, :2]
+    positions = torch.floor(positions).long()
+
+    image_shape = torch.tensor(
+        [label_map.shape[-3:-1]],
+        device=device,
+    )
+
+    mask = torch.logical_and(positions &gt;= 0, positions &lt; image_shape).all(dim=1)
+    positions = positions[mask]
+    batch_i = batch_i[mask]
+
+    indices = (batch_i,) + (positions[:, 0], positions[:, 1])
+    label_map[indices] = 1
+
+    return label_map</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.prob_map_to_points_map"><code class="name flex">
+<span>def <span class="ident">prob_map_to_points_map</span></span>(<span>prob_map: torch.Tensor, prob_thresh: float = 0.015, nms_dist: int = 4, border_dist: int = 4, use_fast_nms: bool = True, top_k: int = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prob_map_to_points_map(
+    prob_map: torch.Tensor,
+    prob_thresh: float = 0.015,
+    nms_dist: int = 4,
+    border_dist: int = 4,
+    use_fast_nms: bool = True,
+    top_k: int = None,
+):
+    prob_map = remove_border_points(prob_map, border_dist=border_dist)
+
+    prob_map = prob_map.squeeze(dim=1)
+
+    prob_thresh = torch.tensor(prob_thresh, device=prob_map.device)
+    prob_thresh = prob_thresh.unsqueeze(0)
+
+    if use_fast_nms:
+        # add missing channel
+        prob_map = prob_map.unsqueeze(1)
+        nms = fast_nms(prob_map, nms_dist=nms_dist)
+        # remove added channel
+        prob_map = nms.squeeze(1)
+    else:
+        # Original Implementation
+        # NMS only runs one image at a time, so go through each elem in the batch
+        prob_map = torch.stack(
+            [original_nms(image, nms_dist=nms_dist) for image in prob_map]
+        )
+
+    if top_k:
+        if top_k &gt;= prob_map.shape[-1] * prob_map.shape[-2]:
+            top_k_threshold = torch.zeros_like(prob_thresh)
+        else:
+            # infer top k threshold
+            top_k = torch.tensor(top_k, device=prob_map.device)
+            reshaped_prob_map = prob_map.reshape(prob_map.shape[0], -1)
+
+            top_k_percentile = (
+                reshaped_prob_map[0].size()[0] - top_k - 1
+            ) / reshaped_prob_map[0].size()[0]
+
+            top_k_threshold = reshaped_prob_map.quantile(
+                top_k_percentile,
+                dim=1,
+                interpolation=&#34;midpoint&#34;,
+            )
+        prob_thresh = torch.minimum(top_k_threshold, prob_thresh)
+        prob_thresh = prob_thresh.unsqueeze(-1).unsqueeze(-1)
+
+    # only take points with probability above the probability threshold
+    prob_map = torch.where(
+        prob_map &gt; prob_thresh,
+        prob_map,
+        torch.tensor(0.0, device=prob_map.device),
+    )
+
+    return prob_map  # batch_output</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.prob_map_to_positions_with_prob"><code class="name flex">
+<span>def <span class="ident">prob_map_to_positions_with_prob</span></span>(<span>prob_map: torch.Tensor, threshold: float = 0.0) ‑> Tuple[torch.Tensor]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert probability map to positions with probability associated with each position.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>prob_map</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>Probability map. Tensor of size N x 1 x H x W.</dd>
+<dt><strong><code>threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Threshold used to discard positions with low probability, by default 0.0</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[Tensor]</code></dt>
+<dd>Tuple of positions (with probability) tensors of size P x 3 (x, y and prob).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prob_map_to_positions_with_prob(
+    prob_map: torch.Tensor,
+    threshold: float = 0.0,
+) -&gt; Tuple[torch.Tensor]:
+    &#34;&#34;&#34;Convert probability map to positions with probability associated with each position.
+
+    Parameters
+    ----------
+    prob_map : torch.Tensor
+        Probability map. Tensor of size N x 1 x H x W.
+    threshold : float, optional
+        Threshold used to discard positions with low probability, by default 0.0
+
+    Returns
+    -------
+    Tuple[Tensor]
+        Tuple of positions (with probability) tensors of size P x 3 (x, y and prob).
+    &#34;&#34;&#34;
+    prob_map = prob_map.squeeze(dim=1)
+    positions = tuple(
+        torch.nonzero(prob_map[i] &gt; threshold).float() + 0.5
+        for i in range(prob_map.shape[0])
+    )
+    prob = tuple(
+        prob_map[i][torch.nonzero(prob_map[i] &gt; threshold, as_tuple=True)][:, None]
+        for i in range(prob_map.shape[0])
+    )
+    positions_with_prob = tuple(
+        torch.cat((pos, prob), dim=1) for pos, prob in zip(positions, prob)
+    )
+    return positions_with_prob</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.remove_border_points"><code class="name flex">
+<span>def <span class="ident">remove_border_points</span></span>(<span>image_nms: torch.Tensor, border_dist: int = 4) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove predicted points within border_dist pixels of the image border.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>image_nms</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the output of the nms function, a tensor of shape
+(img_height, img_width) with corner probability values at each pixel location</dd>
+<dt><strong><code>border_dist</code></strong> :&ensp;<code>int</code></dt>
+<dd>the distance from the border to remove points</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>image_nms (tensor): the image with all probability values equal to 0.0
+for pixel locations within border_dist of the image border</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_border_points(image_nms: torch.Tensor, border_dist: int = 4) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Remove predicted points within border_dist pixels of the image border.
+
+    Args:
+        image_nms (tensor): the output of the nms function, a tensor of shape
+            (img_height, img_width) with corner probability values at each pixel location
+        border_dist (int): the distance from the border to remove points
+
+    Returns:
+        image_nms (tensor): the image with all probability values equal to 0.0
+            for pixel locations within border_dist of the image border
+    &#34;&#34;&#34;
+    if border_dist &gt; 0:
+        # left columns
+        image_nms[..., :, :border_dist] = 0.0
+
+        # right columns
+        image_nms[..., :, -border_dist:] = 0.0
+
+        # top rows
+        image_nms[..., :border_dist, :] = 0.0
+
+        # bottom rows
+        image_nms[..., -border_dist:, :] = 0.0
+
+    return image_nms</code></pre>
+</details>
+</dd>
+<dt id="silk.backbones.superpoint.utils.space_to_depth"><code class="name flex">
+<span>def <span class="ident">space_to_depth</span></span>(<span>prob: torch.Tensor, cell_size: int = 8) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reshapes probabilities cell_size x cell_size cells to depth. Add dustbin
+corresponding to remaining probability.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prob</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>pobability tensor of shape (batch x 1 x height x width).
+The sum of probabilities per cell could be higher than one.</dd>
+<dt><strong><code>cell_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>size of cell, by default 8</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>prob (tensor): reshaped probability tensor with size
+(batch x (cell_size^2 + 1) x (height/cell_size) x (width/cell_size)).
+The sum of probabilities per cell could be higher than one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def space_to_depth(prob: torch.Tensor, cell_size: int = 8) -&gt; torch.Tensor:
+    &#34;&#34;&#34;
+    Reshapes probabilities cell_size x cell_size cells to depth. Add dustbin
+    corresponding to remaining probability.
+
+    Args:
+        prob (tensor): pobability tensor of shape (batch x 1 x height x width).
+            The sum of probabilities per cell could be higher than one.
+        cell_size (int): size of cell, by default 8
+
+    Returns:
+        prob (tensor): reshaped probability tensor with size
+            (batch x (cell_size^2 + 1) x (height/cell_size) x (width/cell_size)).
+            The sum of probabilities per cell could be higher than one.
+    &#34;&#34;&#34;
+    prob = torch.nn.functional.pixel_unshuffle(prob, cell_size)
+    prob_sum = torch.sum(prob, dim=1, keepdim=True)
+    dustbin = torch.clamp_min(
+        1.0 - prob_sum, torch.tensor(0.0, device=prob_sum.device)
+    )  # make sure dustbin is not negative when `prob_sum[...]` &gt; 1.
+    prob = torch.concat((prob, dustbin), dim=1)
+    return prob</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.backbones.superpoint" href="index.html">silk.backbones.superpoint</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.backbones.superpoint.utils.depth_to_space" href="#silk.backbones.superpoint.utils.depth_to_space">depth_to_space</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.fast_nms" href="#silk.backbones.superpoint.utils.fast_nms">fast_nms</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.float_positions_to_int" href="#silk.backbones.superpoint.utils.float_positions_to_int">float_positions_to_int</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.logits_to_prob" href="#silk.backbones.superpoint.utils.logits_to_prob">logits_to_prob</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.original_nms" href="#silk.backbones.superpoint.utils.original_nms">original_nms</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.positions_to_label_map" href="#silk.backbones.superpoint.utils.positions_to_label_map">positions_to_label_map</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.prob_map_to_points_map" href="#silk.backbones.superpoint.utils.prob_map_to_points_map">prob_map_to_points_map</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.prob_map_to_positions_with_prob" href="#silk.backbones.superpoint.utils.prob_map_to_positions_with_prob">prob_map_to_positions_with_prob</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.remove_border_points" href="#silk.backbones.superpoint.utils.remove_border_points">remove_border_points</a></code></li>
+<li><code><a title="silk.backbones.superpoint.utils.space_to_depth" href="#silk.backbones.superpoint.utils.space_to_depth">space_to_depth</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

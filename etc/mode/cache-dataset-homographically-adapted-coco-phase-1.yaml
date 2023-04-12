@@ -1,0 +1,9 @@
+defaults:
+  - /models@model: magicpoint-frozen-best
+  - cache-dataset-homographically-adapted-coco
+  - _self_
+
+model:
+  model:
+    images_to_logits_fn:
+      detection_threshold: 0.001

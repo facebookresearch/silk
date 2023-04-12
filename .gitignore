@@ -1,0 +1,7 @@
+*.egg-info
+*.pyc
+__pycache__
+.vscode
+*.h5
+.nfs*
+core

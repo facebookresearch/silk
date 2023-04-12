@@ -1,0 +1,26 @@
+_target_: silk.backbones.silk.silk.SiLKVGG
+in_channels: 1 # grayscale
+detection_threshold: 1.
+
+## top-k = 10k and 5k experiments
+detection_top_k: 10000
+# detection_top_k: 5000
+
+## top-k variations for analysis
+# detection_top_k: 1000
+# detection_top_k: 1000
+# detection_top_k: 2500
+# detection_top_k: 5000
+# detection_top_k: 7500
+# detection_top_k: 10000
+# detection_top_k: 12500
+# detection_top_k: 15000
+# detection_top_k: 17500
+# detection_top_k: 20000
+# detection_top_k: 22500
+# detection_top_k: 25000
+
+nms_dist: 0
+padding: 0
+border_dist: 0
+descriptor_scale_factor: 1.41 # sqrt(2)

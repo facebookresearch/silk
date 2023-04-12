@@ -1,0 +1,6 @@
+#!/bin/bash
+aws s3 --profile saml sync assets s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:gleize/silk/assets --exclude "*/.gitignore" --exclude "public-assets.txt" # --delete
+aws s3 --profile saml sync assets s3://dl.fbaipublicfiles.com/silk/assets --exclude "*/.gitignore"  --exclude "public-assets.txt" # --delete
+
+# get public assets list
+aws s3 --profile saml ls s3://dl.fbaipublicfiles.com/silk/assets --recursive | awk '{print $4}' > assets/public-assets.txt

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.datasets.hpatches.hpatches_dataset API documentation</title>
+<meta name="description" content="Setting up the HPatches dataset …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.datasets.hpatches.hpatches_dataset</code></h1>
+</header>
+<section id="section-intro">
+<p>Setting up the HPatches dataset.</p>
+<p>This file contains a function to load in images from hpatches directory
+on faircluster and a PyTorch Dataset class for the HPatches dataset.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+Setting up the HPatches dataset.
+
+This file contains a function to load in images from hpatches directory
+on faircluster and a PyTorch Dataset class for the HPatches dataset.
+&#34;&#34;&#34;
+
+import os
+from pathlib import Path
+
+import cv2
+import numpy as np
+import torch
+from silk.cv.homography import resize_homography
+from silk.models.superpoint_utils import load_image
+
+HPATCHES_DEVFAIR_DIR = os.path.join(&#34;hpatches&#34;, &#34;01042022&#34;)
+
+
+class HPatchesDataset(torch.utils.data.Dataset):
+    &#34;&#34;&#34;
+    The HPatches datset class.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        hpatches_path,
+        img_alteration=None,
+        num_to_load=None,
+        img_size=None,  # none will have original size, or can give a scale factor as a float
+        ignore_folders=(),
+        max_img_size=None,
+        min_img_size=None,
+        force_min_max_resizing=False,
+        grayscale=True,
+    ):
+        &#34;&#34;&#34;
+        Initialize the HPatches dataset from the hpatches_path (hpatches directory).
+        &#34;&#34;&#34;
+
+        def _load_hpatches(
+            hpatches_path,
+            img_alteration,
+            num_to_load,
+            ignore_folders,
+        ):
+            &#34;&#34;&#34;
+            Load an image from hpatches and all of its homographies, plus the homography
+            matrices linking the original image to the transformed images.
+
+            Args:
+                hpatches_path (str): the path to the directory containing the hpatches
+                    dataset images
+                img_alteration (optional str): i for illumination changes, v for change
+                    in image perspective. Default is None for loading all (i and v) images.
+                num_to_load (optional int): the number of image sets to load (will load
+                    5 image pairs per image set because there are 5 pairs in each
+                    directory of the hpatches dataset)
+
+            Returns:
+                files (dict): a dictionary containing the image paths, warped image paths,
+                    and homographies connecting each pair of images
+            &#34;&#34;&#34;
+            hpatches_path = Path(hpatches_path)
+
+            folder_paths = [x for x in hpatches_path.iterdir() if x.is_dir()]
+            image_paths = []
+            warped_image_paths = []
+            homographies = []
+
+            count = 0
+
+            # go through each image directory and load in images
+            for path in folder_paths:
+                if img_alteration == &#34;i&#34; and path.stem[0] != &#34;i&#34;:
+                    continue
+
+                if img_alteration == &#34;v&#34; and path.stem[0] != &#34;v&#34;:
+                    continue
+
+                if os.path.basename(path) in ignore_folders:
+                    continue
+
+                # NUM_IMAGES is always 5, the number of pairs of images per hpatches directory
+                NUM_IMAGES = 5
+                file_ext = &#34;.ppm&#34;
+
+                for i in range(2, 2 + NUM_IMAGES):
+                    # the original image is always 1.ppm
+                    image_paths.append(str(Path(path, &#34;1&#34; + file_ext)))
+
+                    # the warped images are named 2 through 6.ppm
+                    warped_image_paths.append(str(Path(path, str(i) + file_ext)))
+
+                    # there is one homography matrix for each warped image
+                    homographies.append(np.loadtxt(str(Path(path, &#34;H_1_&#34; + str(i)))))
+
+                count += 1
+
+                if num_to_load is not None:
+                    if count &gt;= num_to_load:
+                        break
+
+            files = {
+                &#34;image_paths&#34;: image_paths,
+                &#34;warped_image_paths&#34;: warped_image_paths,
+                &#34;homography&#34;: homographies,
+            }
+
+            return files
+
+        ignore_folders = set(ignore_folders)
+        files = _load_hpatches(
+            hpatches_path,
+            img_alteration,
+            num_to_load,
+            ignore_folders,
+        )
+
+        self.img_size = img_size
+        self.force_min_max_resizing = force_min_max_resizing
+        self.max_img_size = max_img_size
+        self.min_img_size = min_img_size
+        self.image_paths = files[&#34;image_paths&#34;]
+        self.warped_image_paths = files[&#34;warped_image_paths&#34;]
+        self.homographies = files[&#34;homography&#34;]
+        self.grayscale = grayscale
+
+    def __len__(self):
+        &#34;&#34;&#34;
+        Get the length of the dataset.
+        &#34;&#34;&#34;
+        return len(self.image_paths)
+
+    def __getitem__(self, index):
+        &#34;&#34;&#34;
+        Get an item from the dataset. Note that one item in the
+        dataset is one image PAIR, and the label is the homography.
+        &#34;&#34;&#34;
+        original_image_path = self.image_paths[index]
+        warped_image_path = self.warped_image_paths[index]
+        homography = torch.tensor(self.homographies[index])
+
+        # resize images
+        # TODO(Pierre): Avoid loading entire image just to get the shape (we re-loed it later)
+        image = cv2.imread(original_image_path)
+        wimage = cv2.imread(warped_image_path)
+
+        original_height, original_width = image.shape[:2]
+
+        assert (self.max_img_size is None) or (self.min_img_size is None)
+        if self.max_img_size:
+            if (
+                original_height &gt; self.max_img_size[0]
+                or original_width &gt; self.max_img_size[1]
+                or self.force_min_max_resizing
+            ):
+                r = min(
+                    self.max_img_size[0] / original_height,
+                    self.max_img_size[1] / original_width,
+                )
+                original_height = int(original_height * r)
+                original_width = int(original_width * r)
+        elif self.min_img_size:
+            if (
+                original_height &lt; self.min_img_size[0]
+                or original_width &lt; self.min_img_size[1]
+                or self.force_min_max_resizing
+            ):
+                r = max(
+                    self.min_img_size[0] / original_height,
+                    self.min_img_size[1] / original_width,
+                )
+                original_height = int(original_height * r)
+                original_width = int(original_width * r)
+
+        # keep original image sizes, ensuring that height and width are divisible by 8
+        if self.img_size is None:
+            img_height = original_height + (8 - original_height % 8) % 8
+            img_width = original_width + (8 - original_width % 8) % 8
+        # if argument is a float, scale by the factor
+        elif type(self.img_size) == float:
+            img_height = int(original_height * self.img_size)
+            img_width = int(original_width * self.img_size)
+            img_height += (8 - img_height % 8) % 8
+            img_width += (8 - img_width % 8) % 8
+        elif len(self.img_size) == 2:
+            img_height = self.img_size[0]
+            img_width = self.img_size[1]
+        else:
+            raise ValueError(&#34;img_size must be of type None or Float&#34;)
+
+        original_image = load_image(
+            original_image_path, img_height, img_width, as_gray=self.grayscale
+        )
+        warped_image = load_image(
+            warped_image_path, img_height, img_width, as_gray=self.grayscale
+        )
+
+        homography = resize_homography(
+            homography,
+            image.shape,
+            (img_height, img_width),
+            wimage.shape,
+        )
+
+        return original_image, warped_image, homography</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.datasets.hpatches.hpatches_dataset.HPatchesDataset"><code class="flex name class">
+<span>class <span class="ident">HPatchesDataset</span></span>
+<span>(</span><span>hpatches_path, img_alteration=None, num_to_load=None, img_size=None, ignore_folders=(), max_img_size=None, min_img_size=None, force_min_max_resizing=False, grayscale=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The HPatches datset class.</p>
+<p>Initialize the HPatches dataset from the hpatches_path (hpatches directory).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HPatchesDataset(torch.utils.data.Dataset):
+    &#34;&#34;&#34;
+    The HPatches datset class.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        hpatches_path,
+        img_alteration=None,
+        num_to_load=None,
+        img_size=None,  # none will have original size, or can give a scale factor as a float
+        ignore_folders=(),
+        max_img_size=None,
+        min_img_size=None,
+        force_min_max_resizing=False,
+        grayscale=True,
+    ):
+        &#34;&#34;&#34;
+        Initialize the HPatches dataset from the hpatches_path (hpatches directory).
+        &#34;&#34;&#34;
+
+        def _load_hpatches(
+            hpatches_path,
+            img_alteration,
+            num_to_load,
+            ignore_folders,
+        ):
+            &#34;&#34;&#34;
+            Load an image from hpatches and all of its homographies, plus the homography
+            matrices linking the original image to the transformed images.
+
+            Args:
+                hpatches_path (str): the path to the directory containing the hpatches
+                    dataset images
+                img_alteration (optional str): i for illumination changes, v for change
+                    in image perspective. Default is None for loading all (i and v) images.
+                num_to_load (optional int): the number of image sets to load (will load
+                    5 image pairs per image set because there are 5 pairs in each
+                    directory of the hpatches dataset)
+
+            Returns:
+                files (dict): a dictionary containing the image paths, warped image paths,
+                    and homographies connecting each pair of images
+            &#34;&#34;&#34;
+            hpatches_path = Path(hpatches_path)
+
+            folder_paths = [x for x in hpatches_path.iterdir() if x.is_dir()]
+            image_paths = []
+            warped_image_paths = []
+            homographies = []
+
+            count = 0
+
+            # go through each image directory and load in images
+            for path in folder_paths:
+                if img_alteration == &#34;i&#34; and path.stem[0] != &#34;i&#34;:
+                    continue
+
+                if img_alteration == &#34;v&#34; and path.stem[0] != &#34;v&#34;:
+                    continue
+
+                if os.path.basename(path) in ignore_folders:
+                    continue
+
+                # NUM_IMAGES is always 5, the number of pairs of images per hpatches directory
+                NUM_IMAGES = 5
+                file_ext = &#34;.ppm&#34;
+
+                for i in range(2, 2 + NUM_IMAGES):
+                    # the original image is always 1.ppm
+                    image_paths.append(str(Path(path, &#34;1&#34; + file_ext)))
+
+                    # the warped images are named 2 through 6.ppm
+                    warped_image_paths.append(str(Path(path, str(i) + file_ext)))
+
+                    # there is one homography matrix for each warped image
+                    homographies.append(np.loadtxt(str(Path(path, &#34;H_1_&#34; + str(i)))))
+
+                count += 1
+
+                if num_to_load is not None:
+                    if count &gt;= num_to_load:
+                        break
+
+            files = {
+                &#34;image_paths&#34;: image_paths,
+                &#34;warped_image_paths&#34;: warped_image_paths,
+                &#34;homography&#34;: homographies,
+            }
+
+            return files
+
+        ignore_folders = set(ignore_folders)
+        files = _load_hpatches(
+            hpatches_path,
+            img_alteration,
+            num_to_load,
+            ignore_folders,
+        )
+
+        self.img_size = img_size
+        self.force_min_max_resizing = force_min_max_resizing
+        self.max_img_size = max_img_size
+        self.min_img_size = min_img_size
+        self.image_paths = files[&#34;image_paths&#34;]
+        self.warped_image_paths = files[&#34;warped_image_paths&#34;]
+        self.homographies = files[&#34;homography&#34;]
+        self.grayscale = grayscale
+
+    def __len__(self):
+        &#34;&#34;&#34;
+        Get the length of the dataset.
+        &#34;&#34;&#34;
+        return len(self.image_paths)
+
+    def __getitem__(self, index):
+        &#34;&#34;&#34;
+        Get an item from the dataset. Note that one item in the
+        dataset is one image PAIR, and the label is the homography.
+        &#34;&#34;&#34;
+        original_image_path = self.image_paths[index]
+        warped_image_path = self.warped_image_paths[index]
+        homography = torch.tensor(self.homographies[index])
+
+        # resize images
+        # TODO(Pierre): Avoid loading entire image just to get the shape (we re-loed it later)
+        image = cv2.imread(original_image_path)
+        wimage = cv2.imread(warped_image_path)
+
+        original_height, original_width = image.shape[:2]
+
+        assert (self.max_img_size is None) or (self.min_img_size is None)
+        if self.max_img_size:
+            if (
+                original_height &gt; self.max_img_size[0]
+                or original_width &gt; self.max_img_size[1]
+                or self.force_min_max_resizing
+            ):
+                r = min(
+                    self.max_img_size[0] / original_height,
+                    self.max_img_size[1] / original_width,
+                )
+                original_height = int(original_height * r)
+                original_width = int(original_width * r)
+        elif self.min_img_size:
+            if (
+                original_height &lt; self.min_img_size[0]
+                or original_width &lt; self.min_img_size[1]
+                or self.force_min_max_resizing
+            ):
+                r = max(
+                    self.min_img_size[0] / original_height,
+                    self.min_img_size[1] / original_width,
+                )
+                original_height = int(original_height * r)
+                original_width = int(original_width * r)
+
+        # keep original image sizes, ensuring that height and width are divisible by 8
+        if self.img_size is None:
+            img_height = original_height + (8 - original_height % 8) % 8
+            img_width = original_width + (8 - original_width % 8) % 8
+        # if argument is a float, scale by the factor
+        elif type(self.img_size) == float:
+            img_height = int(original_height * self.img_size)
+            img_width = int(original_width * self.img_size)
+            img_height += (8 - img_height % 8) % 8
+            img_width += (8 - img_width % 8) % 8
+        elif len(self.img_size) == 2:
+            img_height = self.img_size[0]
+            img_width = self.img_size[1]
+        else:
+            raise ValueError(&#34;img_size must be of type None or Float&#34;)
+
+        original_image = load_image(
+            original_image_path, img_height, img_width, as_gray=self.grayscale
+        )
+        warped_image = load_image(
+            warped_image_path, img_height, img_width, as_gray=self.grayscale
+        )
+
+        homography = resize_homography(
+            homography,
+            image.shape,
+            (img_height, img_width),
+            wimage.shape,
+        )
+
+        return original_image, warped_image, homography</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.datasets.hpatches" href="index.html">silk.datasets.hpatches</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.datasets.hpatches.hpatches_dataset.HPatchesDataset" href="#silk.datasets.hpatches.hpatches_dataset.HPatchesDataset">HPatchesDataset</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

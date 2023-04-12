@@ -1,0 +1,1536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.metrics.hpatches_metrics API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.metrics.hpatches_metrics</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import numpy as np
+import torch
+from silk.logger import LOG
+from silk.models.superpoint_utils import (
+    warp_points,
+    keep_true_points,
+)
+from torchmetrics import Metric
+
+DEFAULT_DEVICE = &#34;cuda:0&#34;
+
+
+class AvgShapeCount(Metric):
+    def __init__(self, dim=0, dist_sync_on_step=False):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self._sum = 0.0
+        self._n = 0
+        self._dim = (dim,) if isinstance(dim, int) else tuple(dim)
+
+    def update(self, *tensors):
+        for tensor in tensors:
+            for ten in tensor:
+                self.update_one(ten)
+
+    def update_one(self, tensor):
+        v = 1
+        for d in self._dim:
+            v *= tensor.shape[d]
+        self._sum += v
+        self._n += 1
+
+    def compute(self):
+        return torch.tensor(self._sum / self._n)
+
+
+class Repeatability(Metric):
+    def __init__(self, distance_thresh=3, dist_sync_on_step=False, ordering=&#34;xy&#34;):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+        self.add_state(&#34;repeatability&#34;, default=[])
+        self.distance_thresh = distance_thresh
+        self.ordering = ordering
+
+        assert self.ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+    def update(
+        self,
+        output_points,
+        output_warped_points,
+        img_shape,
+        warped_img_shape,
+        true_homography,
+    ):
+        for args in zip(
+            output_points,
+            output_warped_points,
+            img_shape,
+            warped_img_shape,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    def update_one(
+        self,
+        output_points,
+        output_warped_points,
+        img_shape,
+        warped_img_shape,
+        true_homography,
+    ):
+        assert (img_shape == warped_img_shape).all()
+
+        output_points = output_points.to(self.to_device)
+        output_warped_points = output_warped_points.to(self.to_device)
+
+        # clean
+        if self.ordering == &#34;xy&#34;:
+            output_points = output_points.T[:2]
+            output_warped_points = output_warped_points.T[:2]
+        else:
+            output_points = output_points.T[[1, 0]]
+            output_warped_points = output_warped_points.T[[1, 0]]
+
+        # convert homography from 1 x 3 x 3 to 3 x 3 matrix
+        true_homography = true_homography.to(self.to_device).float()
+
+        # only keep points from warped image if they would be present in original image
+        warped_pred_points, _ = keep_true_points(
+            output_warped_points,
+            torch.linalg.inv(true_homography),
+            img_shape,
+        )
+
+        # only keep points from original image if they would be present in warped image
+        output_points, _ = keep_true_points(
+            output_points,
+            true_homography,
+            warped_img_shape,
+        )
+
+        # warp the original image output_points with the true homography
+        true_warped_pred_points = warp_points(output_points, true_homography)
+
+        # need to transpose to properly compute repeatability
+        warped_pred_points = warped_pred_points.T
+        true_warped_pred_points = true_warped_pred_points.T
+
+        # compute the repeatability
+
+        # get the number of predicted points in both images in the pair
+        original_num = true_warped_pred_points.shape[0]
+        warped_num = warped_pred_points.shape[0]
+
+        # compute the norm
+        assert true_warped_pred_points.shape[1] == 2
+        assert warped_pred_points.shape[1] == 2
+
+        norm = torch.linalg.norm(
+            true_warped_pred_points[:, :2].unsqueeze(1)
+            - warped_pred_points[:, :2].unsqueeze(0),
+            dim=2,
+        )
+
+        # count the number of points with norm distance less than distance_thresh
+        count1 = 0
+        count2 = 0
+
+        if original_num != 0:
+            min1 = torch.min(norm, 0).values
+            count1 = torch.sum(min1 &lt;= self.distance_thresh)
+        if warped_num != 0:
+            min2 = torch.min(norm, 1).values
+            count2 = torch.sum(min2 &lt;= self.distance_thresh)
+        if original_num + warped_num &gt; 0:
+            repeatability = (count1 + count2) / (original_num + warped_num)
+            self.repeatability.append(repeatability)
+
+    def compute(self):
+        repeatability = torch.tensor(
+            self.repeatability,
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+        return torch.mean(repeatability)
+
+
+class HomographyEstimation(Metric):
+    def __init__(
+        self,
+        correctness_thresh=3,
+        dist_sync_on_step=False,
+        auc=False,
+    ):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self.add_state(&#34;homography_estimation&#34;, default=[], dist_reduce_fx=&#34;cat&#34;)
+        self.add_state(&#34;errors&#34;, default=[], dist_reduce_fx=&#34;cat&#34;)
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+        self.correctness_thresh = correctness_thresh
+        self._auc = auc
+
+    @staticmethod
+    def compute_auc(errors, thresholds):
+        # source : https://github.com/magicleap/SuperGluePretrainedNetwork/blob/ddcf11f42e7e0732a0c4607648f9448ea8d73590/models/utils.py#L397
+        sort_idx = np.argsort(errors)
+        errors = np.array(errors.copy())[sort_idx]
+        recall = (np.arange(len(errors)) + 1) / len(errors)
+        errors = np.r_[0.0, errors]
+        recall = np.r_[0.0, recall]
+
+        if True:
+            import matplotlib.pyplot as plt
+
+            i = np.searchsorted(errors, 16)
+
+            plt.plot(errors[:i], recall[:i] * 100)
+            plt.savefig(&#34;fig.png&#34;)
+            plt.cla()
+
+        aucs = []
+        for t in thresholds:
+            last_index = np.searchsorted(errors, t)
+            r = np.r_[recall[:last_index], recall[last_index - 1]]
+            e = np.r_[errors[:last_index], t]
+            aucs.append(np.trapz(r, x=e) / t)
+        return aucs
+
+    def update(
+        self,
+        img_shape,
+        estimated_homography,
+        true_homography,
+    ):
+        for args in zip(
+            img_shape,
+            estimated_homography,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    # TODO(Pierre): Make homography estimation only work on two homographies.
+    def update_one(
+        self,
+        img_shape,
+        estimated_homography,
+        true_homography,
+    ):
+        if estimated_homography is None:
+            correctness = 0.0
+            self.homography_estimation.append(correctness)
+            self.errors.append(self.correctness_thresh + 1.0)
+            LOG.warning(&#34;invalid matrix provided&#34;)
+            return
+
+        true_homography = true_homography.to(self.to_device).float()
+        estimated_homography = estimated_homography.to(self.to_device).float()
+
+        # img_shape = img_shape - 64
+
+        corners = torch.tensor(
+            [
+                [0, 0, 1],
+                [img_shape[1] - 1, 0, 1],
+                [0, img_shape[0] - 1, 1],
+                [img_shape[1] - 1, img_shape[0] - 1, 1],
+            ],
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+
+        # apply the true homography and the estimated homography to the corners
+        real_warped_corners = torch.mm(corners, torch.transpose(true_homography, 0, 1))
+        real_warped_corners = real_warped_corners[:, :2] / real_warped_corners[:, 2:]
+
+        warped_corners = torch.mm(corners, torch.transpose(estimated_homography, 0, 1))
+        warped_corners = warped_corners[:, :2] / warped_corners[:, 2:]
+
+        mean_dist = torch.mean(
+            torch.linalg.norm(real_warped_corners - warped_corners, dim=1)
+        )
+
+        # considered correct if mean distance is below a given threshold
+        correctness = mean_dist &lt;= self.correctness_thresh
+
+        self.homography_estimation.append(correctness)
+        self.errors.append(mean_dist)
+
+    def compute(self):
+        # return the average homography across all pairs of images
+        if self._auc:
+            errors = (
+                torch.tensor(
+                    self.errors,
+                    dtype=torch.float32,
+                    device=self.to_device,
+                )
+                .detach()
+                .cpu()
+                .numpy()
+            )
+            auc = HomographyEstimation.compute_auc(errors, [self.correctness_thresh])[0]
+            return torch.tensor(
+                auc,
+                dtype=torch.float32,
+                device=self.to_device,
+            )
+
+        homography_estimation = torch.tensor(
+            self.homography_estimation,
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+        homography_avg = torch.mean(homography_estimation)
+
+        return homography_avg
+
+
+class MeanMatchingAccuracy(Metric):
+    def __init__(
+        self,
+        threshold=3,
+        dist_sync_on_step=False,
+        ordering=&#34;xy&#34;,
+    ):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self._threshold = threshold
+        self._cum_acc = 0
+        self._n_matches = 0
+        self._n_points = 0
+        self._ordering = ordering
+
+        assert ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+
+    @staticmethod
+    def good_matches_mask(
+        matched_keypoints, warped_matched_keypoints, homography, threshold, ordering
+    ):
+        assert ordering in {&#34;yx&#34;, &#34;xy&#34;}
+
+        if ordering == &#34;xy&#34;:
+            matched_keypoints = matched_keypoints[:, :2]
+            warped_matched_keypoints = warped_matched_keypoints[:, :2]
+        else:
+            matched_keypoints = matched_keypoints[:, [1, 0]]
+            warped_matched_keypoints = warped_matched_keypoints[:, [1, 0]]
+
+        true_warped_keypoints = warp_points(
+            matched_keypoints.T,
+            homography,
+        ).T
+
+        mask_good = ((true_warped_keypoints - warped_matched_keypoints) ** 2).sum(
+            dim=1
+        ).sqrt() &lt;= threshold
+
+        return mask_good
+
+    def update(
+        self,
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+    ):
+        for args in zip(
+            matched_keypoints,
+            warped_matched_keypoints,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    # TODO(Pierre): Make homography estimation only work on two homographies.
+    def update_one(
+        self,
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+    ):
+        assert len(matched_keypoints) == len(warped_matched_keypoints)
+
+        true_homography = true_homography.to(self.to_device).float()
+
+        mask_good = MeanMatchingAccuracy.good_matches_mask(
+            matched_keypoints,
+            warped_matched_keypoints,
+            true_homography,
+            self._threshold,
+            self._ordering,
+        )
+
+        if mask_good.numel() &gt; 0:
+            acc = mask_good.float().mean().item()
+        else:
+            acc = 0.0
+
+        self._cum_acc += acc
+        self._n_matches += 1
+        self._n_points += 2 * mask_good.shape[0]
+
+    def compute(self):
+        print(f&#34;n_points : {self._n_points / (2 * self._n_matches)}&#34;)
+
+        # return the mean matching accuracy
+        return torch.tensor(
+            self._cum_acc / self._n_matches,
+            dtype=torch.float32,
+            device=self._device,
+        )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount"><code class="flex name class">
+<span>class <span class="ident">AvgShapeCount</span></span>
+<span>(</span><span>dim=0, dist_sync_on_step=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all metrics present in the Metrics API.</p>
+<p>Implements <code>add_state()</code>, <code>forward()</code>, <code>reset()</code> and a few other things to
+handle distributed synchronization and per-step metric computation.</p>
+<p>Override <code>update()</code> and <code>compute()</code> functions to implement your own metric. Use
+<code>add_state()</code> to register metric state variables which keep track of state on each
+call of <code>update()</code> and are synchronized across processes when <code>compute()</code> is called.</p>
+<h2 id="note">Note</h2>
+<p>Metric state variables can either be <code>torch.Tensors</code> or an empty list which can we used
+to store `torch.Tensors``.</p>
+<h2 id="note_1">Note</h2>
+<p>Different metrics only override <code>update()</code> and not <code>forward()</code>. A call to <code>update()</code>
+is valid, but it won't return the metric value at the current step. A call to <code>forward()</code>
+automatically calls <code>update()</code> and also returns the metric value at the current step.</p>
+<h2 id="args">Args</h2>
+<p>compute_on_step:
+Forward only calls <code>update()</code> and returns None if this is set to False. default: True
+dist_sync_on_step:
+Synchronize metric state across processes at each <code>forward()</code>
+before returning the value at the step.
+process_group:
+Specify the process group on which synchronization is called. default: None (which selects the entire world)
+dist_sync_fn:
+Callback that performs the allgather operation on the metric state. When <code>None</code>, DDP
+will be used to perform the allgather.
+Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AvgShapeCount(Metric):
+    def __init__(self, dim=0, dist_sync_on_step=False):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self._sum = 0.0
+        self._n = 0
+        self._dim = (dim,) if isinstance(dim, int) else tuple(dim)
+
+    def update(self, *tensors):
+        for tensor in tensors:
+            for ten in tensor:
+                self.update_one(ten)
+
+    def update_one(self, tensor):
+        v = 1
+        for d in self._dim:
+            v *= tensor.shape[d]
+        self._sum += v
+        self._n += 1
+
+    def compute(self):
+        return torch.tensor(self._sum / self._n)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torchmetrics.metric.Metric</li>
+<li>torch.nn.modules.module.Module</li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount.higher_is_better"><code class="name">var <span class="ident">higher_is_better</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount.is_differentiable"><code class="name">var <span class="ident">is_differentiable</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount.compute"><code class="name flex">
+<span>def <span class="ident">compute</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to compute the final metric value from state variables synchronized across the
+distributed backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute(self):
+    return torch.tensor(self._sum / self._n)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, *tensors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to update the state variables of your metric class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, *tensors):
+    for tensor in tensors:
+        for ten in tensor:
+            self.update_one(ten)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.AvgShapeCount.update_one"><code class="name flex">
+<span>def <span class="ident">update_one</span></span>(<span>self, tensor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_one(self, tensor):
+    v = 1
+    for d in self._dim:
+        v *= tensor.shape[d]
+    self._sum += v
+    self._n += 1</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation"><code class="flex name class">
+<span>class <span class="ident">HomographyEstimation</span></span>
+<span>(</span><span>correctness_thresh=3, dist_sync_on_step=False, auc=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all metrics present in the Metrics API.</p>
+<p>Implements <code>add_state()</code>, <code>forward()</code>, <code>reset()</code> and a few other things to
+handle distributed synchronization and per-step metric computation.</p>
+<p>Override <code>update()</code> and <code>compute()</code> functions to implement your own metric. Use
+<code>add_state()</code> to register metric state variables which keep track of state on each
+call of <code>update()</code> and are synchronized across processes when <code>compute()</code> is called.</p>
+<h2 id="note">Note</h2>
+<p>Metric state variables can either be <code>torch.Tensors</code> or an empty list which can we used
+to store `torch.Tensors``.</p>
+<h2 id="note_1">Note</h2>
+<p>Different metrics only override <code>update()</code> and not <code>forward()</code>. A call to <code>update()</code>
+is valid, but it won't return the metric value at the current step. A call to <code>forward()</code>
+automatically calls <code>update()</code> and also returns the metric value at the current step.</p>
+<h2 id="args">Args</h2>
+<p>compute_on_step:
+Forward only calls <code>update()</code> and returns None if this is set to False. default: True
+dist_sync_on_step:
+Synchronize metric state across processes at each <code>forward()</code>
+before returning the value at the step.
+process_group:
+Specify the process group on which synchronization is called. default: None (which selects the entire world)
+dist_sync_fn:
+Callback that performs the allgather operation on the metric state. When <code>None</code>, DDP
+will be used to perform the allgather.
+Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HomographyEstimation(Metric):
+    def __init__(
+        self,
+        correctness_thresh=3,
+        dist_sync_on_step=False,
+        auc=False,
+    ):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self.add_state(&#34;homography_estimation&#34;, default=[], dist_reduce_fx=&#34;cat&#34;)
+        self.add_state(&#34;errors&#34;, default=[], dist_reduce_fx=&#34;cat&#34;)
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+        self.correctness_thresh = correctness_thresh
+        self._auc = auc
+
+    @staticmethod
+    def compute_auc(errors, thresholds):
+        # source : https://github.com/magicleap/SuperGluePretrainedNetwork/blob/ddcf11f42e7e0732a0c4607648f9448ea8d73590/models/utils.py#L397
+        sort_idx = np.argsort(errors)
+        errors = np.array(errors.copy())[sort_idx]
+        recall = (np.arange(len(errors)) + 1) / len(errors)
+        errors = np.r_[0.0, errors]
+        recall = np.r_[0.0, recall]
+
+        if True:
+            import matplotlib.pyplot as plt
+
+            i = np.searchsorted(errors, 16)
+
+            plt.plot(errors[:i], recall[:i] * 100)
+            plt.savefig(&#34;fig.png&#34;)
+            plt.cla()
+
+        aucs = []
+        for t in thresholds:
+            last_index = np.searchsorted(errors, t)
+            r = np.r_[recall[:last_index], recall[last_index - 1]]
+            e = np.r_[errors[:last_index], t]
+            aucs.append(np.trapz(r, x=e) / t)
+        return aucs
+
+    def update(
+        self,
+        img_shape,
+        estimated_homography,
+        true_homography,
+    ):
+        for args in zip(
+            img_shape,
+            estimated_homography,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    # TODO(Pierre): Make homography estimation only work on two homographies.
+    def update_one(
+        self,
+        img_shape,
+        estimated_homography,
+        true_homography,
+    ):
+        if estimated_homography is None:
+            correctness = 0.0
+            self.homography_estimation.append(correctness)
+            self.errors.append(self.correctness_thresh + 1.0)
+            LOG.warning(&#34;invalid matrix provided&#34;)
+            return
+
+        true_homography = true_homography.to(self.to_device).float()
+        estimated_homography = estimated_homography.to(self.to_device).float()
+
+        # img_shape = img_shape - 64
+
+        corners = torch.tensor(
+            [
+                [0, 0, 1],
+                [img_shape[1] - 1, 0, 1],
+                [0, img_shape[0] - 1, 1],
+                [img_shape[1] - 1, img_shape[0] - 1, 1],
+            ],
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+
+        # apply the true homography and the estimated homography to the corners
+        real_warped_corners = torch.mm(corners, torch.transpose(true_homography, 0, 1))
+        real_warped_corners = real_warped_corners[:, :2] / real_warped_corners[:, 2:]
+
+        warped_corners = torch.mm(corners, torch.transpose(estimated_homography, 0, 1))
+        warped_corners = warped_corners[:, :2] / warped_corners[:, 2:]
+
+        mean_dist = torch.mean(
+            torch.linalg.norm(real_warped_corners - warped_corners, dim=1)
+        )
+
+        # considered correct if mean distance is below a given threshold
+        correctness = mean_dist &lt;= self.correctness_thresh
+
+        self.homography_estimation.append(correctness)
+        self.errors.append(mean_dist)
+
+    def compute(self):
+        # return the average homography across all pairs of images
+        if self._auc:
+            errors = (
+                torch.tensor(
+                    self.errors,
+                    dtype=torch.float32,
+                    device=self.to_device,
+                )
+                .detach()
+                .cpu()
+                .numpy()
+            )
+            auc = HomographyEstimation.compute_auc(errors, [self.correctness_thresh])[0]
+            return torch.tensor(
+                auc,
+                dtype=torch.float32,
+                device=self.to_device,
+            )
+
+        homography_estimation = torch.tensor(
+            self.homography_estimation,
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+        homography_avg = torch.mean(homography_estimation)
+
+        return homography_avg</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torchmetrics.metric.Metric</li>
+<li>torch.nn.modules.module.Module</li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.higher_is_better"><code class="name">var <span class="ident">higher_is_better</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.is_differentiable"><code class="name">var <span class="ident">is_differentiable</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.compute_auc"><code class="name flex">
+<span>def <span class="ident">compute_auc</span></span>(<span>errors, thresholds)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def compute_auc(errors, thresholds):
+    # source : https://github.com/magicleap/SuperGluePretrainedNetwork/blob/ddcf11f42e7e0732a0c4607648f9448ea8d73590/models/utils.py#L397
+    sort_idx = np.argsort(errors)
+    errors = np.array(errors.copy())[sort_idx]
+    recall = (np.arange(len(errors)) + 1) / len(errors)
+    errors = np.r_[0.0, errors]
+    recall = np.r_[0.0, recall]
+
+    if True:
+        import matplotlib.pyplot as plt
+
+        i = np.searchsorted(errors, 16)
+
+        plt.plot(errors[:i], recall[:i] * 100)
+        plt.savefig(&#34;fig.png&#34;)
+        plt.cla()
+
+    aucs = []
+    for t in thresholds:
+        last_index = np.searchsorted(errors, t)
+        r = np.r_[recall[:last_index], recall[last_index - 1]]
+        e = np.r_[errors[:last_index], t]
+        aucs.append(np.trapz(r, x=e) / t)
+    return aucs</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.compute"><code class="name flex">
+<span>def <span class="ident">compute</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to compute the final metric value from state variables synchronized across the
+distributed backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute(self):
+    # return the average homography across all pairs of images
+    if self._auc:
+        errors = (
+            torch.tensor(
+                self.errors,
+                dtype=torch.float32,
+                device=self.to_device,
+            )
+            .detach()
+            .cpu()
+            .numpy()
+        )
+        auc = HomographyEstimation.compute_auc(errors, [self.correctness_thresh])[0]
+        return torch.tensor(
+            auc,
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+
+    homography_estimation = torch.tensor(
+        self.homography_estimation,
+        dtype=torch.float32,
+        device=self.to_device,
+    )
+    homography_avg = torch.mean(homography_estimation)
+
+    return homography_avg</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, img_shape, estimated_homography, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to update the state variables of your metric class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(
+    self,
+    img_shape,
+    estimated_homography,
+    true_homography,
+):
+    for args in zip(
+        img_shape,
+        estimated_homography,
+        true_homography,
+    ):
+        self.update_one(*args)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.HomographyEstimation.update_one"><code class="name flex">
+<span>def <span class="ident">update_one</span></span>(<span>self, img_shape, estimated_homography, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_one(
+    self,
+    img_shape,
+    estimated_homography,
+    true_homography,
+):
+    if estimated_homography is None:
+        correctness = 0.0
+        self.homography_estimation.append(correctness)
+        self.errors.append(self.correctness_thresh + 1.0)
+        LOG.warning(&#34;invalid matrix provided&#34;)
+        return
+
+    true_homography = true_homography.to(self.to_device).float()
+    estimated_homography = estimated_homography.to(self.to_device).float()
+
+    # img_shape = img_shape - 64
+
+    corners = torch.tensor(
+        [
+            [0, 0, 1],
+            [img_shape[1] - 1, 0, 1],
+            [0, img_shape[0] - 1, 1],
+            [img_shape[1] - 1, img_shape[0] - 1, 1],
+        ],
+        dtype=torch.float32,
+        device=self.to_device,
+    )
+
+    # apply the true homography and the estimated homography to the corners
+    real_warped_corners = torch.mm(corners, torch.transpose(true_homography, 0, 1))
+    real_warped_corners = real_warped_corners[:, :2] / real_warped_corners[:, 2:]
+
+    warped_corners = torch.mm(corners, torch.transpose(estimated_homography, 0, 1))
+    warped_corners = warped_corners[:, :2] / warped_corners[:, 2:]
+
+    mean_dist = torch.mean(
+        torch.linalg.norm(real_warped_corners - warped_corners, dim=1)
+    )
+
+    # considered correct if mean distance is below a given threshold
+    correctness = mean_dist &lt;= self.correctness_thresh
+
+    self.homography_estimation.append(correctness)
+    self.errors.append(mean_dist)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy"><code class="flex name class">
+<span>class <span class="ident">MeanMatchingAccuracy</span></span>
+<span>(</span><span>threshold=3, dist_sync_on_step=False, ordering='xy')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all metrics present in the Metrics API.</p>
+<p>Implements <code>add_state()</code>, <code>forward()</code>, <code>reset()</code> and a few other things to
+handle distributed synchronization and per-step metric computation.</p>
+<p>Override <code>update()</code> and <code>compute()</code> functions to implement your own metric. Use
+<code>add_state()</code> to register metric state variables which keep track of state on each
+call of <code>update()</code> and are synchronized across processes when <code>compute()</code> is called.</p>
+<h2 id="note">Note</h2>
+<p>Metric state variables can either be <code>torch.Tensors</code> or an empty list which can we used
+to store `torch.Tensors``.</p>
+<h2 id="note_1">Note</h2>
+<p>Different metrics only override <code>update()</code> and not <code>forward()</code>. A call to <code>update()</code>
+is valid, but it won't return the metric value at the current step. A call to <code>forward()</code>
+automatically calls <code>update()</code> and also returns the metric value at the current step.</p>
+<h2 id="args">Args</h2>
+<p>compute_on_step:
+Forward only calls <code>update()</code> and returns None if this is set to False. default: True
+dist_sync_on_step:
+Synchronize metric state across processes at each <code>forward()</code>
+before returning the value at the step.
+process_group:
+Specify the process group on which synchronization is called. default: None (which selects the entire world)
+dist_sync_fn:
+Callback that performs the allgather operation on the metric state. When <code>None</code>, DDP
+will be used to perform the allgather.
+Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MeanMatchingAccuracy(Metric):
+    def __init__(
+        self,
+        threshold=3,
+        dist_sync_on_step=False,
+        ordering=&#34;xy&#34;,
+    ):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        self._threshold = threshold
+        self._cum_acc = 0
+        self._n_matches = 0
+        self._n_points = 0
+        self._ordering = ordering
+
+        assert ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+
+    @staticmethod
+    def good_matches_mask(
+        matched_keypoints, warped_matched_keypoints, homography, threshold, ordering
+    ):
+        assert ordering in {&#34;yx&#34;, &#34;xy&#34;}
+
+        if ordering == &#34;xy&#34;:
+            matched_keypoints = matched_keypoints[:, :2]
+            warped_matched_keypoints = warped_matched_keypoints[:, :2]
+        else:
+            matched_keypoints = matched_keypoints[:, [1, 0]]
+            warped_matched_keypoints = warped_matched_keypoints[:, [1, 0]]
+
+        true_warped_keypoints = warp_points(
+            matched_keypoints.T,
+            homography,
+        ).T
+
+        mask_good = ((true_warped_keypoints - warped_matched_keypoints) ** 2).sum(
+            dim=1
+        ).sqrt() &lt;= threshold
+
+        return mask_good
+
+    def update(
+        self,
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+    ):
+        for args in zip(
+            matched_keypoints,
+            warped_matched_keypoints,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    # TODO(Pierre): Make homography estimation only work on two homographies.
+    def update_one(
+        self,
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+    ):
+        assert len(matched_keypoints) == len(warped_matched_keypoints)
+
+        true_homography = true_homography.to(self.to_device).float()
+
+        mask_good = MeanMatchingAccuracy.good_matches_mask(
+            matched_keypoints,
+            warped_matched_keypoints,
+            true_homography,
+            self._threshold,
+            self._ordering,
+        )
+
+        if mask_good.numel() &gt; 0:
+            acc = mask_good.float().mean().item()
+        else:
+            acc = 0.0
+
+        self._cum_acc += acc
+        self._n_matches += 1
+        self._n_points += 2 * mask_good.shape[0]
+
+    def compute(self):
+        print(f&#34;n_points : {self._n_points / (2 * self._n_matches)}&#34;)
+
+        # return the mean matching accuracy
+        return torch.tensor(
+            self._cum_acc / self._n_matches,
+            dtype=torch.float32,
+            device=self._device,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torchmetrics.metric.Metric</li>
+<li>torch.nn.modules.module.Module</li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.higher_is_better"><code class="name">var <span class="ident">higher_is_better</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.is_differentiable"><code class="name">var <span class="ident">is_differentiable</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.good_matches_mask"><code class="name flex">
+<span>def <span class="ident">good_matches_mask</span></span>(<span>matched_keypoints, warped_matched_keypoints, homography, threshold, ordering)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def good_matches_mask(
+    matched_keypoints, warped_matched_keypoints, homography, threshold, ordering
+):
+    assert ordering in {&#34;yx&#34;, &#34;xy&#34;}
+
+    if ordering == &#34;xy&#34;:
+        matched_keypoints = matched_keypoints[:, :2]
+        warped_matched_keypoints = warped_matched_keypoints[:, :2]
+    else:
+        matched_keypoints = matched_keypoints[:, [1, 0]]
+        warped_matched_keypoints = warped_matched_keypoints[:, [1, 0]]
+
+    true_warped_keypoints = warp_points(
+        matched_keypoints.T,
+        homography,
+    ).T
+
+    mask_good = ((true_warped_keypoints - warped_matched_keypoints) ** 2).sum(
+        dim=1
+    ).sqrt() &lt;= threshold
+
+    return mask_good</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.compute"><code class="name flex">
+<span>def <span class="ident">compute</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to compute the final metric value from state variables synchronized across the
+distributed backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute(self):
+    print(f&#34;n_points : {self._n_points / (2 * self._n_matches)}&#34;)
+
+    # return the mean matching accuracy
+    return torch.tensor(
+        self._cum_acc / self._n_matches,
+        dtype=torch.float32,
+        device=self._device,
+    )</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, matched_keypoints, warped_matched_keypoints, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to update the state variables of your metric class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(
+    self,
+    matched_keypoints,
+    warped_matched_keypoints,
+    true_homography,
+):
+    for args in zip(
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+    ):
+        self.update_one(*args)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update_one"><code class="name flex">
+<span>def <span class="ident">update_one</span></span>(<span>self, matched_keypoints, warped_matched_keypoints, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_one(
+    self,
+    matched_keypoints,
+    warped_matched_keypoints,
+    true_homography,
+):
+    assert len(matched_keypoints) == len(warped_matched_keypoints)
+
+    true_homography = true_homography.to(self.to_device).float()
+
+    mask_good = MeanMatchingAccuracy.good_matches_mask(
+        matched_keypoints,
+        warped_matched_keypoints,
+        true_homography,
+        self._threshold,
+        self._ordering,
+    )
+
+    if mask_good.numel() &gt; 0:
+        acc = mask_good.float().mean().item()
+    else:
+        acc = 0.0
+
+    self._cum_acc += acc
+    self._n_matches += 1
+    self._n_points += 2 * mask_good.shape[0]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.Repeatability"><code class="flex name class">
+<span>class <span class="ident">Repeatability</span></span>
+<span>(</span><span>distance_thresh=3, dist_sync_on_step=False, ordering='xy')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all metrics present in the Metrics API.</p>
+<p>Implements <code>add_state()</code>, <code>forward()</code>, <code>reset()</code> and a few other things to
+handle distributed synchronization and per-step metric computation.</p>
+<p>Override <code>update()</code> and <code>compute()</code> functions to implement your own metric. Use
+<code>add_state()</code> to register metric state variables which keep track of state on each
+call of <code>update()</code> and are synchronized across processes when <code>compute()</code> is called.</p>
+<h2 id="note">Note</h2>
+<p>Metric state variables can either be <code>torch.Tensors</code> or an empty list which can we used
+to store `torch.Tensors``.</p>
+<h2 id="note_1">Note</h2>
+<p>Different metrics only override <code>update()</code> and not <code>forward()</code>. A call to <code>update()</code>
+is valid, but it won't return the metric value at the current step. A call to <code>forward()</code>
+automatically calls <code>update()</code> and also returns the metric value at the current step.</p>
+<h2 id="args">Args</h2>
+<p>compute_on_step:
+Forward only calls <code>update()</code> and returns None if this is set to False. default: True
+dist_sync_on_step:
+Synchronize metric state across processes at each <code>forward()</code>
+before returning the value at the step.
+process_group:
+Specify the process group on which synchronization is called. default: None (which selects the entire world)
+dist_sync_fn:
+Callback that performs the allgather operation on the metric state. When <code>None</code>, DDP
+will be used to perform the allgather.
+Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Repeatability(Metric):
+    def __init__(self, distance_thresh=3, dist_sync_on_step=False, ordering=&#34;xy&#34;):
+        super().__init__(dist_sync_on_step=dist_sync_on_step)
+
+        # TODO(Pierre): Make metric&#39;s device inferred from inputs.
+        self.to_device = torch.device(
+            DEFAULT_DEVICE if torch.cuda.is_available() else &#34;cpu&#34;
+        )
+        self.add_state(&#34;repeatability&#34;, default=[])
+        self.distance_thresh = distance_thresh
+        self.ordering = ordering
+
+        assert self.ordering in {&#34;xy&#34;, &#34;yx&#34;}
+
+    def update(
+        self,
+        output_points,
+        output_warped_points,
+        img_shape,
+        warped_img_shape,
+        true_homography,
+    ):
+        for args in zip(
+            output_points,
+            output_warped_points,
+            img_shape,
+            warped_img_shape,
+            true_homography,
+        ):
+            self.update_one(*args)
+
+    def update_one(
+        self,
+        output_points,
+        output_warped_points,
+        img_shape,
+        warped_img_shape,
+        true_homography,
+    ):
+        assert (img_shape == warped_img_shape).all()
+
+        output_points = output_points.to(self.to_device)
+        output_warped_points = output_warped_points.to(self.to_device)
+
+        # clean
+        if self.ordering == &#34;xy&#34;:
+            output_points = output_points.T[:2]
+            output_warped_points = output_warped_points.T[:2]
+        else:
+            output_points = output_points.T[[1, 0]]
+            output_warped_points = output_warped_points.T[[1, 0]]
+
+        # convert homography from 1 x 3 x 3 to 3 x 3 matrix
+        true_homography = true_homography.to(self.to_device).float()
+
+        # only keep points from warped image if they would be present in original image
+        warped_pred_points, _ = keep_true_points(
+            output_warped_points,
+            torch.linalg.inv(true_homography),
+            img_shape,
+        )
+
+        # only keep points from original image if they would be present in warped image
+        output_points, _ = keep_true_points(
+            output_points,
+            true_homography,
+            warped_img_shape,
+        )
+
+        # warp the original image output_points with the true homography
+        true_warped_pred_points = warp_points(output_points, true_homography)
+
+        # need to transpose to properly compute repeatability
+        warped_pred_points = warped_pred_points.T
+        true_warped_pred_points = true_warped_pred_points.T
+
+        # compute the repeatability
+
+        # get the number of predicted points in both images in the pair
+        original_num = true_warped_pred_points.shape[0]
+        warped_num = warped_pred_points.shape[0]
+
+        # compute the norm
+        assert true_warped_pred_points.shape[1] == 2
+        assert warped_pred_points.shape[1] == 2
+
+        norm = torch.linalg.norm(
+            true_warped_pred_points[:, :2].unsqueeze(1)
+            - warped_pred_points[:, :2].unsqueeze(0),
+            dim=2,
+        )
+
+        # count the number of points with norm distance less than distance_thresh
+        count1 = 0
+        count2 = 0
+
+        if original_num != 0:
+            min1 = torch.min(norm, 0).values
+            count1 = torch.sum(min1 &lt;= self.distance_thresh)
+        if warped_num != 0:
+            min2 = torch.min(norm, 1).values
+            count2 = torch.sum(min2 &lt;= self.distance_thresh)
+        if original_num + warped_num &gt; 0:
+            repeatability = (count1 + count2) / (original_num + warped_num)
+            self.repeatability.append(repeatability)
+
+    def compute(self):
+        repeatability = torch.tensor(
+            self.repeatability,
+            dtype=torch.float32,
+            device=self.to_device,
+        )
+        return torch.mean(repeatability)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torchmetrics.metric.Metric</li>
+<li>torch.nn.modules.module.Module</li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.Repeatability.higher_is_better"><code class="name">var <span class="ident">higher_is_better</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.Repeatability.is_differentiable"><code class="name">var <span class="ident">is_differentiable</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.metrics.hpatches_metrics.Repeatability.compute"><code class="name flex">
+<span>def <span class="ident">compute</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to compute the final metric value from state variables synchronized across the
+distributed backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute(self):
+    repeatability = torch.tensor(
+        self.repeatability,
+        dtype=torch.float32,
+        device=self.to_device,
+    )
+    return torch.mean(repeatability)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.Repeatability.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, output_points, output_warped_points, img_shape, warped_img_shape, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Override this method to update the state variables of your metric class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(
+    self,
+    output_points,
+    output_warped_points,
+    img_shape,
+    warped_img_shape,
+    true_homography,
+):
+    for args in zip(
+        output_points,
+        output_warped_points,
+        img_shape,
+        warped_img_shape,
+        true_homography,
+    ):
+        self.update_one(*args)</code></pre>
+</details>
+</dd>
+<dt id="silk.metrics.hpatches_metrics.Repeatability.update_one"><code class="name flex">
+<span>def <span class="ident">update_one</span></span>(<span>self, output_points, output_warped_points, img_shape, warped_img_shape, true_homography)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_one(
+    self,
+    output_points,
+    output_warped_points,
+    img_shape,
+    warped_img_shape,
+    true_homography,
+):
+    assert (img_shape == warped_img_shape).all()
+
+    output_points = output_points.to(self.to_device)
+    output_warped_points = output_warped_points.to(self.to_device)
+
+    # clean
+    if self.ordering == &#34;xy&#34;:
+        output_points = output_points.T[:2]
+        output_warped_points = output_warped_points.T[:2]
+    else:
+        output_points = output_points.T[[1, 0]]
+        output_warped_points = output_warped_points.T[[1, 0]]
+
+    # convert homography from 1 x 3 x 3 to 3 x 3 matrix
+    true_homography = true_homography.to(self.to_device).float()
+
+    # only keep points from warped image if they would be present in original image
+    warped_pred_points, _ = keep_true_points(
+        output_warped_points,
+        torch.linalg.inv(true_homography),
+        img_shape,
+    )
+
+    # only keep points from original image if they would be present in warped image
+    output_points, _ = keep_true_points(
+        output_points,
+        true_homography,
+        warped_img_shape,
+    )
+
+    # warp the original image output_points with the true homography
+    true_warped_pred_points = warp_points(output_points, true_homography)
+
+    # need to transpose to properly compute repeatability
+    warped_pred_points = warped_pred_points.T
+    true_warped_pred_points = true_warped_pred_points.T
+
+    # compute the repeatability
+
+    # get the number of predicted points in both images in the pair
+    original_num = true_warped_pred_points.shape[0]
+    warped_num = warped_pred_points.shape[0]
+
+    # compute the norm
+    assert true_warped_pred_points.shape[1] == 2
+    assert warped_pred_points.shape[1] == 2
+
+    norm = torch.linalg.norm(
+        true_warped_pred_points[:, :2].unsqueeze(1)
+        - warped_pred_points[:, :2].unsqueeze(0),
+        dim=2,
+    )
+
+    # count the number of points with norm distance less than distance_thresh
+    count1 = 0
+    count2 = 0
+
+    if original_num != 0:
+        min1 = torch.min(norm, 0).values
+        count1 = torch.sum(min1 &lt;= self.distance_thresh)
+    if warped_num != 0:
+        min2 = torch.min(norm, 1).values
+        count2 = torch.sum(min2 &lt;= self.distance_thresh)
+    if original_num + warped_num &gt; 0:
+        repeatability = (count1 + count2) / (original_num + warped_num)
+        self.repeatability.append(repeatability)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.metrics" href="index.html">silk.metrics</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount" href="#silk.metrics.hpatches_metrics.AvgShapeCount">AvgShapeCount</a></code></h4>
+<ul class="">
+<li><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount.compute" href="#silk.metrics.hpatches_metrics.AvgShapeCount.compute">compute</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount.higher_is_better" href="#silk.metrics.hpatches_metrics.AvgShapeCount.higher_is_better">higher_is_better</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount.is_differentiable" href="#silk.metrics.hpatches_metrics.AvgShapeCount.is_differentiable">is_differentiable</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount.update" href="#silk.metrics.hpatches_metrics.AvgShapeCount.update">update</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.AvgShapeCount.update_one" href="#silk.metrics.hpatches_metrics.AvgShapeCount.update_one">update_one</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation" href="#silk.metrics.hpatches_metrics.HomographyEstimation">HomographyEstimation</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.compute" href="#silk.metrics.hpatches_metrics.HomographyEstimation.compute">compute</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.compute_auc" href="#silk.metrics.hpatches_metrics.HomographyEstimation.compute_auc">compute_auc</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.higher_is_better" href="#silk.metrics.hpatches_metrics.HomographyEstimation.higher_is_better">higher_is_better</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.is_differentiable" href="#silk.metrics.hpatches_metrics.HomographyEstimation.is_differentiable">is_differentiable</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.update" href="#silk.metrics.hpatches_metrics.HomographyEstimation.update">update</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.HomographyEstimation.update_one" href="#silk.metrics.hpatches_metrics.HomographyEstimation.update_one">update_one</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy">MeanMatchingAccuracy</a></code></h4>
+<ul class="two-column">
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.compute" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.compute">compute</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.good_matches_mask" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.good_matches_mask">good_matches_mask</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.higher_is_better" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.higher_is_better">higher_is_better</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.is_differentiable" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.is_differentiable">is_differentiable</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update">update</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update_one" href="#silk.metrics.hpatches_metrics.MeanMatchingAccuracy.update_one">update_one</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.metrics.hpatches_metrics.Repeatability" href="#silk.metrics.hpatches_metrics.Repeatability">Repeatability</a></code></h4>
+<ul class="">
+<li><code><a title="silk.metrics.hpatches_metrics.Repeatability.compute" href="#silk.metrics.hpatches_metrics.Repeatability.compute">compute</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.Repeatability.higher_is_better" href="#silk.metrics.hpatches_metrics.Repeatability.higher_is_better">higher_is_better</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.Repeatability.is_differentiable" href="#silk.metrics.hpatches_metrics.Repeatability.is_differentiable">is_differentiable</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.Repeatability.update" href="#silk.metrics.hpatches_metrics.Repeatability.update">update</a></code></li>
+<li><code><a title="silk.metrics.hpatches_metrics.Repeatability.update_one" href="#silk.metrics.hpatches_metrics.Repeatability.update_one">update_one</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

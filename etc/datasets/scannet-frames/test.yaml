@@ -1,0 +1,7 @@
+defaults:
+  - defaults
+  - _self_
+path: "/datasets01/scannet/082518/scans_test"
+cache_path:
+  _target_: silk.config.paths.join
+  _args_: [CACHE, "scannet"]

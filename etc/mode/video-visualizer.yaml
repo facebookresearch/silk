@@ -1,0 +1,14 @@
+defaults:
+  - defaults
+  - /models@model: silk-frozen-best
+  - _self_
+
+command: "visualization"
+
+video_file_path: "${hydra:runtime.cwd}/assets/tests/magicpoint/nyu_snippet.mp4"
+
+max_length: 5
+dist_thresh: 0.7
+save_output: true
+save_location: "output"
+save_file_name: "demo_output.mp4"

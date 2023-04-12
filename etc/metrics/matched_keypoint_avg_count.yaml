@@ -1,0 +1,5 @@
+_target_: silk.transforms.metric.MetricUpdate
+_args_:
+  - null
+  - _target_: silk.metrics.hpatches_metrics.AvgShapeCount
+  - "@matched_original_points"

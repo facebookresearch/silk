@@ -1,0 +1,4 @@
+run:
+  dir: /checkpoint/${oc.env:USER}/silk-cli/run/${mode.command}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: /checkpoint/${oc.env:USER}/silk-cli/sweep/${mode.command}/${now:%Y-%m-%d}/${now:%H-%M-%S}

@@ -1,0 +1,4 @@
+run:
+  dir: ./var/silk-cli/run/${mode.command}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: ./var/silk-cli/sweep/${mode.command}/${now:%Y-%m-%d}/${now:%H-%M-%S}

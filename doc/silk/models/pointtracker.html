@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.models.pointtracker API documentation</title>
+<meta name="description" content="The PointTracker class to track predicted corner points (as predicted by
+SuperPoint descriptors) across multiple frames/images of the same scene
+(for …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.models.pointtracker</code></h1>
+</header>
+<section id="section-intro">
+<p>The PointTracker class to track predicted corner points (as predicted by
+SuperPoint descriptors) across multiple frames/images of the same scene
+(for instance in a video, or across homography changes for an image).</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+The PointTracker class to track predicted corner points (as predicted by
+SuperPoint descriptors) across multiple frames/images of the same scene
+(for instance in a video, or across homography changes for an image).
+&#34;&#34;&#34;
+
+import torch
+from silk.matching.mnn import compute_dist, match_descriptors
+
+MAX_SCORE = 9999
+
+
+class PointTracker(object):
+    def __init__(self, max_length: int = 5, dist_thresh: float = 0.7):
+        &#34;&#34;&#34;
+        Initialize the PointTracker class.
+
+        Args:
+            max_length (int): maximum length of point tracks, corresponding to the
+                maximum number of points (predicted corners) to include in a track
+                (paper&#39;s default is 5)
+            dist_thresh (float): descriptor matching threshold (paper&#39;s default is 0.7)
+        &#34;&#34;&#34;
+        self.max_length = max_length
+        self.dist_thresh = dist_thresh
+
+        # keep a list of most recently tracked points
+        # used for visualization purposes
+        self.all_points = [torch.zeros((2, 0)) for i in range(self.max_length)]
+
+        self.last_desc = None
+
+        # initialize the tracks tensor which will have size num_tracks x (2+max_length)
+        # each row corresponds to a track: [track_id, avg_desc_score, point_0_id, ..., point_(max_length-1)_id]
+        self.tracks = torch.zeros((0, self.max_length + 2))
+
+        self.track_count = 0
+
+    def get_offsets(self):
+        &#34;&#34;&#34;
+        Iterate through list of points and accumulate an offset value. Used to
+        index the global point IDs into the list of points.
+
+        Args:
+            None
+
+        Returns:
+            offsets (tensor): N length array with integer offset locations
+        &#34;&#34;&#34;
+        # compute id offsets
+        offsets = torch.zeros(1)
+
+        for i in range(len(self.all_points) - 1):
+            offsets = torch.cat(
+                (offsets, torch.tensor([int(self.all_points[i].shape[1])]))
+            )
+
+        offsets = torch.cumsum(offsets, dim=0)
+
+        return offsets
+
+    def update(self, output_points, output_desc):
+        &#34;&#34;&#34;
+        Adds a new set of points and descriptors to the tracker.
+
+        Updates the PointTracker object with the output points and descriptor
+        from running the SuperPoint model on the next image.
+
+        Args:
+            output_points (tensor): the points tensor of shape 3 x num_predicted_corners
+                where each predicted corner has value (col_location, row_location, prob) as
+                output by process_output in superpoint_utils.py
+            output_desc (tensor): the descriptor tensor of shape 256 x num_predicted_corners
+                where each predicted corner has a 256-dimension descriptor vector (as output
+                by process_output in superpoint_utils.py)
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        # initialize last_desc with the proper size
+        if self.last_desc is None:
+            self.last_desc = torch.zeros((output_desc.shape[0], 0))
+
+        remove_size = self.all_points[0].shape[1]
+
+        # update all_points by removing oldest point and adding newest
+        self.all_points.pop(0)
+        self.all_points.append(output_points)
+
+        # remove oldest point in tracks, which is at index 2
+        self.tracks = torch.hstack((self.tracks[:, :2], self.tracks[:, 3:]))
+
+        # update track offsets
+        for i in range(2, self.tracks.shape[1]):
+            self.tracks[:, i] -= remove_size
+
+        self.tracks[:, 2:][self.tracks[:, 2:] &lt; -1] = -1
+
+        # add a new -1 column
+        self.tracks = torch.hstack(
+            (self.tracks, -1 * torch.ones((self.tracks.shape[0], 1)))
+        )
+
+        offsets = self.get_offsets()
+
+        # try to append to existing tracks
+        matched = torch.zeros((output_points.shape[1]), dtype=torch.bool)
+
+        if self.last_desc.shape[1] == 0 or output_desc.shape[1] == 0:
+            matches = torch.zeros((3, 0))
+        else:
+            distances = compute_dist(self.last_desc.T, output_desc.T)
+            matches = match_descriptors(distances)
+            mdist = distances[matches[:, 0], matches[:, 1]].unsqueeze(-1)
+            matches = torch.cat((matches, mdist), dim=-1)
+            matches = matches.T
+
+        for match in matches.T:
+            # add a new point to its matched track
+            id1 = int(match[0]) + offsets[-2]
+            id2 = int(match[1]) + offsets[-1]
+            found = torch.nonzero(self.tracks[:, -2] == id1)
+
+            if found.shape[0] &gt; 0:
+                matched[int(match[1])] = True
+                row = int(found)
+                self.tracks[row, -1] = id2
+
+                # initialize track score
+                if self.tracks[row, 1] == MAX_SCORE:
+                    self.tracks[row, 1] = match[2]
+
+                # update track score with running average of descriptor distances
+                else:
+                    # NOTE: this running average can contain scores from old matches
+                    # not contained in last max_length track points
+                    # (consistent with the paper&#39;s implementation)
+                    track_len = (self.tracks[row, 2:] != -1).sum() - 1.0
+                    frac = 1.0 / float(track_len)
+                    self.tracks[row, 1] = (1.0 - frac) * self.tracks[
+                        row, 1
+                    ] + frac * match[2]
+
+        # add unmatched tracks
+        new_ids = torch.arange(output_points.shape[1]) + offsets[-1]
+        new_ids = new_ids[~matched]
+
+        new_tracks = -1 * torch.ones((new_ids.shape[0], self.max_length + 2))
+        new_tracks[:, -1] = new_ids
+
+        new_num = new_ids.shape[0]
+
+        new_track_ids = self.track_count + torch.arange(new_num)
+
+        # update the tracks tensor with new track ids and placeholder scores
+        new_tracks[:, 0] = new_track_ids
+        new_tracks[:, 1] = MAX_SCORE * torch.ones(new_ids.shape[0])
+
+        self.tracks = torch.vstack((self.tracks, new_tracks))
+
+        self.track_count += new_num
+
+        # remove any empty tracks (those that aren&#39;t storing any points)
+        non_empty = torch.any(self.tracks[:, 2:] &gt;= 0, dim=1)
+        self.tracks = self.tracks[non_empty, :]
+
+        # update the last descriptor
+        self.last_desc = output_desc
+
+    def get_tracks(self, min_length: int = 2):
+        &#34;&#34;&#34;
+        Retrieve point tracks of a given minimum length.
+
+        Args:
+            min_length (int): the minimum track length, must be &gt;= 1
+
+        Returns:
+            returned_tracks (tensor): a tensor with shape (num_tracks, 2 + max_track_length)
+                with each track containing the track id, the average descriptor score for that
+                track, and the max_track_length point ids for each point in the track
+        &#34;&#34;&#34;
+        good_len = torch.sum(self.tracks[:, 2:] != -1, axis=1) &gt;= min_length
+
+        # remove the tracks that do not have a point in most recent frame
+        not_recent = self.tracks[:, -1] != -1
+
+        to_keep = torch.logical_and(good_len, not_recent)
+        returned_tracks = self.tracks[to_keep, :]
+
+        return returned_tracks
+
+
+def nearest_neighbor_match(desc1, desc2, dist_thresh):
+    &#34;&#34;&#34;
+    Match two sets of descriptors with nearest-neighbor approach.
+
+    Takes the descriptors from the SuperPoint model&#39;s output on two images
+    and uses a nearest-neighbor matching approach to find matched points
+    across the two images. The nearest-neighbor matching is performed two
+    ways such that the nearest-neighbor match from descriptor A to B is equal
+    to the nearest-neighbor match from descriptor B to A.
+
+    Args:
+        desc1 (tensor): the first image&#39;s descriptor matrix with size
+            (D, img_1_num_pred_corners), where D = 256, the length of the descriptor vector
+        desc2 (tensor): the second image&#39;s descriptor matrix with size
+            (D, img_2_num_pred_corners), where D = 256, the length of the descriptor vector
+        dist_thresh (tensor): descriptor distance below which two descriptors are a match
+
+    Returns:
+        descriptor_matches (tensor): a tensor of size (3, num_matched_descriptors)
+            where num_matched_descriptors will be less than or equal to the smaller of
+            img_1_num_pred_corners and img_2_num_pred_corners. The descriptor_matches
+            tensor contains matched pairs of descriptors and their distances, with each column
+            equal to (index of descriptor in image 1, index of descriptor in image 2, distance)^T
+    &#34;&#34;&#34;
+    # if no descriptors for an image, return no matches
+    if desc1.shape[1] == 0 or desc2.shape[1] == 0:
+        return torch.zeros((3, 0))
+
+    # compute L2 distance between each pair of descriptors
+    desc_dist = torch.cdist(desc1.T, desc2.T)
+
+    # the col indices for the smallest value in each row (the matches)
+    col_indices = torch.argmin(desc_dist, dim=1)
+
+    # the row indices for the matches are simply 0 through the number of rows
+    row_indices = torch.arange(desc_dist.shape[0])
+
+    # the distances are at each row, col location in the desc_dist tensor
+    distances = desc_dist[row_indices, col_indices]
+
+    # keep only the descriptor matches with distance below threshold
+    keep = distances &lt; dist_thresh
+
+    # only keep matches if the nearest-neighbor match goes both directions
+    dim_0_row_indices = torch.argmin(desc_dist, dim=0)
+    keep_dim_0 = torch.arange(len(col_indices)) == dim_0_row_indices[col_indices]
+
+    keep = torch.logical_and(keep, keep_dim_0)
+
+    # get the descriptor indices and the distances at the kept descriptor locations
+    desc1_indices = row_indices[keep]
+    desc2_indices = col_indices[keep]
+    distances = distances[keep]
+
+    # output is a (3, num_matched_descriptors) tensor
+    descriptor_matches = torch.vstack((desc1_indices, desc2_indices, distances))
+
+    return descriptor_matches</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.models.pointtracker.nearest_neighbor_match"><code class="name flex">
+<span>def <span class="ident">nearest_neighbor_match</span></span>(<span>desc1, desc2, dist_thresh)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match two sets of descriptors with nearest-neighbor approach.</p>
+<p>Takes the descriptors from the SuperPoint model's output on two images
+and uses a nearest-neighbor matching approach to find matched points
+across the two images. The nearest-neighbor matching is performed two
+ways such that the nearest-neighbor match from descriptor A to B is equal
+to the nearest-neighbor match from descriptor B to A.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>desc1</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the first image's descriptor matrix with size
+(D, img_1_num_pred_corners), where D = 256, the length of the descriptor vector</dd>
+<dt><strong><code>desc2</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the second image's descriptor matrix with size
+(D, img_2_num_pred_corners), where D = 256, the length of the descriptor vector</dd>
+<dt><strong><code>dist_thresh</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>descriptor distance below which two descriptors are a match</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>descriptor_matches (tensor): a tensor of size (3, num_matched_descriptors)
+where num_matched_descriptors will be less than or equal to the smaller of
+img_1_num_pred_corners and img_2_num_pred_corners. The descriptor_matches
+tensor contains matched pairs of descriptors and their distances, with each column
+equal to (index of descriptor in image 1, index of descriptor in image 2, distance)^T</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nearest_neighbor_match(desc1, desc2, dist_thresh):
+    &#34;&#34;&#34;
+    Match two sets of descriptors with nearest-neighbor approach.
+
+    Takes the descriptors from the SuperPoint model&#39;s output on two images
+    and uses a nearest-neighbor matching approach to find matched points
+    across the two images. The nearest-neighbor matching is performed two
+    ways such that the nearest-neighbor match from descriptor A to B is equal
+    to the nearest-neighbor match from descriptor B to A.
+
+    Args:
+        desc1 (tensor): the first image&#39;s descriptor matrix with size
+            (D, img_1_num_pred_corners), where D = 256, the length of the descriptor vector
+        desc2 (tensor): the second image&#39;s descriptor matrix with size
+            (D, img_2_num_pred_corners), where D = 256, the length of the descriptor vector
+        dist_thresh (tensor): descriptor distance below which two descriptors are a match
+
+    Returns:
+        descriptor_matches (tensor): a tensor of size (3, num_matched_descriptors)
+            where num_matched_descriptors will be less than or equal to the smaller of
+            img_1_num_pred_corners and img_2_num_pred_corners. The descriptor_matches
+            tensor contains matched pairs of descriptors and their distances, with each column
+            equal to (index of descriptor in image 1, index of descriptor in image 2, distance)^T
+    &#34;&#34;&#34;
+    # if no descriptors for an image, return no matches
+    if desc1.shape[1] == 0 or desc2.shape[1] == 0:
+        return torch.zeros((3, 0))
+
+    # compute L2 distance between each pair of descriptors
+    desc_dist = torch.cdist(desc1.T, desc2.T)
+
+    # the col indices for the smallest value in each row (the matches)
+    col_indices = torch.argmin(desc_dist, dim=1)
+
+    # the row indices for the matches are simply 0 through the number of rows
+    row_indices = torch.arange(desc_dist.shape[0])
+
+    # the distances are at each row, col location in the desc_dist tensor
+    distances = desc_dist[row_indices, col_indices]
+
+    # keep only the descriptor matches with distance below threshold
+    keep = distances &lt; dist_thresh
+
+    # only keep matches if the nearest-neighbor match goes both directions
+    dim_0_row_indices = torch.argmin(desc_dist, dim=0)
+    keep_dim_0 = torch.arange(len(col_indices)) == dim_0_row_indices[col_indices]
+
+    keep = torch.logical_and(keep, keep_dim_0)
+
+    # get the descriptor indices and the distances at the kept descriptor locations
+    desc1_indices = row_indices[keep]
+    desc2_indices = col_indices[keep]
+    distances = distances[keep]
+
+    # output is a (3, num_matched_descriptors) tensor
+    descriptor_matches = torch.vstack((desc1_indices, desc2_indices, distances))
+
+    return descriptor_matches</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.models.pointtracker.PointTracker"><code class="flex name class">
+<span>class <span class="ident">PointTracker</span></span>
+<span>(</span><span>max_length: int = 5, dist_thresh: float = 0.7)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize the PointTracker class.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>max_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>maximum length of point tracks, corresponding to the
+maximum number of points (predicted corners) to include in a track
+(paper's default is 5)</dd>
+<dt><strong><code>dist_thresh</code></strong> :&ensp;<code>float</code></dt>
+<dd>descriptor matching threshold (paper's default is 0.7)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PointTracker(object):
+    def __init__(self, max_length: int = 5, dist_thresh: float = 0.7):
+        &#34;&#34;&#34;
+        Initialize the PointTracker class.
+
+        Args:
+            max_length (int): maximum length of point tracks, corresponding to the
+                maximum number of points (predicted corners) to include in a track
+                (paper&#39;s default is 5)
+            dist_thresh (float): descriptor matching threshold (paper&#39;s default is 0.7)
+        &#34;&#34;&#34;
+        self.max_length = max_length
+        self.dist_thresh = dist_thresh
+
+        # keep a list of most recently tracked points
+        # used for visualization purposes
+        self.all_points = [torch.zeros((2, 0)) for i in range(self.max_length)]
+
+        self.last_desc = None
+
+        # initialize the tracks tensor which will have size num_tracks x (2+max_length)
+        # each row corresponds to a track: [track_id, avg_desc_score, point_0_id, ..., point_(max_length-1)_id]
+        self.tracks = torch.zeros((0, self.max_length + 2))
+
+        self.track_count = 0
+
+    def get_offsets(self):
+        &#34;&#34;&#34;
+        Iterate through list of points and accumulate an offset value. Used to
+        index the global point IDs into the list of points.
+
+        Args:
+            None
+
+        Returns:
+            offsets (tensor): N length array with integer offset locations
+        &#34;&#34;&#34;
+        # compute id offsets
+        offsets = torch.zeros(1)
+
+        for i in range(len(self.all_points) - 1):
+            offsets = torch.cat(
+                (offsets, torch.tensor([int(self.all_points[i].shape[1])]))
+            )
+
+        offsets = torch.cumsum(offsets, dim=0)
+
+        return offsets
+
+    def update(self, output_points, output_desc):
+        &#34;&#34;&#34;
+        Adds a new set of points and descriptors to the tracker.
+
+        Updates the PointTracker object with the output points and descriptor
+        from running the SuperPoint model on the next image.
+
+        Args:
+            output_points (tensor): the points tensor of shape 3 x num_predicted_corners
+                where each predicted corner has value (col_location, row_location, prob) as
+                output by process_output in superpoint_utils.py
+            output_desc (tensor): the descriptor tensor of shape 256 x num_predicted_corners
+                where each predicted corner has a 256-dimension descriptor vector (as output
+                by process_output in superpoint_utils.py)
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        # initialize last_desc with the proper size
+        if self.last_desc is None:
+            self.last_desc = torch.zeros((output_desc.shape[0], 0))
+
+        remove_size = self.all_points[0].shape[1]
+
+        # update all_points by removing oldest point and adding newest
+        self.all_points.pop(0)
+        self.all_points.append(output_points)
+
+        # remove oldest point in tracks, which is at index 2
+        self.tracks = torch.hstack((self.tracks[:, :2], self.tracks[:, 3:]))
+
+        # update track offsets
+        for i in range(2, self.tracks.shape[1]):
+            self.tracks[:, i] -= remove_size
+
+        self.tracks[:, 2:][self.tracks[:, 2:] &lt; -1] = -1
+
+        # add a new -1 column
+        self.tracks = torch.hstack(
+            (self.tracks, -1 * torch.ones((self.tracks.shape[0], 1)))
+        )
+
+        offsets = self.get_offsets()
+
+        # try to append to existing tracks
+        matched = torch.zeros((output_points.shape[1]), dtype=torch.bool)
+
+        if self.last_desc.shape[1] == 0 or output_desc.shape[1] == 0:
+            matches = torch.zeros((3, 0))
+        else:
+            distances = compute_dist(self.last_desc.T, output_desc.T)
+            matches = match_descriptors(distances)
+            mdist = distances[matches[:, 0], matches[:, 1]].unsqueeze(-1)
+            matches = torch.cat((matches, mdist), dim=-1)
+            matches = matches.T
+
+        for match in matches.T:
+            # add a new point to its matched track
+            id1 = int(match[0]) + offsets[-2]
+            id2 = int(match[1]) + offsets[-1]
+            found = torch.nonzero(self.tracks[:, -2] == id1)
+
+            if found.shape[0] &gt; 0:
+                matched[int(match[1])] = True
+                row = int(found)
+                self.tracks[row, -1] = id2
+
+                # initialize track score
+                if self.tracks[row, 1] == MAX_SCORE:
+                    self.tracks[row, 1] = match[2]
+
+                # update track score with running average of descriptor distances
+                else:
+                    # NOTE: this running average can contain scores from old matches
+                    # not contained in last max_length track points
+                    # (consistent with the paper&#39;s implementation)
+                    track_len = (self.tracks[row, 2:] != -1).sum() - 1.0
+                    frac = 1.0 / float(track_len)
+                    self.tracks[row, 1] = (1.0 - frac) * self.tracks[
+                        row, 1
+                    ] + frac * match[2]
+
+        # add unmatched tracks
+        new_ids = torch.arange(output_points.shape[1]) + offsets[-1]
+        new_ids = new_ids[~matched]
+
+        new_tracks = -1 * torch.ones((new_ids.shape[0], self.max_length + 2))
+        new_tracks[:, -1] = new_ids
+
+        new_num = new_ids.shape[0]
+
+        new_track_ids = self.track_count + torch.arange(new_num)
+
+        # update the tracks tensor with new track ids and placeholder scores
+        new_tracks[:, 0] = new_track_ids
+        new_tracks[:, 1] = MAX_SCORE * torch.ones(new_ids.shape[0])
+
+        self.tracks = torch.vstack((self.tracks, new_tracks))
+
+        self.track_count += new_num
+
+        # remove any empty tracks (those that aren&#39;t storing any points)
+        non_empty = torch.any(self.tracks[:, 2:] &gt;= 0, dim=1)
+        self.tracks = self.tracks[non_empty, :]
+
+        # update the last descriptor
+        self.last_desc = output_desc
+
+    def get_tracks(self, min_length: int = 2):
+        &#34;&#34;&#34;
+        Retrieve point tracks of a given minimum length.
+
+        Args:
+            min_length (int): the minimum track length, must be &gt;= 1
+
+        Returns:
+            returned_tracks (tensor): a tensor with shape (num_tracks, 2 + max_track_length)
+                with each track containing the track id, the average descriptor score for that
+                track, and the max_track_length point ids for each point in the track
+        &#34;&#34;&#34;
+        good_len = torch.sum(self.tracks[:, 2:] != -1, axis=1) &gt;= min_length
+
+        # remove the tracks that do not have a point in most recent frame
+        not_recent = self.tracks[:, -1] != -1
+
+        to_keep = torch.logical_and(good_len, not_recent)
+        returned_tracks = self.tracks[to_keep, :]
+
+        return returned_tracks</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.models.pointtracker.PointTracker.get_offsets"><code class="name flex">
+<span>def <span class="ident">get_offsets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Iterate through list of points and accumulate an offset value. Used to
+index the global point IDs into the list of points.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>offsets (tensor): N length array with integer offset locations</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_offsets(self):
+    &#34;&#34;&#34;
+    Iterate through list of points and accumulate an offset value. Used to
+    index the global point IDs into the list of points.
+
+    Args:
+        None
+
+    Returns:
+        offsets (tensor): N length array with integer offset locations
+    &#34;&#34;&#34;
+    # compute id offsets
+    offsets = torch.zeros(1)
+
+    for i in range(len(self.all_points) - 1):
+        offsets = torch.cat(
+            (offsets, torch.tensor([int(self.all_points[i].shape[1])]))
+        )
+
+    offsets = torch.cumsum(offsets, dim=0)
+
+    return offsets</code></pre>
+</details>
+</dd>
+<dt id="silk.models.pointtracker.PointTracker.get_tracks"><code class="name flex">
+<span>def <span class="ident">get_tracks</span></span>(<span>self, min_length: int = 2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieve point tracks of a given minimum length.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>min_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>the minimum track length, must be &gt;= 1</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>returned_tracks (tensor): a tensor with shape (num_tracks, 2 + max_track_length)
+with each track containing the track id, the average descriptor score for that
+track, and the max_track_length point ids for each point in the track</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_tracks(self, min_length: int = 2):
+    &#34;&#34;&#34;
+    Retrieve point tracks of a given minimum length.
+
+    Args:
+        min_length (int): the minimum track length, must be &gt;= 1
+
+    Returns:
+        returned_tracks (tensor): a tensor with shape (num_tracks, 2 + max_track_length)
+            with each track containing the track id, the average descriptor score for that
+            track, and the max_track_length point ids for each point in the track
+    &#34;&#34;&#34;
+    good_len = torch.sum(self.tracks[:, 2:] != -1, axis=1) &gt;= min_length
+
+    # remove the tracks that do not have a point in most recent frame
+    not_recent = self.tracks[:, -1] != -1
+
+    to_keep = torch.logical_and(good_len, not_recent)
+    returned_tracks = self.tracks[to_keep, :]
+
+    return returned_tracks</code></pre>
+</details>
+</dd>
+<dt id="silk.models.pointtracker.PointTracker.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, output_points, output_desc)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds a new set of points and descriptors to the tracker.</p>
+<p>Updates the PointTracker object with the output points and descriptor
+from running the SuperPoint model on the next image.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>output_points</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the points tensor of shape 3 x num_predicted_corners
+where each predicted corner has value (col_location, row_location, prob) as
+output by process_output in superpoint_utils.py</dd>
+<dt><strong><code>output_desc</code></strong> :&ensp;<code>tensor</code></dt>
+<dd>the descriptor tensor of shape 256 x num_predicted_corners
+where each predicted corner has a 256-dimension descriptor vector (as output
+by process_output in superpoint_utils.py)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, output_points, output_desc):
+    &#34;&#34;&#34;
+    Adds a new set of points and descriptors to the tracker.
+
+    Updates the PointTracker object with the output points and descriptor
+    from running the SuperPoint model on the next image.
+
+    Args:
+        output_points (tensor): the points tensor of shape 3 x num_predicted_corners
+            where each predicted corner has value (col_location, row_location, prob) as
+            output by process_output in superpoint_utils.py
+        output_desc (tensor): the descriptor tensor of shape 256 x num_predicted_corners
+            where each predicted corner has a 256-dimension descriptor vector (as output
+            by process_output in superpoint_utils.py)
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    # initialize last_desc with the proper size
+    if self.last_desc is None:
+        self.last_desc = torch.zeros((output_desc.shape[0], 0))
+
+    remove_size = self.all_points[0].shape[1]
+
+    # update all_points by removing oldest point and adding newest
+    self.all_points.pop(0)
+    self.all_points.append(output_points)
+
+    # remove oldest point in tracks, which is at index 2
+    self.tracks = torch.hstack((self.tracks[:, :2], self.tracks[:, 3:]))
+
+    # update track offsets
+    for i in range(2, self.tracks.shape[1]):
+        self.tracks[:, i] -= remove_size
+
+    self.tracks[:, 2:][self.tracks[:, 2:] &lt; -1] = -1
+
+    # add a new -1 column
+    self.tracks = torch.hstack(
+        (self.tracks, -1 * torch.ones((self.tracks.shape[0], 1)))
+    )
+
+    offsets = self.get_offsets()
+
+    # try to append to existing tracks
+    matched = torch.zeros((output_points.shape[1]), dtype=torch.bool)
+
+    if self.last_desc.shape[1] == 0 or output_desc.shape[1] == 0:
+        matches = torch.zeros((3, 0))
+    else:
+        distances = compute_dist(self.last_desc.T, output_desc.T)
+        matches = match_descriptors(distances)
+        mdist = distances[matches[:, 0], matches[:, 1]].unsqueeze(-1)
+        matches = torch.cat((matches, mdist), dim=-1)
+        matches = matches.T
+
+    for match in matches.T:
+        # add a new point to its matched track
+        id1 = int(match[0]) + offsets[-2]
+        id2 = int(match[1]) + offsets[-1]
+        found = torch.nonzero(self.tracks[:, -2] == id1)
+
+        if found.shape[0] &gt; 0:
+            matched[int(match[1])] = True
+            row = int(found)
+            self.tracks[row, -1] = id2
+
+            # initialize track score
+            if self.tracks[row, 1] == MAX_SCORE:
+                self.tracks[row, 1] = match[2]
+
+            # update track score with running average of descriptor distances
+            else:
+                # NOTE: this running average can contain scores from old matches
+                # not contained in last max_length track points
+                # (consistent with the paper&#39;s implementation)
+                track_len = (self.tracks[row, 2:] != -1).sum() - 1.0
+                frac = 1.0 / float(track_len)
+                self.tracks[row, 1] = (1.0 - frac) * self.tracks[
+                    row, 1
+                ] + frac * match[2]
+
+    # add unmatched tracks
+    new_ids = torch.arange(output_points.shape[1]) + offsets[-1]
+    new_ids = new_ids[~matched]
+
+    new_tracks = -1 * torch.ones((new_ids.shape[0], self.max_length + 2))
+    new_tracks[:, -1] = new_ids
+
+    new_num = new_ids.shape[0]
+
+    new_track_ids = self.track_count + torch.arange(new_num)
+
+    # update the tracks tensor with new track ids and placeholder scores
+    new_tracks[:, 0] = new_track_ids
+    new_tracks[:, 1] = MAX_SCORE * torch.ones(new_ids.shape[0])
+
+    self.tracks = torch.vstack((self.tracks, new_tracks))
+
+    self.track_count += new_num
+
+    # remove any empty tracks (those that aren&#39;t storing any points)
+    non_empty = torch.any(self.tracks[:, 2:] &gt;= 0, dim=1)
+    self.tracks = self.tracks[non_empty, :]
+
+    # update the last descriptor
+    self.last_desc = output_desc</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.models" href="index.html">silk.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.models.pointtracker.nearest_neighbor_match" href="#silk.models.pointtracker.nearest_neighbor_match">nearest_neighbor_match</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.models.pointtracker.PointTracker" href="#silk.models.pointtracker.PointTracker">PointTracker</a></code></h4>
+<ul class="">
+<li><code><a title="silk.models.pointtracker.PointTracker.get_offsets" href="#silk.models.pointtracker.PointTracker.get_offsets">get_offsets</a></code></li>
+<li><code><a title="silk.models.pointtracker.PointTracker.get_tracks" href="#silk.models.pointtracker.PointTracker.get_tracks">get_tracks</a></code></li>
+<li><code><a title="silk.models.pointtracker.PointTracker.update" href="#silk.models.pointtracker.PointTracker.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

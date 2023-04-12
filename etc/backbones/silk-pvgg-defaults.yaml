@@ -1,0 +1,9 @@
+defaults:
+  - silk-vgg
+  - _self_
+
+backbone:
+  _target_: silk.backbones.superpoint.vgg.ParametricVGG
+  input_num_channels: 1
+  use_max_pooling: false
+  padding: 0

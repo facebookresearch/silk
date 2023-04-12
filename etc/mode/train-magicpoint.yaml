@@ -1,0 +1,80 @@
+defaults:
+  - train-defaults
+  - /models@model: magicpoint
+  - /datasets/synthetic-shapes@loaders.training.dataset: training
+  - /datasets/synthetic-shapes@loaders.validation.dataset: validation
+  - _self_
+
+trainer:
+  val_check_interval: 100
+  limit_val_batches: 100
+  limit_train_batches: 100
+  max_epochs: 62 # ~ 200k / (batch size * limit_train_batches)
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: "val.loss"
+      save_top_k: 10
+      mode: "min"
+
+loaders:
+  training:
+    # use stateful loader here to avoid resetting the iterator
+    # after each epoch (to make use of infinite training dataset)
+    _target_: silk.data.loader.StatefulDataLoader
+    batch_size: 32
+    num_workers: 12
+    collate_fn: ${mode.collate_fn}
+    worker_init_fn: ${mode.worker_init_fn}
+  validation:
+    batch_size: 64
+    num_workers: 12
+    collate_fn: ${mode.collate_fn}
+    worker_init_fn: ${mode.worker_init_fn}
+
+worker_init_fn:
+  _target_: silk.config.core.find_class_or_callable_from_target
+  target: silk.datasets.abstract.RandomizedIterable.worker_init_fn
+
+collate_fn:
+  _target_: silk.transforms.tensor.AutoBatch
+  transform:
+    _target_: silk.transforms.abstract.Compose
+    _args_:
+      # convert tuples to named context
+      - _target_: silk.transforms.abstract.Name
+        _args_:
+          - "image"
+          - "positions"
+      # convert numpy arrays to tensors
+      - _target_: silk.transforms.abstract.Map
+        function:
+          _target_: silk.transforms.tensor.ToTensor
+      # convert positions to label map
+      - _target_: silk.transforms.abstract.Lambda
+        name: "label_map"
+        function:
+            _target_: silk.config.core.find_class_or_callable_from_target
+            target: silk.backbones.superpoint.utils.positions_to_label_map
+        positions: "@positions"
+        image_or_shape: "@image"
+      # convert image from HWC to CHW format
+      - _target_: silk.transforms.abstract.MapOnly
+        names:
+          - "label_map"
+          - "image"
+        function:
+          _target_: silk.transforms.cv.image.HWCToCHW
+      # normalize image values
+      - _target_: silk.transforms.abstract.MapOnly
+        names:
+          - "image"
+        function:
+          _target_: silk.transforms.tensor.NormalizeRange
+          ilow: 0.
+          ihigh: 255.
+          olow: 0.
+          ohigh: 1.
+      # remove positions from named context
+      - _target_: silk.transforms.abstract.Remove
+        _args_:
+          - "positions"

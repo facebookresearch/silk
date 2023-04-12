@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>silk.losses.superpoint API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>silk.losses.superpoint</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+import torch
+
+
+def build_similarity_mask(descriptors, positions_0, positions_1, cell_size):
+    device = descriptors.device
+
+    similarity_mask = torch.zeros(
+        (
+            descriptors.shape[0] // 2,
+            descriptors.shape[2],
+            descriptors.shape[3],
+            descriptors.shape[2],
+            descriptors.shape[3],
+        ),
+        device=device,
+        dtype=torch.bool,
+    )
+
+    # convert shape to use to check bounds
+    image_shape = torch.tensor(
+        [similarity_mask.shape[-2:]],
+        device=similarity_mask.device,
+    )
+    # zip pair of positions correspondences
+    positions = [torch.cat((p0, p1), dim=1) for p0, p1 in zip(positions_0, positions_1)]
+
+    # gather batch index
+    batch_i = torch.cat(
+        [torch.full((len(p), 1), i, device=device) for i, p in enumerate(positions)],
+        dim=0,
+    )
+
+    # filter out out-of-bound positions
+    positions = torch.cat(positions, dim=0)
+    positions = torch.floor(positions / cell_size).int()
+    positions_N_2 = positions.view(-1, 2)
+    mask = torch.logical_and(positions_N_2 &gt;= 0, positions_N_2 &lt; image_shape)
+    mask = mask.reshape(-1, 4).all(dim=1)
+    positions = positions[mask]
+    batch_i = batch_i[mask]
+    positions = torch.cat((batch_i, positions), dim=1)
+
+    # convert to tuples for fast index filling
+    positions = tuple(p for p in positions.T)
+    similarity_mask[positions] = True
+
+    return similarity_mask
+
+
+class DescriptorLoss(torch.nn.Module):
+    def __init__(
+        self, margin_pos: float = 1.0, margin_neg: float = 0.2, lambda_d: float = 250.0
+    ) -&gt; None:
+        # margin_neg : float, optional
+        #     Margin threshold for negative pairs, by default 0.2
+        # margin_pos : float, optional
+        #     Margin threshold for positive pairs, by default 1.0
+        # lambda_d : float, optional
+        #     Positive pair relative weighting, by default 250.0
+        super().__init__()
+        self._margin_pos = margin_pos
+        self._margin_neg = margin_neg
+        self._lambda_d = lambda_d
+
+    def forward(self, descriptors_0, descriptors_1, similarity_mask):
+        dotprod = torch.einsum(&#34;bdij,bdkl-&gt;bijkl&#34;, descriptors_0, descriptors_1)
+        val0 = torch.tensor(0, dtype=dotprod.dtype, device=dotprod.device)
+        pos_loss = torch.maximum(val0, self._margin_pos - dotprod) * self._lambda_d
+        neg_loss = torch.maximum(val0, dotprod - self._margin_neg)
+        return torch.where(
+            similarity_mask,
+            pos_loss,
+            neg_loss,
+        ).mean()
+
+
+class KeypointLoss(torch.nn.CrossEntropyLoss):
+    pass</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="silk.losses.superpoint.build_similarity_mask"><code class="name flex">
+<span>def <span class="ident">build_similarity_mask</span></span>(<span>descriptors, positions_0, positions_1, cell_size)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_similarity_mask(descriptors, positions_0, positions_1, cell_size):
+    device = descriptors.device
+
+    similarity_mask = torch.zeros(
+        (
+            descriptors.shape[0] // 2,
+            descriptors.shape[2],
+            descriptors.shape[3],
+            descriptors.shape[2],
+            descriptors.shape[3],
+        ),
+        device=device,
+        dtype=torch.bool,
+    )
+
+    # convert shape to use to check bounds
+    image_shape = torch.tensor(
+        [similarity_mask.shape[-2:]],
+        device=similarity_mask.device,
+    )
+    # zip pair of positions correspondences
+    positions = [torch.cat((p0, p1), dim=1) for p0, p1 in zip(positions_0, positions_1)]
+
+    # gather batch index
+    batch_i = torch.cat(
+        [torch.full((len(p), 1), i, device=device) for i, p in enumerate(positions)],
+        dim=0,
+    )
+
+    # filter out out-of-bound positions
+    positions = torch.cat(positions, dim=0)
+    positions = torch.floor(positions / cell_size).int()
+    positions_N_2 = positions.view(-1, 2)
+    mask = torch.logical_and(positions_N_2 &gt;= 0, positions_N_2 &lt; image_shape)
+    mask = mask.reshape(-1, 4).all(dim=1)
+    positions = positions[mask]
+    batch_i = batch_i[mask]
+    positions = torch.cat((batch_i, positions), dim=1)
+
+    # convert to tuples for fast index filling
+    positions = tuple(p for p in positions.T)
+    similarity_mask[positions] = True
+
+    return similarity_mask</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="silk.losses.superpoint.DescriptorLoss"><code class="flex name class">
+<span>class <span class="ident">DescriptorLoss</span></span>
+<span>(</span><span>margin_pos: float = 1.0, margin_neg: float = 0.2, lambda_d: float = 250.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per the example above, an <code>__init__()</code> call to the parent class
+must be made before assignment on the child.</p>
+</div>
+<p>:ivar training: Boolean represents whether this module is in training or
+evaluation mode.
+:vartype training: bool</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DescriptorLoss(torch.nn.Module):
+    def __init__(
+        self, margin_pos: float = 1.0, margin_neg: float = 0.2, lambda_d: float = 250.0
+    ) -&gt; None:
+        # margin_neg : float, optional
+        #     Margin threshold for negative pairs, by default 0.2
+        # margin_pos : float, optional
+        #     Margin threshold for positive pairs, by default 1.0
+        # lambda_d : float, optional
+        #     Positive pair relative weighting, by default 250.0
+        super().__init__()
+        self._margin_pos = margin_pos
+        self._margin_neg = margin_neg
+        self._lambda_d = lambda_d
+
+    def forward(self, descriptors_0, descriptors_1, similarity_mask):
+        dotprod = torch.einsum(&#34;bdij,bdkl-&gt;bijkl&#34;, descriptors_0, descriptors_1)
+        val0 = torch.tensor(0, dtype=dotprod.dtype, device=dotprod.device)
+        pos_loss = torch.maximum(val0, self._margin_pos - dotprod) * self._lambda_d
+        neg_loss = torch.maximum(val0, dotprod - self._margin_neg)
+        return torch.where(
+            similarity_mask,
+            pos_loss,
+            neg_loss,
+        ).mean()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.losses.superpoint.DescriptorLoss.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.losses.superpoint.DescriptorLoss.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="silk.losses.superpoint.DescriptorLoss.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, descriptors_0, descriptors_1, similarity_mask) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, descriptors_0, descriptors_1, similarity_mask):
+    dotprod = torch.einsum(&#34;bdij,bdkl-&gt;bijkl&#34;, descriptors_0, descriptors_1)
+    val0 = torch.tensor(0, dtype=dotprod.dtype, device=dotprod.device)
+    pos_loss = torch.maximum(val0, self._margin_pos - dotprod) * self._lambda_d
+    neg_loss = torch.maximum(val0, dotprod - self._margin_neg)
+    return torch.where(
+        similarity_mask,
+        pos_loss,
+        neg_loss,
+    ).mean()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="silk.losses.superpoint.KeypointLoss"><code class="flex name class">
+<span>class <span class="ident">KeypointLoss</span></span>
+<span>(</span><span>weight: Optional[torch.Tensor] = None, size_average=None, ignore_index: int = -100, reduce=None, reduction: str = 'mean', label_smoothing: float = 0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This criterion computes the cross entropy loss between input and target.</p>
+<p>It is useful when training a classification problem with <code>C</code> classes.
+If provided, the optional argument :attr:<code>weight</code> should be a 1D <code>Tensor</code>
+assigning weight to each of the classes.
+This is particularly useful when you have an unbalanced training set.</p>
+<p>The <code>input</code> is expected to contain raw, unnormalized scores for each class.
+<code>input</code> has to be a Tensor of size :math:<code>(C)</code> for unbatched input,
+:math:<code>(minibatch, C)</code> or :math:<code>(minibatch, C, d_1, d_2, &hellip;, d_K)</code> with :math:<code>K \geq 1</code> for the
+<code>K</code>-dimensional case. The last being useful for higher dimension inputs, such
+as computing cross entropy loss per-pixel for 2D images.</p>
+<p>The <code>target</code> that this criterion expects should contain either:</p>
+<ul>
+<li>Class indices in the range :math:<code>[0, C)</code> where :math:<code>C</code> is the number of classes; if
+<code>ignore_index</code> is specified, this loss also accepts this class index (this index
+may not necessarily be in the class range). The unreduced (i.e. with :attr:<code>reduction</code>
+set to <code>'none'</code>) loss for this case can be described as:</li>
+</ul>
+<p>[ \ell(x, y) = L = {l_1,\dots,l_N}^\top, \quad
+l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
+\cdot \mathbb{1}{y_n \not= \text{ignore_index}} ]
+where :math:<code>x</code> is the input, :math:<code>y</code> is the target, :math:<code>w</code> is the weight,
+:math:<code>C</code> is the number of classes, and :math:<code>N</code> spans the minibatch dimension as well as
+:math:<code>d_1, &hellip;, d_k</code> for the <code>K</code>-dimensional case. If
+:attr:<code>reduction</code> is not <code>'none'</code> (default <code>'mean'</code>), then</p>
+<p>[ \ell(x, y) = \begin{cases}
+\sum_{n=1}^N \frac{1}{\sum_{n=1}^N w_{y_n} \cdot \mathbb{1}{y_n \not= \text{ignore_index}}} l_n, &amp;
+\text{if reduction} = \text{<code>mean';}\\
+\sum_{n=1}^N l_n,
+&amp;
+\text{if reduction} = \text{</code>sum'.}
+\end{cases} ]
+Note that this case is equivalent to the combination of :class:<code>~torch.nn.LogSoftmax</code> and
+:class:<code>~torch.nn.NLLLoss</code>.</p>
+<ul>
+<li>Probabilities for each class; useful when labels beyond a single class per minibatch item
+are required, such as for blended labels, label smoothing, etc. The unreduced (i.e. with
+:attr:<code>reduction</code> set to <code>'none'</code>) loss for this case can be described as:</li>
+</ul>
+<p>[ \ell(x, y) = L = {l_1,\dots,l_N}^\top, \quad
+l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\sum_{i=1}^C \exp(x_{n,i})} y_{n,c} ]
+where :math:<code>x</code> is the input, :math:<code>y</code> is the target, :math:<code>w</code> is the weight,
+:math:<code>C</code> is the number of classes, and :math:<code>N</code> spans the minibatch dimension as well as
+:math:<code>d_1, &hellip;, d_k</code> for the <code>K</code>-dimensional case. If
+:attr:<code>reduction</code> is not <code>'none'</code> (default <code>'mean'</code>), then</p>
+<p>[ \ell(x, y) = \begin{cases}
+\frac{\sum_{n=1}^N l_n}{N}, &amp;
+\text{if reduction} = \text{<code>mean';}\\
+\sum_{n=1}^N l_n,
+&amp;
+\text{if reduction} = \text{</code>sum'.}
+\end{cases} ]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The performance of this criterion is generally better when <code>target</code> contains class
+indices, as this allows for optimized computation. Consider providing <code>target</code> as
+class probabilities only when a single class label per minibatch item is too restrictive.</p>
+</div>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>Tensor</code>, optional</dt>
+<dd>a manual rescaling weight given to each class.
+If given, has to be a Tensor of size <code>C</code></dd>
+<dt><strong><code>size_average</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Deprecated (see :attr:<code>reduction</code>). By default,
+the losses are averaged over each loss element in the batch. Note that for
+some losses, there are multiple elements per sample. If the field :attr:<code>size_average</code>
+is set to <code>False</code>, the losses are instead summed for each minibatch. Ignored
+when :attr:<code>reduce</code> is <code>False</code>. Default: <code>True</code></dd>
+<dt><strong><code>ignore_index</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Specifies a target value that is ignored
+and does not contribute to the input gradient. When :attr:<code>size_average</code> is
+<code>True</code>, the loss is averaged over non-ignored targets. Note that
+:attr:<code>ignore_index</code> is only applicable when the target contains class indices.</dd>
+<dt><strong><code>reduce</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Deprecated (see :attr:<code>reduction</code>). By default, the
+losses are averaged or summed over observations for each minibatch depending
+on :attr:<code>size_average</code>. When :attr:<code>reduce</code> is <code>False</code>, returns a loss per
+batch element instead and ignores :attr:<code>size_average</code>. Default: <code>True</code></dd>
+<dt><strong><code>reduction</code></strong> :&ensp;<code>string</code>, optional</dt>
+<dd>Specifies the reduction to apply to the output:
+<code>'none'</code> | <code>'mean'</code> | <code>'sum'</code>. <code>'none'</code>: no reduction will
+be applied, <code>'mean'</code>: the weighted mean of the output is taken,
+<code>'sum'</code>: the output will be summed. Note: :attr:<code>size_average</code>
+and :attr:<code>reduce</code> are in the process of being deprecated, and in
+the meantime, specifying either of those two args will override
+:attr:<code>reduction</code>. Default: <code>'mean'</code></dd>
+<dt><strong><code>label_smoothing</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>A float in [0.0, 1.0]. Specifies the amount
+of smoothing when computing the loss, where 0.0 means no smoothing. The targets
+become a mixture of the original ground truth and a uniform distribution as described in
+<code>Rethinking the Inception Architecture for Computer Vision &lt;https://arxiv.org/abs/1512.00567&gt;</code>__. Default: :math:<code>0.0</code>.</dd>
+</dl>
+<h2 id="shape">Shape</h2>
+<ul>
+<li>Input: Shape :math:<code>(C)</code>, :math:<code>(N, C)</code> or :math:<code>(N, C, d_1, d_2, &hellip;, d_K)</code> with :math:<code>K \geq 1</code>
+in the case of <code>K</code>-dimensional loss.</li>
+<li>Target: If containing class indices, shape :math:<code>()</code>, :math:<code>(N)</code> or :math:<code>(N, d_1, d_2, &hellip;, d_K)</code> with
+:math:<code>K \geq 1</code> in the case of K-dimensional loss where each value should be between :math:<code>[0, C)</code>.
+If containing class probabilities, same shape as the input and each value should be between :math:<code>[0, 1]</code>.</li>
+<li>Output: If reduction is 'none', same shape as the target. Otherwise, scalar.</li>
+</ul>
+<p>where:</p>
+<p>[ \begin{aligned}
+C ={} &amp; \text{number of classes} \
+N ={} &amp; \text{batch size} \
+\end{aligned} ]
+Examples::</p>
+<pre><code>&gt;&gt;&gt; # Example of target with class indices
+&gt;&gt;&gt; loss = nn.CrossEntropyLoss()
+&gt;&gt;&gt; input = torch.randn(3, 5, requires_grad=True)
+&gt;&gt;&gt; target = torch.empty(3, dtype=torch.long).random_(5)
+&gt;&gt;&gt; output = loss(input, target)
+&gt;&gt;&gt; output.backward()
+&gt;&gt;&gt;
+&gt;&gt;&gt; # Example of target with class probabilities
+&gt;&gt;&gt; input = torch.randn(3, 5, requires_grad=True)
+&gt;&gt;&gt; target = torch.randn(3, 5).softmax(dim=1)
+&gt;&gt;&gt; output = loss(input, target)
+&gt;&gt;&gt; output.backward()
+</code></pre>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeypointLoss(torch.nn.CrossEntropyLoss):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.loss.CrossEntropyLoss</li>
+<li>torch.nn.modules.loss._WeightedLoss</li>
+<li>torch.nn.modules.loss._Loss</li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="silk.losses.superpoint.KeypointLoss.ignore_index"><code class="name">var <span class="ident">ignore_index</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="silk.losses.superpoint.KeypointLoss.label_smoothing"><code class="name">var <span class="ident">label_smoothing</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="silk.losses" href="index.html">silk.losses</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="silk.losses.superpoint.build_similarity_mask" href="#silk.losses.superpoint.build_similarity_mask">build_similarity_mask</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="silk.losses.superpoint.DescriptorLoss" href="#silk.losses.superpoint.DescriptorLoss">DescriptorLoss</a></code></h4>
+<ul class="">
+<li><code><a title="silk.losses.superpoint.DescriptorLoss.dump_patches" href="#silk.losses.superpoint.DescriptorLoss.dump_patches">dump_patches</a></code></li>
+<li><code><a title="silk.losses.superpoint.DescriptorLoss.forward" href="#silk.losses.superpoint.DescriptorLoss.forward">forward</a></code></li>
+<li><code><a title="silk.losses.superpoint.DescriptorLoss.training" href="#silk.losses.superpoint.DescriptorLoss.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="silk.losses.superpoint.KeypointLoss" href="#silk.losses.superpoint.KeypointLoss">KeypointLoss</a></code></h4>
+<ul class="">
+<li><code><a title="silk.losses.superpoint.KeypointLoss.ignore_index" href="#silk.losses.superpoint.KeypointLoss.ignore_index">ignore_index</a></code></li>
+<li><code><a title="silk.losses.superpoint.KeypointLoss.label_smoothing" href="#silk.losses.superpoint.KeypointLoss.label_smoothing">label_smoothing</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
