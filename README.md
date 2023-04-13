@@ -51,4 +51,4 @@ Our documentation can be found [here](doc/silk/index.html).
 See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
 
 ## License
-**SiLK** is licensed under a *Attribution-NonCommercial 4.0 International License*, as specified in the [LICENSE](LICENSE) file.
+**SiLK** is licensed under a *GNU General Public License (Version 3)*, as specified in the [LICENSE](LICENSE) file.
