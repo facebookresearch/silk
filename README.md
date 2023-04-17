@@ -27,7 +27,7 @@ The released code has been tested on Linux, with two Tesla V100-SXM2 GPUs and ta
 
 ## Results
 
-The results below have been computed using our VGG-4 backbone (checkpoint [pvgg-4.ckpt](https://dl.fbaipublicfiles.com/silk/assets/models/silk/analysis/alpha/pvgg-4.ckpt) for tab 2,3,6 and [coco-rgb-aug](https://dl.fbaipublicfiles.com/silk/assets/models/silk/coco-rgb-aug.ckpt) for tab 4,5).
+The results below have been computed using our VGG-4 backbone (checkpoint [pvgg-4.ckpt](https://dl.fbaipublicfiles.com/silk/assets/models/silk/analysis/alpha/pvgg-4.ckpt) for tab 2,3,6 and [coco-rgb-aug](https://dl.fbaipublicfiles.com/silk/assets/models/silk/coco-rgb-aug.ckpt) for tab 4,5). To reproduce the [IMC2022](https://www.kaggle.com/competitions/image-matching-challenge-2022) results, we also provide the [Kaggle notebook](https://www.kaggle.com/code/piezzo/imc2022-submission-silk/notebook).
 
 <img src="doc/images/results-hpatches-sparse.png" width="100%"/>
 <p float="middle">
