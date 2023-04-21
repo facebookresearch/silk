@@ -14,7 +14,7 @@ Those scripts generate a new dataset that contains the original input HPatches, 
 
 ## ScanNet
 
-The ScanNet evaluation has been run using the [Unsupervised R&R](https://github.com/mbanani/unsupervisedRR) implementation. We provide our own [fork](https://github.com/gleize/unsupervisedRR) as a git submodule in this SiLK repository. The modification we've made are only to accomodate the running of SiLK, SuperPoint & LoFTR. The evaluation protocol itself has not been changed (for fair comparison).
+The ScanNet evaluation has been run using the [Unsupervised R&R](https://github.com/mbanani/unsupervisedRR) implementation. We provide our own [fork](https://github.com/gleize/unsupervisedRR) as a git submodule in this SiLK repository. The modification we've made are only to accommodate the running of SiLK, SuperPoint & LoFTR. The evaluation protocol itself has not been changed (for fair comparison).
 
 To pull the ScanNet eval pipeline, please run
 ```bash
