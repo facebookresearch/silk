@@ -15,9 +15,9 @@ setup(
     name="SiLK Keypoint Library",
     version="1.0",
     description="[FAIR] SiLK - Simple Learned Keypoints",
-    author="",  # TODO(Pierre) : Add team authors in alphabetical order or use team name and team email.
-    author_email="",
-    url="",  # TODO(Pierre) Update link.
+    author="Pierre Gleize, Weiyao Wang, Matt Feiszli",
+    author_email="gleize@meta.com",
+    url="https://github.com/facebookresearch/silk",
     packages=["silk"],
     install_requires=load_requirements("requirements.txt"),
 )
