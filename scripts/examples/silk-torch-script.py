@@ -7,6 +7,7 @@
 
 import torch
 from common import get_model, load_images
+from silk.backbones.silk.silk import from_feature_coords_to_image_coords
 
 IMAGE_0_PATH = "/datasets01/hpatches/01042022/v_adam/1.ppm"
 IMAGE_1_PATH = "/datasets01/hpatches/01042022/v_adam/2.ppm"
@@ -28,15 +29,30 @@ def test_on_image_pair(model, script_model, images):
     assert torch.allclose(descriptors_0[1], descriptors_1[1])
 
 
+def model_with_corrected_positions(model):
+    def fn(images):
+        results = model(images)
+        assert type(results) is tuple
+        positions = results[
+            0
+        ]  # IMPORTANT : only works when positions are in first place
+        positions = from_feature_coords_to_image_coords(model, positions)
+        return (positions,) + results[1:]
+
+    return fn
+
+
 def main():
     # load image
     images = load_images(IMAGE_0_PATH, IMAGE_1_PATH)
 
     # load model
     model = get_model()
+    model = model_with_corrected_positions(model)
 
     # trace model to torch script
     script_model = torch.jit.trace(model, images)
+
     # save model to disk
     torch.jit.save(script_model, OUTPUT_MODEL)
     # load model from disk (to test it below)
