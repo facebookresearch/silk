@@ -17,7 +17,7 @@ Once downloaded, update the path `hpatches_path` in the configuration file `./et
 
 __Download__ : https://cocodataset.org/#download ([train](http://images.cocodataset.org/zips/train2017.zip), [val](http://images.cocodataset.org/zips/val2017.zip), [test](http://images.cocodataset.org/zips/test2017.zip))
 
-Once downloaded, update the path `root` in the configuration files `./etc/datasets/coco/{training,validation,test}.yaml`. The field `annFile` can be set to _null_ since SiLK does not use any annotation.
+Once downloaded, update the path `root` in the configuration files `./etc/datasets/coco/{training,validation,test}.yaml`. The field `annFile` parameter **should** point to the proper annotation file (even though annotations aren't used), otherwise the resulting dataset will be considered **empty**.
 
 ### ImageNet
 
