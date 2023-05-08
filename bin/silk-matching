@@ -26,11 +26,10 @@ import json
 import hashlib
 
 from silk.models.silk import matcher
-from silk.utils.cli import is_in, load_data, canonical_file_path
+from silk.utils.cli import is_in, load_data, canonical_file_path, DEVICE
 
 VALID_MATCHING = {"mnn", "ratio-test", "double-softmax"}
 VALID_FORMATS = {"torch"}
-DEVICE = "cuda"
 
 
 def validate_args(args):

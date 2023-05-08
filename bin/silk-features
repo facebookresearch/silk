@@ -30,11 +30,10 @@ from silk.backbones.silk.silk import SiLKVGG
 from silk.backbones.superpoint.vgg import ParametricVGG
 from silk.config.model import load_model_from_checkpoint
 from silk.backbones.silk.silk import from_feature_coords_to_image_coords
-from silk.utils.cli import is_in, load_image
+from silk.utils.cli import is_in, load_image, DEVICE
 
 VALID_MODELS = {"pvgg-micro", "pvgg-1", "pvgg-2", "pvgg-3", "pvgg-4"}
 VALID_FORMATS = {"torch"}
-DEVICE = "cuda"
 DEFAULT_CHECKPOINTS = {
     "pvgg-4": "assets/models/silk/analysis/alpha/pvgg-4.ckpt",
     "pvgg-3": "assets/models/silk/analysis/backbone/pvgg-3.ckpt",
@@ -224,7 +223,7 @@ if __name__ == "__main__":
 
         # load image
         logger.info(f"loading : {path}")
-        image = load_image(path, device=DEVICE)
+        image = load_image(path)
         image, scale = maybe_resize(image, args["--max_size"])
 
         # extract keypoints
