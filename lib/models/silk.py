@@ -36,7 +36,7 @@ _DEBUG_MODE_ENABLED = True
 
 
 def matcher(postprocessing="none", threshold=1.0, temperature=0.1):
-    if postprocessing == "none":
+    if postprocessing == "none" or postprocessing == "mnn":
         return mutual_nearest_neighbor
     elif postprocessing == "ratio-test":
         return partial(
