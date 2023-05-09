@@ -3,7 +3,7 @@
 """SiLK Features.
 
 Usage:
-  silk-features [-o] [-m=<model>] [-c=<checkpoint>] [-s=<max_size>] [-k=<topk>] [-t=<threshold>] [-f=<format>] <images>...
+  silk-features [-o] [-m=<model>] [-c=<checkpoint>] [-s=<max_size>] [-k=<topk>] [-t=<threshold>] <images>...
   silk-features (-h | --help)
   silk-features --version
 
@@ -14,7 +14,6 @@ Options:
   -s --max_size=<max_size>      Maximum image size allowed.
   -k --topk=<topk>              Top-k keypoints [default: 10_000].
   -t --threshold=<threshold>    Keypoint threshold [default: 1.].
-  -f --format=<format>          Output format [default: torch].
   -h --help                     Show this screen.
   --version                     Show version.
 """
@@ -33,7 +32,6 @@ from silk.backbones.silk.silk import from_feature_coords_to_image_coords
 from silk.utils.cli import is_in, load_image, DEVICE
 
 VALID_MODELS = {"pvgg-micro", "pvgg-1", "pvgg-2", "pvgg-3", "pvgg-4"}
-VALID_FORMATS = {"torch"}
 DEFAULT_CHECKPOINTS = {
     "pvgg-4": "assets/models/silk/analysis/alpha/pvgg-4.ckpt",
     "pvgg-3": "assets/models/silk/analysis/backbone/pvgg-3.ckpt",
@@ -132,10 +130,6 @@ def validate_args(args):
             "--max_size": Or(None, Use(int)),
             "--topk": Or("none", Use(int)),
             "--threshold": And(Use(float), lambda x: 0.0 <= x <= 1.0),
-            "--format": And(
-                is_in(VALID_FORMATS),
-                error=f"invalid format provided, should be one of {VALID_FORMATS}",
-            ),
             "--version": bool,
             "--help": bool,
             "<images>": list,
@@ -154,10 +148,8 @@ def set_default_checkpoints(args):
     return args
 
 
-def get_output_path(input_path, format):
-    if format == "torch":
-        path = f"{input_path}.pt"
-    return path
+def get_output_path(input_path):
+    return f"{input_path}.pt"
 
 
 def maybe_resize(image, max_size):
@@ -183,17 +175,15 @@ def maybe_resize(image, max_size):
     return image, scale
 
 
-def write_output(output_path, image_path, keypoints, descriptors, format):
-    # https://torch.github.io/tutorial.html#feature-detection-and-extraction
-    if format == "torch":
-        data = {
-            "type": "keypoints",
-            "image": image_path,
-            "positions": keypoints[:, [1, 0]],  # x,y
-            "score": keypoints[:, 2],
-            "descriptors": descriptors,
-        }
-        torch.save(data, output_path)
+def write_output(output_path, image_path, keypoints, descriptors):
+    data = {
+        "type": "keypoints",
+        "image": image_path,
+        "positions": keypoints[:, [1, 0]],  # x,y
+        "score": keypoints[:, 2],
+        "descriptors": descriptors,
+    }
+    torch.save(data, output_path)
 
 
 if __name__ == "__main__":
@@ -214,7 +204,7 @@ if __name__ == "__main__":
         logger.info(f"{i+1}/{len(args['<images>'])}")
 
         # check if keypoint output already exist
-        output_path = get_output_path(path, args["--format"])
+        output_path = get_output_path(path)
         if os.path.exists(output_path) and not args["--overwrite"]:
             logger.warning(
                 f'output "{output_path}" already exists, skipping ... (enable the "--overwrite" flag to re-compuse features)'
@@ -235,5 +225,6 @@ if __name__ == "__main__":
 
         # dump keypoints to disk
         logger.info(f"dump keypoints to disk : {output_path}")
-        write_output(output_path, path, keypoints, descriptors, args["--format"])
+        write_output(output_path, path, keypoints, descriptors)
+
 

@@ -1,6 +1,7 @@
 import os
 import torch
 import skimage.io as io
+from loguru import logger
 
 DEVICE = "cuda"
 
@@ -30,17 +31,20 @@ def is_in(set):
     return fn
 
 
-def load_data(*paths, format, ensure_type=None):
+def load_data(*paths, ensure_type=None, raise_on_type_error=True):
     data = []
-    if format == "torch":
-        for path in paths:
-            dat = torch.load(path)
-            if (ensure_type is not None) and (dat["type"] != ensure_type):
-                raise RuntimeError(
-                    f"data type expected to be '{ensure_type}', found '{dat['type']}' instead"
-                )
-            data.append(dat)
+    for path in paths:
+        dat = torch.load(path)
+        if (ensure_type is not None) and (dat["type"] != ensure_type):
+            error = f"data type expected to be '{ensure_type}', found '{dat['type']}' instead"
+            if raise_on_type_error:
+                raise RuntimeError(error)
+            else:
+                logger.warning(error)
 
+        data.append(dat)
+    if len(data) == 1:
+        return data[0]
     return tuple(data)
 
 

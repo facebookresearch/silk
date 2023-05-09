@@ -3,7 +3,7 @@
 """SiLK Matching.
 
 Usage:
-  silk-matching [-o] [-f=<format>] [-m=<matching>] [-t=<threshold>] [-s=<temperature>] <matches> <output_dir>
+  silk-matching [-o] [-m=<matching>] [-t=<threshold>] [-s=<temperature>] <matches> <output_dir>
   silk-matching (-h | --help)
   silk-matching --version
 
@@ -12,7 +12,6 @@ Options:
   -m --matching=<matching>        Matching [default: double-softmax].
   -t --threshold=<threshold>      Matching threshold [default: 0.9].
   -s --temperature=<temperature>  Double-softmax temperature [default: 0.1].
-  -f --format=<format>            Output format [default: torch].
   -h --help                       Show this screen.
   --version                       Show version.
 """
@@ -29,7 +28,6 @@ from silk.models.silk import matcher
 from silk.utils.cli import is_in, load_data, canonical_file_path, DEVICE
 
 VALID_MATCHING = {"mnn", "ratio-test", "double-softmax"}
-VALID_FORMATS = {"torch"}
 
 
 def validate_args(args):
@@ -42,10 +40,6 @@ def validate_args(args):
             ),
             "--threshold": And(Use(float), lambda x: 0.0 <= x <= 1.0),
             "--temperature": And(Use(float), lambda x: x > 0.0),
-            "--format": And(
-                is_in(VALID_FORMATS),
-                error=f"invalid format provided, should be one of {VALID_FORMATS}",
-            ),
             "--version": bool,
             "--help": bool,
             "<matches>": str,
@@ -133,7 +127,6 @@ def process_line(index, match_fn, line, args):
     data_0, data_1 = load_data(
         file_0,
         file_1,
-        format=args["--format"],
         ensure_type="keypoints",
     )
 

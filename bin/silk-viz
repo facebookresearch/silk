@@ -23,7 +23,7 @@ import os
 import matplotlib.pyplot as plt
 import skimage.io as io
 
-from silk.utils.cli import load_image, shape_to_str
+from silk.utils.cli import load_image, shape_to_str, load_data
 from silk.cli.image_pair_visualization import create_img_pair_visual
 from silk.datasets.synthetic.primitives import draw_interest_points
 
@@ -67,14 +67,6 @@ def display_image(image, output_dir, path):
 def display_pyplot(image):
     plt.imshow(image)
     plt.show()
-
-
-def load_file(path):
-    if path.endswith(".pt"):  # pytorch format
-        data = torch.load(path)
-    else:
-        raise NotImplementedError
-    return data
 
 
 def create_keypoints_image(data):
@@ -134,7 +126,7 @@ if __name__ == "__main__":
     for path in args["<files>"]:
         logger.info(f"loading file : {path}")
         try:
-            data = load_file(path)
+            data = load_data(path)
         except BaseException as e:
             logger.opt(exception=e).error(f"cannot load file : {path}")
             continue
