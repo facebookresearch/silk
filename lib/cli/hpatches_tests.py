@@ -113,7 +113,7 @@ def visualize_keypoint_matches(
 
 def visualized_probs(name, probs, viz_options):
     probs = torch_image_to_numpy(probs)
-    probs = probs.astype(np.float)
+    probs = probs.astype(float)
     probs -= probs.min()
     probs /= probs.max()
     image_dump(name, probs, viz_options)
