@@ -35,20 +35,27 @@ from torchvision.transforms import Grayscale
 _DEBUG_MODE_ENABLED = True
 
 
-def matcher(postprocessing="none", threshold=1.0, temperature=0.1):
+def matcher(
+    postprocessing="none",
+    threshold=1.0,
+    temperature=0.1,
+    return_distances=False,
+):
     if postprocessing == "none" or postprocessing == "mnn":
-        return mutual_nearest_neighbor
+        return partial(mutual_nearest_neighbor, return_distances=return_distances)
     elif postprocessing == "ratio-test":
         return partial(
             mutual_nearest_neighbor,
             match_fn=partial(match_descriptors, max_ratio=threshold),
             distance_fn=partial(compute_dist, dist_type="cosine"),
+            return_distances=return_distances,
         )
     elif postprocessing == "double-softmax":
         return partial(
             mutual_nearest_neighbor,
             match_fn=partial(match_descriptors, max_distance=threshold),
             distance_fn=partial(double_softmax_distance, temperature=temperature),
+            return_distances=return_distances,
         )
 
     raise RuntimeError(f"postprocessing {postprocessing} is invalid")

@@ -61,14 +61,28 @@ def get_positions(data):
     return data["positions"].to(DEVICE)
 
 
-def save_matches(image_0, image_1, positions_0, positions_1, match_path):
+def save_matches(
+    image_0,
+    image_1,
+    file_0,
+    file_1,
+    positions_0,
+    positions_1,
+    matches,
+    distances,
+    match_path,
+):
     # save matches
     data = {
         "type": "matches",
         "image_0": image_0,
         "image_1": image_1,
+        "features_0": file_0,
+        "features_1": file_1,
         "positions_0": positions_0,
         "positions_1": positions_1,
+        "matches": matches,
+        "distances": distances,
     }
     torch.save(data, match_path)
 
@@ -124,6 +138,9 @@ def process_line(index, match_fn, line, args):
     file_0 = files[0]
     file_1 = files[1]
 
+    file_0 = canonical_file_path(file_0)
+    file_1 = canonical_file_path(file_1)
+
     data_0, data_1 = load_data(
         file_0,
         file_1,
@@ -148,7 +165,7 @@ def process_line(index, match_fn, line, args):
         desc_0 = get_descriptors(data_0)
         desc_1 = get_descriptors(data_1)
 
-        matches = match_fn(desc_0, desc_1)
+        matches, distances = match_fn(desc_0, desc_1)
 
         # select matched keypoints
         pos_0 = get_positions(data_0)
@@ -160,7 +177,17 @@ def process_line(index, match_fn, line, args):
         # save matches to disk
         logger.info(f"save to disk : {match_path}")
 
-        save_matches(image_path_0, image_path_1, pos_0, pos_1, match_path)
+        save_matches(
+            image_path_0,
+            image_path_1,
+            file_0,
+            file_1,
+            pos_0,
+            pos_1,
+            matches,
+            distances,
+            match_path,
+        )
         save_index(image_path_0, image_path_1, match_id, index, args["<output_dir>"])
 
 
@@ -176,6 +203,7 @@ if __name__ == "__main__":
         postprocessing=args["--matching"],
         threshold=args["--threshold"],
         temperature=args["--temperature"],
+        return_distances=True,
     )
 
     with open(args["<matches>"], "r") as f:
