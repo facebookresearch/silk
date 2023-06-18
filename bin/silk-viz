@@ -1,0 +1,137 @@
+#!/bin/env python
+
+"""SiLK Visualization.
+
+Usage:
+  silk-viz pyplot <files>...
+  silk-viz image [-o=<output_dir>] <files>...
+  silk-viz (-h | --help)
+  silk-viz --version
+
+Options:
+  -o --output_dir=<output_dir>  Output directory [default: .].
+  -h --help                     Show this screen.
+  --version                     Show version.
+"""
+
+from docopt import docopt
+from schema import Schema, Or, SchemaError
+from loguru import logger
+import skimage.io as io
+import torch
+import os
+import matplotlib.pyplot as plt
+import skimage.io as io
+
+from silk.utils.cli import load_image, shape_to_str, load_data
+from silk.cli.image_pair_visualization import create_img_pair_visual
+from silk.datasets.synthetic.primitives import draw_interest_points
+
+
+def validate_args(args):
+    schema = Schema(
+        {
+            "--output_dir": Or(None, str),
+            "--version": bool,
+            "--help": bool,
+            "<files>": list,
+            "pyplot": bool,
+            "image": bool,
+        }
+    )
+    try:
+        args = schema.validate(args)
+    except SchemaError as e:
+        exit(e)
+    return args
+
+
+def display(image, args, path):
+    if args["pyplot"]:
+        display_pyplot(image)
+    elif args["image"]:
+        display_image(image, args["--output_dir"], path)
+
+
+def display_image(image, output_dir, path):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    name = os.path.basename(path)
+    output_path = os.path.join(output_dir, f"{name}.png")
+
+    logger.info(f"saving image to : {output_path}")
+    io.imsave(output_path, image)
+
+
+def display_pyplot(image):
+    plt.imshow(image)
+    plt.show()
+
+
+def create_keypoints_image(data):
+    logger.debug(f"image       = {data['image']}")
+    logger.debug(f"positions   = {shape_to_str(data['positions'])}")
+    logger.debug(f"score       = {shape_to_str(data['score'])}")
+    logger.debug(f"descriptors = {shape_to_str(data['descriptors'])}")
+
+    positions = data["positions"]
+    positions = positions[:, [1, 0]]
+    positions = positions.cpu().numpy()
+
+    image = load_image(data["image"], as_gray=False)
+    image = image[0]  # remove batch dimension
+    image = image.permute(1, 2, 0)
+    image = image.cpu().numpy()
+
+    image = draw_interest_points(image, positions)
+
+    return image
+
+
+def create_matches_image(data):
+    logger.debug(f"image_0       = {data['image_0']}")
+    logger.debug(f"image_1       = {data['image_1']}")
+    logger.debug(f"positions_0   = {shape_to_str(data['positions_0'])}")
+    logger.debug(f"positions_1   = {shape_to_str(data['positions_1'])}")
+
+    image = create_img_pair_visual(
+        data["image_0"],
+        data["image_1"],
+        None,
+        None,
+        data["positions_0"][:, [1, 0]].cpu().numpy(),
+        data["positions_1"][:, [1, 0]].cpu().numpy(),
+    )
+
+    return image
+
+
+def create_image(data):
+    logger.debug(f"keys : {set(data.keys())}")
+    logger.debug(f"data type = {data['type']}")
+    if data["type"] == "keypoints":
+        image = create_keypoints_image(data)
+    elif data["type"] == "matches":
+        image = create_matches_image(data)
+    else:
+        raise NotImplementedError
+    return image
+
+
+if __name__ == "__main__":
+    args = docopt(__doc__, version="SiLK Viz v0.1.0")
+    args = validate_args(args)
+
+    for path in args["<files>"]:
+        logger.info(f"loading file : {path}")
+        try:
+            data = load_data(path)
+        except BaseException as e:
+            logger.opt(exception=e).error(f"cannot load file : {path}")
+            continue
+
+        logger.info("create image")
+        image = create_image(data)
+
+        display(image, args, path)

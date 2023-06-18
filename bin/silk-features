@@ -1,0 +1,296 @@
+#!/bin/env python
+
+"""SiLK Features.
+
+Usage:
+  silk-features [-o] [-m=<model>] [-c=<checkpoint>] [-s=<max_size>] [-k=<topk>] [-t=<threshold>] [-d=<output_dir>] <images>...
+  silk-features (-h | --help)
+  silk-features --version
+
+Options:
+  -o --overwrite                Overwrite feature if already exist.
+  -m --model=<model>            Model selection [default: pvgg-4].
+  -c --checkpoint=<checkpoint>  Model checkpoint file.
+  -s --max_size=<max_size>      Maximum image size allowed.
+  -k --topk=<topk>              Top-k keypoints [default: 10_000].
+  -t --threshold=<threshold>    Keypoint threshold [default: 1.].
+  -d --output=<output_dir>      Output directory.
+  -h --help                     Show this screen.
+  --version                     Show version.
+"""
+
+from docopt import docopt
+from schema import Schema, And, Or, Use, SchemaError
+from loguru import logger
+import torch
+import os
+import time
+from torchvision.transforms.functional import resize, InterpolationMode
+
+from silk.backbones.silk.silk import SiLKVGG
+from silk.backbones.superpoint.vgg import ParametricVGG
+from silk.config.model import load_model_from_checkpoint
+from silk.backbones.silk.silk import from_feature_coords_to_image_coords
+from silk.utils.cli import is_in, load_image, DEVICE
+from silk.backbones.superpoint.superpoint import SuperPoint
+
+VALID_MODELS = {"pvgg-micro", "pvgg-1", "pvgg-2", "pvgg-3", "pvgg-4", "superpoint"}
+DEFAULT_CHECKPOINTS = {
+    "pvgg-4": "assets/models/silk/analysis/alpha/pvgg-4.ckpt",
+    "pvgg-3": "assets/models/silk/analysis/backbone/pvgg-3.ckpt",
+    "pvgg-2": "assets/models/silk/analysis/backbone/pvgg-2.ckpt",
+    "pvgg-1": "assets/models/silk/analysis/alpha/pvgg-1.ckpt",
+    "pvgg-micro": "assets/models/silk/analysis/alpha/pvgg-micro.ckpt",
+    "superpoint": "assets/tests/magicpoint/superpoint_v1.pth",
+}
+
+
+def load_model(model, checkpoint, topk, threshold):
+    klass = None
+    kwargs = {}
+    load_args = {}
+
+    if model.startswith("pvgg-"):
+        load_args["state_dict_fn"] = lambda x: {
+            k[len("_mods.model.") :]: v for k, v in x.items()
+        }
+
+        # start with defaults
+        # ref : etc/backbones/silk-vgg.yaml
+        klass = SiLKVGG
+        kwargs = {
+            "in_channels": 1,  # grayscale
+            "detection_threshold": threshold,
+            "detection_top_k": topk,
+            "nms_dist": 0,
+            "padding": 0,
+            "border_dist": 0,
+            "descriptor_scale_factor": 1.41,  # sqrt(2)
+            "default_outputs": ("sparse_positions", "sparse_descriptors"),
+        }
+        # default VGG backbone
+        # ref : etc/backbones/silk-pvgg-defaults.yaml
+        backbone_klass = ParametricVGG
+        backbone_kargs = {
+            "input_num_channels": 1,
+            "use_max_pooling": False,
+            "padding": 0,
+        }
+        if model == "pvgg-micro":
+            # ref : etc/backbones/silk-pvgg-micro.yaml
+            kwargs["lat_channels"] = 32
+            kwargs["desc_channels"] = 32
+            kwargs["feat_channels"] = 64
+
+            backbone_kargs["channels"] = (64,)
+            backbone_kargs["normalization_fn"] = [torch.nn.BatchNorm2d(64)]
+        elif model == "pvgg-1":
+            # ref : etc/backbones/silk-pvgg-1.yaml
+            backbone_kargs["channels"] = (128,)
+            backbone_kargs["normalization_fn"] = [torch.nn.BatchNorm2d(128)]
+        elif model == "pvgg-2":
+            # ref : etc/backbones/silk-pvgg-2.yaml
+            backbone_kargs["channels"] = (128, 128)
+            backbone_kargs["normalization_fn"] = [
+                torch.nn.BatchNorm2d(128),
+                torch.nn.BatchNorm2d(128),
+            ]
+        elif model == "pvgg-3":
+            # ref : etc/backbones/silk-pvgg-3.yaml
+            backbone_kargs["channels"] = (64, 128, 128)
+            backbone_kargs["normalization_fn"] = [
+                torch.nn.BatchNorm2d(64),
+                torch.nn.BatchNorm2d(128),
+                torch.nn.BatchNorm2d(128),
+            ]
+        elif model == "pvgg-4":
+            # ref : etc/backbones/silk-pvgg-4.yaml
+            backbone_kargs["channels"] = (64, 64, 128, 128)
+            backbone_kargs["normalization_fn"] = [
+                torch.nn.BatchNorm2d(64),
+                torch.nn.BatchNorm2d(64),
+                torch.nn.BatchNorm2d(128),
+                torch.nn.BatchNorm2d(128),
+            ]
+
+        kwargs["backbone"] = backbone_klass(**backbone_kargs)
+    elif model == "superpoint":
+        load_args["state_dict_key"] = None
+        load_args["map_name"] = {
+            "conv1a.weight": "magicpoint.backbone._backbone.l1.0.0.weight",
+            "conv1a.bias": "magicpoint.backbone._backbone.l1.0.0.bias",
+            "conv1b.weight": "magicpoint.backbone._backbone.l1.1.0.weight",
+            "conv1b.bias": "magicpoint.backbone._backbone.l1.1.0.bias",
+            "conv2a.weight": "magicpoint.backbone._backbone.l2.0.0.weight",
+            "conv2a.bias": "magicpoint.backbone._backbone.l2.0.0.bias",
+            "conv2b.weight": "magicpoint.backbone._backbone.l2.1.0.weight",
+            "conv2b.bias": "magicpoint.backbone._backbone.l2.1.0.bias",
+            "conv3a.weight": "magicpoint.backbone._backbone.l3.0.0.weight",
+            "conv3a.bias": "magicpoint.backbone._backbone.l3.0.0.bias",
+            "conv3b.weight": "magicpoint.backbone._backbone.l3.1.0.weight",
+            "conv3b.bias": "magicpoint.backbone._backbone.l3.1.0.bias",
+            "conv4a.weight": "magicpoint.backbone._backbone.l4.0.0.weight",
+            "conv4a.bias": "magicpoint.backbone._backbone.l4.0.0.bias",
+            "conv4b.weight": "magicpoint.backbone._backbone.l4.1.0.weight",
+            "conv4b.bias": "magicpoint.backbone._backbone.l4.1.0.bias",
+            "convPa.weight": "magicpoint.backbone._heads._mods.logits._detH1.0.weight",
+            "convPa.bias": "magicpoint.backbone._heads._mods.logits._detH1.0.bias",
+            "convPb.weight": "magicpoint.backbone._heads._mods.logits._detH2.0.weight",
+            "convPb.bias": "magicpoint.backbone._heads._mods.logits._detH2.0.bias",
+            "convDa.weight": "magicpoint.backbone._heads._mods.raw_descriptors._desH1.0.weight",
+            "convDa.bias": "magicpoint.backbone._heads._mods.raw_descriptors._desH1.0.bias",
+            "convDb.weight": "magicpoint.backbone._heads._mods.raw_descriptors._desH2.0.weight",
+            "convDb.bias": "magicpoint.backbone._heads._mods.raw_descriptors._desH2.0.bias",
+        }
+
+        # start with defaults
+        # ref : etc/backbones/silk-vgg.yaml
+        klass = SuperPoint
+        kwargs = {"use_batchnorm": False}
+
+    model = klass(**kwargs)
+
+    model = load_model_from_checkpoint(
+        model,
+        checkpoint_path=checkpoint,
+        device=DEVICE,
+        freeze=True,
+        eval=True,
+        **load_args,
+    )
+
+    return model
+
+
+def validate_args(args):
+    schema = Schema(
+        {
+            "--overwrite": bool,
+            "--model": And(
+                is_in(VALID_MODELS),
+                error=f"invalid model provided, should be one of {VALID_MODELS}",
+            ),
+            "--checkpoint": Or(None, str),
+            "--max_size": Or(None, Use(int)),
+            "--topk": Or("none", Use(int)),
+            "--threshold": And(Use(float), lambda x: 0.0 <= x <= 1.0),
+            "--output": Or(None, str),
+            "--version": bool,
+            "--help": bool,
+            "<images>": list,
+        }
+    )
+    try:
+        args = schema.validate(args)
+    except SchemaError as e:
+        exit(e)
+    return args
+
+
+def set_default_checkpoints(args):
+    if args["--checkpoint"] is None:
+        args["--checkpoint"] = DEFAULT_CHECKPOINTS[args["--model"]]
+    return args
+
+
+def get_output_path(input_path, output_dir=None):
+    if output_dir is None:
+        return f"{input_path}.pt"
+    fname = os.path.basename(input_path)
+    return os.path.join(output_dir, f"{fname}.pt")
+
+
+def maybe_resize(image, max_size):
+    # determine scale
+    if max_size is not None:
+        scale = max(max(image.shape[-2:]) / max_size, 1.0)
+    else:
+        scale = 1.0
+
+    # resize if necessary
+    if scale != 1.0:
+        old_size = (image.shape[-2], image.shape[-1])
+        new_size = (int(image.shape[-2] / scale), int(image.shape[-1] / scale))
+
+        logger.warning(f"downsizing image from {old_size} to {new_size}")
+        image = resize(
+            image,
+            size=new_size,
+            interpolation=InterpolationMode.BILINEAR,
+            antialias=None,
+        )
+
+    return image, scale
+
+
+def write_output(output_path, image_path, keypoints, descriptors):
+    output_dir = os.path.dirname(output_path)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    data = {
+        "type": "keypoints",
+        "image": image_path,
+        "positions": keypoints[:, [1, 0]],  # x,y
+        "score": keypoints[:, 2],
+        "descriptors": descriptors,
+    }
+
+    torch.save(data, output_path)
+
+
+if __name__ == "__main__":
+    # get & check arguments
+    args = docopt(__doc__, version="SiLK Features v0.1.0")
+    args = validate_args(args)
+    args = set_default_checkpoints(args)
+
+    # load model
+    logger.info(f"loading model {args['--model']}[{args['--checkpoint']}]")
+    model = load_model(
+        args["--model"],
+        args["--checkpoint"],
+        args["--topk"],
+        args["--threshold"],
+    )
+
+    # compute features on list of images
+    logger.info(f"computing SiLK feature for {len(args['<images>'])} images")
+    cum_delta_time = 0
+    for i, path in enumerate(args["<images>"]):
+        logger.info(f"{i+1}/{len(args['<images>'])}")
+
+        # check if keypoint output already exist
+        output_path = get_output_path(path, args["--output"])
+        if os.path.exists(output_path) and not args["--overwrite"]:
+            logger.warning(
+                f'output "{output_path}" already exists, skipping ... (enable the "--overwrite" flag to re-compuse features)'
+            )
+            continue
+
+        # load image
+        logger.info(f"loading : {path}")
+        image = load_image(path)
+        image, scale = maybe_resize(image, args["--max_size"])
+
+        # extract keypoints
+        logger.info(f"run model")
+        start_time = time.time()
+        keypoints, descriptors = model(image)
+        keypoints, descriptors = keypoints[0], descriptors[0]
+        if hasattr(model, "coordinate_mapping_composer"):
+            keypoints = from_feature_coords_to_image_coords(model, keypoints)
+        else:
+            logger.warning(
+                f"model doesn't have 'coordinate_mapping_composer' method, skipping coordinate mapping"
+            )
+        keypoints[:, :2] *= scale
+        cum_delta_time += time.time() - start_time
+
+        # dump keypoints to disk
+        logger.info(f"dump keypoints to disk : {output_path}")
+        write_output(output_path, path, keypoints, descriptors)
+
+    logger.info(f"speed : {len(args['<images>']) / cum_delta_time} fps")
+
+

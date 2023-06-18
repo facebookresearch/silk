@@ -1,0 +1,221 @@
+#!/bin/env python
+
+"""SiLK Matching.
+
+Usage:
+  silk-matching [-o] [-m=<matching>] [-t=<threshold>] [-s=<temperature>] <matches> <output_dir>
+  silk-matching (-h | --help)
+  silk-matching --version
+
+Options:
+  -o --overwrite                  Overwrite matches if already exist.
+  -m --matching=<matching>        Matching [default: double-softmax].
+  -t --threshold=<threshold>      Matching threshold [default: 0.9].
+  -s --temperature=<temperature>  Double-softmax temperature [default: 0.1].
+  -h --help                       Show this screen.
+  --version                       Show version.
+"""
+
+from docopt import docopt
+from schema import Schema, And, Use, SchemaError
+from loguru import logger
+import torch
+import os
+import json
+import hashlib
+
+from silk.models.silk import matcher
+from silk.utils.cli import is_in, load_data, canonical_file_path, DEVICE
+
+VALID_MATCHING = {"mnn", "ratio-test", "double-softmax"}
+
+
+def validate_args(args):
+    schema = Schema(
+        {
+            "--overwrite": bool,
+            "--matching": And(
+                is_in(VALID_MATCHING),
+                error=f"invalid model provided, should be one of {VALID_MATCHING}",
+            ),
+            "--threshold": And(Use(float), lambda x: 0.0 <= x <= 1.0),
+            "--temperature": And(Use(float), lambda x: x > 0.0),
+            "--version": bool,
+            "--help": bool,
+            "<matches>": str,
+            "<output_dir>": str,
+        }
+    )
+    try:
+        args = schema.validate(args)
+    except SchemaError as e:
+        exit(e)
+    return args
+
+
+def get_descriptors(data):
+    return data["descriptors"].to(DEVICE)
+
+
+def get_positions(data):
+    return data["positions"].to(DEVICE)
+
+
+def save_matches(
+    image_0,
+    image_1,
+    file_0,
+    file_1,
+    positions_0,
+    positions_1,
+    matches,
+    distances,
+    match_path,
+):
+    # save matches
+    data = {
+        "type": "matches",
+        "image_0": image_0,
+        "image_1": image_1,
+        "features_0": file_0,
+        "features_1": file_1,
+        "positions_0": positions_0,
+        "positions_1": positions_1,
+        "matches": matches,
+        "distances": distances,
+    }
+    torch.save(data, match_path)
+
+
+def save_index(file_0, file_1, match_id, index, output):
+    # update index
+    index["matches"].setdefault(file_0, {})[file_1] = {
+        "reversed": False,
+        "id": match_id,
+    }
+    index["matches"].setdefault(file_1, {})[file_0] = {"reversed": True, "id": match_id}
+
+    # save to disk
+    index_file = os.path.join(output, "index.json")
+    with open(index_file, "w") as f:
+        json.dump(index, f, indent=2)
+
+
+def create_or_load_index(output):
+    # create output dir if doesn't exist
+    if not os.path.exists(output):
+        os.makedirs(output)
+
+    # create index file if doesn't exist
+    index_file = os.path.join(output, "index.json")
+    if not os.path.exists(index_file):
+        with open(index_file, "w") as f:
+            json.dump({"type": "match_index", "matches": {}}, f, indent=2)
+
+    # load index from file
+    with open(index_file, "r") as f:
+        index = json.load(f)
+    return index
+
+
+def get_match_id(file_0, file_1):
+    msg = f"{file_0};{file_1}"
+    m = hashlib.sha256()
+    m.update(msg.encode("utf-8"))
+    return m.hexdigest()
+
+
+def process_line(index, match_fn, line, args):
+    line = line.rstrip()  # remove trailing newline and whitespaces
+    files = line.split(";")
+
+    if len(files) != 2:
+        raise RuntimeError(
+            f"line in input file should be of format : <file_path_0>;<file_path_1>"
+        )
+
+    # load keypoint files
+    file_0 = files[0]
+    file_1 = files[1]
+
+    file_0 = canonical_file_path(file_0)
+    file_1 = canonical_file_path(file_1)
+
+    data_0, data_1 = load_data(
+        file_0,
+        file_1,
+        ensure_type="keypoints",
+    )
+
+    # get image paths, and determine unique matching id
+    image_path_0 = canonical_file_path(data_0["image"])
+    image_path_1 = canonical_file_path(data_1["image"])
+
+    match_id = get_match_id(image_path_0, image_path_1)
+    match_path = os.path.join(args["<output_dir>"], f"{match_id}.pt")
+
+    if os.path.exists(match_path) and not args["--overwrite"]:
+        logger.warning(
+            f'matching [{file_0}] / [{file_1}] file "{match_path}" already exists, skipping ...'
+        )
+    else:
+        logger.info(f"matching [{file_0}] / [{file_1}]")
+
+        # match keypoints using descriptors
+        desc_0 = get_descriptors(data_0)
+        desc_1 = get_descriptors(data_1)
+
+        matches, distances = match_fn(desc_0, desc_1)
+
+        # select matched keypoints
+        pos_0 = get_positions(data_0)
+        pos_1 = get_positions(data_1)
+
+        pos_0 = pos_0[matches[:, 0]]
+        pos_1 = pos_1[matches[:, 1]]
+
+        # save matches to disk
+        logger.info(f"save to disk : {match_path}")
+
+        save_matches(
+            image_path_0,
+            image_path_1,
+            file_0,
+            file_1,
+            pos_0,
+            pos_1,
+            matches,
+            distances,
+            match_path,
+        )
+        save_index(image_path_0, image_path_1, match_id, index, args["<output_dir>"])
+
+
+if __name__ == "__main__":
+    args = docopt(__doc__, version="SiLK Matching v0.1.0")
+    args = validate_args(args)
+
+    # TODO(Pierre) : check if output already exists
+    index = create_or_load_index(args["<output_dir>"])
+
+    # select matcher
+    match_fn = matcher(
+        postprocessing=args["--matching"],
+        threshold=args["--threshold"],
+        temperature=args["--temperature"],
+        return_distances=True,
+    )
+
+    with open(args["<matches>"], "r") as f:
+        line = f.readline()
+        i = 0
+        while len(line) > 0:
+            try:
+                process_line(index, match_fn, line, args)
+            except BaseException as e:
+                logger.opt(exception=e).error(
+                    f"error occured when processing line #{i} > {line}, skipping ..."
+                )
+
+            line = f.readline()
+            i += 1

@@ -94,9 +94,13 @@ def mutual_nearest_neighbor(
     desc_1,
     distance_fn=compute_dist,
     match_fn=match_descriptors,
+    return_distances=False,
 ):
     dist = distance_fn(desc_0, desc_1)
     matches = match_fn(dist)
+    if return_distances:
+        distances = dist[(matches[:, 0], matches[:, 1])]
+        return matches, distances
     return matches
 
 

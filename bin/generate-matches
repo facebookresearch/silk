@@ -1,0 +1,100 @@
+#!/bin/env python
+
+"""Generate Matches.
+
+Usage:
+  generate-matches exhaustive [-o=<output_file>] [-s] <keypoint_files>...
+  generate-matches sequential [-o=<output_file>] [-s] -n=<window_size> <keypoint_files>...
+  generate-matches (-h | --help)
+  generate-matches --version
+
+Options:
+  -o --output=<output_file>       Output file.
+  -s --skip-check-input           Skip checking the keypoint files.
+  -n --window-size=<window_size>  Window size of the sequential matching.
+  -h --help                       Show this screen.
+  --version                       Show version.
+"""
+
+from docopt import docopt
+from schema import Schema, And, Or, Use, SchemaError
+from loguru import logger
+import sys
+
+from silk.utils.cli import load_data
+
+
+def validate_args(args):
+    schema = Schema(
+        {
+            "--output": Or(None, str),
+            "--skip-check-input": bool,
+            "--window-size": Or(None, And(Use(int), lambda x: x > 1)),
+            "--version": bool,
+            "--help": bool,
+            "<keypoint_files>": list,
+            "exhaustive": bool,
+            "sequential": bool,
+        }
+    )
+    try:
+        args = schema.validate(args)
+    except SchemaError as e:
+        exit(e)
+    return args
+
+
+def set_output_file(args):
+    if args["--output"] is None:
+        args["--output"] = sys.stdout
+    else:
+        args["--output"] = open(args["--output"], "w")
+    return args
+
+
+def check_keypoint_files(keypoint_files):
+    valid_keypoint_files = []
+    for path in keypoint_files:
+        logger.info(f"checking input file : {path}")
+        try:
+            load_data(path, format="torch", ensure_type="keypoints")
+        except BaseException as e:
+            logger.opt(exception=e).warning(
+                f'file "{path}" cannot be loaded, skipping ...'
+            )
+        else:
+            valid_keypoint_files.append(path)
+    return valid_keypoint_files
+
+
+def generate_exhaustive_matches(args):
+    paths = args["<keypoint_files>"]
+    for i in range(len(paths)):
+        for j in range(i + 1, len(paths)):
+            path_0 = paths[i]
+            path_1 = paths[j]
+            args["--output"].write(f"{path_0};{path_1}\n")
+
+
+def generate_sequential_matches(args):
+    paths = args["<keypoint_files>"]
+    n = args["--window-size"]
+    for i in range(len(paths)):
+        for j in range(i + 1, min(i + n, len(paths))):
+            path_0 = paths[i]
+            path_1 = paths[j]
+            args["--output"].write(f"{path_0};{path_1}\n")
+
+
+if __name__ == "__main__":
+    args = docopt(__doc__, version="Generate Matches v0.1.0")
+    args = validate_args(args)
+    args = set_output_file(args)
+
+    if not args["--skip-check-input"]:
+        args["<keypoint_files>"] = check_keypoint_files(args["<keypoint_files>"])
+
+    if args["exhaustive"]:
+        generate_exhaustive_matches(args)
+    elif args["sequential"]:
+        generate_sequential_matches(args)
