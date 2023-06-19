@@ -24,6 +24,7 @@ The released code has been tested on Linux, with two Tesla V100-SXM2 GPUs and ta
 * [How to run the evaluation pipeline ?](doc/usage/evaluation.md)
 * [How to run inference ?](doc/usage/inference.md)
 * [How to convert SiLK to torch script ?](doc/usage/torch_script.md)
+* [FAQ](doc/usage/faq.md)
 
 ## Results
 
