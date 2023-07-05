@@ -146,7 +146,10 @@ def load_model(model, checkpoint, topk, threshold):
         # start with defaults
         # ref : etc/backbones/silk-vgg.yaml
         klass = SuperPoint
-        kwargs = {"use_batchnorm": False}
+        kwargs = {
+            "use_batchnorm": False,
+            "default_outputs": ("positions", "sparse_descriptors"),
+        }
 
     model = klass(**kwargs)
 
@@ -292,5 +295,3 @@ if __name__ == "__main__":
         write_output(output_path, path, keypoints, descriptors)
 
     logger.info(f"speed : {len(args['<images>']) / cum_delta_time} fps")
-
-
