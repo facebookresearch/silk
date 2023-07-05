@@ -4,6 +4,7 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
+import io
 import pickle
 from typing import Iterable, Optional
 
@@ -12,8 +13,18 @@ import numpy
 from torch.utils.data import Dataset
 
 
+# fix data saved using old pixenv codebase
+class PixenvFixUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module.startswith("pixenv"):
+            module = module.replace("pixenv", "silk", 1)
+        return super().find_class(module, name)
+
+
 class CachedDataset(Dataset):
     """Cached dataset of serialized python objects."""
+
+    DEFAULT_UNPICKLER = PixenvFixUnpickler
 
     @staticmethod
     def from_iterable(
@@ -80,9 +91,10 @@ class CachedDataset(Dataset):
     def __getitem__(self, index):
         obj_bytes = self._db[str(index)][0]
         obj_bytes = obj_bytes.tobytes()
+        obj_bytes = io.BytesIO(obj_bytes)
         # TODO(Pierre): Fix use of pickle to solve `python_pickle_is_bad`
         # reference : https://fburl.com/pickle_is_bad
-        return pickle.loads(obj_bytes)
+        return CachedDataset.DEFAULT_UNPICKLER(obj_bytes).load()
 
     def __del__(self):
         self._db.close()
