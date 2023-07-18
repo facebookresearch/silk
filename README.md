@@ -1,6 +1,10 @@
 # SiLK - Simple Learned Keypoints
 
-SiLK is a self-supervised framework for learning keypoints. As described in our [paper](https://arxiv.org/abs/2304.06194) (by [Pierre Gleize](https://gleize.github.io/index.html), [Weiyao Wang](https://sites.google.com/view/weiyaowang/home) and [Matt Feiszli](https://scholar.google.com/citations?user=A-wA73gAAAAJ&hl=en&oi=sra)), SiLK focuses on *simplicity* and *flexibility*, while also providing state-of-art and competitive results on existing benchmarks.
+> [[Arxiv Paper](https://arxiv.org/abs/2304.06194)] <br/>
+> Authors : [Pierre Gleize](https://gleize.github.io/index.html), [Weiyao Wang](https://sites.google.com/view/weiyaowang/home) and [Matt Feiszli](https://scholar.google.com/citations?user=A-wA73gAAAAJ&hl=en&oi=sra) <br/>
+> Conference : ICCV 2023
+
+SiLK is a self-supervised framework for learning keypoints. SiLK focuses on *simplicity* and *flexibility*, while also providing state-of-art and competitive results on existing benchmarks.
 
 <p float="middle">
   <img src="doc/images/keypoints.png" width="33%"/>
