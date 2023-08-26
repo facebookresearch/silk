@@ -17,7 +17,7 @@ from silk.matching.mnn import compute_dist, match_descriptors
 MAX_SCORE = 9999
 
 
-class PointTracker(object):
+class PointTracker:
     def __init__(self, max_length: int = 5, dist_thresh: float = 0.7):
         """
         Initialize the PointTracker class.
