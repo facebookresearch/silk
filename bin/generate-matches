@@ -4,13 +4,14 @@
 
 Usage:
   generate-matches exhaustive [-o=<output_file>] [-s] <keypoint_files>...
-  generate-matches sequential [-o=<output_file>] [-s] -n=<window_size> <keypoint_files>...
+  generate-matches sequential [-o=<output_file>] [-s] [-l] -n=<window_size> <keypoint_files>...
   generate-matches (-h | --help)
   generate-matches --version
 
 Options:
   -o --output=<output_file>       Output file.
   -s --skip-check-input           Skip checking the keypoint files.
+  -l --loopy                      Matches end frames to beginning frames in sequential matching.
   -n --window-size=<window_size>  Window size of the sequential matching.
   -h --help                       Show this screen.
   --version                       Show version.
@@ -29,6 +30,7 @@ def validate_args(args):
         {
             "--output": Or(None, str),
             "--skip-check-input": bool,
+            "--loopy": bool,
             "--window-size": Or(None, And(Use(int), lambda x: x > 1)),
             "--version": bool,
             "--help": bool,
@@ -76,14 +78,26 @@ def generate_exhaustive_matches(args):
             args["--output"].write(f"{path_0};{path_1}\n")
 
 
+def get_sequential_pairs(size, n, loopy):
+    if not loopy:
+        for i in range(size):
+            for j in range(i + 1, min(i + n, size)):
+                yield i, j
+    else:
+        for i in range(size):
+            for j in range(i + 1, i + n):
+                yield i, j % size
+
+
 def generate_sequential_matches(args):
     paths = args["<keypoint_files>"]
     n = args["--window-size"]
-    for i in range(len(paths)):
-        for j in range(i + 1, min(i + n, len(paths))):
-            path_0 = paths[i]
-            path_1 = paths[j]
-            args["--output"].write(f"{path_0};{path_1}\n")
+    loopy = args["--loopy"]
+
+    for i, j in get_sequential_pairs(len(paths), n, loopy):
+        path_0 = paths[i]
+        path_1 = paths[j]
+        args["--output"].write(f"{path_0};{path_1}\n")
 
 
 if __name__ == "__main__":
