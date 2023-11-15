@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -e
+
+INTRINSICS_FILE="assets/colmap/sequences/intrinsics.txt"
+IMAGE_PATH_ROOT="assets/colmap/sequences"
+OUTPUT_ROOT_PATH="var/colmap"
+IMAGES_EXTENSION=jpg
+SKIP=2 # take odd frames
+SIZE="-s 480" # image resizing for SiLK
+MAX_MATCHES=1000 # top-k matches to feed to COLMAP
+MATCH_WINDOW_SIZE=20
+LOOPY="-l"
+VIZ=false
+
+while IFS= read -r line
+do
+    echo "running SiLK/COLMAP on $line"
+    line=($line) # convert line to array
+    tag=${line[0]}
+  
+    img_path="${IMAGE_PATH_ROOT}/${tag}"
+
+    echo "  - focal = ${line[1]}"
+    echo "  - principal point = ${line[2]}"
+
+    # set paths
+    tag_path="${OUTPUT_ROOT_PATH}/${tag}"
+    db_path="${tag_path}/model/db.db"
+    matches_index_path="${tag_path}/matches/index.json"
+    match_pairs_path="${tag_path}/model/match_pairs.txt"
+
+    # check if reconstruction has been run already
+    if test -f ${tag_path}/model/sparse/0/cameras.bin; then
+        echo "already processed"
+        continue
+    fi
+
+    # run SiLK
+    mkdir -p ${tag_path}
+
+    ./bin/silk-features -o -m pvgg-4 -c assets/models/silk/coco-rgb-aug.ckpt -k 10000 -d ${tag_path}/features $SIZE $img_path/*.$IMAGES_EXTENSION
+    ls ${tag_path}/features/*.pt | sort -V | awk "NR%${SKIP}!=0" | xargs ./bin/generate-matches sequential -n ${MATCH_WINDOW_SIZE} ${LOOPY} -s > ${tag_path}/matches.txt
+    ./bin/silk-matching -o -m double-softmax -t 0.9 ${tag_path}/matches.txt ${tag_path}/matches/
+    if [ "$VIZ" = true ] ; then
+        ./bin/silk-viz image -o ${tag_path}/viz ${tag_path}/matches/*.pt
+    fi
+
+    # run COLMAP
+    mkdir -p ${tag_path}/model/sparse
+
+    colmap database_creator --database_path ${db_path}
+    ./bin/colmap-import-matches -m $MAX_MATCHES -f ${line[1]} -c ${line[2]} ${db_path} ${matches_index_path} > ${match_pairs_path}
+    colmap matches_importer --database_path ${db_path} --match_list_path ${match_pairs_path} --match_type pairs --SiftMatching.use_gpu=0
+    colmap mapper --database_path ${db_path} --image_path ${img_path} --output_path ${tag_path}/model/sparse
+
+    echo "COLMAP model ready at : ${tag_path}/model/sparse"
+
+done < "$INTRINSICS_FILE"

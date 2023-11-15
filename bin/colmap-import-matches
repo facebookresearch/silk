@@ -1,0 +1,328 @@
+#!/bin/env python
+
+"""COLMAP Import Matches.
+
+Usage:
+  colmap-import-matches [-m=<max_matches>] [-f=<focal>] [-c=<center>] <colmap_db> <matches_index>
+  colmap-import-matches (-h | --help)
+  colmap-import-matches --version
+
+Options:
+  -m --max-matches=<max_matches> Maximum number of matches to import. Select best matches first.
+  -f --focal=<focal>             Focal parameter of the camera [default: 1.].
+  -c --center=<center>           Principal point of the camera.
+  -h --help                      Show this screen.
+  --version                      Show version.
+"""
+
+import sqlite3
+from docopt import docopt
+from schema import Schema, SchemaError, Or, Use
+from loguru import logger
+import os
+import json
+import numpy as np
+
+from silk.utils.cli import load_data, load_image
+
+
+def check_is_index(index):
+    if (not "type" in index) or (not index["type"] == "match_index"):
+        raise RuntimeError(f"index file provided is invalid")
+
+
+def add_camera(connection, width, height, args):
+    model = 1 # "PINHOLE" (c.f. https://colmap.github.io/cameras.html)
+
+    # get focal
+    f = args["--focal"]
+    if f is None:
+        fx = fy = 1.0
+    else:
+        fx, fy = f
+
+    # get principal point
+    cx = width / 2.0
+    cy = height / 2.0
+    c = args["--center"]
+    if c is not None:
+        if cx != c[0] and cy != c[1]:
+            logger.warning(f"The center point provided (cx={c[0]}, cy={c[1]}) is not at the center of the image ({cx}, {cy}).")
+        cx, cy = c
+
+    params = np.array((fx, fy, cx, cy), dtype=np.float64)
+
+    cursor = connection.cursor()
+    cursor.execute(
+        "INSERT INTO cameras VALUES (?, ?, ?, ?, ?, ?)",
+        (
+            None,  # camera_id
+            model, # path
+            width,
+            height,
+            params.tobytes(),
+            False,
+        ),
+    )
+
+    camera_id = cursor.lastrowid
+    cursor.close()
+
+    return camera_id
+
+
+def add_image(connection, name, camera_id):
+    nan = float("nan")
+
+    cursor = connection.cursor()
+    cursor.execute(
+        "INSERT INTO images VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (
+            None,  # image_id
+            name,  # path
+            camera_id,
+            nan,  # rotation params
+            nan,
+            nan,
+            nan,
+            nan,  # translation params
+            nan,
+            nan,
+        ),
+    )
+    image_id = cursor.lastrowid
+    cursor.close()
+
+    return image_id
+
+
+def add_position(connection, image_id, keypoints):
+    n = keypoints.shape[0]
+    keypoints = np.concatenate(
+        (keypoints, np.ones((n, 1)), np.zeros((n, 1))),  # add scale & orientation
+        axis=1,
+        dtype=np.float32,
+    )
+
+    cursor = connection.cursor()
+    cursor.execute(
+        "INSERT INTO keypoints VALUES (?, ?, ?, ?)",
+        (
+            image_id,
+            keypoints.shape[0],
+            keypoints.shape[1],
+            keypoints.tobytes(),
+        ),
+    )
+    cursor.close()
+
+
+def load_positions(feature_path):
+    data = load_data(feature_path, ensure_type="keypoints")
+    data = data["positions"].cpu().numpy()
+    return data
+
+
+def load_matches_and_feature_paths(match_path, max_matches=None):
+    data = load_data(match_path, ensure_type="matches")
+    matches = data["matches"]
+    if max_matches is not None and max_matches < matches.shape[0]:
+        distances = data["distances"]
+        idx = distances.topk(k=max_matches, largest=False).indices
+        matches = matches[idx]
+    matches = matches.cpu().numpy()
+    return matches, data["features_0"], data["features_1"]
+
+
+def compute_match_id(matches, image_id_0, image_id_1):
+    if image_id_0 > image_id_1:
+        image_id_0, image_id_1 = image_id_1, image_id_0
+        matches = matches[:, ::-1]
+
+    match_id = image_id_0 * 2147483647 + image_id_1
+
+    return match_id, matches
+
+
+def add_matches(connection, match_id, matches):
+    matches = np.asarray(matches, np.uint32)
+
+    cursor = connection.cursor()
+    cursor.execute(
+        "INSERT INTO matches VALUES (?, ?, ?, ?)",
+        (
+            match_id,
+            matches.shape[0],
+            matches.shape[1],
+            matches.tobytes(),
+        ),
+    )
+    cursor.close()
+
+
+def get_image_name(image_path):
+    return os.path.basename(image_path)
+
+
+def write_pair(image_path_0, image_path_1):
+    assert " " not in image_path_0
+    assert " " not in image_path_1
+    print(image_path_0, image_path_1)
+
+
+def get_image_width_height(image_path):
+    image = load_image(image_path, as_gray=False)
+    return image.shape[-1], image.shape[-2]
+
+
+def check_image_is_added(
+    connection,
+    image_path_to_image_id,
+    image_path,
+    feature_path,
+    width,
+    height,
+    camera_id,
+):
+    image_name = get_image_name(image_path)
+
+    if image_name not in image_path_to_image_id:
+        # ensure camera is same by checking the image sizes
+        w, h = get_image_width_height(image_path)
+        if w != width or h != height:
+            raise RuntimeError(
+                f'image "{image_path}" was found with size ({w}, {h}) different from expected ({width}, {height}); images should come from the same camera'
+            )
+
+        # add extrinsics
+        image_id = add_image(connection, image_name, camera_id)
+        image_path_to_image_id[image_name] = image_id
+
+        # add keypoint positions
+        positions = load_positions(feature_path)
+        add_position(connection, image_id, positions)
+
+    return image_path_to_image_id[image_name], image_name
+
+
+def import_matches(connection, index, index_dir_path, args):
+    # TODO(Pierre) : ensure DB is empty
+
+    check_is_index(index)
+
+    matches = index["matches"]
+
+    sorted_image_paths = sorted(matches.keys())
+
+    image_path_to_image_id = {}
+
+    if not len(sorted_image_paths) > 0:
+        return
+
+    # import intrinsics / extrinsics and positions
+    width, height = get_image_width_height(sorted_image_paths[0])
+    camera_id = add_camera(connection, width, height, args)
+
+    # import matches
+    for image_path_0 in matches:
+        for image_path_1 in matches[image_path_0]:
+            match_0_1 = matches[image_path_0][image_path_1]
+            if match_0_1["reversed"]:
+                continue
+
+            logger.info(f"process pair [{image_path_0}] / [{image_path_1}]")
+            match_path = os.path.join(index_dir_path, f"{match_0_1['id']}.pt")
+            (
+                matches_idx,
+                feature_path_0,
+                feature_path_1,
+            ) = load_matches_and_feature_paths(match_path, args["--max-matches"])
+
+            image_id_0, image_name_0 = check_image_is_added(
+                connection,
+                image_path_to_image_id,
+                image_path_0,
+                feature_path_0,
+                width,
+                height,
+                camera_id,
+            )
+            image_id_1, image_name_1 = check_image_is_added(
+                connection,
+                image_path_to_image_id,
+                image_path_1,
+                feature_path_1,
+                width,
+                height,
+                camera_id,
+            )
+
+            match_id, matches_idx = compute_match_id(
+                matches_idx,
+                image_id_0,
+                image_id_1,
+            )
+            add_matches(connection, match_id, matches_idx)
+            write_pair(image_name_0, image_name_1)
+
+
+def validate_float_single_or_pair(string):
+    try:
+        value = float(string)
+        return (value, value)
+    except: pass
+    try:
+        pair = string.split(",")
+        assert len(pair) == 2
+        pair = tuple(float(n) for n in pair)
+        return pair
+    except:
+        raise RuntimeError(f"value `{string}` should be")
+
+def validate_args(args):
+    schema = Schema(
+        {
+            "--version": bool,
+            "--help": bool,
+            "--max-matches": Or(None, Use(int)),
+            "--focal": Or(None, Use(validate_float_single_or_pair)),
+            "--center": Or(None, Use(validate_float_single_or_pair)),
+            "<colmap_db>": str,
+            "<matches_index>": str,
+        }
+    )
+    try:
+        args = schema.validate(args)
+    except SchemaError as e:
+        exit(e)
+    return args
+
+
+def load_index(path):
+    with open(path, "r") as f:
+        index = json.load(f)
+    return index
+
+
+def main():
+    # get & check arguments
+    args = docopt(__doc__, version="COLMAP Import Matches v0.1.0")
+    args = validate_args(args)
+
+    # get sqlite connection
+    connection = sqlite3.connect(args["<colmap_db>"])
+
+    # load index
+    index = load_index(args["<matches_index>"])
+    index_dir_path = os.path.dirname(args["<matches_index>"])
+
+    # import matches to COLMAP DB
+    import_matches(connection, index, index_dir_path, args)
+    connection.commit()
+
+if __name__ == "__main__":
+    try:
+        main()
+    except:
+        logger.opt(exception=True).error("exception occrured")
+        exit(1)
