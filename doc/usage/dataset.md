@@ -29,7 +29,7 @@ Once downloaded, update the path `root` in the configuration files `./etc/datase
 
 __Download__ : https://github.com/ScanNet/ScanNet#scannet-data
 
-Once downloaded, update the path `path` in the configuration files `./etc/datasets/image-net/{training-all,test}.yaml`.
+Once downloaded, update the path `path` in the configuration files `./etc/datasets/scannet-frames/{training-all,test}.yaml`.
 
 <u>Remark #1</u> : We've designed our own dataset class for ScanNet that loads directly from the original raw source. There is no need to run a frame extractor (suggested by ScanNet).
 
