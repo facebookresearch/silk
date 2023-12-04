@@ -43,10 +43,6 @@ class _UnitTests(unittest.TestCase):
             ]
         )
 
-        corr = positions_to_unidirectional_correspondence(
-            positions, sub_width, sub_height, cell_size
-        )
-
         expected_corr = jnp.array(
             [
                 0,
@@ -61,6 +57,24 @@ class _UnitTests(unittest.TestCase):
             ],
         )
 
+        # test "yx" ordering
+        corr = positions_to_unidirectional_correspondence(
+            positions,
+            sub_width,
+            sub_height,
+            cell_size,
+            ordering="yx",
+        )
+        self.assertJaxArrayEqual(corr, expected_corr)
+
+        # test "xy" ordering
+        corr = positions_to_unidirectional_correspondence(
+            positions[:, [1, 0]],  # flip xy dimensions
+            sub_width,
+            sub_height,
+            cell_size,
+            ordering="xy",
+        )
         self.assertJaxArrayEqual(corr, expected_corr)
 
     def test_keep_mutual_correspondences_only(self):
