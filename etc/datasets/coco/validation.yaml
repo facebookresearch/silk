@@ -2,5 +2,5 @@ defaults:
   - defaults
   - _self_
 
-root: /datasets01/COCO/022719/val2017
-annFile: /datasets01/COCO/022719/annotations/captions_val2017.json
+root: /root/workspace/code/mine/silk/data/coco/images/val2017
+annFile: /root/workspace/code/mine/silk/data/coco/annotations/captions_val2017.json
