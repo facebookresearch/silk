@@ -102,11 +102,13 @@ class SuperPoint(AutoForward, torch.nn.Module):
 
         self.magicpoint.backbone.add_head(
             descriptor_head_output_name,
-            DescriptorHead(
-                in_channels=128, out_channels=256, use_batchnorm=use_batchnorm
-            )
-            if descriptor_head is None
-            else descriptor_head,
+            (
+                DescriptorHead(
+                    in_channels=128, out_channels=256, use_batchnorm=use_batchnorm
+                )
+                if descriptor_head is None
+                else descriptor_head
+            ),
         )
 
         SuperPoint.add_descriptor_head_post_processing(

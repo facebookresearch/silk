@@ -134,13 +134,15 @@ class MagicPoint(AutoForward, torch.nn.Module):
 
         # add backbone
         self.backbone = SharedBackboneMultipleHeads(
-            backbone=Backbone(
-                num_channels=num_channels,
-                use_batchnorm=use_batchnorm,
-                use_max_pooling=use_max_pooling,
-            )
-            if backbone is None
-            else backbone,
+            backbone=(
+                Backbone(
+                    num_channels=num_channels,
+                    use_batchnorm=use_batchnorm,
+                    use_max_pooling=use_max_pooling,
+                )
+                if backbone is None
+                else backbone
+            ),
             input_name=input_name,
             backbone_output_name=backbone_output_name,
         )
@@ -153,14 +155,16 @@ class MagicPoint(AutoForward, torch.nn.Module):
         # add detector head
         self.backbone.add_head(
             detector_head_output_name,
-            DetectorHead(
-                in_channels=128,
-                lat_channels=256,
-                out_channels=out_channels,
-                use_batchnorm=use_batchnorm,
-            )
-            if detector_head is None
-            else detector_head,
+            (
+                DetectorHead(
+                    in_channels=128,
+                    lat_channels=256,
+                    out_channels=out_channels,
+                    use_batchnorm=use_batchnorm,
+                )
+                if detector_head is None
+                else detector_head
+            ),
         )
 
         # add the forward function
