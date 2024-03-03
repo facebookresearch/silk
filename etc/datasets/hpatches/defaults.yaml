@@ -1,2 +1,2 @@
 _target_: silk.datasets.hpatches.hpatches_dataset.HPatchesDataset
-hpatches_path: "/datasets01/hpatches/01042022"
+hpatches_path: "/root/workspace/code/mine/silk/data/hpatches"
