@@ -433,7 +433,7 @@ class Mesh:
         path,
     ):
         self._path = path
-        self.mesh_name = os.path.basename(path).rstrip(".ply")
+        self.mesh_name = os.path.basename(path).removesuffix(".ply")
 
     # TODO(Pierre) : Where does IO come from ?
     # def get_mesh(self, device="cpu"):
