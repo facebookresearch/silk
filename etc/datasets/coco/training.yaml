@@ -2,5 +2,5 @@ defaults:
   - defaults
   - _self_
 
-root: /datasets01/COCO/022719/train2017
-annFile: /datasets01/COCO/022719/annotations/captions_train2017.json
+root: /root/workspace/code/mine/silk/data/coco/images/train2017
+annFile: /root/workspace/code/mine/silk/data/coco/annotations/captions_train2017.json
