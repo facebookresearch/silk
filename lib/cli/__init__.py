@@ -6,33 +6,33 @@
 
 r"""# silk - CLI
 
-    Highly configurable CLI tool for training, running inference and benchmarking.
+Highly configurable CLI tool for training, running inference and benchmarking.
 
-    ## How to run a mode ?
+## How to run a mode ?
 
-    A mode is a CLI command + parameters present in the configuration file `etc/mode/*.yaml`.
-    Running a mode without overriding any of its parameters can be done like this : `./bin/silk-cli mode=<mode-name>`
+A mode is a CLI command + parameters present in the configuration file `etc/mode/*.yaml`.
+Running a mode without overriding any of its parameters can be done like this : `./bin/silk-cli mode=<mode-name>`
 
-    Examples
-    --------
+Examples
+--------
 
-    ```python
-    # start training the configured magicpoint model
-    ./bin/silk-cli mode=train-magicpoint
+```python
+# start training the configured magicpoint model
+./bin/silk-cli mode=train-magicpoint
 
-    # start benchmarking the configured magicpoint model
-    ./bin/silk-cli mode=benchmark-magicpoint
-    ```
+# start benchmarking the configured magicpoint model
+./bin/silk-cli mode=benchmark-magicpoint
+```
 
-    Any parameter can be overridden since we are powered by [hydra](https://hydra.cc).
+Any parameter can be overridden since we are powered by [hydra](https://hydra.cc).
 
-    Examples
-    --------
+Examples
+--------
 
-    ```python
-    # start training the configured magicpoint model on GPU 0 and 1 and disable output print
-    ./bin/silk-cli mode=train-magicpoint 'mode.trainer.gpus=[0,1]' formatter=none
-    ```
+```python
+# start training the configured magicpoint model on GPU 0 and 1 and disable output print
+./bin/silk-cli mode=train-magicpoint 'mode.trainer.gpus=[0,1]' formatter=none
+```
 
 """
 

@@ -14,6 +14,7 @@ Draw point correspondences between a pair of images.
     a. Draw predicted points on both images.
     b. Draw lines from one image to the other for matched points.
 """
+
 import os
 
 import cv2

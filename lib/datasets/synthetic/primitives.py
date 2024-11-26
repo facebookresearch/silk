@@ -4,7 +4,7 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
-""" Module used to generate geometrical synthetic shapes """
+"""Module used to generate geometrical synthetic shapes"""
 
 # Modified code taken from here : https://github.com/eric-yyjau/pytorch-superpoint/blob/master/datasets/synthetic_shapes.py
 # Modifications were done to control the determinism of the primitives.

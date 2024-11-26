@@ -168,7 +168,7 @@ class SyntheticShapes(RandomizedIterable):
 
     @staticmethod
     def _parse_drawing_primitives(
-        drawing_primitives: Union[str, List[str]]
+        drawing_primitives: Union[str, List[str]],
     ) -> Tuple[str]:
         if drawing_primitives == "all":
             return SyntheticShapes.DRAWING_PRIMITIVES

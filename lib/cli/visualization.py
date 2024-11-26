@@ -7,6 +7,7 @@
 """
 CLI function for PointTracking video visualization tool.
 """
+
 import os
 
 import cv2

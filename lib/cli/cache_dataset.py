@@ -6,13 +6,13 @@
 
 """command : cache_dataset
 
-    The cache dataset command will read data from a loader (with CPU collate transform),
-    transform those data (can be done on GPU) and save the results as a cached dataset to disk.
+The cache dataset command will read data from a loader (with CPU collate transform),
+transform those data (can be done on GPU) and save the results as a cached dataset to disk.
 
-    This is very useful to :
-        * Store expensive transform to speed-up future loading loops.
-        * Transform existing datasets and store the result as a new dataset.
-        * Simplify the collate function of loaders using already prepared dataset (no work done on the loaders except loading data).
+This is very useful to :
+    * Store expensive transform to speed-up future loading loops.
+    * Transform existing datasets and store the result as a new dataset.
+    * Simplify the collate function of loaders using already prepared dataset (no work done on the loaders except loading data).
 """
 
 import os

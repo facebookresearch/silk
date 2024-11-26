@@ -328,9 +328,7 @@ class MagicPoint(
                 "score",
                 "positions",
             )
-        )(
-            images
-        )
+        )(images)
 
         class_label = torch.argmax(labels, dim=1)
 
