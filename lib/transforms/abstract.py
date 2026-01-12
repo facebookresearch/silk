@@ -21,7 +21,6 @@ from typing import (
 )
 
 import torch
-
 from silk.config.core import ensure_is_instance
 
 

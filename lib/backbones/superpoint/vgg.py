@@ -8,7 +8,6 @@ from copy import deepcopy
 from typing import Callable, Iterable, List, Union
 
 import torch
-
 from silk.backbones.silk.coords import (
     CoordinateMappingProvider,
     Identity,

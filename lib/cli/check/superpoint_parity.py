@@ -7,7 +7,6 @@
 import cv2
 import torch
 from omegaconf import DictConfig
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.config.paths import ASSETS
 from silk.models.superpoint import SuperPoint
@@ -94,13 +93,13 @@ def main(config: DictConfig):
     rtol = 0.0
     atol = 1e-4
 
-    assert torch.allclose(
-        logits, pretrained_logits, rtol=rtol, atol=atol
-    ), "logits do not match"
+    assert torch.allclose(logits, pretrained_logits, rtol=rtol, atol=atol), (
+        "logits do not match"
+    )
     assert torch.all((nms > 0.0) == pretrained_nms), "nms do not match"
-    assert torch.allclose(
-        descriptors, pretrained_descriptors, rtol=rtol, atol=atol
-    ), "descriptors do not match"
+    assert torch.allclose(descriptors, pretrained_descriptors, rtol=rtol, atol=atol), (
+        "descriptors do not match"
+    )
 
     assert torch.allclose(
         _sort_sparse_descriptors(positions, sparse_descriptors).T,

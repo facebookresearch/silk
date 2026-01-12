@@ -7,7 +7,6 @@
 import unittest
 
 import torch
-
 from silk.metrics.keypoint import KeypointDetectionAveragePrecision
 from silk.test.util import string_to_tensor
 from torchmetrics import AveragePrecision

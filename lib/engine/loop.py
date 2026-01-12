@@ -8,7 +8,6 @@ from typing import Dict, Iterable
 
 import torch
 from pytorch_lightning.trainer.trainer import Trainer as PLTrainer
-
 from silk.engine.callbacks import BatchTransform
 from silk.transforms.metric import MetricUpdate
 

@@ -9,7 +9,6 @@ import unittest
 import numpy as np
 import PIL.Image
 import torch
-
 from silk.test.util import OverwriteTensorEquality, string_to_tensor
 from silk.transforms.abstract import Lambda, Map, NamedContext
 from silk.transforms.tensor import AutoBatch, NormalizeRange, ToTensor, Unbatch

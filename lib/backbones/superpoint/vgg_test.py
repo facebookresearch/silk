@@ -11,7 +11,6 @@ The unittests for the magicpoint model magicpoint.py
 import unittest
 
 import torch
-
 from silk.backbones.superpoint.vgg import VGG, vgg_block
 
 

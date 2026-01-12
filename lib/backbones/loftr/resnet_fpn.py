@@ -8,7 +8,6 @@
 
 import torch.nn as nn
 import torch.nn.functional as F
-
 from silk.backbones.silk.coords import (
     CoordinateMappingProvider,
     Identity,

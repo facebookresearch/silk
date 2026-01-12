@@ -8,7 +8,6 @@ from typing import Dict, List, Tuple, Union
 
 import numpy as np
 from numpy.random.mtrand import RandomState
-
 from silk.datasets.abstract import RandomizedIterable
 from silk.logger import LOG
 

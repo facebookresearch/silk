@@ -7,7 +7,6 @@
 from typing import Any
 
 import hydra
-
 import silk.cli
 from omegaconf import DictConfig
 from silk.config.resolver import init_resolvers

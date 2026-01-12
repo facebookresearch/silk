@@ -7,7 +7,6 @@
 import unittest
 
 import torch
-
 from silk.cv.homography import HomographicSampler
 from silk.test.util import max_tensor_diff, OverwriteTensorEquality, string_to_tensor
 

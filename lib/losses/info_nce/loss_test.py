@@ -8,7 +8,6 @@ import unittest
 
 import jax
 import jax.numpy as jnp
-
 from silk.losses.info_nce.loss import (
     _scan_reduce,
     keep_mutual_correspondences_only,

@@ -15,7 +15,6 @@ import numpy as np
 import pytorch_lightning as pl
 import torch
 from omegaconf import DictConfig, OmegaConf
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.models.pointtracker import PointTracker
 from silk.models.superpoint_utils import _process_output_new

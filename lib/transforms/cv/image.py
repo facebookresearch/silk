@@ -7,11 +7,9 @@
 from typing import Tuple, Union
 
 import numpy as np
-
 import torch
 import torch.nn.functional as F
 import torchvision.transforms
-
 from silk.cv.homography import HomographicSampler
 from silk.transforms.abstract import Transform
 from silk.transforms.tensor import Clamp

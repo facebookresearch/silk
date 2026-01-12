@@ -25,7 +25,6 @@ from typing import Any, Dict, Optional, Union
 
 import pytorch_lightning as pl
 import torch
-
 from silk.backbones.superpoint.utils import (
     prob_map_to_points_map,
     prob_map_to_positions_with_prob,
@@ -53,7 +52,6 @@ def _debug_dump_counts(counts, device):
         from os import makedirs
 
         from silk.logger import LOG
-
         from skimage.io import imsave
 
         makedirs("./debug", exist_ok=True)

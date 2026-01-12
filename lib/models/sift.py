@@ -8,7 +8,6 @@ from functools import partial
 
 import cv2 as cv
 import torch
-
 from silk.matching.mnn import compute_dist, mutual_nearest_neighbor
 
 matcher = partial(

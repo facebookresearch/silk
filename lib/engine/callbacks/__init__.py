@@ -7,7 +7,6 @@
 from typing import Optional
 
 import pytorch_lightning as pl
-
 from silk.transforms.abstract import NamedContext, Transform
 
 

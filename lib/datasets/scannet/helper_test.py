@@ -8,7 +8,6 @@ import unittest
 
 import numpy as np
 import torch
-
 from silk.datasets.scannet.helper import Frame, Frames, Scan, ScanNet, Space
 from silk.test.util import temporary_directory
 

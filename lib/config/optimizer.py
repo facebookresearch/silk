@@ -9,7 +9,6 @@ from __future__ import annotations
 from typing import Any, Dict, Iterable, Union
 
 import torch
-
 from silk.config.core import find_and_ensure_is_subclass
 from silk.optimizers.multiple import MultiOptimizer
 

@@ -14,7 +14,6 @@ import torch
 import torch.utils as utils
 from einops import repeat
 from kornia.utils import create_meshgrid
-
 from silk.datasets.scannet.helper import ScanNet
 from torch.utils.data.dataset import ConcatDataset
 

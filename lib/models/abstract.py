@@ -7,7 +7,6 @@
 from typing import Iterable, List, Optional
 
 import pytorch_lightning
-
 import silk.config.optimizer as optimizer
 import torch
 from silk.config.core import ensure_is_instance

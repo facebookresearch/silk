@@ -11,7 +11,6 @@ SuperPoint descriptors) across multiple frames/images of the same scene
 """
 
 import torch
-
 from silk.matching.mnn import compute_dist, match_descriptors
 
 MAX_SCORE = 9999

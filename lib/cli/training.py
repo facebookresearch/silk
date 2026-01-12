@@ -6,7 +6,6 @@
 
 import pytorch_lightning as pl
 from omegaconf import DictConfig, OmegaConf
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.config.model import load_model_from_checkpoint
 from silk.logger import LOG

@@ -9,7 +9,6 @@ from typing import Iterable, Tuple, Union
 
 import torch
 import torch.nn as nn
-
 from silk.backbones.abstract.shared_backbone_multiple_heads import (
     SharedBackboneMultipleHeads,
 )

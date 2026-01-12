@@ -25,7 +25,6 @@ from functools import partial
 
 import torch
 import torch.nn as nn
-
 from silk.backbones.abstract.shared_backbone_multiple_heads import (
     SharedBackboneMultipleHeads,
 )

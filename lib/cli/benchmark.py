@@ -6,7 +6,6 @@
 
 import torch
 from omegaconf import DictConfig
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.engine.loop import Benchmarker
 from torch.utils.data import DataLoader

@@ -18,7 +18,6 @@ This is very useful to :
 import os
 
 from omegaconf import DictConfig
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.datasets.cached import CachedDataset
 from silk.profiler import timeit

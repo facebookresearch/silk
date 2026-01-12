@@ -7,7 +7,6 @@
 from typing import Any, Callable, List, Tuple, Union
 
 from silk.datasets.scannet.helper import Scan, ScanNet
-
 from torch.utils.data import Dataset
 
 from .frames import _check_extractors

@@ -42,7 +42,6 @@ from typing import Any
 
 import hydra
 import hydra.utils
-
 import silk.logger as logger
 from omegaconf import DictConfig
 from silk.config import PACKAGE_NAME

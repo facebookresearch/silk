@@ -8,7 +8,6 @@ import os
 from typing import List, Union
 
 import pynvml
-
 from silk.logger import LOG
 
 

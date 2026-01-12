@@ -8,7 +8,6 @@ import unittest
 
 import pytorch_lightning as pl
 import torch
-
 from silk.config.optimizer import MultiSpec, Spec
 from silk.models.abstract import OptimizersHandler
 from silk.optimizers.multiple import MultiOptimizer

@@ -8,7 +8,6 @@ import itertools
 import unittest
 
 from silk.data.loader import StatefulDataLoader
-
 from torch.utils.data import Dataset, IterableDataset
 
 

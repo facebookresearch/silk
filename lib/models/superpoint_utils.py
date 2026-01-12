@@ -10,7 +10,6 @@ Utils functions for the SuperPoint model.
 
 import cv2
 import torch
-
 from silk.cv.homography import HomographicSampler
 from silk.models.superpoint import SuperPoint
 

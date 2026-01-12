@@ -21,7 +21,6 @@ import cv2
 import numpy as np
 import pytorch_lightning as pl
 from omegaconf import DictConfig
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.matching.mnn import compute_dist, match_descriptors
 from silk.models.superpoint_utils import _process_output_new, load_image

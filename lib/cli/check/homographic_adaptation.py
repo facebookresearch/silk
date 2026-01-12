@@ -9,7 +9,6 @@ import os
 import numpy as np
 import torch
 from omegaconf import DictConfig
-
 from silk.config.core import instantiate_and_ensure_is_instance
 from silk.datasets.synthetic.primitives import draw_interest_points
 from silk.models.magicpoint import HomographyAdaptation

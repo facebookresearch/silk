@@ -98,9 +98,9 @@ class LocalFeatureTransformer(nn.Module):
             mask1 (torch.Tensor): [N, S] (optional)
         """
 
-        assert self.d_model == feat0.size(
-            2
-        ), "the feature number of src and transformer must be equal"
+        assert self.d_model == feat0.size(2), (
+            "the feature number of src and transformer must be equal"
+        )
 
         for layer, name in zip(self.layers, self.layer_names):
             if name == "self":

@@ -7,7 +7,6 @@
 import unittest
 
 import silk.config.optimizer as optimizer
-
 import torch
 
 

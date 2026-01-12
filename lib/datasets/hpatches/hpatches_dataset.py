@@ -17,7 +17,6 @@ from pathlib import Path
 import cv2
 import numpy as np
 import torch
-
 from silk.cv.homography import resize_homography
 from silk.models.superpoint_utils import load_image
 

@@ -7,7 +7,6 @@
 from typing import Optional, Tuple, Union
 
 import torch
-
 from silk.config.sampler import Sampler
 from silk.cv.homography import HomographicSampler
 from silk.transforms.abstract import Transform

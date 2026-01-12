@@ -7,7 +7,6 @@
 import importlib
 
 from omegaconf import DictConfig
-
 from silk.config.constants import PACKAGE_NAME
 from silk.logger import LOG
 

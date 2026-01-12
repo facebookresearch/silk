@@ -9,7 +9,6 @@ from typing import Any, Iterable, List, Optional, Tuple, Union
 import numpy as np
 import torch
 from PIL.Image import Image as PILImage
-
 from silk.transforms.abstract import NamedContext, Transform
 
 

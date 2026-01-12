@@ -11,7 +11,6 @@ from typing import Any, Dict, Iterable, List, Union
 
 import torch
 from pytorchvideo.data.video import Video
-
 from silk.transforms.abstract import Transform
 
 

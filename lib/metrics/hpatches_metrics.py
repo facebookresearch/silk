@@ -6,7 +6,6 @@
 
 import numpy as np
 import torch
-
 from silk.logger import LOG
 from silk.models.superpoint_utils import keep_true_points, warp_points
 from torchmetrics import Metric

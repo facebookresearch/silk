@@ -8,7 +8,6 @@ import os
 import unittest
 
 import torch
-
 from silk.test.util import OverwriteTensorEquality, temporary_directory, temporary_file
 
 

@@ -7,7 +7,6 @@
 import unittest
 
 import torch
-
 from silk.backbones.superpoint.utils import prob_map_to_points_map, remove_border_points
 from silk.profiler import timeit
 from silk.test.util import OverwriteTensorEquality

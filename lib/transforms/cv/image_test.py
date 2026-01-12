@@ -7,7 +7,6 @@
 import unittest
 
 import torch
-
 from silk.test.util import OverwriteTensorEquality
 from silk.transforms.cv.image import CHWToHWC, HWCToCHW
 

@@ -11,7 +11,6 @@ The unit tests for superpoint.py
 import unittest
 
 import torch
-
 from silk.backbones.superpoint.superpoint import SuperPoint
 
 

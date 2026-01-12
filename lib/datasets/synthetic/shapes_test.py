@@ -7,7 +7,6 @@
 import unittest
 
 import numpy as np
-
 from silk.datasets.synthetic.shapes import (
     DEFAULT_HEIGHT,
     DEFAULT_WIDTH,

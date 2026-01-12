@@ -7,7 +7,6 @@
 import unittest
 
 import torch
-
 from silk.datasets.cached import CachedDataset
 from silk.test.util import OverwriteTensorEquality, temporary_file
 from silk.transforms.abstract import NamedContext

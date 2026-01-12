@@ -7,7 +7,6 @@
 from typing import Any, Dict, List
 
 from silk.transforms.abstract import MethodCall
-
 from torchmetrics import Metric
 
 

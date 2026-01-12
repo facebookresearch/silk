@@ -9,7 +9,6 @@ from typing import Union
 
 import torch
 import torch.nn as nn
-
 from silk.flow import Flow
 from silk.transforms.abstract import Transform
 

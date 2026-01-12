@@ -6,7 +6,6 @@
 
 import jax
 import jax.numpy as jnp
-
 from silk.utils.jax import delayed_vjp
 
 

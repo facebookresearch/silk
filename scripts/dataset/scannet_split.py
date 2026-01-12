@@ -28,7 +28,7 @@ val_ids = []
 train_ids = []
 for key, scans in class_to_scans.items():
     val_n = max(int(VALIDATION_SPLIT_PERCENT * len(scans)), 1)
-    print(f"[{key}] - split {val_n}/{len(scans)-val_n}")
+    print(f"[{key}] - split {val_n}/{len(scans) - val_n}")
     rd.shuffle(scans)
     val_ids.extend(scans[:val_n])
     train_ids.extend(scans[val_n:])

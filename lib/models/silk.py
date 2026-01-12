@@ -9,7 +9,6 @@ from typing import Any, Dict, Optional, Union
 
 import pytorch_lightning as pl
 import torch
-
 from silk.backbones.loftr.positional_encoding import PositionEncodingSine
 from silk.backbones.silk.silk import SiLKBase as BackboneBase
 from silk.config.core import ensure_is_instance

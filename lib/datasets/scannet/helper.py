@@ -24,7 +24,6 @@ import torch
 from diskcache import Cache
 from pytorchvideo.data.utils import optional_threaded_foreach, thwc_to_cthw
 from pytorchvideo.data.video import Video
-
 from silk.logger import LOG
 
 

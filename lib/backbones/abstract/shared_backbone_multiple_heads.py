@@ -7,7 +7,6 @@
 from typing import Tuple, Union
 
 import torch
-
 from silk.backbones.silk.coords import (
     CoordinateMappingComposer,
     CoordinateMappingProvider,

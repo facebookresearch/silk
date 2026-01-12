@@ -8,7 +8,6 @@ from copy import copy
 from typing import Any
 
 from omegaconf import Node, OmegaConf
-
 from silk.config.core import instantiate
 
 INITIALIZED = False
