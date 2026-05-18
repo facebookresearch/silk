@@ -16,7 +16,7 @@ typing-extensions==4.3.0
 pytorchvideo==0.1.5
 imageio==2.19.3
 diskcache==5.4.0
-pytorch-lightning==1.5.2
+pytorch-lightning==2.6.1
 einops==0.4.1
 kornia==0.6.6
 torchmetrics==0.6.0
