@@ -28,7 +28,7 @@ How to handle and print exceptions with stacktrace :
     * Use the `opt(exception=True)` option.
         try:
             raise RuntimeError("I'm going to roam free !")
-        except:
+        except Exception:
             LOG.opt(exception=True).error(
                 "Some exception tried to escape. We caught it.",
             )
