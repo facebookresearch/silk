@@ -1,6 +1,6 @@
 loguru>=0.5
 autoflake>=1.4
-black==21.10b0
+black==26.3.1
 matplotlib>=3.3
 pdoc3>=0.10
 hydra-core==1.2.0
